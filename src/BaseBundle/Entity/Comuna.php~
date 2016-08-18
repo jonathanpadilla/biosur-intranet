@@ -1,0 +1,43 @@
+<?php
+
+namespace BaseBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Comuna
+ *
+ * @ORM\Table(name="comuna", indexes={@ORM\Index(name="com_provincia_fk", columns={"com_provincia_fk"})})
+ * @ORM\Entity
+ */
+class Comuna
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="com_id_pk", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $comIdPk;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="com_nombre", type="string", length=100, nullable=true)
+     */
+    private $comNombre;
+
+    /**
+     * @var \Provincia
+     *
+     * @ORM\ManyToOne(targetEntity="Provincia")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="com_provincia_fk", referencedColumnName="pro_id_pk")
+     * })
+     */
+    private $comProvinciaFk;
+
+
+}
+

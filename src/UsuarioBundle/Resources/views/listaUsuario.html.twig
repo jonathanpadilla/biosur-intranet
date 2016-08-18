@@ -1,0 +1,120 @@
+{% extends "UsuarioBundle:Layouts:body.html.twig" %}
+{% block content %}
+  <div class="row">
+  	<div class="col-md-12">
+  		<div class="content-header">
+          <h2>Lista de usuarios</h2>
+        </div>
+
+  		<div class="row">
+          <div class="col-md-12">
+              <div class="panel panel-visible" id="spy5">
+                <div class="panel-heading">
+                	<div class="topbar_options"><!--
+	                 --><div class="btn-group">
+	                        <a href="{{ url('usuario_vista_agregar') }}" class="btn btn-md btn-biosur"><i class="fa fa-plus"> </i> Nuevo usuario</a>
+	                    </div><!--
+	                 --><div class="btn-group">
+	                        <button type="button" class="btn btn-md btn-biosur dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cloud-download"> </i> Exportar
+	                        <span class="caret ml5"></span>
+	                    </button>
+                        <ul class="dropdown-menu" role="menu">
+                         	<li>
+                            	<a href="#">Excel</a>
+                          	</li>
+                          	<li>
+                            	<a href="#">PDF</a>
+                          	</li>
+                          	<li>
+                            	<a href="#">HTML</a>
+                          	</li>
+                        </ul>
+                      </div>
+                    </div>
+                </div>
+                <div class="panel-body pn">
+                    <table id="table_listausuarios" class="table table-hover display">
+                      <thead id="filtro_listaUsuario">
+                        <tr>
+                          <th>
+                            <div class="form-group">
+                              <input type="number" id="number_id" class="form-control" placeholder="Buscar por ID">
+                            </div>
+                          </th>
+                          <th>
+                            <div class="form-group">
+                              <input type="text" id="text_nombre" class="form-control" placeholder="Buscar por NOMBRE">
+                            </div>
+                          </th>
+                          <th>
+                            <!-- <div class="form-group">
+                                <select class="form-control select2-single" id="select_contacto">
+                                  <option value="default">Seleccionar</option>
+                                  <option value="1">Telefono</option>
+                                  <option value="2">Celular</option>
+                                  <option value="3">Correo</option>
+                                </select>
+                            </div> -->
+                          </th>
+                          <th>
+                            <div class="form-group">
+                                <select class="form-control select2-single" id="select_perfil">
+                                  <option value="default">Seleccionar</option>
+                                  <option value="1">Administrador</option>
+                                  <option value="2">Ejecutivo</option>
+                                </select>
+                            </div>
+                          </th>
+                          <th>
+                            <!-- <div class="form-group">
+                                <select class="form-control select2-single" id="select_sucursal">
+                                  <option value="default">Seleccionar</option>
+                                  <option value="2">Sucursal</option>
+                                  <option value="3">nueva</option>
+                                </select>
+                            </div> -->
+                          </th>
+                          <th>
+                            <div class="form-group">
+                              <input type="text" id="text_direccion" class="form-control" placeholder="Buscar por DIRECCIÓN">
+                            </div>
+                          </th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <thead>
+                        <tr>
+                          <th>Id</th>
+                          <th>Nombre</th>
+                          <th>Contácto</th>
+                          <th>Perfil de usuario</th>
+                          <th>Sucursal</th>
+                          <th>Dirección</th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      </tbody>
+                    </table>
+                    <div class="text-right" id="paginacion_listaUsuario" style="margin-right:9px; margin-top:15px">
+
+                      <div class="btn-group">
+                      </div>
+
+                    </div>
+                    <br>
+                </div>
+              </div>
+            </div>
+
+        </div>
+  	</div>
+  </div>
+{% endblock %}
+
+{% block footerScripts %}
+	<script src="{{ absolute_url(asset('vendor/plugins/duallistbox/jquery.bootstrap-duallistbox.min.js')) }}"></script>
+	<script src="{{ absolute_url(asset('assets/admin-tools/admin-forms/js/jquery.validate.min.js')) }}"></script>
+	<script src="{{ absolute_url(asset('vendor/plugins/select2/select2.min.js')) }}"></script>
+	<script src="{{ absolute_url(asset('assets/bundles/usuario/listar.js')) }}"></script>
+{% endblock %}

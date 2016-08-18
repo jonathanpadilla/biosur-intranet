@@ -1,0 +1,285 @@
+{% extends "UsuarioBundle:Layouts:body.html.twig" %}
+{% block content %}
+  <div class="page-heading">
+    <div class="media clearfix">
+      <div class="media-left pr30">
+        <a href="#">
+          <img class="media-object mw150" style="width: 165px;" src="{{ absolute_url(asset('assets/img/avatars/placeholder.png')) }}" alt="...">
+        </a>
+      </div>                      
+      <div class="media-body va-m">
+        <h2 class="media-heading"> {{ infoUsuario.nombre }} {{ infoUsuario.apellido }}
+          <small> - {{ infoUsuario.tipo }}</small>
+        </h2>
+        <p class="lead">{{ infoUsuario.comentario }}</p>
+        <div class="media-links">
+          <ul class="list-inline list-unstyled">
+
+            {% for contacto in contactos %}
+              {% if contacto.id == 1 %}
+                <li>
+                  <a href="#" data-toggle="popover" data-trigger="focus" title="{{ contacto.tipo }}" data-content="{{ contacto.contacto }} - {{ contacto.persona }}">
+                    <span class="fa fa-phone fs35 text-system"></span>
+                  </a>
+                </li>
+              {% elseif contacto.id == 2 %}
+                <li>
+                  <a href="#" data-toggle="popover" data-trigger="focus" title="{{ contacto.tipo }}" placement="top" data-content="{{ contacto.contacto }} - {{ contacto.persona }}">
+                    <span class="fa fa-mobile-phone fs35 text-system"></span>
+                  </a>
+                </li>
+              {% elseif contacto.id == 3 %}
+                <li>
+                  <a href="#" data-toggle="popover" data-trigger="focus" title="{{ contacto.tipo }}" placement="top" data-content="{{ contacto.contacto }} - {{ contacto.persona }}">
+                    <span class="fa fa-envelope fs35 text-muted"></span>
+                  </a>
+                </li>
+              {% else %}
+                <li>
+                  <a href="#" data-toggle="popover" data-trigger="focus" title="{{ contacto.tipo }}" placement="top" data-content="{{ contacto.contacto }} - {{ contacto.persona }}">
+                    <span class="fa fa-external-link fs35 text-muted"></span>
+                  </a>
+                </li>
+              {% endif %}
+            {% endfor %}
+<!--             
+            <li>
+              <a href="#" title="Linkedin">
+                <span class="fa fa-linkedin fs35 text-info"></span>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" title="facebook link">
+                <span class="fa fa-facebook fs35 text-primary"></span>
+              </a>
+            </li>
+            <li>
+              <a href="#" title="twitter link">
+                <span class="fa fa-twitter fs35 text-info"></span>
+              </a>
+            </li>
+            <li>
+              <a href="#" title="external link">
+                <span class="fa fa-external-link fs35 text-muted"></span>
+              </a>
+            </li> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+      <div class="panel">
+        <div class="panel-heading">
+          <span class="panel-icon">
+            <i class="fa fa-check"></i>
+          </span>
+          <span class="panel-title"> Privilegios</span>
+        </div>
+        <div class="panel-body pn">
+          <table class="table mbn tc-icon-1 tc-med-2 tc-bold-last">
+            <thead>
+              <tr class="hidden">
+                <!-- <th class="mw30">#</th> -->
+                <th>First Name</th>
+                <!-- <th>Revenue</th> -->
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <!-- <td>
+                  <span class="fa fa-desktop text-warning"></span>
+                </td> -->
+                <td class="text-left">Permiso 1</td>
+                <!-- <td>
+                  <i class="fa fa-caret-up text-info pr10"></i>$855,913</td> -->
+              </tr>
+              <tr>
+                <!-- <td>
+                  <span class="fa fa-microphone text-primary"></span>
+                </td> -->
+                <td class="text-left">Permiso 2</td>
+                <!-- <td>
+                  <i class="fa fa-caret-down text-danger pr10"></i>$349,712</td> -->
+              </tr>
+              <tr>
+                <!-- <td>
+                  <span class="fa fa-newspaper-o text-info"></span>
+                </td> -->
+                <td class="text-left">Permiso 3</td>
+                <!-- <td>
+                  <i class="fa fa-caret-up text-info pr10"></i>$1,259,742</td> -->
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-heading">
+          <span class="panel-icon">
+            <i class="fa fa-pencil"></i>
+          </span>
+          <span class="panel-title">Información</span>
+        </div>
+        <div class="panel-body pb5">
+
+          <dl>
+            <dt>Nombre</dt>
+            <dd>{{ infoUsuario.nombre }} {{ infoUsuario.apellido }}</dd>
+            <dt>Rut</dt>
+            <dd>{{ infoUsuario.rut }}</dd>
+            <dt>Dirección</dt>
+            <dd>{{ infoUsuario.direccion }}</dd>
+            <dt>Fecha de registro</dt>
+            <dd>{{ infoUsuario.fecha_registro }}</dd>
+          </dl>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+
+      <div class="tab-block">
+        <ul class="nav nav-tabs">
+          <li class="active">
+            <a href="#tab1" data-toggle="tab">Bitácora</a>
+          </li>
+          <li>
+            <a href="#tab2" data-toggle="tab">Editar</a>
+          </li>
+        </ul>
+        <div class="tab-content p30" style="height: 730px;">
+          <div id="tab1" class="tab-pane active">
+            <table class="table footable fw-labels" data-page-size="20">
+              <thead>
+                <tr>
+                  <th>
+                    Fecha
+                  </th>
+                  <th>
+                    Detalle
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+
+                <!-- Primary Row -->
+                <tr class="row-primary">
+                  <td title="5">
+                    05/05/2016
+                  </td>
+                  <td>This is a Footable expandable <b class="text-primary">"Primary"</b> row</td>
+                </tr>
+                <tr class="row-primary">
+                  <td>
+                    05/05/2016
+                  </td>
+                  <td>This is a Footable expandable <b class="text-primary">"Primary"</b> row</td>
+                </tr>
+                <tr class="row-primary">
+                  <td>
+                    05/05/2016
+                  </td>
+                  <td>This is a Footable expandable <b class="text-primary">"Primary"</b> row</td>
+                </tr>
+                <tr class="row-primary">
+                  <td>
+                    05/05/2016
+                  </td>
+                  <td>This is a Footable expandable <b class="text-primary">"Primary"</b> row</td>
+                </tr>
+                <tr class="row-primary">
+                  <td>
+                    05/05/2016
+                  </td>
+                  <td>This is a Footable expandable <b class="text-primary">"Primary"</b> row</td>
+                </tr>
+                <tr class="row-primary">
+                  <td>
+                    05/05/2016
+                  </td>
+                  <td>This is a Footable expandable <b class="text-primary">"Primary"</b> row</td>
+                </tr>
+                <tr class="row-primary">
+                  <td>
+                    05/05/2016
+                  </td>
+                  <td>This is a Footable expandable <b class="text-primary">"Primary"</b> row</td>
+                </tr>
+
+                <!-- Info Row -->
+                <tr class="row-info">
+                  <td>
+                    <span class="label label-info">Info</span>
+                  </td>
+                  <td>This is a Footable expandable <b class="text-info">"Info"</b> row</td>
+                </tr>
+            
+                <!-- Success Row -->
+                <tr class="row-success">
+                  <td>
+                    <span class="label label-success">Success</span>
+                  </td>
+                  <td>This is a Footable expandable <b class="text-success">"Success"</b> row</td>
+                </tr>
+
+                <!-- Warning Row -->
+                <tr class="row-warning">
+                  <td>
+                    <span class="label label-warning">Warning</span>
+                  </td>
+                  <td>This is a Footable expandable <b class="text-warning">"Warning"</b> row</td>
+                </tr>
+
+                <!-- Danger Row -->
+                <tr class="row-danger">
+                  <td>
+                    <span class="label label-danger">Danger</span>
+                  </td>
+                  <td>This is a Footable expandable <b class="text-danger">"Danger"</b> row</td>
+                </tr>
+
+                <!-- Alert Row -->
+                <tr class="row-alert">
+                  <td>
+                    <span class="label label-alert">Alert</span>
+                  </td>
+                  <td>This is a Footable expandable <b class="text-alert">"Alert"</b> row</td>
+                </tr>
+
+                <!-- System Row -->
+                <tr class="row-system">
+                  <td>
+                    <span class="label label-system">System</span>
+                  </td>
+                  <td>This is a Footable expandable <b class="text-system">"System"</b> row</td>
+                </tr>
+
+                <!-- Dark Row -->
+                <tr class="row-dark">
+                  <td>
+                    <span class="label label-dark">Dark</span>
+                  </td>
+                  <td>This is a Footable expandable <b class="text-dark">"Dark"</b> row</td>
+                </tr>
+
+              </tbody>
+            </table>
+
+          </div>
+          <div id="tab2" class="tab-pane">Formulario</div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block footerScripts %}
+	<script src="{{ absolute_url(asset('vendor/plugins/duallistbox/jquery.bootstrap-duallistbox.min.js')) }}"></script>
+	<script src="{{ absolute_url(asset('assets/admin-tools/admin-forms/js/jquery.validate.min.js')) }}"></script>
+	<script src="{{ absolute_url(asset('vendor/plugins/select2/select2.min.js')) }}"></script>
+	<!-- <script src="{{ absolute_url(asset('assets/bundles/usuario/listar.js')) }}"></script> -->
+{% endblock %}

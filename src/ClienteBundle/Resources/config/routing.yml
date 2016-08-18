@@ -1,0 +1,12 @@
+## FUNCIONES AJAX ##
+cliente_ajax_validarrutcliente:
+    path:     /validar-rut-cliente/
+    defaults: { _controller: ClienteBundle:FnFormulario:validarRutCliente }
+    options:
+        expose: true
+
+cliente_ajax_clienteporid:
+    path:     /obtener-cliente/
+    defaults: { _controller: ClienteBundle:FnFormulario:obtenerClientePorId }
+    options:
+        expose: true

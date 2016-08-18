@@ -1,0 +1,50 @@
+<?php
+
+namespace BaseBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Provincia
+ *
+ * @ORM\Table(name="provincia", indexes={@ORM\Index(name="pro_region_fk", columns={"pro_region_fk"})})
+ * @ORM\Entity
+ */
+class Provincia
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="pro_id_pk", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $proIdPk;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pro_nombre", type="string", length=100, nullable=true)
+     */
+    private $proNombre;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="pro_cantcomunas", type="integer", nullable=true)
+     */
+    private $proCantcomunas;
+
+    /**
+     * @var \Region
+     *
+     * @ORM\ManyToOne(targetEntity="Region")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="pro_region_fk", referencedColumnName="reg_id_pk")
+     * })
+     */
+    private $proRegionFk;
+
+
+}
+

@@ -1,0 +1,64 @@
+{% extends "MantencionBundle:Layouts:body.html.twig" %}
+{% block content %}
+	<div class="row">
+
+		<div class="panel">
+			<div class="panel-heading">
+				<div class="topbar_options"><!--
+				--><div class="btn-group">
+	                  <a href="#" id="button_descargar_formulario" class="btn btn-md btn-biosur"><i class="fa fa-cloud-download"></i> Descargar</a>
+	              </div><!--
+             --><div class="btn-group">
+                    <button type="button" class="btn btn-md btn-biosur dropdown-toggle" data-toggle="dropdown"><i class="fa fa-share"> </i> Ir a
+                    <span class="caret ml5"></span>
+                  </button>
+                <ul class="dropdown-menu" role="menu">
+                  <li>
+                      <a href="{{ url('venta_vista_listaventa') }}">Lista de arriendos</a>
+                  </li>
+                  <li>
+                      <a href="{{ url('venta_vista_ventaservicio') }}">Nuevo arriendo</a>
+                  </li>
+                  <li class="divider"></li>
+                  <li>
+                      <a href="#">Ver cliente</a>
+                  </li>
+                  <li>
+                      <a href="#">Agregar cliente</a>
+                  </li>
+                </ul>
+              </div>
+          </div>
+			</div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-md-4">
+						<select id="select_dia" class="form-control">
+						  	<option value="0" selected disabled>Seleccionar</option>
+						  	<option value="1">Lunes</option>
+						  	<option value="2">Martes</option>
+						  	<option value="3">Miercoles</option>
+						  	<option value="4">Jueves</option>
+						  	<option value="5">Viernes</option>
+						  	<option value="6">Sabado</option>
+						  	<option value="7">Domingo</option>
+						</select>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<h3>Formularios a generar</h3>
+					</div>
+				</div>
+				<div id="formularios" style="min-height:300px;">
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+{% endblock %}
+
+{% block footerScripts %}
+	<script src="{{ absolute_url(asset('assets/bundles/mantencion/imprimirSeguimiento.js')) }}"></script>
+{% endblock %}

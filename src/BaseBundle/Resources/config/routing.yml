@@ -1,0 +1,35 @@
+base_vista_homepage:
+    path:     /
+    defaults: { _controller: BaseBundle:Inicio:inicio }
+    options:
+        expose: true
+
+base_vista_ingreso:
+    path:     /ingreso/
+    defaults: { _controller: BaseBundle:Acceso:ingreso }
+
+base_vista_salir:
+    path:     /salir/
+    defaults: { _controller: BaseBundle:Acceso:salir }
+
+base_vista_solicitarcambioclave:
+    path:     /solicitar/cambio-clave/
+    defaults: { _controller: BaseBundle:Clave:solicitarCambioClave }
+## AJAX
+base_ajax_validaringreso:
+    path:     /validar-ingreso/
+    defaults: { _controller: BaseBundle:Acceso:validarIngreso }
+    methods:  [POST]
+    options:
+        expose: true
+
+base_ajax_enviarsolicitud:
+    path:     /solicitar/enviar-solicitud/
+    defaults: { _controller: BaseBundle:Clave:enviarSolicitud }
+    options:
+        expose: true
+
+## APP
+base_app_ingreso:
+    path:   /ingreso-app/
+    defaults: { _controller: BaseBundle:Acceso:ingresoApp }

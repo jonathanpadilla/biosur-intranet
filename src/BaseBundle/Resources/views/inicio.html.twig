@@ -1,0 +1,76 @@
+{% extends "BaseBundle:Layouts:body.html.twig" %}
+{% block content %}
+  <div class="row" id="pchart5">
+    <div class="col-md-8">
+      <!-- Circle Stats -->
+      <div class="panel">
+        <div class="panel-heading">
+          <span class="panel-title fw600 text-info">Baños arrendados</span>
+        </div>
+        <div class="panel-body">
+          <div class="mb20 text-right">
+            <span class="fs11 text-muted">
+              <i class="fa fa-circle text-warning fs12 pr5"></i> Modelo 1</span>
+            <span class="fs11 text-muted ml10">
+              <i class="fa fa-circle text-info fs12 pr5"></i> Modelo 2</span>
+            <span class="fs11 text-muted ml10">
+              <i class="fa fa-circle text-primary fs12 pr5"></i> Con lavamanos</span>
+            <span class="fs11 text-muted ml10">
+              <i class="fa fa-circle text-alert fs12 pr5"></i> Sin lavamanos</span>
+          </div>
+          <div class="row">
+            <div class="col-md-3 col-sm-6">
+              <div class="info-circle" id="c1" title="Modelo 1" value="80" data-circle-color="primary"></div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+              <div class="info-circle" id="c2" title="Modelo 2" value="30" data-circle-color="info"></div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+              <div class="info-circle" id="c3" title="Con lavamanos" value="55" data-circle-color="warning"></div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+              <div class="info-circle" id="c4" title="Sin lavamanos" value="49" data-circle-color="alert"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+    	<div class="panel">
+    		<div class="panel-heading">
+	          <span class="panel-title fw600 text-info">Detalle</span>
+	        </div>
+	        <div class="panel-body">
+	        	detalle
+	        </div>
+    	</div>
+    </div>
+  </div>
+  <div class="row">
+  	<div class="col-md-12">
+  		<div class="panel" id="pchart10">
+        <div class="panel-heading">
+          <span class="panel-title text-info fw600">
+            <i class="fa fa-pencil hidden"></i> Baños totales</span>
+        </div>
+        <div class="panel-menu">
+          <div class="chart-legend" data-chart-id="#high-bars">
+            <a data-chart-id="0" class="legend-item btn btn-warning btn-sm mr5">Data 1</a>
+            <a data-chart-id="1" class="legend-item btn btn-primary btn-sm mr5">Data 2</a>
+            <a data-chart-id="2" class="legend-item btn btn-info btn-sm">Data 3</a>
+          </div>
+        </div>
+        <div class="panel-body pn">
+          <div id="high-bars" style="width: 100%; height: 140px; margin: 0 auto"></div>
+        </div>
+      </div>
+  	</div>
+  </div>
+{% endblock %}
+
+{% block footerScripts %}
+<script src="{{ absolute_url(asset('vendor/plugins/highcharts/highcharts.js')) }}"></script>
+<script src="{{ absolute_url(asset('vendor/plugins/circles/circles.js')) }}"></script>
+<script src="{{ absolute_url(asset('assets/js/demo/charts/highcharts.js')) }}"></script>
+<script src="{{ absolute_url(asset('assets/bundles/base/inicio.js')) }}"></script>
+{% endblock %}

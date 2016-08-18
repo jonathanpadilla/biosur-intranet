@@ -1,0 +1,102 @@
+<?php
+
+namespace BaseBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Sucursal
+ *
+ * @ORM\Table(name="sucursal", indexes={@ORM\Index(name="suc_comuna_fk", columns={"suc_comuna_fk"}), @ORM\Index(name="suc_usuario_fk", columns={"suc_usuario_fk"})})
+ * @ORM\Entity
+ */
+class Sucursal
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="suc_id_pk", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $sucIdPk;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="suc_nombre", type="string", length=200, nullable=true)
+     */
+    private $sucNombre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="suc_nombrecomercial", type="string", length=200, nullable=true)
+     */
+    private $sucNombrecomercial;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="suc_giro", type="string", length=100, nullable=true)
+     */
+    private $sucGiro;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="suc_direccion", type="string", length=200, nullable=true)
+     */
+    private $sucDireccion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="suc_rut", type="string", length=20, nullable=true)
+     */
+    private $sucRut;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="suc_fecharegistro", type="datetime", nullable=true)
+     */
+    private $sucFecharegistro;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="suc_configuracion", type="text", length=65535, nullable=true)
+     */
+    private $sucConfiguracion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="suc_comentario", type="text", length=65535, nullable=true)
+     */
+    private $sucComentario;
+
+    /**
+     * @var \Usuario
+     *
+     * @ORM\ManyToOne(targetEntity="Usuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="suc_usuario_fk", referencedColumnName="usu_id_pk")
+     * })
+     */
+    private $sucUsuarioFk;
+
+    /**
+     * @var \Comuna
+     *
+     * @ORM\ManyToOne(targetEntity="Comuna")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="suc_comuna_fk", referencedColumnName="com_id_pk")
+     * })
+     */
+    private $sucComunaFk;
+
+
+}
+

@@ -1,0 +1,12 @@
+plugin_selects_tipocontacto:
+    path:     /select-tipocontactos/
+    defaults: { _controller: PluginBundle:Selects:tipoContactos }
+    options:
+        expose: true
+
+plugin_validar_rut:
+    path:     /validar-rut/
+    defaults: { _controller: PluginBundle:Validar:rut }
+    options:
+        expose: true
+

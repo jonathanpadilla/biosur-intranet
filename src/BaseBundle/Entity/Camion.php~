@@ -1,0 +1,74 @@
+<?php
+
+namespace BaseBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Camion
+ *
+ * @ORM\Table(name="camion", indexes={@ORM\Index(name="cam_usuario_fk", columns={"cam_usuario_fk"}), @ORM\Index(name="cam_sucursal_fk", columns={"cam_sucursal_fk"})})
+ * @ORM\Entity
+ */
+class Camion
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="cam_id_pk", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $camIdPk;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cam_patente", type="string", length=20, nullable=true)
+     */
+    private $camPatente;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="cam_activo", type="integer", nullable=true)
+     */
+    private $camActivo;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="cam_fecharegistro", type="datetime", nullable=true)
+     */
+    private $camFecharegistro;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cam_comentario", type="text", length=65535, nullable=true)
+     */
+    private $camComentario;
+
+    /**
+     * @var \Usuario
+     *
+     * @ORM\ManyToOne(targetEntity="Usuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="cam_usuario_fk", referencedColumnName="usu_id_pk")
+     * })
+     */
+    private $camUsuarioFk;
+
+    /**
+     * @var \Sucursal
+     *
+     * @ORM\ManyToOne(targetEntity="Sucursal")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="cam_sucursal_fk", referencedColumnName="suc_id_pk")
+     * })
+     */
+    private $camSucursalFk;
+
+
+}
+

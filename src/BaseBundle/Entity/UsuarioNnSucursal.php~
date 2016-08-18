@@ -1,0 +1,60 @@
+<?php
+
+namespace BaseBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * UsuarioNnSucursal
+ *
+ * @ORM\Table(name="usuario_nn_sucursal", indexes={@ORM\Index(name="unns_sucursal_fk", columns={"unns_sucursal_fk"}), @ORM\Index(name="unns_usuario_fk", columns={"unns_usuario_fk"})})
+ * @ORM\Entity
+ */
+class UsuarioNnSucursal
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="unns_id_pk", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $unnsIdPk;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="unns_habilitado", type="integer", nullable=false)
+     */
+    private $unnsHabilitado = '1';
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="unns_fecharegistro", type="datetime", nullable=false)
+     */
+    private $unnsFecharegistro;
+
+    /**
+     * @var \Sucursal
+     *
+     * @ORM\ManyToOne(targetEntity="Sucursal")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="unns_sucursal_fk", referencedColumnName="suc_id_pk")
+     * })
+     */
+    private $unnsSucursalFk;
+
+    /**
+     * @var \Usuario
+     *
+     * @ORM\ManyToOne(targetEntity="Usuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="unns_usuario_fk", referencedColumnName="usu_id_pk")
+     * })
+     */
+    private $unnsUsuarioFk;
+
+
+}
+

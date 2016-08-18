@@ -1,0 +1,61 @@
+<?php
+
+namespace BaseBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Servicio
+ *
+ * @ORM\Table(name="servicio")
+ * @ORM\Entity
+ */
+class Servicio
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ser_id_pk", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $serIdPk;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ser_nombre", type="string", length=100, nullable=true)
+     */
+    private $serNombre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ser_abrebiado", type="string", length=10, nullable=true)
+     */
+    private $serAbrebiado;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ser_precio", type="integer", nullable=true)
+     */
+    private $serPrecio;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ser_comentario", type="text", length=65535, nullable=true)
+     */
+    private $serComentario;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="ser_fecharegistro", type="datetime", nullable=false)
+     */
+    private $serFecharegistro;
+
+
+}
+

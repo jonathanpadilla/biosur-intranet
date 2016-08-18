@@ -1,0 +1,105 @@
+<?php
+
+namespace BaseBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Venta
+ *
+ * @ORM\Table(name="venta", indexes={@ORM\Index(name="ven_sucursal_fk", columns={"ven_sucursal_fk"}), @ORM\Index(name="ven_cliente_fk", columns={"ven_cliente_fk"}), @ORM\Index(name="ven_usuario_fk", columns={"ven_usuario_fk"})})
+ * @ORM\Entity
+ */
+class Venta
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ven_id_pk", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $venIdPk;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ven_tipo", type="integer", nullable=true)
+     */
+    private $venTipo;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="ven_fechainicio", type="datetime", nullable=true)
+     */
+    private $venFechainicio;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="ven_fechatermino", type="datetime", nullable=true)
+     */
+    private $venFechatermino;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ven_valor", type="integer", nullable=true)
+     */
+    private $venValor;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ven_diapago", type="integer", nullable=true)
+     */
+    private $venDiapago;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ven_finalizado", type="integer", nullable=true)
+     */
+    private $venFinalizado;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ven_comentario", type="text", length=65535, nullable=true)
+     */
+    private $venComentario;
+
+    /**
+     * @var \Usuario
+     *
+     * @ORM\ManyToOne(targetEntity="Usuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ven_usuario_fk", referencedColumnName="usu_id_pk")
+     * })
+     */
+    private $venUsuarioFk;
+
+    /**
+     * @var \Cliente
+     *
+     * @ORM\ManyToOne(targetEntity="Cliente")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ven_cliente_fk", referencedColumnName="cli_id_pk")
+     * })
+     */
+    private $venClienteFk;
+
+    /**
+     * @var \Sucursal
+     *
+     * @ORM\ManyToOne(targetEntity="Sucursal")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ven_sucursal_fk", referencedColumnName="suc_id_pk")
+     * })
+     */
+    private $venSucursalFk;
+
+
+}
+

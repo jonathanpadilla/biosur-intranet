@@ -1,0 +1,2615 @@
+{% extends "VentaBundle:Layouts:body.html.twig" %}
+{% block content %}
+	<div class="content-header">
+      	<h2>Arriendo de servicio</h2>
+    </div>
+      <div id="alerts">
+        <div id="alert_error" class="alert alert-danger fade in hidden">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong>Error</strong> <span id="error_msg">Seleccione al menos un destino con la información requerida(*).</span>
+        </div>
+      </div>
+        <!-- Form Wizard -->
+      <div class="admin-form">
+
+        <form method="post" action="{{ url('venta_vista_guardarventa') }}" id="form_wizard_venta">
+          <div class="wizard clearfix steps-tabs steps-justified">
+
+            <!-- Wizard step 1 -->
+            <h4 class="wizard-section-title">
+              <i class="fa fa-user pr5"></i> Cliente
+            </h4>
+            <section class="wizard-section">
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="control-label">Cliente</label>
+                      <select id="select_cliente" name="select_cliente" class="form-control select2-single">
+                        <option value="nuevo">Nuevo</option>
+                        {% for cliente in clientes %}
+                          <option value="{{ cliente.id }}">{{ cliente.nombre|e }}</option>
+                        {% endfor %}
+                      </select>
+                  </div>
+                </div>
+              </div>
+
+              <div id="formulario_cliente">
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <h3>Información General</h3>
+                  </div>
+                </div>
+
+                <div  class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="input_nombre" class="control-label">Nombre*</label>
+                      <input type="text" name="input_nombre" id="input_nombre" class="form-control" placeholder="">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="input_rut" class="control-label">Rut*</label>
+                      <input type="text" name="input_rut" id="input_rut" class="form-control" placeholder="Rut">
+                      <span id="rut_invalido" data-valid="0"></span>
+                    </div>
+                  </div>
+                </div>
+
+                <div  class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="input_giro" class="control-label">Giro</label>
+                      <input type="text" name="input_giro" id="input_giro" class="form-control" placeholder="">
+                    </div>
+                  </div>
+                </div>
+
+               <div class="row">
+                  <div class="col-md-12">
+                    <h3>Información domiciliaria</h3>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="select_comuna" class="control-label">Comuna*</label>
+                      <select name="select_comuna" id="select_comuna" class="form-control select2-single">
+                          <!-- <option value="default">Seleccionar</option> -->
+                          {% for comuna in comunas %}
+                            <option value="{{ comuna.id }}">{{ comuna.nombre }}</option>
+                          {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="input_direccion" class="control-label">Dirección*</label>
+                      <input type="text" name="input_direccion" id="input_direccion" class="form-control" placeholder="Dirección">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <h3>Información de contácto</h3>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <table class="table">
+                      <thead>
+                        <tr class="primary">
+                          <th>Tipo</th>
+                          <th>Detalle contácto</th>
+                          <th>Nombre persona a contactar</th>
+                          <th>Operaciones</th>
+                        </tr>
+                      </thead>
+                      <tbody id="filas_contactos">
+                        <tfoot>
+                          <tr>
+                            <td colspan="4">
+                              <button type="button" id="button_agregarfilacontacto" class="btn btn-success btn-block">Agregar</button>
+                            </td>
+                          </tr>
+                        </tfoot>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <h3>Otra información</h3>
+                  </div>
+                </div>
+
+                <div  class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="textarea_comentario" class="control-label">Comentario</label>
+                      <textarea class="form-control" name="textarea_comentario" id="textarea_comentario" rows="3"></textarea>
+                    </div>
+                  </div>
+                </div>
+              <!-- end section -->
+              </div>
+            </section>
+
+            <!-- Wizard step 2 -->
+            <h4 class="wizard-section-title">
+              <i class="fa fa-file pr5"></i> Detalle de arriendo
+            </h4>
+            <section class="wizard-section">
+              <div class="tab-block mb25">
+                <ul class="nav tabs-left">
+                  <li class="active">
+                    <a href="#tab_1" class="tab tab_1" data-tab="1" data-toggle="tab">Destino 1</a>
+                  </li>
+                  <li>
+                    <a href="#tab_2" class="tab tab_2" data-tab="2" data-toggle="tab">Destino 2</a>
+                  </li>
+                  <li>
+                    <a href="#tab_3" class="tab tab_3 hidden" data-tab="3" data-toggle="tab">Destino 3</a>
+                  </li>
+                  <li>
+                    <a href="#tab_4" class="tab tab_4 hidden" data-tab="4" data-toggle="tab">Destino 4</a>
+                  </li>
+                  <li>
+                    <a href="#tab_5" class="tab tab_5 hidden" data-tab="5" data-toggle="tab">Destino 5</a>
+                  </li>
+                  <li>
+                    <a href="#tab_6" class="tab tab_6 hidden" data-tab="6" data-toggle="tab">Destino 6</a>
+                  </li>
+                  <li>
+                    <a href="#tab_7" class="tab tab_7 hidden" data-tab="7" data-toggle="tab">Destino 7</a>
+                  </li>
+                  <li>
+                    <a href="#tab_8" class="tab tab_8 hidden" data-tab="8" data-toggle="tab">Destino 8</a>
+                  </li>
+                  <li>
+                    <a href="#tab_9" class="tab tab_9 hidden" data-tab="9" data-toggle="tab">Destino 9</a>
+                  </li>
+                  <li>
+                    <a href="#tab_10" class="tab tab_10 hidden" data-tab="10" data-toggle="tab">Destino 10</a>
+                  </li>
+                  <li>
+                    <a href="#tab_11" class="tab tab_11 hidden" data-tab="11" data-toggle="tab">Destino 11</a>
+                  </li>
+                  <li>
+                    <a href="#tab_12" class="tab tab_12 hidden" data-tab="12" data-toggle="tab">Destino 12</a>
+                  </li>
+                  <li>
+                    <a href="#tab_13" class="tab tab_13 hidden" data-tab="13" data-toggle="tab">Destino 13</a>
+                  </li>
+                  <li>
+                    <a href="#tab_14" class="tab tab_14 hidden" data-tab="14" data-toggle="tab">Destino 14</a>
+                  </li>
+                  <li>
+                    <a href="#tab_15" class="tab tab_15 hidden" data-tab="15" data-toggle="tab">Destino 15</a>
+                  </li>
+                  <li>
+                    <a href="#tab_16" class="tab tab_16 hidden" data-tab="16" data-toggle="tab">Destino 16</a>
+                  </li>
+                  <li>
+                    <a href="#tab_17" class="tab tab_17 hidden" data-tab="17" data-toggle="tab">Destino 17</a>
+                  </li>
+                  <li>
+                    <a href="#tab_18" class="tab tab_18 hidden" data-tab="18" data-toggle="tab">Destino 18</a>
+                  </li>
+                  <li>
+                    <a href="#tab_19" class="tab tab_19 hidden" data-tab="19" data-toggle="tab">Destino 19</a>
+                  </li>
+                  <li>
+                    <a href="#tab_20" class="tab tab_20 hidden" data-tab="20" data-toggle="tab">Destino 20</a>
+                  </li>
+                </ul>
+                <div class="tab-content">
+                  <div id="tab_1" class="tab-pane active">
+                    <!-- end section -->
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h3>Información general</h3>
+                      </div>
+                    </div>
+                      
+                    <div class="row">
+                      <!-- <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="select_servicio" class="control-label">Servicio*</label>
+                            <select class="form-control" name="detalle[1][servicio]">
+                              <option value="default">Seleccionar</option>
+                              <option value="1">Arriendo baño químico</option>
+                              <!-- <option value="2">Limpieza de fosas</option> -->
+                            <!-- </select>
+                        </div>
+                      </div> -->
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de baños propios</label>
+                          <input type="number" name="detalle[1][cantidadbano]" id="valid_cantidad" class="form-control" placeholder="Cantidad de baños propios">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de casetas</label>
+                          <input type="number" name="detalle[1][cantidadcaseta]" id="valid_cantidad" class="form-control" placeholder="Cantidad de casetas">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de duchas</label>
+                          <input type="number" name="detalle[1][cantidadducha]" id="valid_cantidad" class="form-control" placeholder="Cantidad de duchas">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de baños externos</label>
+                          <input type="number" name="detalle[1][cantidadexterno]" id="valid_cantidad" class="form-control" placeholder="Cantidad de baños externos">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de lavamanos</label>
+                          <input type="number" name="detalle[1][cantidadlavamano]" id="valid_cantidad" class="form-control" placeholder="Cantidad de lavamanos">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label class="control-label mb15">Dias de mantención*</label>
+                        <div class="form-group">
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[1][dia][1]" id="detalle[1][dia1]">
+                            <label for="detalle[1][dia1]">Lunes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[1][dia][2]" id="detalle[1][dia2]">
+                            <label for="detalle[1][dia2]">Martes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[1][dia][3]" id="detalle[1][dia3]">
+                            <label for="detalle[1][dia3]">Miercoles</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[1][dia][4]" id="detalle[1][dia4]">
+                            <label for="detalle[1][dia4]">Jueves</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[1][dia][5]" id="detalle[1][dia5]">
+                            <label for="detalle[1][dia5]">Viernes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[1][dia][6]" id="detalle[1][dia6]">
+                            <label for="detalle[1][dia6]">Sabado</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[1][dia][7]" id="detalle[1][dia7]">
+                            <label for="detalle[1][dia7]">Domingo</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h3>Información domiciliaria</h3>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="select_comuna" class="control-label">Comuna*</label>
+                          <select name="detalle[1][comuna]" id="select_comuna_1" class="form-control select2-single">
+                              {% for comuna in comunas %}
+                                <option value="{{ comuna.id }}">{{ comuna.nombre }}</option>
+                              {% endfor %}
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="input_direccion2" class="control-label">Dirección*</label>
+                          <input type="text" name="detalle[1][direccion]" class="form-control" placeholder="Dirección">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <button type="button" class="btn btn-biosur btn-ubicacion" data-id="1" data-toggle="modal" data-target="#myModal">Ubicación</button>
+                        <button type="button" class="btn btn-danger btn-limpiarmapa" data-id="1"><i class="fa fa-trash-o" title="Limpiar"></i></button>
+                        <strong>Latitud: </strong><span id="slat1">No seleccionado</span>
+                        <strong>Longitud: </strong><span id="slon1">No seleccionado</span>
+                        <input type="hidden" name="detalle[1][lat]" id="tlat1" value="0">
+                        <input type="hidden" name="detalle[1][lon]" id="tlon1" value="0">
+                      </div>
+                    </div>
+
+                  </div>
+                  <div id="tab_2" class="tab-pane hidden">
+                    <!-- end section -->
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h3>Información general</h3>
+                      </div>
+                    </div>
+                      
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de baños propios</label>
+                          <input type="number" name="detalle[2][cantidadbano]" id="valid_cantidad" class="form-control" placeholder="Cantidad de baños propios">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de casetas</label>
+                          <input type="number" name="detalle[2][cantidadcaseta]" id="valid_cantidad" class="form-control" placeholder="Cantidad de casetas">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de duchas</label>
+                          <input type="number" name="detalle[2][cantidadducha]" id="valid_cantidad" class="form-control" placeholder="Cantidad de duchas">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de baños externos</label>
+                          <input type="number" name="detalle[2][cantidadexterno]" id="valid_cantidad" class="form-control" placeholder="Cantidad de baños externos">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de lavamanos</label>
+                          <input type="number" name="detalle[2][cantidadlavamano]" id="valid_cantidad" class="form-control" placeholder="Cantidad de lavamanos">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label class="control-label mb15">Dias de mantención*</label>
+                        <div class="form-group">
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[2][dia][1]" id="detalle[2][dia1]">
+                            <label for="detalle[2][dia1]">Lunes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[2][dia][2]" id="detalle[2][dia2]">
+                            <label for="detalle[2][dia2]">Martes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[2][dia][3]" id="detalle[2][dia3]">
+                            <label for="detalle[2][dia3]">Miercoles</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[2][dia][4]" id="detalle[2][dia4]">
+                            <label for="detalle[2][dia4]">Jueves</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[2][dia][5]" id="detalle[2][dia5]">
+                            <label for="detalle[2][dia5]">Viernes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[2][dia][6]" id="detalle[2][dia6]">
+                            <label for="detalle[2][dia6]">Sabado</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[2][dia][7]" id="detalle[2][dia7]">
+                            <label for="detalle[2][dia7]">Domingo</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h3>Información domiciliaria</h3>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="select_comuna" class="control-label">Comuna*</label>
+                          <select name="detalle[2][comuna]" id="select_comuna_2" class="form-control select2-single">
+                              {% for comuna in comunas %}
+                                <option value="{{ comuna.id }}">{{ comuna.nombre }}</option>
+                              {% endfor %}
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="input_direccion2" class="control-label">Dirección*</label>
+                          <input type="text" name="detalle[2][direccion]" class="form-control" placeholder="Dirección">
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="row">
+                      <div class="col-md-12">
+                        <button type="button" class="btn btn-biosur btn-ubicacion" data-id="2" data-toggle="modal" data-target="#myModal">Ubicación</button>
+                        <button type="button" class="btn btn-danger btn-limpiarmapa" data-id="2"><i class="fa fa-trash-o" title="Limpiar"></i></button>
+                        <strong>Latitud: </strong><span id="slat2">No seleccionado</span>
+                        <strong>Longitud: </strong><span id="slon2">No seleccionado</span>
+                        <input type="hidden" name="detalle[2][lat]" id="tlat2" value="0">
+                        <input type="hidden" name="detalle[2][lon]" id="tlon2" value="0">
+                      </div>
+                    </div>
+                  </div>
+                  <div id="tab_3" class="tab-pane hidden">
+                    <!-- end section -->
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h3>Información general</h3>
+                      </div>
+                    </div>
+                      
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de baños propios</label>
+                          <input type="number" name="detalle[3][cantidadbano]" id="valid_cantidad" class="form-control" placeholder="Cantidad de baños propios">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de casetas</label>
+                          <input type="number" name="detalle[3][cantidadcaseta]" id="valid_cantidad" class="form-control" placeholder="Cantidad de casetas">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de duchas</label>
+                          <input type="number" name="detalle[3][cantidadducha]" id="valid_cantidad" class="form-control" placeholder="Cantidad de duchas">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de baños externos</label>
+                          <input type="number" name="detalle[3][cantidadexterno]" id="valid_cantidad" class="form-control" placeholder="Cantidad de baños externos">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de lavamanos</label>
+                          <input type="number" name="detalle[3][cantidadlavamano]" id="valid_cantidad" class="form-control" placeholder="Cantidad de lavamanos">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label class="control-label mb15">Dias de mantención*</label>
+                        <div class="form-group">
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[3][dia][1]" id="detalle[3][dia1]">
+                            <label for="detalle[3][dia1]">Lunes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[3][dia][2]" id="detalle[3][dia2]">
+                            <label for="detalle[3][dia2]">Martes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[3][dia][3]" id="detalle[3][dia3]">
+                            <label for="detalle[3][dia3]">Miercoles</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[3][dia][4]" id="detalle[3][dia4]">
+                            <label for="detalle[3][dia4]">Jueves</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[3][dia][5]" id="detalle[3][dia5]">
+                            <label for="detalle[3][dia5]">Viernes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[3][dia][6]" id="detalle[3][dia6]">
+                            <label for="detalle[3][dia6]">Sabado</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[3][dia][7]" id="detalle[3][dia7]">
+                            <label for="detalle[3][dia7]">Domingo</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h3>Información domiciliaria</h3>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="select_comuna" class="control-label">Comuna*</label>
+                          <select name="detalle[3][comuna]" id="select_comuna_3" class="form-control select2-single">
+                              {% for comuna in comunas %}
+                                <option value="{{ comuna.id }}">{{ comuna.nombre }}</option>
+                              {% endfor %}
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="input_direccion2" class="control-label">Dirección*</label>
+                          <input type="text" name="detalle[3][direccion]" class="form-control" placeholder="Dirección">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <button type="button" class="btn btn-biosur btn-ubicacion" data-id="3" data-toggle="modal" data-target="#myModal">Ubicación</button>
+                        <button type="button" class="btn btn-danger btn-limpiarmapa" data-id="3"><i class="fa fa-trash-o" title="Limpiar"></i></button>
+                        <strong>Latitud: </strong><span id="slat3">No seleccionado</span>
+                        <strong>Longitud: </strong><span id="slon3">No seleccionado</span>
+                        <input type="hidden" name="detalle[3][lat]" id="tlat3" value="0">
+                        <input type="hidden" name="detalle[3][lon]" id="tlon3" value="0">
+                      </div>
+                    </div>
+
+                  </div>
+                  <div id="tab_4" class="tab-pane hidden">
+                    <!-- end section -->
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h3>Información general</h3>
+                      </div>
+                    </div>
+                      
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de baños propios</label>
+                          <input type="number" name="detalle[4][cantidadbano]" id="valid_cantidad" class="form-control" placeholder="Cantidad de baños propios">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de casetas</label>
+                          <input type="number" name="detalle[4][cantidadcaseta]" id="valid_cantidad" class="form-control" placeholder="Cantidad de casetas">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de duchas</label>
+                          <input type="number" name="detalle[4][cantidadducha]" id="valid_cantidad" class="form-control" placeholder="Cantidad de duchas">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de baños externos</label>
+                          <input type="number" name="detalle[4][cantidadexterno]" id="valid_cantidad" class="form-control" placeholder="Cantidad de baños externos">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de lavamanos</label>
+                          <input type="number" name="detalle[4][cantidadlavamano]" id="valid_cantidad" class="form-control" placeholder="Cantidad de lavamanos">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label class="control-label mb15">Dias de mantención*</label>
+                        <div class="form-group">
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[4][dia][1]" id="detalle[4][dia1]">
+                            <label for="detalle[4][dia1]">Lunes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[4][dia][2]" id="detalle[4][dia2]">
+                            <label for="detalle[4][dia2]">Martes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[4][dia][3]" id="detalle[4][dia3]">
+                            <label for="detalle[4][dia3]">Miercoles</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[4][dia][4]" id="detalle[4][dia4]">
+                            <label for="detalle[4][dia4]">Jueves</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[4][dia][5]" id="detalle[4][dia5]">
+                            <label for="detalle[4][dia5]">Viernes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[4][dia][6]" id="detalle[4][dia6]">
+                            <label for="detalle[4][dia6]">Sabado</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[4][dia][7]" id="detalle[4][dia7]">
+                            <label for="detalle[4][dia7]">Domingo</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h3>Información domiciliaria</h3>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="select_comuna" class="control-label">Comuna*</label>
+                          <select name="detalle[4][comuna]" id="select_comuna_4" class="form-control select2-single">
+                              {% for comuna in comunas %}
+                                <option value="{{ comuna.id }}">{{ comuna.nombre }}</option>
+                              {% endfor %}
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="input_direccion2" class="control-label">Dirección*</label>
+                          <input type="text" name="detalle[4][direccion]" class="form-control" placeholder="Dirección">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <button type="button" class="btn btn-biosur btn-ubicacion" data-id="4" data-toggle="modal" data-target="#myModal">Ubicación</button>
+                        <button type="button" class="btn btn-danger btn-limpiarmapa" data-id="4"><i class="fa fa-trash-o" title="Limpiar"></i></button>
+                        <strong>Latitud: </strong><span id="slat4">No seleccionado</span>
+                        <strong>Longitud: </strong><span id="slon4">No seleccionado</span>
+                        <input type="hidden" name="detalle[4][lat]" id="tlat4" value="0">
+                        <input type="hidden" name="detalle[4][lon]" id="tlon4" value="0">
+                      </div>
+                    </div>
+
+                  </div>
+                  <div id="tab_5" class="tab-pane hidden">
+                    <!-- end section -->
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h3>Información general</h3>
+                      </div>
+                    </div>
+                      
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de baños propios</label>
+                          <input type="number" name="detalle[5][cantidadbano]" id="valid_cantidad" class="form-control" placeholder="Cantidad de baños propios">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de casetas</label>
+                          <input type="number" name="detalle[5][cantidadcaseta]" id="valid_cantidad" class="form-control" placeholder="Cantidad de casetas">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de duchas</label>
+                          <input type="number" name="detalle[5][cantidadducha]" id="valid_cantidad" class="form-control" placeholder="Cantidad de duchas">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de baños externos</label>
+                          <input type="number" name="detalle[5][cantidadexterno]" id="valid_cantidad" class="form-control" placeholder="Cantidad de baños externos">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de lavamanos</label>
+                          <input type="number" name="detalle[5][cantidadlavamano]" id="valid_cantidad" class="form-control" placeholder="Cantidad de lavamanos">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label class="control-label mb15">Dias de mantención*</label>
+                        <div class="form-group">
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[5][dia][1]" id="detalle[5][dia1]">
+                            <label for="detalle[5][dia1]">Lunes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[5][dia][2]" id="detalle[5][dia2]">
+                            <label for="detalle[5][dia2]">Martes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[5][dia][3]" id="detalle[5][dia3]">
+                            <label for="detalle[5][dia3]">Miercoles</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[5][dia][4]" id="detalle[5][dia4]">
+                            <label for="detalle[5][dia4]">Jueves</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[5][dia][5]" id="detalle[5][dia5]">
+                            <label for="detalle[5][dia5]">Viernes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[5][dia][6]" id="detalle[5][dia6]">
+                            <label for="detalle[5][dia6]">Sabado</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[5][dia][7]" id="detalle[5][dia7]">
+                            <label for="detalle[5][dia7]">Domingo</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h3>Información domiciliaria</h3>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="select_comuna" class="control-label">Comuna*</label>
+                          <select name="detalle[5][comuna]" id="select_comuna_5" class="form-control select2-single">
+                              {% for comuna in comunas %}
+                                <option value="{{ comuna.id }}">{{ comuna.nombre }}</option>
+                              {% endfor %}
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="input_direccion2" class="control-label">Dirección*</label>
+                          <input type="text" name="detalle[5][direccion]" class="form-control" placeholder="Dirección">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <button type="button" class="btn btn-biosur btn-ubicacion" data-id="5" data-toggle="modal" data-target="#myModal">Ubicación</button>
+                        <button type="button" class="btn btn-danger btn-limpiarmapa" data-id="5"><i class="fa fa-trash-o" title="Limpiar"></i></button>
+                        <strong>Latitud: </strong><span id="slat5">No seleccionado</span>
+                        <strong>Longitud: </strong><span id="slon5">No seleccionado</span>
+                        <input type="hidden" name="detalle[5][lat]" id="tlat5" value="0">
+                        <input type="hidden" name="detalle[5][lon]" id="tlon5" value="0">
+                      </div>
+                    </div>
+
+                  </div>
+                  <div id="tab_6" class="tab-pane hidden">
+                    <!-- end section -->
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h3>Información general</h3>
+                      </div>
+                    </div>
+                      
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de baños propios</label>
+                          <input type="number" name="detalle[6][cantidadbano]" id="valid_cantidad" class="form-control" placeholder="Cantidad de baños propios">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de casetas</label>
+                          <input type="number" name="detalle[6][cantidadcaseta]" id="valid_cantidad" class="form-control" placeholder="Cantidad de casetas">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de duchas</label>
+                          <input type="number" name="detalle[6][cantidadducha]" id="valid_cantidad" class="form-control" placeholder="Cantidad de duchas">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de baños externos</label>
+                          <input type="number" name="detalle[6][cantidadexterno]" id="valid_cantidad" class="form-control" placeholder="Cantidad de baños externos">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de lavamanos</label>
+                          <input type="number" name="detalle[6][cantidadlavamano]" id="valid_cantidad" class="form-control" placeholder="Cantidad de lavamanos">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label class="control-label mb15">Dias de mantención*</label>
+                        <div class="form-group">
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[6][dia][1]" id="detalle[6][dia1]">
+                            <label for="detalle[6][dia1]">Lunes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[6][dia][2]" id="detalle[6][dia2]">
+                            <label for="detalle[6][dia2]">Martes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[6][dia][3]" id="detalle[6][dia3]">
+                            <label for="detalle[6][dia3]">Miercoles</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[6][dia][4]" id="detalle[6][dia4]">
+                            <label for="detalle[6][dia4]">Jueves</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[6][dia][5]" id="detalle[6][dia5]">
+                            <label for="detalle[6][dia5]">Viernes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[6][dia][6]" id="detalle[6][dia6]">
+                            <label for="detalle[6][dia6]">Sabado</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[6][dia][7]" id="detalle[6][dia7]">
+                            <label for="detalle[6][dia7]">Domingo</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h3>Información domiciliaria</h3>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="select_comuna" class="control-label">Comuna*</label>
+                          <select name="detalle[6][comuna]" id="select_comuna_6" class="form-control select2-single">
+                              {% for comuna in comunas %}
+                                <option value="{{ comuna.id }}">{{ comuna.nombre }}</option>
+                              {% endfor %}
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="input_direccion2" class="control-label">Dirección*</label>
+                          <input type="text" name="detalle[6][direccion]" class="form-control" placeholder="Dirección">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <button type="button" class="btn btn-biosur btn-ubicacion" data-id="6" data-toggle="modal" data-target="#myModal">Ubicación</button>
+                        <button type="button" class="btn btn-danger btn-limpiarmapa" data-id="6"><i class="fa fa-trash-o" title="Limpiar"></i></button>
+                        <strong>Latitud: </strong><span id="slat6">No seleccionado</span>
+                        <strong>Longitud: </strong><span id="slon6">No seleccionado</span>
+                        <input type="hidden" name="detalle[6][lat]" id="tlat6" value="0">
+                        <input type="hidden" name="detalle[6][lon]" id="tlon6" value="0">
+                      </div>
+                    </div>
+
+                  </div>
+                  <div id="tab_7" class="tab-pane hidden">
+                    <!-- end section -->
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h3>Información general</h3>
+                      </div>
+                    </div>
+                      
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de baños propios</label>
+                          <input type="number" name="detalle[7][cantidadbano]" id="valid_cantidad" class="form-control" placeholder="Cantidad de baños propios">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de casetas</label>
+                          <input type="number" name="detalle[7][cantidadcaseta]" id="valid_cantidad" class="form-control" placeholder="Cantidad de casetas">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de duchas</label>
+                          <input type="number" name="detalle[7][cantidadducha]" id="valid_cantidad" class="form-control" placeholder="Cantidad de duchas">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de baños externos</label>
+                          <input type="number" name="detalle[7][cantidadexterno]" id="valid_cantidad" class="form-control" placeholder="Cantidad de baños externos">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de lavamanos</label>
+                          <input type="number" name="detalle[7][cantidadlavamano]" id="valid_cantidad" class="form-control" placeholder="Cantidad de lavamanos">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label class="control-label mb15">Dias de mantención*</label>
+                        <div class="form-group">
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[7][dia][1]" id="detalle[7][dia1]">
+                            <label for="detalle[7][dia1]">Lunes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[7][dia][2]" id="detalle[7][dia2]">
+                            <label for="detalle[7][dia2]">Martes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[7][dia][3]" id="detalle[7][dia3]">
+                            <label for="detalle[7][dia3]">Miercoles</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[7][dia][4]" id="detalle[7][dia4]">
+                            <label for="detalle[7][dia4]">Jueves</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[7][dia][5]" id="detalle[7][dia5]">
+                            <label for="detalle[7][dia5]">Viernes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[7][dia][6]" id="detalle[7][dia6]">
+                            <label for="detalle[7][dia6]">Sabado</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[7][dia][7]" id="detalle[7][dia7]">
+                            <label for="detalle[7][dia7]">Domingo</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h3>Información domiciliaria</h3>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="select_comuna" class="control-label">Comuna*</label>
+                          <select name="detalle[7][comuna]" id="select_comuna_7" class="form-control select2-single">
+                              {% for comuna in comunas %}
+                                <option value="{{ comuna.id }}">{{ comuna.nombre }}</option>
+                              {% endfor %}
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="input_direccion2" class="control-label">Dirección*</label>
+                          <input type="text" name="detalle[7][direccion]" class="form-control" placeholder="Dirección">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <button type="button" class="btn btn-biosur btn-ubicacion" data-id="7" data-toggle="modal" data-target="#myModal">Ubicación</button>
+                        <button type="button" class="btn btn-danger btn-limpiarmapa" data-id="7"><i class="fa fa-trash-o" title="Limpiar"></i></button>
+                        <strong>Latitud: </strong><span id="slat7">No seleccionado</span>
+                        <strong>Longitud: </strong><span id="slon7">No seleccionado</span>
+                        <input type="hidden" name="detalle[7][lat]" id="tlat7" value="0">
+                        <input type="hidden" name="detalle[7][lon]" id="tlon7" value="0">
+                      </div>
+                    </div>
+
+                  </div>
+                  <div id="tab_8" class="tab-pane hidden">
+                    <!-- end section -->
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h3>Información general</h3>
+                      </div>
+                    </div>
+                      
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de baños propios</label>
+                          <input type="number" name="detalle[8][cantidadbano]" id="valid_cantidad" class="form-control" placeholder="Cantidad de baños propios">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de casetas</label>
+                          <input type="number" name="detalle[8][cantidadcaseta]" id="valid_cantidad" class="form-control" placeholder="Cantidad de casetas">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de duchas</label>
+                          <input type="number" name="detalle[8][cantidadducha]" id="valid_cantidad" class="form-control" placeholder="Cantidad de duchas">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de baños externos</label>
+                          <input type="number" name="detalle[8][cantidadexterno]" id="valid_cantidad" class="form-control" placeholder="Cantidad de baños externos">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de lavamanos</label>
+                          <input type="number" name="detalle[8][cantidadlavamano]" id="valid_cantidad" class="form-control" placeholder="Cantidad de lavamanos">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label class="control-label mb15">Dias de mantención*</label>
+                        <div class="form-group">
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[8][dia][1]" id="detalle[8][dia1]">
+                            <label for="detalle[8][dia1]">Lunes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[8][dia][2]" id="detalle[8][dia2]">
+                            <label for="detalle[8][dia2]">Martes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[8][dia][3]" id="detalle[8][dia3]">
+                            <label for="detalle[8][dia3]">Miercoles</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[8][dia][4]" id="detalle[8][dia4]">
+                            <label for="detalle[8][dia4]">Jueves</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[8][dia][5]" id="detalle[8][dia5]">
+                            <label for="detalle[8][dia5]">Viernes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[8][dia][6]" id="detalle[8][dia6]">
+                            <label for="detalle[8][dia6]">Sabado</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[8][dia][7]" id="detalle[8][dia7]">
+                            <label for="detalle[8][dia7]">Domingo</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h3>Información domiciliaria</h3>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="select_comuna" class="control-label">Comuna*</label>
+                          <select name="detalle[8][comuna]" id="select_comuna_8" class="form-control select2-single">
+                              {% for comuna in comunas %}
+                                <option value="{{ comuna.id }}">{{ comuna.nombre }}</option>
+                              {% endfor %}
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="input_direccion2" class="control-label">Dirección*</label>
+                          <input type="text" name="detalle[8][direccion]" class="form-control" placeholder="Dirección">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <button type="button" class="btn btn-biosur btn-ubicacion" data-id="8" data-toggle="modal" data-target="#myModal">Ubicación</button>
+                        <button type="button" class="btn btn-danger btn-limpiarmapa" data-id="8"><i class="fa fa-trash-o" title="Limpiar"></i></button>
+                        <strong>Latitud: </strong><span id="slat8">No seleccionado</span>
+                        <strong>Longitud: </strong><span id="slon8">No seleccionado</span>
+                        <input type="hidden" name="detalle[8][lat]" id="tlat8" value="0">
+                        <input type="hidden" name="detalle[8][lon]" id="tlon8" value="0">
+                      </div>
+                    </div>
+
+                  </div>
+                  <div id="tab_9" class="tab-pane hidden">
+                    <!-- end section -->
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h3>Información general</h3>
+                      </div>
+                    </div>
+                      
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de baños propios</label>
+                          <input type="number" name="detalle[9][cantidadbano]" id="valid_cantidad" class="form-control" placeholder="Cantidad de baños propios">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de casetas</label>
+                          <input type="number" name="detalle[9][cantidadcaseta]" id="valid_cantidad" class="form-control" placeholder="Cantidad de casetas">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de duchas</label>
+                          <input type="number" name="detalle[9][cantidadducha]" id="valid_cantidad" class="form-control" placeholder="Cantidad de duchas">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de baños externos</label>
+                          <input type="number" name="detalle[9][cantidadexterno]" id="valid_cantidad" class="form-control" placeholder="Cantidad de baños externos">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de lavamanos</label>
+                          <input type="number" name="detalle[9][cantidadlavamano]" id="valid_cantidad" class="form-control" placeholder="Cantidad de lavamanos">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label class="control-label mb15">Dias de mantención*</label>
+                        <div class="form-group">
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[9][dia][1]" id="detalle[9][dia1]">
+                            <label for="detalle[9][dia1]">Lunes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[9][dia][2]" id="detalle[9][dia2]">
+                            <label for="detalle[9][dia2]">Martes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[9][dia][3]" id="detalle[9][dia3]">
+                            <label for="detalle[9][dia3]">Miercoles</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[9][dia][4]" id="detalle[9][dia4]">
+                            <label for="detalle[9][dia4]">Jueves</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[9][dia][5]" id="detalle[9][dia5]">
+                            <label for="detalle[9][dia5]">Viernes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[9][dia][6]" id="detalle[9][dia6]">
+                            <label for="detalle[9][dia6]">Sabado</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[9][dia][7]" id="detalle[9][dia7]">
+                            <label for="detalle[9][dia7]">Domingo</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h3>Información domiciliaria</h3>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="select_comuna" class="control-label">Comuna*</label>
+                          <select name="detalle[9][comuna]" id="select_comuna_9" class="form-control select2-single">
+                              {% for comuna in comunas %}
+                                <option value="{{ comuna.id }}">{{ comuna.nombre }}</option>
+                              {% endfor %}
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="input_direccion2" class="control-label">Dirección*</label>
+                          <input type="text" name="detalle[9][direccion]" class="form-control" placeholder="Dirección">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <button type="button" class="btn btn-biosur btn-ubicacion" data-id="9" data-toggle="modal" data-target="#myModal">Ubicación</button>
+                        <button type="button" class="btn btn-danger btn-limpiarmapa" data-id="9"><i class="fa fa-trash-o" title="Limpiar"></i></button>
+                        <strong>Latitud: </strong><span id="slat9">No seleccionado</span>
+                        <strong>Longitud: </strong><span id="slon9">No seleccionado</span>
+                        <input type="hidden" name="detalle[9][lat]" id="tlat9" value="0">
+                        <input type="hidden" name="detalle[9][lon]" id="tlon9" value="0">
+                      </div>
+                    </div>
+
+                  </div>
+                  <div id="tab_10" class="tab-pane hidden">
+                    <!-- end section -->
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h3>Información general</h3>
+                      </div>
+                    </div>
+                      
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de baños propios</label>
+                          <input type="number" name="detalle[10][cantidadbano]" id="valid_cantidad" class="form-control" placeholder="Cantidad de baños propios">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de casetas</label>
+                          <input type="number" name="detalle[10][cantidadcaseta]" id="valid_cantidad" class="form-control" placeholder="Cantidad de casetas">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de duchas</label>
+                          <input type="number" name="detalle[10][cantidadducha]" id="valid_cantidad" class="form-control" placeholder="Cantidad de duchas">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de baños externos</label>
+                          <input type="number" name="detalle[10][cantidadexterno]" id="valid_cantidad" class="form-control" placeholder="Cantidad de baños externos">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de lavamanos</label>
+                          <input type="number" name="detalle[10][cantidadlavamano]" id="valid_cantidad" class="form-control" placeholder="Cantidad de lavamanos">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label class="control-label mb15">Dias de mantención*</label>
+                        <div class="form-group">
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[10][dia][1]" id="detalle[10][dia1]">
+                            <label for="detalle[10][dia1]">Lunes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[10][dia][2]" id="detalle[10][dia2]">
+                            <label for="detalle[10][dia2]">Martes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[10][dia][3]" id="detalle[10][dia3]">
+                            <label for="detalle[10][dia3]">Miercoles</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[10][dia][4]" id="detalle[10][dia4]">
+                            <label for="detalle[10][dia4]">Jueves</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[10][dia][5]" id="detalle[10][dia5]">
+                            <label for="detalle[10][dia5]">Viernes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[10][dia][6]" id="detalle[10][dia6]">
+                            <label for="detalle[10][dia6]">Sabado</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[10][dia][7]" id="detalle[10][dia7]">
+                            <label for="detalle[10][dia7]">Domingo</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h3>Información domiciliaria</h3>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="select_comuna" class="control-label">Comuna*</label>
+                          <select name="detalle[10][comuna]" id="select_comuna_10" class="form-control select2-single">
+                              {% for comuna in comunas %}
+                                <option value="{{ comuna.id }}">{{ comuna.nombre }}</option>
+                              {% endfor %}
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="input_direccion2" class="control-label">Dirección*</label>
+                          <input type="text" name="detalle[10][direccion]" class="form-control" placeholder="Dirección">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <button type="button" class="btn btn-biosur btn-ubicacion" data-id="10" data-toggle="modal" data-target="#myModal">Ubicación</button>
+                        <button type="button" class="btn btn-danger btn-limpiarmapa" data-id="10"><i class="fa fa-trash-o" title="Limpiar"></i></button>
+                        <strong>Latitud: </strong><span id="slat10">No seleccionado</span>
+                        <strong>Longitud: </strong><span id="slon10">No seleccionado</span>
+                        <input type="hidden" name="detalle[10][lat]" id="tlat10" value="0">
+                        <input type="hidden" name="detalle[10][lon]" id="tlon10" value="0">
+                      </div>
+                    </div>
+
+                  </div>
+                  <div id="tab_11" class="tab-pane hidden">
+                    <!-- end section -->
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h3>Información general</h3>
+                      </div>
+                    </div>
+                      
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de baños propios</label>
+                          <input type="number" name="detalle[11][cantidadbano]" id="valid_cantidad" class="form-control" placeholder="Cantidad de baños propios">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de casetas</label>
+                          <input type="number" name="detalle[11][cantidadcaseta]" id="valid_cantidad" class="form-control" placeholder="Cantidad de casetas">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de duchas</label>
+                          <input type="number" name="detalle[11][cantidadducha]" id="valid_cantidad" class="form-control" placeholder="Cantidad de duchas">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de baños externos</label>
+                          <input type="number" name="detalle[11][cantidadexterno]" id="valid_cantidad" class="form-control" placeholder="Cantidad de baños externos">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de lavamanos</label>
+                          <input type="number" name="detalle[11][cantidadlavamano]" id="valid_cantidad" class="form-control" placeholder="Cantidad de lavamanos">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label class="control-label mb15">Dias de mantención*</label>
+                        <div class="form-group">
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[11][dia][1]" id="detalle[11][dia1]">
+                            <label for="detalle[11][dia1]">Lunes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[11][dia][2]" id="detalle[11][dia2]">
+                            <label for="detalle[11][dia2]">Martes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[11][dia][3]" id="detalle[11][dia3]">
+                            <label for="detalle[11][dia3]">Miercoles</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[11][dia][4]" id="detalle[11][dia4]">
+                            <label for="detalle[11][dia4]">Jueves</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[11][dia][5]" id="detalle[11][dia5]">
+                            <label for="detalle[11][dia5]">Viernes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[11][dia][6]" id="detalle[11][dia6]">
+                            <label for="detalle[11][dia6]">Sabado</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[11][dia][7]" id="detalle[11][dia7]">
+                            <label for="detalle[11][dia7]">Domingo</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h3>Información domiciliaria</h3>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="select_comuna" class="control-label">Comuna*</label>
+                          <select name="detalle[11][comuna]" id="select_comuna_11" class="form-control select2-single">
+                              {% for comuna in comunas %}
+                                <option value="{{ comuna.id }}">{{ comuna.nombre }}</option>
+                              {% endfor %}
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="input_direccion2" class="control-label">Dirección*</label>
+                          <input type="text" name="detalle[11][direccion]" class="form-control" placeholder="Dirección">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <button type="button" class="btn btn-biosur btn-ubicacion" data-id="11" data-toggle="modal" data-target="#myModal">Ubicación</button>
+                        <button type="button" class="btn btn-danger btn-limpiarmapa" data-id="11"><i class="fa fa-trash-o" title="Limpiar"></i></button>
+                        <strong>Latitud: </strong><span id="slat11">No seleccionado</span>
+                        <strong>Longitud: </strong><span id="slon11">No seleccionado</span>
+                        <input type="hidden" name="detalle[11][lat]" id="tlat11" value="0">
+                        <input type="hidden" name="detalle[11][lon]" id="tlon11" value="0">
+                      </div>
+                    </div>
+
+                  </div>
+                  <div id="tab_12" class="tab-pane hidden">
+                    <!-- end section -->
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h3>Información general</h3>
+                      </div>
+                    </div>
+                      
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de baños propios</label>
+                          <input type="number" name="detalle[12][cantidadbano]" id="valid_cantidad" class="form-control" placeholder="Cantidad de baños propios">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de casetas</label>
+                          <input type="number" name="detalle[12][cantidadcaseta]" id="valid_cantidad" class="form-control" placeholder="Cantidad de casetas">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de duchas</label>
+                          <input type="number" name="detalle[12][cantidadducha]" id="valid_cantidad" class="form-control" placeholder="Cantidad de duchas">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de baños externos</label>
+                          <input type="number" name="detalle[12][cantidadexterno]" id="valid_cantidad" class="form-control" placeholder="Cantidad de baños externos">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de lavamanos</label>
+                          <input type="number" name="detalle[12][cantidadlavamano]" id="valid_cantidad" class="form-control" placeholder="Cantidad de lavamanos">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label class="control-label mb15">Dias de mantención*</label>
+                        <div class="form-group">
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[12][dia][1]" id="detalle[12][dia1]">
+                            <label for="detalle[12][dia1]">Lunes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[12][dia][2]" id="detalle[12][dia2]">
+                            <label for="detalle[12][dia2]">Martes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[12][dia][3]" id="detalle[12][dia3]">
+                            <label for="detalle[12][dia3]">Miercoles</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[12][dia][4]" id="detalle[12][dia4]">
+                            <label for="detalle[12][dia4]">Jueves</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[12][dia][5]" id="detalle[12][dia5]">
+                            <label for="detalle[12][dia5]">Viernes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[12][dia][6]" id="detalle[12][dia6]">
+                            <label for="detalle[12][dia6]">Sabado</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[12][dia][7]" id="detalle[12][dia7]">
+                            <label for="detalle[12][dia7]">Domingo</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h3>Información domiciliaria</h3>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="select_comuna" class="control-label">Comuna*</label>
+                          <select name="detalle[12][comuna]" id="select_comuna_12" class="form-control select2-single">
+                              {% for comuna in comunas %}
+                                <option value="{{ comuna.id }}">{{ comuna.nombre }}</option>
+                              {% endfor %}
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="input_direccion2" class="control-label">Dirección*</label>
+                          <input type="text" name="detalle[12][direccion]" class="form-control" placeholder="Dirección">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <button type="button" class="btn btn-biosur btn-ubicacion" data-id="12" data-toggle="modal" data-target="#myModal">Ubicación</button>
+                        <button type="button" class="btn btn-danger btn-limpiarmapa" data-id="12"><i class="fa fa-trash-o" title="Limpiar"></i></button>
+                        <strong>Latitud: </strong><span id="slat12">No seleccionado</span>
+                        <strong>Longitud: </strong><span id="slon12">No seleccionado</span>
+                        <input type="hidden" name="detalle[12][lat]" id="tlat12" value="0">
+                        <input type="hidden" name="detalle[12][lon]" id="tlon12" value="0">
+                      </div>
+                    </div>
+
+                  </div>
+                  <div id="tab_13" class="tab-pane hidden">
+                    <!-- end section -->
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h3>Información general</h3>
+                      </div>
+                    </div>
+                      
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de baños propios</label>
+                          <input type="number" name="detalle[13][cantidadbano]" id="valid_cantidad" class="form-control" placeholder="Cantidad de baños propios">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de casetas</label>
+                          <input type="number" name="detalle[13][cantidadcaseta]" id="valid_cantidad" class="form-control" placeholder="Cantidad de casetas">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de duchas</label>
+                          <input type="number" name="detalle[13][cantidadducha]" id="valid_cantidad" class="form-control" placeholder="Cantidad de duchas">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de baños externos</label>
+                          <input type="number" name="detalle[13][cantidadexterno]" id="valid_cantidad" class="form-control" placeholder="Cantidad de baños externos">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de lavamanos</label>
+                          <input type="number" name="detalle[13][cantidadlavamano]" id="valid_cantidad" class="form-control" placeholder="Cantidad de lavamanos">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label class="control-label mb15">Dias de mantención*</label>
+                        <div class="form-group">
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[13][dia][1]" id="detalle[13][dia1]">
+                            <label for="detalle[13][dia1]">Lunes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[13][dia][2]" id="detalle[13][dia2]">
+                            <label for="detalle[13][dia2]">Martes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[13][dia][3]" id="detalle[13][dia3]">
+                            <label for="detalle[13][dia3]">Miercoles</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[13][dia][4]" id="detalle[13][dia4]">
+                            <label for="detalle[13][dia4]">Jueves</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[13][dia][5]" id="detalle[13][dia5]">
+                            <label for="detalle[13][dia5]">Viernes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[13][dia][6]" id="detalle[13][dia6]">
+                            <label for="detalle[13][dia6]">Sabado</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[13][dia][7]" id="detalle[13][dia7]">
+                            <label for="detalle[13][dia7]">Domingo</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h3>Información domiciliaria</h3>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="select_comuna" class="control-label">Comuna*</label>
+                          <select name="detalle[13][comuna]" id="select_comuna_13" class="form-control select2-single">
+                              {% for comuna in comunas %}
+                                <option value="{{ comuna.id }}">{{ comuna.nombre }}</option>
+                              {% endfor %}
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="input_direccion2" class="control-label">Dirección*</label>
+                          <input type="text" name="detalle[13][direccion]" class="form-control" placeholder="Dirección">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <button type="button" class="btn btn-biosur btn-ubicacion" data-id="13" data-toggle="modal" data-target="#myModal">Ubicación</button>
+                        <button type="button" class="btn btn-danger btn-limpiarmapa" data-id="13"><i class="fa fa-trash-o" title="Limpiar"></i></button>
+                        <strong>Latitud: </strong><span id="slat13">No seleccionado</span>
+                        <strong>Longitud: </strong><span id="slon13">No seleccionado</span>
+                        <input type="hidden" name="detalle[13][lat]" id="tlat13" value="0">
+                        <input type="hidden" name="detalle[13][lon]" id="tlon13" value="0">
+                      </div>
+                    </div>
+
+                  </div>
+                  <div id="tab_14" class="tab-pane hidden">
+                    <!-- end section -->
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h3>Información general</h3>
+                      </div>
+                    </div>
+                      
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de baños propios</label>
+                          <input type="number" name="detalle[14][cantidadbano]" id="valid_cantidad" class="form-control" placeholder="Cantidad de baños propios">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de casetas</label>
+                          <input type="number" name="detalle[14][cantidadcaseta]" id="valid_cantidad" class="form-control" placeholder="Cantidad de casetas">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de duchas</label>
+                          <input type="number" name="detalle[14][cantidadducha]" id="valid_cantidad" class="form-control" placeholder="Cantidad de duchas">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de baños externos</label>
+                          <input type="number" name="detalle[14][cantidadexterno]" id="valid_cantidad" class="form-control" placeholder="Cantidad de baños externos">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de lavamanos</label>
+                          <input type="number" name="detalle[14][cantidadlavamano]" id="valid_cantidad" class="form-control" placeholder="Cantidad de lavamanos">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label class="control-label mb15">Dias de mantención*</label>
+                        <div class="form-group">
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[14][dia][1]" id="detalle[14][dia1]">
+                            <label for="detalle[14][dia1]">Lunes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[14][dia][2]" id="detalle[14][dia2]">
+                            <label for="detalle[14][dia2]">Martes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[14][dia][3]" id="detalle[14][dia3]">
+                            <label for="detalle[14][dia3]">Miercoles</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[14][dia][4]" id="detalle[14][dia4]">
+                            <label for="detalle[14][dia4]">Jueves</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[14][dia][5]" id="detalle[14][dia5]">
+                            <label for="detalle[14][dia5]">Viernes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[14][dia][6]" id="detalle[14][dia6]">
+                            <label for="detalle[14][dia6]">Sabado</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[14][dia][7]" id="detalle[14][dia7]">
+                            <label for="detalle[14][dia7]">Domingo</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h3>Información domiciliaria</h3>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="select_comuna" class="control-label">Comuna*</label>
+                          <select name="detalle[14][comuna]" id="select_comuna_14" class="form-control select2-single">
+                              {% for comuna in comunas %}
+                                <option value="{{ comuna.id }}">{{ comuna.nombre }}</option>
+                              {% endfor %}
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="input_direccion2" class="control-label">Dirección*</label>
+                          <input type="text" name="detalle[14][direccion]" class="form-control" placeholder="Dirección">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <button type="button" class="btn btn-biosur btn-ubicacion" data-id="14" data-toggle="modal" data-target="#myModal">Ubicación</button>
+                        <button type="button" class="btn btn-danger btn-limpiarmapa" data-id="14"><i class="fa fa-trash-o" title="Limpiar"></i></button>
+                        <strong>Latitud: </strong><span id="slat14">No seleccionado</span>
+                        <strong>Longitud: </strong><span id="slon14">No seleccionado</span>
+                        <input type="hidden" name="detalle[14][lat]" id="tlat14" value="0">
+                        <input type="hidden" name="detalle[14][lon]" id="tlon14" value="0">
+                      </div>
+                    </div>
+
+                  </div>
+                  <div id="tab_15" class="tab-pane hidden">
+                    <!-- end section -->
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h3>Información general</h3>
+                      </div>
+                    </div>
+                      
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de baños propios</label>
+                          <input type="number" name="detalle[15][cantidadbano]" id="valid_cantidad" class="form-control" placeholder="Cantidad de baños propios">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de casetas</label>
+                          <input type="number" name="detalle[15][cantidadcaseta]" id="valid_cantidad" class="form-control" placeholder="Cantidad de casetas">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de duchas</label>
+                          <input type="number" name="detalle[15][cantidadducha]" id="valid_cantidad" class="form-control" placeholder="Cantidad de duchas">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de baños externos</label>
+                          <input type="number" name="detalle[15][cantidadexterno]" id="valid_cantidad" class="form-control" placeholder="Cantidad de baños externos">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de lavamanos</label>
+                          <input type="number" name="detalle[15][cantidadlavamano]" id="valid_cantidad" class="form-control" placeholder="Cantidad de lavamanos">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label class="control-label mb15">Dias de mantención*</label>
+                        <div class="form-group">
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[15][dia][1]" id="detalle[15][dia1]">
+                            <label for="detalle[15][dia1]">Lunes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[15][dia][2]" id="detalle[15][dia2]">
+                            <label for="detalle[15][dia2]">Martes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[15][dia][3]" id="detalle[15][dia3]">
+                            <label for="detalle[15][dia3]">Miercoles</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[15][dia][4]" id="detalle[15][dia4]">
+                            <label for="detalle[15][dia4]">Jueves</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[15][dia][5]" id="detalle[15][dia5]">
+                            <label for="detalle[15][dia5]">Viernes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[15][dia][6]" id="detalle[15][dia6]">
+                            <label for="detalle[15][dia6]">Sabado</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[15][dia][7]" id="detalle[15][dia7]">
+                            <label for="detalle[15][dia7]">Domingo</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h3>Información domiciliaria</h3>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="select_comuna" class="control-label">Comuna*</label>
+                          <select name="detalle[15][comuna]" id="select_comuna_15" class="form-control select2-single">
+                              {% for comuna in comunas %}
+                                <option value="{{ comuna.id }}">{{ comuna.nombre }}</option>
+                              {% endfor %}
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="input_direccion2" class="control-label">Dirección*</label>
+                          <input type="text" name="detalle[15][direccion]" class="form-control" placeholder="Dirección">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <button type="button" class="btn btn-biosur btn-ubicacion" data-id="15" data-toggle="modal" data-target="#myModal">Ubicación</button>
+                        <button type="button" class="btn btn-danger btn-limpiarmapa" data-id="15"><i class="fa fa-trash-o" title="Limpiar"></i></button>
+                        <strong>Latitud: </strong><span id="slat15">No seleccionado</span>
+                        <strong>Longitud: </strong><span id="slon15">No seleccionado</span>
+                        <input type="hidden" name="detalle[15][lat]" id="tlat15" value="0">
+                        <input type="hidden" name="detalle[15][lon]" id="tlon15" value="0">
+                      </div>
+                    </div>
+
+                  </div>
+                  <div id="tab_16" class="tab-pane hidden">
+                    <!-- end section -->
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h3>Información general</h3>
+                      </div>
+                    </div>
+                      
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de baños propios</label>
+                          <input type="number" name="detalle[16][cantidadbano]" id="valid_cantidad" class="form-control" placeholder="Cantidad de baños propios">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de casetas</label>
+                          <input type="number" name="detalle[16][cantidadcaseta]" id="valid_cantidad" class="form-control" placeholder="Cantidad de casetas">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de duchas</label>
+                          <input type="number" name="detalle[16][cantidadducha]" id="valid_cantidad" class="form-control" placeholder="Cantidad de duchas">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de baños externos</label>
+                          <input type="number" name="detalle[16][cantidadexterno]" id="valid_cantidad" class="form-control" placeholder="Cantidad de baños externos">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de lavamanos</label>
+                          <input type="number" name="detalle[16][cantidadlavamano]" id="valid_cantidad" class="form-control" placeholder="Cantidad de lavamanos">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label class="control-label mb15">Dias de mantención*</label>
+                        <div class="form-group">
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[16][dia][1]" id="detalle[16][dia1]">
+                            <label for="detalle[16][dia1]">Lunes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[16][dia][2]" id="detalle[16][dia2]">
+                            <label for="detalle[16][dia2]">Martes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[16][dia][3]" id="detalle[16][dia3]">
+                            <label for="detalle[16][dia3]">Miercoles</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[16][dia][4]" id="detalle[16][dia4]">
+                            <label for="detalle[16][dia4]">Jueves</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[16][dia][5]" id="detalle[16][dia5]">
+                            <label for="detalle[16][dia5]">Viernes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[16][dia][6]" id="detalle[16][dia6]">
+                            <label for="detalle[16][dia6]">Sabado</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[16][dia][7]" id="detalle[16][dia7]">
+                            <label for="detalle[16][dia7]">Domingo</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h3>Información domiciliaria</h3>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="select_comuna" class="control-label">Comuna*</label>
+                          <select name="detalle[16][comuna]" id="select_comuna_16" class="form-control select2-single">
+                              {% for comuna in comunas %}
+                                <option value="{{ comuna.id }}">{{ comuna.nombre }}</option>
+                              {% endfor %}
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="input_direccion2" class="control-label">Dirección*</label>
+                          <input type="text" name="detalle[16][direccion]" class="form-control" placeholder="Dirección">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <button type="button" class="btn btn-biosur btn-ubicacion" data-id="16" data-toggle="modal" data-target="#myModal">Ubicación</button>
+                        <button type="button" class="btn btn-danger btn-limpiarmapa" data-id="16"><i class="fa fa-trash-o" title="Limpiar"></i></button>
+                        <strong>Latitud: </strong><span id="slat16">No seleccionado</span>
+                        <strong>Longitud: </strong><span id="slon16">No seleccionado</span>
+                        <input type="hidden" name="detalle[16][lat]" id="tlat16" value="0">
+                        <input type="hidden" name="detalle[16][lon]" id="tlon16" value="0">
+                      </div>
+                    </div>
+
+                  </div>
+                  <div id="tab_17" class="tab-pane hidden">
+                    <!-- end section -->
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h3>Información general</h3>
+                      </div>
+                    </div>
+                      
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de baños propios</label>
+                          <input type="number" name="detalle[17][cantidadbano]" id="valid_cantidad" class="form-control" placeholder="Cantidad de baños propios">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de casetas</label>
+                          <input type="number" name="detalle[17][cantidadcaseta]" id="valid_cantidad" class="form-control" placeholder="Cantidad de casetas">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de duchas</label>
+                          <input type="number" name="detalle[17][cantidadducha]" id="valid_cantidad" class="form-control" placeholder="Cantidad de duchas">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de baños externos</label>
+                          <input type="number" name="detalle[17][cantidadexterno]" id="valid_cantidad" class="form-control" placeholder="Cantidad de baños externos">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de lavamanos</label>
+                          <input type="number" name="detalle[17][cantidadlavamano]" id="valid_cantidad" class="form-control" placeholder="Cantidad de lavamanos">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label class="control-label mb15">Dias de mantención*</label>
+                        <div class="form-group">
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[17][dia][1]" id="detalle[17][dia1]">
+                            <label for="detalle[17][dia1]">Lunes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[17][dia][2]" id="detalle[17][dia2]">
+                            <label for="detalle[17][dia2]">Martes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[17][dia][3]" id="detalle[17][dia3]">
+                            <label for="detalle[17][dia3]">Miercoles</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[17][dia][4]" id="detalle[17][dia4]">
+                            <label for="detalle[17][dia4]">Jueves</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[17][dia][5]" id="detalle[17][dia5]">
+                            <label for="detalle[17][dia5]">Viernes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[17][dia][6]" id="detalle[17][dia6]">
+                            <label for="detalle[17][dia6]">Sabado</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[17][dia][7]" id="detalle[17][dia7]">
+                            <label for="detalle[17][dia7]">Domingo</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h3>Información domiciliaria</h3>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="select_comuna" class="control-label">Comuna*</label>
+                          <select name="detalle[17][comuna]" id="select_comuna_17" class="form-control select2-single">
+                              {% for comuna in comunas %}
+                                <option value="{{ comuna.id }}">{{ comuna.nombre }}</option>
+                              {% endfor %}
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="input_direccion2" class="control-label">Dirección*</label>
+                          <input type="text" name="detalle[17][direccion]" class="form-control" placeholder="Dirección">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <button type="button" class="btn btn-biosur btn-ubicacion" data-id="17" data-toggle="modal" data-target="#myModal">Ubicación</button>
+                        <button type="button" class="btn btn-danger btn-limpiarmapa" data-id="17"><i class="fa fa-trash-o" title="Limpiar"></i></button>
+                        <strong>Latitud: </strong><span id="slat17">No seleccionado</span>
+                        <strong>Longitud: </strong><span id="slon17">No seleccionado</span>
+                        <input type="hidden" name="detalle[17][lat]" id="tlat17" value="0">
+                        <input type="hidden" name="detalle[17][lon]" id="tlon17" value="0">
+                      </div>
+                    </div>
+
+                  </div>
+                  <div id="tab_18" class="tab-pane hidden">
+                    <!-- end section -->
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h3>Información general</h3>
+                      </div>
+                    </div>
+                      
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de baños propios</label>
+                          <input type="number" name="detalle[18][cantidadbano]" id="valid_cantidad" class="form-control" placeholder="Cantidad de baños propios">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de casetas</label>
+                          <input type="number" name="detalle[18][cantidadcaseta]" id="valid_cantidad" class="form-control" placeholder="Cantidad de casetas">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de duchas</label>
+                          <input type="number" name="detalle[18][cantidadducha]" id="valid_cantidad" class="form-control" placeholder="Cantidad de duchas">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de baños externos</label>
+                          <input type="number" name="detalle[18][cantidadexterno]" id="valid_cantidad" class="form-control" placeholder="Cantidad de baños externos">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de lavamanos</label>
+                          <input type="number" name="detalle[18][cantidadlavamano]" id="valid_cantidad" class="form-control" placeholder="Cantidad de lavamanos">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label class="control-label mb15">Dias de mantención*</label>
+                        <div class="form-group">
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[18][dia][1]" id="detalle[18][dia1]">
+                            <label for="detalle[18][dia1]">Lunes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[18][dia][2]" id="detalle[18][dia2]">
+                            <label for="detalle[18][dia2]">Martes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[18][dia][3]" id="detalle[18][dia3]">
+                            <label for="detalle[18][dia3]">Miercoles</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[18][dia][4]" id="detalle[18][dia4]">
+                            <label for="detalle[18][dia4]">Jueves</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[18][dia][5]" id="detalle[18][dia5]">
+                            <label for="detalle[18][dia5]">Viernes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[18][dia][6]" id="detalle[18][dia6]">
+                            <label for="detalle[18][dia6]">Sabado</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[18][dia][7]" id="detalle[18][dia7]">
+                            <label for="detalle[18][dia7]">Domingo</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h3>Información domiciliaria</h3>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="select_comuna" class="control-label">Comuna*</label>
+                          <select name="detalle[18][comuna]" id="select_comuna_18" class="form-control select2-single">
+                              {% for comuna in comunas %}
+                                <option value="{{ comuna.id }}">{{ comuna.nombre }}</option>
+                              {% endfor %}
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="input_direccion2" class="control-label">Dirección*</label>
+                          <input type="text" name="detalle[18][direccion]" class="form-control" placeholder="Dirección">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <button type="button" class="btn btn-biosur btn-ubicacion" data-id="18" data-toggle="modal" data-target="#myModal">Ubicación</button>
+                        <button type="button" class="btn btn-danger btn-limpiarmapa" data-id="18"><i class="fa fa-trash-o" title="Limpiar"></i></button>
+                        <strong>Latitud: </strong><span id="slat18">No seleccionado</span>
+                        <strong>Longitud: </strong><span id="slon18">No seleccionado</span>
+                        <input type="hidden" name="detalle[18][lat]" id="tlat18" value="0">
+                        <input type="hidden" name="detalle[18][lon]" id="tlon18" value="0">
+                      </div>
+                    </div>
+
+                  </div>
+                  <div id="tab_19" class="tab-pane hidden">
+                    <!-- end section -->
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h3>Información general</h3>
+                      </div>
+                    </div>
+                      
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de baños propios</label>
+                          <input type="number" name="detalle[19][cantidadbano]" id="valid_cantidad" class="form-control" placeholder="Cantidad de baños propios">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de casetas</label>
+                          <input type="number" name="detalle[19][cantidadcaseta]" id="valid_cantidad" class="form-control" placeholder="Cantidad de casetas">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de duchas</label>
+                          <input type="number" name="detalle[19][cantidadducha]" id="valid_cantidad" class="form-control" placeholder="Cantidad de duchas">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de baños externos</label>
+                          <input type="number" name="detalle[19][cantidadexterno]" id="valid_cantidad" class="form-control" placeholder="Cantidad de baños externos">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de lavamanos</label>
+                          <input type="number" name="detalle[19][cantidadlavamano]" id="valid_cantidad" class="form-control" placeholder="Cantidad de lavamanos">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label class="control-label mb15">Dias de mantención*</label>
+                        <div class="form-group">
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[19][dia][1]" id="detalle[19][dia1]">
+                            <label for="detalle[19][dia1]">Lunes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[19][dia][2]" id="detalle[19][dia2]">
+                            <label for="detalle[19][dia2]">Martes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[19][dia][3]"  id="detalle[19][dia3]">
+                            <label for="detalle[19][dia3]">Miercoles</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[19][dia][4]" id="detalle[19][dia4]">
+                            <label for="detalle[19][dia4]">Jueves</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[19][dia][5]" id="detalle[19][dia5]">
+                            <label for="detalle[19][dia5]">Viernes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[19][dia][6]" id="detalle[19][dia6]">
+                            <label for="detalle[19][dia6]">Sabado</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[19][dia][7]" id="detalle[19][dia7]">
+                            <label for="detalle[19][dia7]">Domingo</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h3>Información domiciliaria</h3>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="select_comuna" class="control-label">Comuna*</label>
+                          <select name="detalle[19][comuna]" id="select_comuna_19" class="form-control select2-single">
+                              {% for comuna in comunas %}
+                                <option value="{{ comuna.id }}">{{ comuna.nombre }}</option>
+                              {% endfor %}
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="input_direccion2" class="control-label">Dirección*</label>
+                          <input type="text" name="detalle[19][direccion]" class="form-control" placeholder="Dirección">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <button type="button" class="btn btn-biosur btn-ubicacion" data-id="19" data-toggle="modal" data-target="#myModal">Ubicación</button>
+                        <button type="button" class="btn btn-danger btn-limpiarmapa" data-id="19"><i class="fa fa-trash-o" title="Limpiar"></i></button>
+                        <strong>Latitud: </strong><span id="slat19">No seleccionado</span>
+                        <strong>Longitud: </strong><span id="slon19">No seleccionado</span>
+                        <input type="hidden" name="detalle[19][lat]" id="tlat19" value="0">
+                        <input type="hidden" name="detalle[19][lon]" id="tlon19" value="0">
+                      </div>
+                    </div>
+
+                  </div>
+                  <div id="tab_20" class="tab-pane hidden">
+                    <!-- end section -->
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h3>Información general</h3>
+                      </div>
+                    </div>
+                      
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de baños propios</label>
+                          <input type="number" name="detalle[20][cantidadbano]" id="valid_cantidad" class="form-control" placeholder="Cantidad de baños propios">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de casetas</label>
+                          <input type="number" name="detalle[20][cantidadcaseta]" id="valid_cantidad" class="form-control" placeholder="Cantidad de casetas">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de duchas</label>
+                          <input type="number" name="detalle[20][cantidadducha]" id="valid_cantidad" class="form-control" placeholder="Cantidad de duchas">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de baños externos</label>
+                          <input type="number" name="detalle[20][cantidadexterno]" id="valid_cantidad" class="form-control" placeholder="Cantidad de baños externos">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="inputStandard" class="control-label">Cantidad de lavamanos</label>
+                          <input type="number" name="detalle[20][cantidadlavamano]" id="valid_cantidad" class="form-control" placeholder="Cantidad de lavamanos">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label class="control-label mb15">Dias de mantención*</label>
+                        <div class="form-group">
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[20][dia][1]" id="detalle[20][dia1]">
+                            <label for="detalle[20][dia1]">Lunes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[20][dia][2]" id="detalle[20][dia2]">
+                            <label for="detalle[20][dia2]">Martes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[20][dia][3]" id="detalle[20][dia3]">
+                            <label for="detalle[20][dia3]">Miercoles</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[20][dia][4]" id="detalle[20][dia4]">
+                            <label for="detalle[20][dia4]">Jueves</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[20][dia][5]" id="detalle[20][dia5]">
+                            <label for="detalle[20][dia5]">Viernes</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[20][dia][6]" id="detalle[20][dia6]">
+                            <label for="detalle[20][dia6]">Sabado</label>
+                          </div>
+                          <div class="checkbox-custom mb10">
+                            <input type="checkbox" name="detalle[20][dia][7]" id="detalle[20][dia7]">
+                            <label for="detalle[20][dia7]">Domingo</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h3>Información domiciliaria</h3>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="select_comuna" class="control-label">Comuna*</label>
+                          <select name="detalle[20][comuna]" id="select_comuna_20" class="form-control select2-single">
+                              {% for comuna in comunas %}
+                                <option value="{{ comuna.id }}">{{ comuna.nombre }}</option>
+                              {% endfor %}
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="input_direccion2" class="control-label">Dirección*</label>
+                          <input type="text" name="detalle[20][direccion]" class="form-control" placeholder="Dirección">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <button type="button" class="btn btn-biosur btn-ubicacion" data-id="20" data-toggle="modal" data-target="#myModal">Ubicación</button>
+                        <button type="button" class="btn btn-danger btn-limpiarmapa" data-id="20"><i class="fa fa-trash-o" title="Limpiar"></i></button>
+                        <strong>Latitud: </strong><span id="slat20">No seleccionado</span>
+                        <strong>Longitud: </strong><span id="slon20">No seleccionado</span>
+                        <input type="hidden" name="detalle[20][lat]" id="tlat20" value="0">
+                        <input type="hidden" name="detalle[20][lon]" id="tlon20" value="0">
+                      </div>
+                    </div>
+
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <h3>Otra información</h3>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="inputStandard" class="control-label">Comentario</label>
+                    <textarea class="form-control" name="comentario_detalle" rows="3"></textarea>
+                  </div>
+                </div>
+              </div>
+
+            </section>
+
+            <!-- Wizard step 3 -->
+            <h4 class="wizard-section-title">
+              <i class="fa fa-shopping-cart pr5"></i> Información</h4>
+            <section class="wizard-section">
+
+              <div class="section">
+                <div class="row">
+                  <div class="col-md-12">
+                    <h1>Información</h1>
+                    <p>Revise la información antes de finalizar el arriendo.</p>
+                  </div>
+                </div>
+
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <h3>Información de cliente</h3>
+                  </div>
+                  <div class="col-md-6">
+                    <dl class="dl-horizontal">
+                      <dt>Nombre</dt>
+                      <dd id="dd_nombrecliente"></dd>
+                      <dt>Rut</dt>
+                      <dd id="dd_rutcliente"></dd>
+                      <dt>Giro</dt>
+                      <dd id="dd_girocliente"></dd>
+                      <dt>Comentario</dt>
+                      <dd id="dd_comentariocliente"></dd>
+                      <br>
+                    </dl>
+                  </div>
+                  <div class="col-md-6">
+                    <dl class="dl-horizontal">
+                      <div id="direccion_cliente">
+                      </div>
+                      <dt>Región</dt>
+                      <dd id="dd_regioncliente"></dd>
+                      <dt>Provincia</dt>
+                      <dd id="dd_provinciacliente"></dd>
+                      <dt>Comuna</dt>
+                      <dd id="dd_comunacliente"></dd>
+                      <dt>Dirección</dt>
+                      <dd id="dd_direccioncliente"></dd>
+                    </dl>
+                  </div>
+                  <div class="col-md-12">
+                    <table class="table table-bordered mbn">
+                      <thead>
+                        <tr>
+                          <th>Servicio</th>
+                          <th>Cantidad de baños</th>
+                          <th>días de mantención</th>
+                          <th>Dirección</th>
+                        </tr>
+                      </thead>
+                      <tbody id="table_listadetalle">
+                      </tbody>
+                      <tfoot>
+                        <tr>
+                          <td colspan="4" id="info_comentarioarriendo"></td>
+                        </tr>
+                      </tfoot>
+                    </table>
+                    
+                  </div>
+                </div>
+              <!-- end section -->
+            </section>
+          </div>
+          <!-- End: Wizard -->
+
+        </form>
+        <!-- End Account2 Form -->
+
+      </div>
+
+      <!--MODALS-->
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <!-- <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">Ubicación</h4>
+            </div> -->
+            <div class="modal-body">
+              <div class="row">
+                <div id="coordenadas">
+                  <p><strong>Latitud: </strong><span id="plat"></span></p>
+                  <p><strong>Longitud: </strong><span id="plon"></span></p>
+                </div>
+              </div>
+              <div class="row">
+                <div id="map" class="col-md-12"></div>
+              </div>
+            </div>
+            <!-- <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            </div> -->
+          </div>
+        </div>
+      </div>
+{% endblock %}
+
+{% block footerScripts %}
+	<script src="{{ absolute_url(asset('vendor/plugins/duallistbox/jquery.bootstrap-duallistbox.min.js')) }}"></script>
+	<script src="{{ absolute_url(asset('assets/admin-tools/admin-forms/js/jquery.validate.min.js')) }}"></script>
+	<script src="{{ absolute_url(asset('assets/admin-tools/admin-forms/js/jquery.steps.min.js')) }}"></script>
+  <script src="{{ absolute_url(asset('vendor/plugins/select2/select2.min.js')) }}"></script>
+  <script src="{{ absolute_url(asset('vendor/plugins/gmap/gmaps.js')) }}"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAk4HzcdPciUZejfLnYpXqVPXH9wfBEAj8"></script>
+  <script src="{{ absolute_url(asset('assets/bundles/venta/nuevaVenta.js')) }}"></script>
+  <script src="{{ absolute_url(asset('assets/bundles/plugin/jquery.contacto.js')) }}"></script>
+{% endblock %}

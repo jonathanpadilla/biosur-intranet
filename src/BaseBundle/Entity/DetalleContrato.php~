@@ -1,0 +1,119 @@
+<?php
+
+namespace BaseBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * DetalleContrato
+ *
+ * @ORM\Table(name="detalle_contrato", indexes={@ORM\Index(name="dco_venta_fk", columns={"dco_venta_fk"}), @ORM\Index(name="dco_comuna_fk", columns={"dco_comuna_fk"}), @ORM\Index(name="dco_servicio_fk", columns={"dco_servicio_fk"})})
+ * @ORM\Entity
+ */
+class DetalleContrato
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="dco_id_pk", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $dcoIdPk;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="dco_direccion", type="string", length=100, nullable=true)
+     */
+    private $dcoDireccion;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="dco_cbano", type="integer", nullable=true)
+     */
+    private $dcoCbano;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="dco_ccaseta", type="integer", nullable=true)
+     */
+    private $dcoCcaseta;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="dco_cducha", type="integer", nullable=true)
+     */
+    private $dcoCducha;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="dco_cexterno", type="integer", nullable=true)
+     */
+    private $dcoCexterno;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="dco_clavamano", type="integer", nullable=true)
+     */
+    private $dcoClavamano;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="dco_lat", type="string", length=100, nullable=true)
+     */
+    private $dcoLat;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="dco_lon", type="string", length=100, nullable=true)
+     */
+    private $dcoLon;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="dco_comentario", type="text", length=65535, nullable=true)
+     */
+    private $dcoComentario;
+
+    /**
+     * @var \Venta
+     *
+     * @ORM\ManyToOne(targetEntity="Venta")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="dco_venta_fk", referencedColumnName="ven_id_pk")
+     * })
+     */
+    private $dcoVentaFk;
+
+    /**
+     * @var \Comuna
+     *
+     * @ORM\ManyToOne(targetEntity="Comuna")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="dco_comuna_fk", referencedColumnName="com_id_pk")
+     * })
+     */
+    private $dcoComunaFk;
+
+    /**
+     * @var \Servicio
+     *
+     * @ORM\ManyToOne(targetEntity="Servicio")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="dco_servicio_fk", referencedColumnName="ser_id_pk")
+     * })
+     */
+    private $dcoServicioFk;
+
+
+}
+

@@ -1,0 +1,60 @@
+<?php
+
+namespace BaseBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Bitacora
+ *
+ * @ORM\Table(name="bitacora", indexes={@ORM\Index(name="bit_sucursal_fk", columns={"bit_sucursal_fk"}), @ORM\Index(name="bit_venta_fk", columns={"bit_venta_fk"})})
+ * @ORM\Entity
+ */
+class Bitacora
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="bit_id_pk", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $bitIdPk;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="bit_fecha", type="datetime", nullable=true)
+     */
+    private $bitFecha;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="bit_descripcion", type="text", length=65535, nullable=true)
+     */
+    private $bitDescripcion;
+
+    /**
+     * @var \Sucursal
+     *
+     * @ORM\ManyToOne(targetEntity="Sucursal")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="bit_sucursal_fk", referencedColumnName="suc_id_pk")
+     * })
+     */
+    private $bitSucursalFk;
+
+    /**
+     * @var \Venta
+     *
+     * @ORM\ManyToOne(targetEntity="Venta")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="bit_venta_fk", referencedColumnName="ven_id_pk")
+     * })
+     */
+    private $bitVentaFk;
+
+
+}
+

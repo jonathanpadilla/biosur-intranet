@@ -1,0 +1,84 @@
+<?php
+
+namespace BaseBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ProductoMovimiento
+ *
+ * @ORM\Table(name="producto_movimiento", indexes={@ORM\Index(name="pmo_sucursal_fk", columns={"pmo_sucursal_fk"}), @ORM\Index(name="pmo_usuario_fk", columns={"pmo_usuario_fk"}), @ORM\Index(name="pmo_producto_fk", columns={"pmo_producto_fk"})})
+ * @ORM\Entity
+ */
+class ProductoMovimiento
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="pmo_id_pk", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $pmoIdPk;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="pmo_tipo", type="integer", nullable=true)
+     */
+    private $pmoTipo;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="pmo_cantidad", type="integer", nullable=true)
+     */
+    private $pmoCantidad;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pmo_detalle", type="string", length=200, nullable=true)
+     */
+    private $pmoDetalle;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="pmo_fecha", type="datetime", nullable=true)
+     */
+    private $pmoFecha;
+
+    /**
+     * @var \Sucursal
+     *
+     * @ORM\ManyToOne(targetEntity="Sucursal")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="pmo_sucursal_fk", referencedColumnName="suc_id_pk")
+     * })
+     */
+    private $pmoSucursalFk;
+
+    /**
+     * @var \Usuario
+     *
+     * @ORM\ManyToOne(targetEntity="Usuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="pmo_usuario_fk", referencedColumnName="usu_id_pk")
+     * })
+     */
+    private $pmoUsuarioFk;
+
+    /**
+     * @var \Producto
+     *
+     * @ORM\ManyToOne(targetEntity="Producto")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="pmo_producto_fk", referencedColumnName="pro_id_pk")
+     * })
+     */
+    private $pmoProductoFk;
+
+
+}
+

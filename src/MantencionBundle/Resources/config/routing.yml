@@ -1,0 +1,104 @@
+mantencion_vista_agregarruta:
+    path:     /agregar-ruta/{id}
+    defaults: { _controller: MantencionBundle:AgregarRuta:agregarRuta, id: 0 }
+
+mantencion_vista_asignarbannos:
+    path:     /asignar-banos/{id}
+    defaults: { _controller: MantencionBundle:AsignarBannos:asignarBannos, id: 0 }
+
+mantencion_vista_asignarlavamanos:
+    path:     /asignar-lavamanos/{id}
+    defaults: { _controller: MantencionBundle:AsignarLavamanos:asignarLavamanos, id: 0 }
+
+mantencion_vista_rutas:
+    path:     /rutas/
+    defaults: { _controller: MantencionBundle:Rutas:rutas }
+
+mantencion_vista_verruta:
+    path:     /rutas/ver-ruta/{dia}/{camion}
+    defaults: { _controller: MantencionBundle:VerRutas:verRutas, dia: 1, camion: 0 }
+
+mantencion_vista_inicioimprimirseguimiento:
+    path:     /rutas/imprimir-seguimiento/
+    defaults: { _controller: MantencionBundle:ImprimirSeguimiento:inicio }
+
+mantencion_vista_imprimirrutasemanal:
+    path:     /rutas/imprimir-ruta-semanal/
+    defaults: { _controller: MantencionBundle:ImprimirSeguimiento:mantencionDiariaJs }
+
+## app movil ##
+mantencion_app_agregarmantencion:
+    path:     /app/agregar-mantencion/
+    defaults: { _controller: MantencionBundle:AgregarMantencion:agregarRuta }
+
+mantencion_app_guardarfotomantencion:
+    path:     /app/foto-mantencion/
+    defaults: { _controller: MantencionBundle:AgregarMantencion:subirFoto }
+
+## FUNCIONES AJAX ##
+mantencion_ajax_guardarrura:
+    path:     /guardar-ruta/
+    defaults: { _controller: MantencionBundle:AgregarRuta:guardarRuta }
+    options:
+        expose: true
+
+mantencion_ajax_guardarordenrura:
+    path:     /guardar-orden-ruta/
+    defaults: { _controller: MantencionBundle:VerRutas:guardarOrdenRuta }
+    options:
+        expose: true
+
+mantencion_ajax_cargarrura:
+    path:     /cargar-ruta/
+    defaults: { _controller: MantencionBundle:VerRutas:cargarRuta }
+    options:
+        expose: true
+
+mantencion_ajax_guardarasignacionbannos:
+    path:     /guardar-asignacion-banos/
+    defaults: { _controller: MantencionBundle:AsignarBannos:guardarAsignacion }
+    options:
+        expose: true
+
+mantencion_ajax_guardarcandado:
+    path:     /asignar-lavamanos/guardar-candado/
+    defaults: { _controller: MantencionBundle:AsignarLavamanos:guardarCandado }
+    options:
+        expose: true
+
+mantencion_ajax_asignacionlavamano:
+    path:     /asignar-lavamanos/asignacion-lavamanos/
+    defaults: { _controller: MantencionBundle:AsignarLavamanos:asignacionLavamanos }
+    options:
+        expose: true
+
+mantencion_ajax_guardarasignacionlavamano:
+    path:     /asignar-lavamanos/guardar-asignacion-lavamanos/
+    defaults: { _controller: MantencionBundle:AsignarLavamanos:guardarAsignacionLavamanos }
+    options:
+        expose: true
+
+mantencion_ajax_eliminarasignacionlavamano:
+    path:     /asignar-lavamanos/eliminar-asignacion-lavamanos/
+    defaults: { _controller: MantencionBundle:AsignarLavamanos:eliminarAsignacionLavamanos }
+    options:
+        expose: true
+
+mantencion_ajax_cargarformularios:
+    path:     /rutas/imprimir-seguimiento/cargar-formularios/
+    defaults: { _controller: MantencionBundle:ImprimirSeguimiento:cargarFormularios }
+    options:
+        expose: true
+
+## EXPORTAR ##
+mantencion_pdf_rutasemanal:
+    path:     /exportar/pdf/ruta-semanal/
+    defaults: { _controller: MantencionBundle:Rutas:pdfRutaSemanal }
+
+mantencion_excel_rutasemanal:
+    path:     /exportar/excel/ruta-semanal/
+    defaults: { _controller: MantencionBundle:Rutas:excelRutaSemanal }
+
+mantencion_pdf_mantencion_diaria:
+    path:     /exportar/pdf/mantencion-diaria/
+    defaults: { _controller: MantencionBundle:ImprimirSeguimiento:mantencionDiaria }

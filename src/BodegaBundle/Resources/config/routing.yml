@@ -1,0 +1,73 @@
+## VISTAS ##
+bodega_vista_nuevobanno:
+    path:     /nuevo-bano/
+    defaults: { _controller: BodegaBundle:NuevoBanno:nuevoBanno }
+
+bodega_vista_verbanno:
+    path:     /ver-bano/{id}
+    defaults: { _controller: BodegaBundle:VerBanno:verBanno, id: 0 }
+
+bodega_vista_listabannos:
+    path:     /lista-banos/
+    defaults: { _controller: BodegaBundle:ListaBannos:listaBannos }
+
+bodega_vista_listaproducto:
+    path:     /lista-producto/
+    defaults: { _controller: BodegaBundle:ListaProductos:listaProductos }
+
+bodega_vista_nuevoproducto:
+    path:     /nuevo-producto/
+    defaults: { _controller: BodegaBundle:NuevoProducto:nuevoProducto }
+
+bodega_vista_listainsumo:
+    path:     /lista-insumo/
+    defaults: { _controller: BodegaBundle:ListaProducto:listaProducto }
+
+## FUNCIONES AJAX ##
+bodega_ajax_guardarbanno:
+    path:     /guardar-banno/
+    defaults: { _controller: BodegaBundle:NuevoBanno:guardarBanno }
+    options:
+        expose: true
+
+bodega_ajax_cargartipobanno:
+    path:     /tipo-banno/
+    defaults: { _controller: BodegaBundle:NuevoBanno:cargarTipoBanno }
+    options:
+        expose: true
+
+bodega_ajax_graficomenu:
+    path:     /estadistica/grafico-menu/
+    defaults: { _controller: BodegaBundle:EstadisticaBanno:graficoMenu }
+    options:
+        expose: true
+
+bodega_ajax_cargarlistabannos:
+    path:     /lista-banos/cargar/
+    defaults: { _controller: BodegaBundle:ListaBannos:cargarBannos }
+    options:
+        expose: true
+
+bodega_ajax_cargarselectproductos:
+    path:     /nuevo-producto/cargar-select-producto/
+    defaults: { _controller: BodegaBundle:NuevoProducto:listaProductos }
+    options:
+        expose: true
+
+bodega_ajax_guardarproductos:
+    path:     /nuevo-producto/guardar-producto/
+    defaults: { _controller: BodegaBundle:NuevoProducto:guardarProducto }
+    options:
+        expose: true
+
+bodega_ajax_guardarstockproductos:
+    path:     /nuevo-producto/guardar-stock-producto/
+    defaults: { _controller: BodegaBundle:NuevoProducto:guardarStockProducto }
+    options:
+        expose: true
+
+bodega_ajax_verhistorialproductos:
+    path:     /lista-insumo/historial-producto/
+    defaults: { _controller: BodegaBundle:ListaProducto:historialProducto }
+    options:
+        expose: true

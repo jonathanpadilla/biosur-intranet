@@ -1,0 +1,4 @@
+services:
+#    plugin.example:
+#        class: PluginBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

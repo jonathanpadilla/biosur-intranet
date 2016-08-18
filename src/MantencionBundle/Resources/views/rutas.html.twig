@@ -1,0 +1,253 @@
+{% extends "MantencionBundle:Layouts:body.html.twig" %}
+{% block content %}
+  <div class="row">
+      <div class="col-md-12">
+          <div class="panel panel-visible" id="spy3">
+            <div class="panel-heading">
+            	<div class="topbar_options"><!--
+                 --><div class="btn-group">
+                        <button type="button" class="btn btn-md btn-biosur dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cloud-download"> </i> Exportar
+                        <span class="caret ml5"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                     	<li>
+                        	<a href="{{ url('mantencion_excel_rutasemanal') }}">Excel</a>
+                      	</li>
+                      	<li>
+                        	<a href="{{ url('mantencion_pdf_rutasemanal') }}">PDF</a>
+                      	</li>
+                    </ul>
+                  </div><!--
+             --><div class="btn-group">
+	                  <a href="{{ url('mantencion_vista_inicioimprimirseguimiento') }}" id="button_guardarruta" class="btn btn-md btn-biosur"><i class="fa fa-print"> </i> Imprimir seguimiento</a>
+	              </div><!--
+             --><div class="btn-group">
+                    <button type="button" class="btn btn-md btn-biosur dropdown-toggle" data-toggle="dropdown"><i class="fa fa-share"> </i> Ir a
+                    <span class="caret ml5"></span>
+                  </button>
+                <ul class="dropdown-menu" role="menu">
+                  <li>
+                      <a href="{{ url('venta_vista_ventaservicio') }}">Nueva venta</a>
+                  </li>
+                  <li class="divider"></li>
+                  <li>
+                      <a href="#">Asignación ruta</a>
+                  </li>
+                  <li>
+                      <a href="#">Asignación baños</a>
+                  </li>
+                </ul>
+              </div>
+                </div>
+            </div>
+            <div class="panel-body">
+            	<div class="row">
+            		<div class="col-md-12">
+            			<h3>Limipieza semanal de baños químicos</h3>
+            		</div>
+            	</div>
+            	<div class="row">
+  					<div class="col-md-12">
+  						<h3>Lunes</h3>
+  						<table class="table table-bordered">
+							<thead>
+							    <tr class="primary">
+							      	<th style="width:200px">Cliente</th>
+							      	<th>Dirección</th>
+							      	<th style="width:200px">Cantidad</th>
+							      	<th style="width:200px">Chofer</th>
+							    </tr>
+							</thead>
+						  	<tbody>
+						  		{% if listaDestinos.1 is defined %}
+						  		{% for lunes in listaDestinos.1 %}
+						    	<tr>
+						      		<td>{{ lunes.venta_cliente }}</td>
+						      		<td>{{ lunes.detalle_direccion }}, {{ lunes.detalle_ciudad }}</td>
+						      		<td data-toggle="popover" data-placement="top" data-container="body" data-original-title="Productos {{ lunes.detalle_productos }}" data-content="{{ lunes.detalle_pbano != 0 ? 'Baños '~lunes.detalle_pbano~', ' }}{{ lunes.detalle_pcaseta != 0 ? 'Casetas '~lunes.detalle_pcaseta~', ' }}{{ lunes.detalle_pducha != 0 ? 'Duchas '~lunes.detalle_pducha~', ' }}{{ lunes.detalle_pexterno != 0 ? 'Externos '~lunes.detalle_pexterno~', ' }}{{ lunes.detalle_plavamano != 0 ? 'Lavamanos '~lunes.detalle_plavamano~', ' }}">{{ lunes.detalle_productos }} productos</td>
+						      		<td>{{ lunes.ruta_chofer_nombre }} {{ lunes.ruta_chofer_apellido }} - {{ lunes.ruta_patente }}</td>
+						   		</tr>
+						   		{% endfor %}
+						   		{% endif %}
+						  	</tbody>
+						</table>
+  					</div>
+            	</div>
+            	<hr>
+            	<div class="row">
+  					<div class="col-md-12">
+  						<h3>Martes</h3>
+  						<table class="table table-bordered">
+							<thead>
+							    <tr class="primary">
+							      	<th style="width:200px">Cliente</th>
+							      	<th>Dirección</th>
+							      	<th style="width:200px">Cantidad</th>
+							      	<th style="width:200px">Chofer</th>
+							    </tr>
+							</thead>
+						  	<tbody>
+						  		{% if listaDestinos.2 is defined %}
+						    	{% for martes in listaDestinos.2 %}
+						    	<tr>
+						      		<td>{{ martes.venta_cliente }}</td>
+						      		<td>{{ martes.detalle_direccion }}, {{ martes.detalle_ciudad }}</td>
+						      		<td data-toggle="popover" data-placement="top" data-container="body" data-original-title="Productos {{ martes.detalle_productos }}" data-content="{{ martes.detalle_pbano != 0 ? 'Baños '~martes.detalle_pbano~', ' }}{{ martes.detalle_pcaseta != 0 ? 'Casetas '~martes.detalle_pcaseta~', ' }}{{ martes.detalle_pducha != 0 ? 'Duchas '~martes.detalle_pducha~', ' }}{{ martes.detalle_pexterno != 0 ? 'Externos '~martes.detalle_pexterno~', ' }}{{ martes.detalle_plavamano != 0 ? 'Lavamanos '~martes.detalle_plavamano~', ' }}">{{ martes.detalle_productos }} productos</td>
+						      		<td>{{ martes.ruta_chofer_nombre }} {{ martes.ruta_chofer_apellido }} - {{ martes.ruta_patente }}</td>
+						   		</tr>
+						   		{% endfor %}
+						   		{% endif %}
+						  	</tbody>
+						</table>
+  					</div>
+            	</div>
+            	<hr>
+            	<div class="row">
+  					<div class="col-md-12">
+  						<h3>Miercoles</h3>
+  						<table class="table table-bordered">
+							<thead>
+							    <tr class="primary">
+							      	<th style="width:200px">Cliente</th>
+							      	<th>Dirección</th>
+							      	<th style="width:200px">Cantidad</th>
+							      	<th style="width:200px">Chofer</th>
+							    </tr>
+							</thead>
+						  	<tbody>
+						  		{% if listaDestinos.3 is defined %}
+						    	{% for miercoles in listaDestinos.3 %}
+						    	<tr>
+						      		<td>{{ miercoles.venta_cliente }}</td>
+						      		<td>{{ miercoles.detalle_direccion }}, {{ miercoles.detalle_ciudad }}</td>
+						      		<td data-toggle="popover" data-placement="top" data-container="body" data-original-title="Productos {{ miercoles.detalle_productos }}" data-content="{{ miercoles.detalle_pbano != 0 ? 'Baños '~miercoles.detalle_pbano~', ' }}{{ miercoles.detalle_pcaseta != 0 ? 'Casetas '~miercoles.detalle_pcaseta~', ' }}{{ miercoles.detalle_pducha != 0 ? 'Duchas '~miercoles.detalle_pducha~', ' }}{{ miercoles.detalle_pexterno != 0 ? 'Externos '~miercoles.detalle_pexterno~', ' }}{{ miercoles.detalle_plavamano != 0 ? 'Lavamanos '~miercoles.detalle_plavamano~', ' }}">{{ miercoles.detalle_productos }} productos</td>
+						      		<td>{{ miercoles.ruta_chofer_nombre }} {{ miercoles.ruta_chofer_apellido }} - {{ miercoles.ruta_patente }}</td>
+						   		</tr>
+						   		{% endfor %}
+						   		{% endif %}
+						  	</tbody>
+						</table>
+  					</div>
+            	</div>
+            	<hr>
+            	<div class="row">
+  					<div class="col-md-12">
+  						<h3>Jueves</h3>
+  						<table class="table table-bordered">
+							<thead>
+							    <tr class="primary">
+							      	<th style="width:200px">Cliente</th>
+							      	<th>Dirección</th>
+							      	<th style="width:200px">Cantidad</th>
+							      	<th style="width:200px">Chofer</th>
+							    </tr>
+							</thead>
+						  	<tbody>
+						  		{% if listaDestinos.4 is defined %}
+						    	{% for jueves in listaDestinos.4 %}
+						    	<tr>
+						      		<td>{{ jueves.venta_cliente }}</td>
+						      		<td>{{ jueves.detalle_direccion }}, {{ jueves.detalle_ciudad }}</td>
+						      		<td data-toggle="popover" data-placement="top" data-container="body" data-original-title="Productos {{ jueves.detalle_productos }}" data-content="{{ jueves.detalle_pbano != 0 ? 'Baños '~jueves.detalle_pbano~', ' }}{{ jueves.detalle_pcaseta != 0 ? 'Casetas '~jueves.detalle_pcaseta~', ' }}{{ jueves.detalle_pducha != 0 ? 'Duchas '~jueves.detalle_pducha~', ' }}{{ jueves.detalle_pexterno != 0 ? 'Externos '~jueves.detalle_pexterno~', ' }}{{ jueves.detalle_plavamano != 0 ? 'Lavamanos '~jueves.detalle_plavamano~', ' }}">{{ jueves.detalle_productos }} productos</td>
+						      		<td>{{ jueves.ruta_chofer_nombre }} {{ jueves.ruta_chofer_apellido }} - {{ jueves.ruta_patente }}</td>
+						   		</tr>
+						   		{% endfor %}
+						   		{% endif %}
+						  	</tbody>
+						</table>
+  					</div>
+            	</div>
+            	<hr>
+            	<div class="row">
+  					<div class="col-md-12">
+  						<h3>Viernes</h3>
+  						<table class="table table-bordered">
+							<thead>
+							    <tr class="primary">
+							      	<th style="width:200px">Cliente</th>
+							      	<th>Dirección</th>
+							      	<th style="width:200px">Cantidad</th>
+							      	<th style="width:200px">Chofer</th>
+							    </tr>
+							</thead>
+						  	<tbody>
+						  		{% if listaDestinos.5 is defined %}
+						    	{% for viernes in listaDestinos.5 %}
+						    	<tr>
+						      		<td>{{ viernes.venta_cliente }}</td>
+						      		<td>{{ viernes.detalle_direccion }}, {{ viernes.detalle_ciudad }}</td>
+						      		<td data-toggle="popover" data-placement="top" data-container="body" data-original-title="Productos {{ viernes.detalle_productos }}" data-content="{{ viernes.detalle_pbano != 0 ? 'Baños '~viernes.detalle_pbano~', ' }}{{ viernes.detalle_pcaseta != 0 ? 'Casetas '~viernes.detalle_pcaseta~', ' }}{{ viernes.detalle_pducha != 0 ? 'Duchas '~viernes.detalle_pducha~', ' }}{{ viernes.detalle_pexterno != 0 ? 'Externos '~viernes.detalle_pexterno~', ' }}{{ viernes.detalle_plavamano != 0 ? 'Lavamanos '~viernes.detalle_plavamano~', ' }}">{{ viernes.detalle_productos }} productos</td>
+						      		<td>{{ viernes.ruta_chofer_nombre }} {{ viernes.ruta_chofer_apellido }} - {{ viernes.ruta_patente }}</td>
+						   		</tr>
+						   		{% endfor %}
+						   		{% endif %}
+						  	</tbody>
+						</table>
+  					</div>
+            	</div>
+            	<hr>
+            	<div class="row">
+  					<div class="col-md-12">
+  						<h3>Sabado</h3>
+  						<table class="table table-bordered">
+							<thead>
+							    <tr class="primary">
+							      	<th style="width:200px">Cliente</th>
+							      	<th>Dirección</th>
+							      	<th style="width:200px">Cantidad</th>
+							      	<th style="width:200px">Chofer</th>
+							    </tr>
+							</thead>
+						  	<tbody>
+						  		{% if listaDestinos.6 is defined %}
+						  		{% for sabado in listaDestinos.6 %}
+						    	<tr>
+						      		<td>{{ sabado.venta_cliente }}</td>
+						      		<td>{{ sabado.detalle_direccion }}, {{ sabado.detalle_ciudad }}</td>
+						      		<td data-toggle="popover" data-placement="top" data-container="body" data-original-title="Productos {{ sabado.detalle_productos }}" data-content="{{ sabado.detalle_pbano != 0 ? 'Baños '~sabado.detalle_pbano~', ' }}{{ sabado.detalle_pcaseta != 0 ? 'Casetas '~sabado.detalle_pcaseta~', ' }}{{ sabado.detalle_pducha != 0 ? 'Duchas '~sabado.detalle_pducha~', ' }}{{ sabado.detalle_pexterno != 0 ? 'Externos '~sabado.detalle_pexterno~', ' }}{{ sabado.detalle_plavamano != 0 ? 'Lavamanos '~sabado.detalle_plavamano~', ' }}">{{ sabado.detalle_productos }} productos</td>
+						      		<td>{{ sabado.ruta_chofer_nombre }} {{ sabado.ruta_chofer_apellido }} - {{ sabado.ruta_patente }}</td>
+						   		</tr>
+						   		{% endfor %}
+						   		{% endif %}
+						  	</tbody>
+						</table>
+  					</div>
+            	</div>
+            	<hr>
+            	<div class="row">
+  					<div class="col-md-12">
+  						<h3>Domingo</h3>
+  						<table class="table table-bordered">
+							<thead>
+							    <tr class="primary">
+							      	<th style="width:200px">Cliente</th>
+							      	<th>Dirección</th>
+							      	<th style="width:200px">Cantidad</th>
+							      	<th style="width:200px">Chofer</th>
+							    </tr>
+							</thead>
+						  	<tbody>
+						  		{% if listaDestinos.7 is defined %}
+						    	{% for domingo in listaDestinos.7 %}
+						    	<tr>
+						      		<td>{{ domingo.venta_cliente }}</td>
+						      		<td>{{ domingo.detalle_direccion }}, {{ domingo.detalle_ciudad }}</td>
+						      		<td data-toggle="popover" data-placement="top" data-container="body" data-original-title="Productos {{ domingo.detalle_productos }}" data-content="{{ domingo.detalle_pbano != 0 ? 'Baños '~domingo.detalle_pbano~', ' }}{{ domingo.detalle_pcaseta != 0 ? 'Casetas '~domingo.detalle_pcaseta~', ' }}{{ domingo.detalle_pducha != 0 ? 'Duchas '~domingo.detalle_pducha~', ' }}{{ domingo.detalle_pexterno != 0 ? 'Externos '~domingo.detalle_pexterno~', ' }}{{ domingo.detalle_plavamano != 0 ? 'Lavamanos '~domingo.detalle_plavamano~', ' }}">{{ domingo.detalle_productos }} productos</td>
+						      		<td>{{ domingo.ruta_chofer_nombre }} {{ domingo.ruta_chofer_apellido }} - {{ domingo.ruta_patente }}</td>
+						   		</tr>
+						   		{% endfor %}
+						   		{% endif %}
+						  	</tbody>
+						</table>
+  					</div>
+            	</div>
+
+
+            </div>
+          </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footerScripts %}
+{% endblock %}

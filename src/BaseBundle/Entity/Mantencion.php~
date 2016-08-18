@@ -1,0 +1,108 @@
+<?php
+
+namespace BaseBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Mantencion
+ *
+ * @ORM\Table(name="mantencion", indexes={@ORM\Index(name="man_ruta_fk", columns={"man_ruta_fk"}), @ORM\Index(name="man_nnbanno_fk", columns={"man_nnbanno_fk"}), @ORM\Index(name="man_usuario", columns={"man_usuario_fk"}), @ORM\Index(name="man_detallecontrato_fk", columns={"man_detallecontrato_fk"})})
+ * @ORM\Entity
+ */
+class Mantencion
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="man_id_pk", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $manIdPk;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="man_foto", type="string", length=200, nullable=true)
+     */
+    private $manFoto;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="man_lat", type="string", length=50, nullable=true)
+     */
+    private $manLat;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="man_lng", type="string", length=50, nullable=true)
+     */
+    private $manLng;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="man_comentario", type="text", length=65535, nullable=true)
+     */
+    private $manComentario;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="man_realizado", type="integer", nullable=true)
+     */
+    private $manRealizado;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="man_fecharegistro", type="datetime", nullable=true)
+     */
+    private $manFecharegistro;
+
+    /**
+     * @var \Ruta
+     *
+     * @ORM\ManyToOne(targetEntity="Ruta")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="man_ruta_fk", referencedColumnName="rut_id_pk")
+     * })
+     */
+    private $manRutaFk;
+
+    /**
+     * @var \DetcontratoNnBanno
+     *
+     * @ORM\ManyToOne(targetEntity="DetcontratoNnBanno")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="man_nnbanno_fk", referencedColumnName="dnnb_id_pk")
+     * })
+     */
+    private $manNnbannoFk;
+
+    /**
+     * @var \Usuario
+     *
+     * @ORM\ManyToOne(targetEntity="Usuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="man_usuario_fk", referencedColumnName="usu_id_pk")
+     * })
+     */
+    private $manUsuarioFk;
+
+    /**
+     * @var \DetalleContrato
+     *
+     * @ORM\ManyToOne(targetEntity="DetalleContrato")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="man_detallecontrato_fk", referencedColumnName="dco_id_pk")
+     * })
+     */
+    private $manDetallecontratoFk;
+
+
+}
+

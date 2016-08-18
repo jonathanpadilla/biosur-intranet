@@ -1,0 +1,64 @@
+<header class="sidebar-header">
+
+  <!-- Sidebar Widget - Menu (Slidedown) -->
+
+  <div class="sidebar-widget menu-widget">
+    <div class="row text-center mbn">
+      <div class="col-xs-4">
+        <a href="{{ url('venta_vista_inicio') }}" class="text-primary" data-toggle="tooltip" data-placement="top" title="Arriendo">
+          <span class="fa fa-shopping-cart"></span>
+        </a>
+      </div>
+      <div class="col-xs-4">
+        <a href="{{ url('bodega_vista_listabannos') }}" class="text-info" data-toggle="tooltip" data-placement="top" title="Bodega">
+          <span class="imoon imoon-box-add"></span>
+        </a>
+      </div>
+      <div class="col-xs-4">
+        <a href="#" class="text-alert" data-toggle="tooltip" data-placement="top" title="Clientes">
+          <span class="fa fa-users"></span>
+        </a>
+      </div>
+    </div>
+    <div class="row text-center mbn">
+      <div class="col-xs-4">
+        <a href="{{ url('usuario_vista_listar') }}" class="text-system" data-toggle="tooltip" data-placement="top" title="Usuarios">
+          <span class="fa fa-usersfa fa-users"></span>
+        </a>
+      </div>
+      <div class="col-xs-4">
+        <a href="#" class="text-danger" data-toggle="tooltip" data-placement="top" title="Sucursales">
+          <span class="imoon imoon-office"></span>
+        </a>
+      </div>
+      <div class="col-xs-4">
+        <a href="#" class="text-warning" data-toggle="tooltip" data-placement="top" title="Mantenciones">
+          <span class="fa fa-wrench"></span>
+        </a>
+      </div>
+    </div>
+    <div class="row text-center mbn">
+      <div class="col-xs-4">
+        <a href="#" class="text-warning" data-toggle="tooltip" data-placement="top" title="Configuración">
+          <span class="fa fa-gears"></span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sidebar Widget - Author (hidden)  -->
+  <div class="sidebar-widget author-widget visible-xs">
+    <div class="media">
+      <a class="media-left" href="#">
+        <img src="{{ absolute_url(asset('assets/img/avatars/placeholder.png')) }}" class="img-responsive">
+      </a>
+      <div class="media-body">
+        <div class="media-links">
+           <a href="#" class="sidebar-menu-toggle">Menu Usuario -</a> <a href="{{ url('base_vista_ingreso') }}">Salir</a>
+        </div>
+        <div class="media-author">{{ userData.nombre }} {{ userData.apellido }}</div>
+      </div>
+    </div>
+  </div>
+
+</header>

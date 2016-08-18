@@ -1,0 +1,30 @@
+## VISTAS ##
+usuario_vista_agregar:
+    path:     /agregar-nuevo/
+    defaults: { _controller: UsuarioBundle:AgregarUsuario:agregarUsuario }
+
+usuario_vista_listar:
+    path:     /lista/
+    defaults: { _controller: UsuarioBundle:ListaUsuario:listaUsuario }
+
+usuario_vista_ver:
+    path:     /ver/{id}
+    defaults: { _controller: UsuarioBundle:VerUsuario:ver }
+
+## METODOS SIN VISTA ##
+usuario_vista_guardar:
+    path:     /guardar-nuevo/
+    defaults: { _controller: UsuarioBundle:AgregarUsuario:guardarUsuario }
+
+## FUNCIONES AJAX ##
+usuario_ajax_cargarlista:
+    path:     /lista/cargar/
+    defaults: { _controller: UsuarioBundle:ListaUsuario:cargarLista }
+    options:
+        expose: true
+
+usuario_ajax_eliminar:
+    path:     /lista/eliminar-usuario/
+    defaults: { _controller: UsuarioBundle:ListaUsuario:eliminarUsuario }
+    options:
+        expose: true

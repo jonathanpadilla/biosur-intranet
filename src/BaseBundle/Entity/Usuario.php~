@@ -1,0 +1,120 @@
+<?php
+
+namespace BaseBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Usuario
+ *
+ * @ORM\Table(name="usuario", indexes={@ORM\Index(name="usu_comuna_fk", columns={"usu_comuna_fk"})})
+ * @ORM\Entity
+ */
+class Usuario
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="usu_id_pk", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $usuIdPk;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="usu_nombre", type="string", length=100, nullable=true)
+     */
+    private $usuNombre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="usu_apellido", type="string", length=100, nullable=true)
+     */
+    private $usuApellido;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="usu_rut", type="string", length=20, nullable=true)
+     */
+    private $usuRut;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="usu_direccion", type="string", length=200, nullable=true)
+     */
+    private $usuDireccion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="usu_clave", type="string", length=200, nullable=true)
+     */
+    private $usuClave;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="usu_configuracion", type="text", length=65535, nullable=true)
+     */
+    private $usuConfiguracion;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="usu_vinculado", type="integer", nullable=true)
+     */
+    private $usuVinculado = '1';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="usu_recuperarclave", type="string", length=200, nullable=true)
+     */
+    private $usuRecuperarclave;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="usu_cookie", type="string", length=100, nullable=true)
+     */
+    private $usuCookie;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="usu_tipo", type="integer", nullable=true)
+     */
+    private $usuTipo = '2';
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="usu_fecharegistro", type="datetime", nullable=true)
+     */
+    private $usuFecharegistro;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="usu_comentario", type="text", length=65535, nullable=true)
+     */
+    private $usuComentario;
+
+    /**
+     * @var \Comuna
+     *
+     * @ORM\ManyToOne(targetEntity="Comuna")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="usu_comuna_fk", referencedColumnName="com_id_pk")
+     * })
+     */
+    private $usuComunaFk;
+
+
+}
+

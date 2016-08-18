@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <title>{{ defaultData.htmlHeader.title }} | Intranet Biosur Ltda</title>
+            <meta name="keywords" content="{{ defaultData.htmlHeader.keywords }}" />
+            <meta name="description" content="{{ defaultData.htmlHeader.description }}">
+            <meta name="author" content="{{ defaultData.htmlHeader.autor }}">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            
+            <link rel="stylesheet" type="text/css" href="{{ absolute_url(asset('vendor/plugins/select2/css/core.css')) }}">
+            <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600'>
+            <link rel="stylesheet" type="text/css" href="{{ absolute_url(asset('assets/skin/default_skin/css/theme.css')) }}">
+            <link rel="stylesheet" type="text/css" href="{{ absolute_url(asset('assets/skin/default_skin/css/personalizado.css')) }}">
+            <link rel="stylesheet" type="text/css" href="{{ absolute_url(asset('assets/admin-tools/admin-forms/css/admin-forms.css')) }}">
+            
+            <link rel="stylesheet" type="text/css" href="{{ absolute_url(asset('assets/fonts/icomoon/icomoon.css')) }}">
+            <link rel="stylesheet" type="text/css" href="{{ absolute_url(asset('assets/fonts/glyphicons-pro/glyphicons-pro.css')) }}">
+            <link rel="shortcut icon" href="{{ absolute_url(asset('assets/img/favicon.ico')) }}">
+            {% block stylesheets %}{% endblock %}
+            {% block headScript %}{% endblock %}
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+
+        <script src="{{ absolute_url(asset('vendor/jquery/jquery-1.11.1.min.js')) }}"></script>
+        <script src="{{ absolute_url(asset('vendor/jquery/jquery_ui/jquery-ui.min.js')) }}"></script>
+        <script src="{{ absolute_url(asset('assets/js/utility/utility.js')) }}"></script>
+        <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+        <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+        <script src="{{ absolute_url(asset('assets/js/demo/demo.js')) }}"></script>
+        <script src="{{ absolute_url(asset('assets/js/main.js')) }}"></script>
+        <script src="{{ absolute_url(asset('assets/js/app.js')) }}"></script>
+
+        <script type="text/javascript">
+            $(function(){
+
+                "use strict";
+
+                // Init Theme Core
+                Core.init();
+                
+                // Init Demo JS
+                Demo.init();
+
+            });
+        </script>
+        {% block footerScripts %}{% endblock %}
+    </body>
+</html>

@@ -1,0 +1,106 @@
+{% extends "MantencionBundle:Layouts:body.html.twig" %}
+{% block content %}
+	<div id="alerts"></div>
+  	<div class="panel invoice-panel">
+      	<div class="panel-heading">
+	        <div class="topbar_options"><!--
+	           --><div class="btn-group">
+	                  <button type="button" id="button_guardarruta" class="btn btn-md btn-biosur"><i class="fa fa-save"> </i> Guardar</button>
+	              </div><!--
+	           --><div class="btn-group">
+	                  <button type="button" class="btn btn-md btn-biosur dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cloud-download"> </i> Exportar
+	                  <span class="caret ml5"></span>
+	              </button>
+					<ul class="dropdown-menu" role="menu">
+						<li>
+						    <a href="#">Excel</a>
+						</li>
+						<li>
+						    <a href="#">PDF</a>
+						</li>
+						<li>
+						    <a href="#">HTML</a>
+						</li>
+					</ul>
+	            </div><!--
+	         --><div class="btn-group">
+	                  <button type="button" class="btn btn-md btn-biosur dropdown-toggle" data-toggle="dropdown"><i class="fa fa-share"> </i> Ir a
+	                  <span class="caret ml5"></span>
+	              </button>
+					<ul class="dropdown-menu" role="menu">
+						<li>
+						    <a href="{{ url('venta_vista_ventaservicio') }}">Agregar camiones</a>
+						</li>
+						<li class="divider"></li>
+						<li>
+						    <a href="{{ url('venta_vista_verventa', {id: id}) }}">Ver arriendo</a>
+						</li>
+						<li>
+						    <a href="{{ url('venta_vista_listaventa') }}">Lista de arriendos</a>
+						</li>
+					</ul>
+	            </div>
+	        </div>
+      	</div>
+      	<div class="panel-body p20" id="invoice-item">
+	      	<div class="row">
+	      		<div class="col-md-12">
+	      			<h3>Agregar dirección de arriendo de {{ datosRuta.nombre_cliente|e }} a la ruta</h3>
+	      			<p>Asigne los camiónes que realizarán las mantenciónes</p>
+	      			<br>
+	      		</div>
+	      	</div>
+			<form id="form_ruta" method="post" action="#">
+	      	{% for key, detalle in datosRuta.detalle %}
+	      		<!--Agregar div row-->
+	      		{% if key == 0 %}
+	      		<div class="row">
+	      		{% elseif key is even %}
+	      		</div><div class="row">
+	      		{% endif %}
+
+	      		<div class="col-md-6">
+
+		            <div class="panel panel-alt">
+			            <div class="panel-heading">
+			                <span class="panel-title">
+			                  	<i class="fa fa-info"></i> {{ detalle.servicio|e }} - {{ detalle.direccion|e }}, {{ detalle.comuna|e }}, {{ detalle.provincia|e }}, {{ detalle.region|e }}
+			                </span>
+			            </div>
+		              	<div class="panel-body">
+			              	<table class="table table-bordered mbn">
+								<tbody>
+									{% for ruta in detalle.ruta %}
+										<tr>
+										  <td>{{ ruta.nombre_dia }}</td>
+										  <td>
+										  	<div class="form-group">
+						                      	<select id="select_camion" name="select_camion[{{ detalle.id_detalle }}][{{ ruta.id }}]" class="form-control select2-single">
+						                        	<option value="default">Seleccionar</option>
+						                        	{% for camion in camiones %}
+						                        	<option value="{{ camion.id_camion }}" {{ camion.id_camion == ruta.id_camion ? 'selected' }}>{{ camion.nombre_chofer }} - {{ camion.patente_camion }}</option>
+						                        	{% endfor %}
+							                    </select>
+							                </div>
+										  </td>
+										</tr>
+									{% endfor %}
+								</tbody>
+							</table>
+		              </div>
+		            </div>
+
+	      		</div>
+					
+	      		
+	      		
+	      	{% endfor %}
+	      	</form>
+	      	</div>
+      	</div>
+    </div>
+{% endblock %}
+
+{% block footerScripts %}
+	<script src="{{ absolute_url(asset('assets/bundles/mantencion/agregarRuta.js')) }}"></script>
+{% endblock %}

@@ -1,0 +1,81 @@
+<?php
+
+namespace BaseBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Ruta
+ *
+ * @ORM\Table(name="ruta", indexes={@ORM\Index(name="man_camion_fk", columns={"rut_camion_fk"}), @ORM\Index(name="man_detallecontrato_fk", columns={"rut_detallecontrato_fk"})})
+ * @ORM\Entity
+ */
+class Ruta
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="rut_id_pk", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $rutIdPk;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="rut_dia", type="integer", nullable=true)
+     */
+    private $rutDia;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="rut_solicitado", type="integer", nullable=true)
+     */
+    private $rutSolicitado;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="rut_activo", type="integer", nullable=true)
+     */
+    private $rutActivo;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="rut_fecharegistro", type="datetime", nullable=true)
+     */
+    private $rutFecharegistro;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="rut_orden", type="integer", nullable=false)
+     */
+    private $rutOrden = '0';
+
+    /**
+     * @var \DetalleContrato
+     *
+     * @ORM\ManyToOne(targetEntity="DetalleContrato")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="rut_detallecontrato_fk", referencedColumnName="dco_id_pk")
+     * })
+     */
+    private $rutDetallecontratoFk;
+
+    /**
+     * @var \Camion
+     *
+     * @ORM\ManyToOne(targetEntity="Camion")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="rut_camion_fk", referencedColumnName="cam_id_pk")
+     * })
+     */
+    private $rutCamionFk;
+
+
+}
+

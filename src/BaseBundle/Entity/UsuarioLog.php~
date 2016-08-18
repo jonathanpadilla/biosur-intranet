@@ -1,0 +1,67 @@
+<?php
+
+namespace BaseBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * UsuarioLog
+ *
+ * @ORM\Table(name="usuario_log", indexes={@ORM\Index(name="ulo_sucursal_fk", columns={"ulo_sucursal_fk"}), @ORM\Index(name="ulo_usuario_fk", columns={"ulo_usuario_fk"})})
+ * @ORM\Entity
+ */
+class UsuarioLog
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ulo_id_pk", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $uloIdPk;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ulo_descripcion", type="text", length=65535, nullable=true)
+     */
+    private $uloDescripcion;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="ulo_fecha", type="datetime", nullable=true)
+     */
+    private $uloFecha;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ulo_comentario", type="text", length=65535, nullable=true)
+     */
+    private $uloComentario;
+
+    /**
+     * @var \Sucursal
+     *
+     * @ORM\ManyToOne(targetEntity="Sucursal")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ulo_sucursal_fk", referencedColumnName="suc_id_pk")
+     * })
+     */
+    private $uloSucursalFk;
+
+    /**
+     * @var \Usuario
+     *
+     * @ORM\ManyToOne(targetEntity="Usuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ulo_usuario_fk", referencedColumnName="usu_id_pk")
+     * })
+     */
+    private $uloUsuarioFk;
+
+
+}
+

@@ -1,0 +1,57 @@
+<?php
+
+namespace BaseBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * BannosTipo
+ *
+ * @ORM\Table(name="bannos_tipo", indexes={@ORM\Index(name="bti_sucursal_fk", columns={"bti_sucursal_fk"})})
+ * @ORM\Entity
+ */
+class BannosTipo
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="bti_id_pk", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $btiIdPk;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="bti_producto", type="integer", nullable=true)
+     */
+    private $btiProducto;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="bti_nombre", type="string", length=100, nullable=true)
+     */
+    private $btiNombre;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="bti_activo", type="integer", nullable=true)
+     */
+    private $btiActivo = '1';
+
+    /**
+     * @var \Sucursal
+     *
+     * @ORM\ManyToOne(targetEntity="Sucursal")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="bti_sucursal_fk", referencedColumnName="suc_id_pk")
+     * })
+     */
+    private $btiSucursalFk;
+
+
+}
+

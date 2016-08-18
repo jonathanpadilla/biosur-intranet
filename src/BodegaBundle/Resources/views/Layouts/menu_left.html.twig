@@ -1,0 +1,63 @@
+<aside id="sidebar_left" class="nano nano-primary affix">
+  <!-- Start: Sidebar Left Content -->
+  <div class="sidebar-left-content nano-content">
+
+    <!-- Start: Sidebar Header -->
+    {% include 'BaseBundle:Layouts:menu_left_head.html.twig' %}
+    <!-- End: Sidebar Header -->
+
+    <!-- Start: Sidebar Left Menu -->
+    <ul class="nav sidebar-menu">
+      <li class="sidebar-label pt20">Mantencion</li>
+      <li>
+        <a href="{{ url('venta_vista_inicio') }}">
+          <span class="fa fa-home"></span>
+          <span class="sidebar-title">Inicio</span>
+        </a>
+      </li>
+
+      <li class="{{ menuActivo == 'listaproductos' or menuActivo == 'agregarproducto' ? 'menu-active' }}">
+        <a class="accordion-toggle {{ menuActivo == 'listaproductos' or menuActivo == 'agregarproducto' ? 'menu-open' }} item_menu" href="#">
+          <span class="fa fa-caret-square-o-down"></span>
+          <span class="sidebar-title">Insumos</span>
+          <span class="caret"></span>
+        </a>
+        <ul class="nav sub-nav">
+          <li class="{{ menuActivo == 'listaproductos' ? 'active' }}">
+            <a href="{{ url('bodega_vista_listainsumo') }}">
+              <span class="fa fa-list"></span> Lista </a>
+          </li>
+          <li class="{{ menuActivo == 'agregarproducto' ? 'active' }}">
+            <a href="{{ url('bodega_vista_nuevoproducto') }}">
+              <span class="fa fa-plus"></span> Agregar nuevo </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="{{ menuActivo == 'listabannos' or menuActivo == 'agregarbannos' ? 'menu-active' }}">
+        <a class="accordion-toggle {{ menuActivo == 'listabannos' or menuActivo == 'agregarbannos' ? 'menu-open' }} item_menu" href="#">
+          <span class="fa fa-caret-square-o-down"></span>
+          <span class="sidebar-title">Productos</span>
+          <span class="caret"></span>
+        </a>
+        <ul class="nav sub-nav">
+          <li class="{{ menuActivo == 'listabannos' ? 'active' }}">
+            <a href="{{ url('bodega_vista_listabannos') }}">
+              <span class="fa fa-list"></span> Lista </a>
+          </li>
+          <li class="{{ menuActivo == 'agregarbannos' ? 'active' }}">
+            <a href="{{ url('bodega_vista_nuevobanno') }}">
+              <span class="fa fa-plus"></span> Agregar nuevo </a>
+          </li>
+        </ul>
+      </li>
+
+      <!-- sidebar progress bars -->
+      {% include 'BaseBundle:Layouts:menu_left_foot.html.twig' %}
+    </ul>
+    <!-- End: Sidebar Menu -->
+
+  </div>
+  <!-- End: Sidebar Left Content -->
+
+</aside>

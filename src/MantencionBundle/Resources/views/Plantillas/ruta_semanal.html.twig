@@ -1,0 +1,243 @@
+<style>
+	#wrapper{
+		padding: 0 12px;
+		font-family: verdana, Helvetica, sans-serif;
+		text-transform: uppercase;
+	}
+
+	#head{
+		width:100%;
+		height:100px;
+		background-repeat: no-repeat;
+		background-position: left top;
+		padding:10px 0;
+	}
+
+	#head .logo{
+		position: absolute;
+		margin-top: -10px;
+	}
+
+	#head .title{
+		text-align: center;
+		margin-top: 50px;
+	}
+
+	/* TABLA*/
+	#content table{
+		width:100%;
+		border-collapse: collapse;
+		margin-top:20px;
+		font-size: 10px;
+	}
+
+	#content table, #content table td, #content table th{
+		border:1px solid;
+		border-color: #97bbeb;
+	}
+
+	#content table th{
+		padding: 7px;
+		color: #1f57a1;
+		background-color: #caddf5;
+	}
+	
+	#content table td{
+		padding: 5px;
+	}
+
+	#content table .w150{
+		width:150px;
+	}
+	#content table .w100{
+		width:100px;
+	}
+
+
+</style>
+
+<div id="wrapper">
+	<div id="head">
+		<img class="logo" src="{{ absolute_url(asset('assets/img/logo-biosur.png')) }}" alt="">
+		<div class="title">
+			<h2>Limpieza semanal</h2>
+		</div>
+	</div>
+	<div id="content">
+		<table class="table">
+			<thead>
+				<tr>
+					<th colspan="4">Lunes</th>
+				</tr>
+				<tr>
+					<th class="w150">Nombre del cliente</th>
+					<th>Dirección</th>
+					<th class="w100">Cantidad de productos</th>
+					<th class="w100">Chofer</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% if listaDestinos.1 is defined %}
+			  		{% for lunes in listaDestinos.1 %}
+			    	<tr>
+			      		<td>{{ lunes.venta_cliente }}</td>
+			      		<td>{{ lunes.detalle_direccion }}, {{ lunes.detalle_ciudad }}</td>
+			      		<td>{{ lunes.detalle_productos }} productos</td>
+			      		<td>{{ lunes.ruta_chofer_nombre }} {{ lunes.ruta_chofer_apellido }} - {{ lunes.ruta_patente }}</td>
+			   		</tr>
+			   		{% endfor %}
+		   		{% endif %}
+			</tbody>
+		</table>
+		<table class="table">
+			<thead>
+				<tr>
+					<th colspan="4">Martes</th>
+				</tr>
+				<tr>
+					<th class="w150">Nombre del cliente</th>
+					<th>Dirección</th>
+					<th class="w100">Cantidad de productos</th>
+					<th class="w100">Chofer</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% if listaDestinos.2 is defined %}
+			  		{% for martes in listaDestinos.2 %}
+			    	<tr>
+			      		<td>{{ martes.venta_cliente }}</td>
+			      		<td>{{ martes.detalle_direccion }}, {{ martes.detalle_ciudad }}</td>
+			      		<td>{{ martes.detalle_productos }} productos</td>
+			      		<td>{{ martes.ruta_chofer_nombre }} {{ martes.ruta_chofer_apellido }} - {{ martes.ruta_patente }}</td>
+			   		</tr>
+			   		{% endfor %}
+		   		{% endif %}
+			</tbody>
+		</table>
+		<table class="table">
+			<thead>
+				<tr>
+					<th colspan="4">Miercoles</th>
+				</tr>
+				<tr>
+					<th class="w150">Nombre del cliente</th>
+					<th>Dirección</th>
+					<th class="w100">Cantidad de productos</th>
+					<th class="w100">Chofer</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% if listaDestinos.3 is defined %}
+			  		{% for miercoles in listaDestinos.3 %}
+			    	<tr>
+			      		<td>{{ miercoles.venta_cliente }}</td>
+			      		<td>{{ miercoles.detalle_direccion }}, {{ miercoles.detalle_ciudad }}</td>
+			      		<td>{{ miercoles.detalle_productos }} productos</td>
+			      		<td>{{ miercoles.ruta_chofer_nombre }} {{ miercoles.ruta_chofer_apellido }} - {{ miercoles.ruta_patente }}</td>
+			   		</tr>
+			   		{% endfor %}
+		   		{% endif %}
+			</tbody>
+		</table>
+		<table class="table">
+			<thead>
+				<tr>
+					<th colspan="4">Jueves</th>
+				</tr>
+				<tr>
+					<th class="w150">Nombre del cliente</th>
+					<th>Dirección</th>
+					<th class="w100">Cantidad de productos</th>
+					<th class="w100">Chofer</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% if listaDestinos.4 is defined %}
+			  		{% for jueves in listaDestinos.4 %}
+			    	<tr>
+			      		<td>{{ jueves.venta_cliente }}</td>
+			      		<td>{{ jueves.detalle_direccion }}, {{ jueves.detalle_ciudad }}</td>
+			      		<td>{{ jueves.detalle_productos }} productos</td>
+			      		<td>{{ jueves.ruta_chofer_nombre }} {{ jueves.ruta_chofer_apellido }} - {{ jueves.ruta_patente }}</td>
+			   		</tr>
+			   		{% endfor %}
+		   		{% endif %}
+			</tbody>
+		</table>
+		<table class="table">
+			<thead>
+				<tr>
+					<th colspan="4">Viernes</th>
+				</tr>
+				<tr>
+					<th class="w150">Nombre del cliente</th>
+					<th>Dirección</th>
+					<th class="w100">Cantidad de productos</th>
+					<th class="w100">Chofer</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% if listaDestinos.5 is defined %}
+			  		{% for viernes in listaDestinos.5 %}
+			    	<tr>
+			      		<td>{{ viernes.venta_cliente }}</td>
+			      		<td>{{ viernes.detalle_direccion }}, {{ viernes.detalle_ciudad }}</td>
+			      		<td>{{ viernes.detalle_productos }} productos</td>
+			      		<td>{{ viernes.ruta_chofer_nombre }} {{ viernes.ruta_chofer_apellido }} - {{ viernes.ruta_patente }}</td>
+			   		</tr>
+			   		{% endfor %}
+		   		{% endif %}
+			</tbody>
+		</table>
+		<table class="table">
+			<thead>
+				<tr>
+					<th colspan="4">Sabado</th>
+				</tr>
+				<tr>
+					<th class="w150">Nombre del cliente</th>
+					<th>Dirección</th>
+					<th class="w100">Cantidad de productos</th>
+					<th class="w100">Chofer</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% if listaDestinos.6 is defined %}
+			  		{% for sabado in listaDestinos.6 %}
+			    	<tr>
+			      		<td>{{ sabado.venta_cliente }}</td>
+			      		<td>{{ sabado.detalle_direccion }}, {{ sabado.detalle_ciudad }}</td>
+			      		<td>{{ sabado.detalle_productos }} productos</td>
+			      		<td>{{ sabado.ruta_chofer_nombre }} {{ sabado.ruta_chofer_apellido }} - {{ sabado.ruta_patente }}</td>
+			   		</tr>
+			   		{% endfor %}
+		   		{% endif %}
+			</tbody>
+		</table>
+		<table class="table">
+			<thead>
+				<tr>
+					<th colspan="4">Domingo</th>
+				</tr>
+				<tr>
+					<th class="w150">Nombre del cliente</th>
+					<th>Dirección</th>
+					<th class="w100">Cantidad de productos</th>
+					<th class="w100">Chofer</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% if listaDestinos.7 is defined %}
+			  		{% for domingo in listaDestinos.7 %}
+			    	<tr>
+			      		<td>{{ domingo.venta_cliente }}</td>
+			      		<td>{{ domingo.detalle_direccion }}, {{ domingo.detalle_ciudad }}</td>
+			      		<td>{{ domingo.detalle_productos }} productos</td>
+			      		<td>{{ domingo.ruta_chofer_nombre }} {{ domingo.ruta_chofer_apellido }} - {{ domingo.ruta_patente }}</td>
+			   		</tr>
+			   		{% endfor %}
+		   		{% endif %}
+			</tbody>
+		</table>
+	</div>
+</div>

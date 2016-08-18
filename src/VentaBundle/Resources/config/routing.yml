@@ -1,0 +1,47 @@
+## VISTAS ##
+venta_vista_inicio:
+    path:     /inicio/
+    defaults: { _controller: VentaBundle:Inicio:inicio }
+
+venta_vista_ventaservicio:
+    path:     /nueva-venta-servicio/
+    defaults: { _controller: VentaBundle:VentaServicio:nuevaVenta }
+
+venta_vista_listaventa:
+    path:     /lista-venta/
+    defaults: { _controller: VentaBundle:ListaVenta:lista }
+
+venta_vista_verventa:
+    path:     /ver/{id}
+    defaults: { _controller: VentaBundle:VerVenta:ver, id: 0 }
+    options:
+        expose: true
+
+venta_vista_completarventa:
+    path:     /completar/{id}
+    defaults: { _controller: VentaBundle:CompletarVenta:inicio, id: 1 }
+    
+## METODOS SIN VISTA ##
+venta_vista_guardarventa:
+    path:     /nueva-venta-servicio/guardar-venta/
+    defaults: { _controller: VentaBundle:VentaServicio:guardarVenta }
+    methods:   [POST]
+
+## FUNCIONES AJAX ##
+venta_ajax_crearventa:
+    path:     /nueva-venta-servicio/crear-venta/
+    defaults: { _controller: VentaBundle:VentaServicio:crearVenta }
+    options:
+        expose: true
+
+venta_ajax_cargarlistaventaservicio:
+    path:     /lista-venta/cargar-lista-venta-servicio/
+    defaults: { _controller: VentaBundle:ListaVenta:cargarLista }
+    options:
+        expose: true
+
+venta_ajax_verdetallemantencion:
+    path:     /ver/detalle-mantencion/
+    defaults: { _controller: VentaBundle:VerVenta:detalleMantencion }
+    options:
+        expose: true

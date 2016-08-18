@@ -1,0 +1,98 @@
+<?php
+
+namespace BaseBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Cliente
+ *
+ * @ORM\Table(name="cliente", indexes={@ORM\Index(name="cli_sucursal_fk", columns={"cli_sucursal_fk"}), @ORM\Index(name="cli_comuna_fk", columns={"cli_comuna_fk"}), @ORM\Index(name="cli_usuario_fk", columns={"cli_usuario_fk"})})
+ * @ORM\Entity
+ */
+class Cliente
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="cli_id_pk", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $cliIdPk;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cli_nombre", type="string", length=100, nullable=true)
+     */
+    private $cliNombre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cli_rut", type="string", length=30, nullable=true)
+     */
+    private $cliRut;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cli_giro", type="string", length=100, nullable=true)
+     */
+    private $cliGiro;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="cli_fecharegistro", type="datetime", nullable=true)
+     */
+    private $cliFecharegistro;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cli_direccion", type="string", length=100, nullable=true)
+     */
+    private $cliDireccion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cli_comentario", type="text", length=65535, nullable=true)
+     */
+    private $cliComentario;
+
+    /**
+     * @var \Sucursal
+     *
+     * @ORM\ManyToOne(targetEntity="Sucursal")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="cli_sucursal_fk", referencedColumnName="suc_id_pk")
+     * })
+     */
+    private $cliSucursalFk;
+
+    /**
+     * @var \Comuna
+     *
+     * @ORM\ManyToOne(targetEntity="Comuna")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="cli_comuna_fk", referencedColumnName="com_id_pk")
+     * })
+     */
+    private $cliComunaFk;
+
+    /**
+     * @var \Usuario
+     *
+     * @ORM\ManyToOne(targetEntity="Usuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="cli_usuario_fk", referencedColumnName="usu_id_pk")
+     * })
+     */
+    private $cliUsuarioFk;
+
+
+}
+

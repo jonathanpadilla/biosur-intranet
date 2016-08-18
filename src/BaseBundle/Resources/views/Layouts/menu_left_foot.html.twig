@@ -1,0 +1,80 @@
+<ul class="nav sidebar-menu">
+<li class="sidebar-label pt20">Sucursales</li>
+{% for sucursal in userData.sucursales %}
+<li class="sidebar-proj">
+  <a href="#">
+    <span class="fa fa-dot-circle-o text-biosur"></span>
+    <span class="sidebar-title {{ sucursal.activa == 1 ? 'text-biosur' }}">{{ sucursal.sucursalNombre }}</span>
+  </a>
+</li>
+{% endfor %}
+</ul>
+
+<ul class="nav sidebar-menu estadisticas-menu">
+<!-- sidebar progress bars -->
+<li class="sidebar-label pt25 pb10">Estadísticas</li>
+<li id="menubar_bano" class="sidebar-stat">
+  <a href="#" class="fs11">
+    <span class="fa fa-arrow-circle-o-right text-biosur"></span>
+    <span class="sidebar-title text-muted2">Baños (B)</span>
+    <span class="pull-right mr20 text-muted2"><span class="menubar_cantidad">0/0</span> <span class="menubar_porcentaje">(0)</span></span>
+    <div class="progress progress-bar-xs mh20 mb10">
+      <div class="progress-bar progress-bar-biosur" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+        <span class="sr-only "><span class="menubar_porcentaje">0</span> Arrendado</span>
+      </div>
+    </div>
+  </a>
+</li>
+
+<li id="menubar_caseta" class="sidebar-stat">
+  <a href="#" class="fs11">
+    <span class="fa fa-arrow-circle-o-right text-biosur"></span>
+    <span class="sidebar-title text-muted2">Casetas (C)</span>
+    <span class="pull-right mr20 text-muted2"><span class="menubar_cantidad">0/0</span> <span class="menubar_porcentaje">(0)</span></span>
+    <div class="progress progress-bar-xs mh20 mb10">
+      <div class="progress-bar progress-bar-biosur" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+        <span class="sr-only "><span class="menubar_porcentaje">0</span> Arrendado</span>
+      </div>
+    </div>
+  </a>
+</li>
+
+<li id="menubar_ducha" class="sidebar-stat">
+  <a href="#" class="fs11">
+    <span class="fa fa-arrow-circle-o-right text-biosur"></span>
+    <span class="sidebar-title text-muted2">Ducha (D)</span>
+    <span class="pull-right mr20 text-muted2"><span class="menubar_cantidad">0/0</span> <span class="menubar_porcentaje">(0)</span></span>
+    <div class="progress progress-bar-xs mh20 mb10">
+      <div class="progress-bar progress-bar-biosur" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+        <span class="sr-only "><span class="menubar_porcentaje">0</span> Arrendado</span>
+      </div>
+    </div>
+  </a>
+</li>
+
+<li id="menubar_externo" class="sidebar-stat">
+  <a href="#" class="fs11">
+    <span class="fa fa-arrow-circle-o-right text-biosur"></span>
+    <span class="sidebar-title text-muted2">Externos (E)</span>
+    <span class="pull-right mr20 text-muted2"><span class="menubar_cantidad">0/0</span> <span class="menubar_porcentaje">(0)</span></span>
+    <div class="progress progress-bar-xs mh20 mb10">
+      <div class="progress-bar progress-bar-biosur" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+        <span class="sr-only "><span class="menubar_porcentaje">0</span> Arrendado</span>
+      </div>
+    </div>
+  </a>
+</li>
+
+<li id="menubar_lavamano" class="sidebar-stat">
+  <a href="#" class="fs11">
+    <span class="fa fa-arrow-circle-o-right text-biosur"></span>
+    <span class="sidebar-title text-muted2">Lavamanos (L)</span>
+    <span class="pull-right mr20 text-muted2"><span class="menubar_cantidad">0/0</span> <span class="menubar_porcentaje">(0)</span></span>
+    <div class="progress progress-bar-xs mh20 mb10">
+      <div class="progress-bar progress-bar-biosur" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+        <span class="sr-only "><span class="menubar_porcentaje">0</span> Arrendado</span>
+      </div>
+    </div>
+  </a>
+</li>
+</ul>

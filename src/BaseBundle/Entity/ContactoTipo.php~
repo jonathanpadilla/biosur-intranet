@@ -1,0 +1,33 @@
+<?php
+
+namespace BaseBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ContactoTipo
+ *
+ * @ORM\Table(name="contacto_tipo")
+ * @ORM\Entity
+ */
+class ContactoTipo
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="cti_id_pk", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $ctiIdPk;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cti_nombre", type="string", length=50, nullable=true)
+     */
+    private $ctiNombre;
+
+
+}
+

@@ -1,0 +1,67 @@
+<aside id="sidebar_left" class="nano nano-primary affix">
+  <!-- Start: Sidebar Left Content -->
+  <div class="sidebar-left-content nano-content">
+
+    <!-- Start: Sidebar Header -->
+    {% include 'BaseBundle:Layouts:menu_left_head.html.twig' %}
+    <!-- End: Sidebar Header -->
+
+    <!-- Start: Sidebar Left Menu -->
+    <ul class="nav sidebar-menu">
+      <li class="sidebar-label pt20">Principal</li>
+      <li>
+        <a href="{{ url('base_vista_homepage') }}">
+          <span class="fa fa-home"></span>
+          <span class="sidebar-title">Inicio</span>
+        </a>
+      </li>
+      <li class="sidebar-label pt20">Módulos</li>
+      {% if userData.configuracion.permisos.Arriendos is defined and userData.configuracion.permisos.Arriendos %}
+      <li>
+        <a href="{{ url('venta_vista_inicio') }}">
+          <span class="fa fa-shopping-cart"></span>
+          <span class="sidebar-title">Arriendos</span>
+        </a>
+      </li>
+      {% endif %}
+      <li>
+        <a href="{{ url('base_vista_homepage') }}">
+          <span class="fa fa-users"></span>
+          <span class="sidebar-title">Clientes</span>
+        </a>
+      </li>
+      <li>
+        <a href="{{ url('base_vista_homepage') }}">
+          <span class="glyphicon glyphicon-user"></span>
+          <span class="sidebar-title">Usuarios</span>
+        </a>
+      </li>
+      <li>
+        <a href="{{ url('base_vista_homepage') }}">
+          <span class="imoon imoon-office"></span>
+          <span class="sidebar-title">Sucursales</span>
+        </a>
+      </li>
+      <li>
+        <a href="{{ url('base_vista_homepage') }}">
+          <span class="fa fa-wrench"></span>
+          <span class="sidebar-title">Mantenciones</span>
+        </a>
+      </li>
+      <li>
+        <a href="{{ url('base_vista_homepage') }}">
+          <span class="fa fa-gears"></span>
+          <span class="sidebar-title">Configuración</span>
+        </a>
+      </li>
+
+      <!-- sidebar bullets -->
+      {% include 'BaseBundle:Layouts:menu_left_foot.html.twig' %}
+    </ul>
+    <!-- End: Sidebar Menu -->
+    <!-- End: Sidebar Collapse Button -->
+
+  </div>
+  <!-- End: Sidebar Left Content -->
+
+</aside>

@@ -1,0 +1,201 @@
+{% extends "UsuarioBundle:Layouts:body.html.twig" %}
+{% block content %}
+  <div class="row">
+  	<div class="col-md-12">
+  		<div class="content-header">
+        <h2> Agregar <b class="text-biosur">Nuevo Usuario</b> al sistema.</h2>
+        <p class="lead">El usuario agregado tendrá acceso al sistema de <b class="text-biosur">Mi Sucursal</b>.</p>
+      </div>
+			<div id="alerts">
+				<div id="alert_error" class="alert alert-danger fade in hidden">
+			    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			    <strong>Error</strong> Asegurese de llenar los campos requeridos (*).
+			  </div>
+			</div>
+  		<div class="panel">
+				<div class="panel-heading">
+					<div class="topbar_options"><!--
+			           --><div class="btn-group">
+			                  <button type="button" id="button_guardar" class="btn btn-md btn-biosur"><i class="fa fa-save"> </i> Guardar</button>
+			              </div>
+			        </div>
+				</div>
+				<div class="panel-body">
+					<form id="form_usuario" method="post" action="{{ url('usuario_vista_guardar') }}" class="form-horizontal" role="form">
+						<div class="row">
+							<div class="col-md-12">
+								<h3>Información general</h3>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+							    <label for="input_nombre" class="control-label">Nombre*</label>
+							    <input type="text" name="input_nombre" class="form-control" placeholder="Nombre">
+							  </div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+							    <label for="input_apellido" class="control-label">Apellido*</label>
+							    <input type="text" name="input_apellido" class="form-control" placeholder="Apellido">
+							  </div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+							    <label for="input_rut" class="control-label">Rut*</label>
+							    <input type="text" name="input_rut" id="input_rut" class="form-control" placeholder="Rut">
+							    <span id="rut_invalido" data-valid="0"></span>
+							  </div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-12">
+								<h3>Información domiciliaria</h3>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+							    <label for="select_comuna" class="control-label">Comuna*</label>
+							    <select name="select_comuna" class="form-control select2-single">
+					          	<option value="default">Seleccionar</option>
+					          	{% for comuna in comunas %}
+					          		<option value="{{ comuna.id }}">{{ comuna.nombre }}</option>
+					          	{% endfor %}
+					        </select>
+							  </div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+							    <label for="input_direccion" class="control-label">Dirección*</label>
+							    <input type="text" name="input_direccion" class="form-control" placeholder="Dirección">
+							  </div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-12">
+								<h3>Información de contácto</h3>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-12">
+								<table class="table">
+                  <thead>
+                    <tr class="primary">
+                      <th>Tipo</th>
+                      <th>Detalle contácto</th>
+                      <th>Nombre persona a contactar</th>
+                      <th>Operaciones</th>
+                    </tr>
+                  </thead>
+                  <tbody id="filas_contactos">
+                  	<tr id="1">
+                  		<td>
+                        <select name="datocontacto[1][1]" id="datocontacto[1][1]" class="form-control">
+                        	<option value="3">Correo*</option>
+                        </select>
+                      </td>
+                      <td>
+                         <input type="text" name="datocontacto[1][2]" id="input_correo" class="form-control" value="" placeholder="Correo Requerido">
+                      </td>
+                      <td>
+                        <input type="text" name="datocontacto[1][3]" class="form-control" value="">
+                      </td>
+                      <td class="text-right">
+                      </td>
+                    </tr>
+
+                    <tfoot>
+                    	<tr>
+	                      <td colspan="4">
+	                        <button type="button" id="button_agregarfilacontacto" class="btn btn-success btn-block">Agregar</button>
+	                      </td>
+	                    </tr>
+                    </tfoot>
+                  </tbody>
+                </table>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-12">
+								<h3>Información del sistema</h3>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+							    <label for="select_tipousuario" class="control-label">Tipo de usuario*</label>
+							    <select name="select_tipousuario" id="select_tipousuario" class="form-control">
+					          <option value="1">Administrador</option>
+					          <option value="2" selected="selected">Ejecutivo</option>
+					          <option value="3">Chofer</option>
+					        </select>
+							  </div>
+							</div>
+							<div class="col-md-4">
+								<div class="form-group">
+							    <label for="input_clave" class="control-label">Contraseña*</label>
+							    <input type="password" name="input_clave" id="input_clave" class="form-control" placeholder="Contraseña">
+							  </div>
+							</div>
+							<div class="col-md-2">
+								<div class="form-group">
+							    <div class="radio-custom radio-primary mb5">
+							    	<br><br>
+	                  <input type="checkbox" id="check_verclave" name="check_verclave">
+	                  <label for="check_verclave">Ver contraseña</label>
+	                </div>
+							  </div>
+							</div>
+						</div>
+						<div id="div_privilegios" class="row">
+							<div class="col-md-12">
+								<div class="text-center">
+									<h3>Privilegios</h3>
+								</div>
+								<select id="select_privilegios" multiple="multiple" size="10" name="select_privilegios[]">
+									{% for key, value in privilegios %}
+                    <option value="{{ key }}">{{ value }}</option>
+                  {% endfor %}
+                </select>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+							    <label for="textarea_comentario" class="control-label">Comentario</label>
+							    <textarea class="form-control" name="textarea_comentario" id="textarea_comentario" rows="3"></textarea>
+							  </div>
+							</div>
+						</div>
+
+						<!-- <div class="row">
+							<div class="col-md-12">
+								<div class="text-center">
+									<button type="button" id="button_guardar" class="btn btn-gradient btn-primary">Guardar</button>
+									<button type="reset" class="btn btn-gradient btn-default">limpiar</button>
+								</div>
+							</div>
+						</div> -->
+
+					</form>
+				</div>
+			</div>
+  	</div>
+  </div>
+{% endblock %}
+
+{% block footerScripts %}
+	<script src="{{ absolute_url(asset('vendor/plugins/duallistbox/jquery.bootstrap-duallistbox.min.js')) }}"></script>
+	<script src="{{ absolute_url(asset('assets/admin-tools/admin-forms/js/jquery.validate.min.js')) }}"></script>
+	<script src="{{ absolute_url(asset('vendor/plugins/select2/select2.min.js')) }}"></script>
+	<script src="{{ absolute_url(asset('assets/bundles/usuario/agregarNuevo.js')) }}"></script>
+	<script src="{{ absolute_url(asset('assets/bundles/plugin/jquery.contacto.js')) }}"></script>
+{% endblock %}

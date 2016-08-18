@@ -1,0 +1,63 @@
+{% extends "BodegaBundle:Layouts:body.html.twig" %}
+{% block content %}
+	<div class="row">
+	  	<div class="col-md-12">
+			
+			{% for producto in listaProductos %}
+			<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+				<div class="panel">
+					<div class="panel-body">
+						<div class="media targeta_qr">
+						  <div class="media-body">
+						    <h4 class="media-heading">{{ producto.nombre }}</h4>
+						    <h4 class="media-heading">{{ producto.cantidad }} unidades</h4>
+						    <a class="text-system btn_historial" href="#" data-id="{{ producto.id }}"> Historial </a>
+						  </div>
+						</div>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+
+	  	</div>
+	</div>
+
+	<div class="modal fade" id="historialProducto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">Historial</h4>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-md-12">
+							
+							<table class="table table-bordered mbn table_historial">
+					            <thead>
+					              <tr>
+					                <th>Fecha</th>
+					                <th>Usuario</th>
+					                <th>Cantidad</th>
+					                <th>Movimiento</th>
+					                <th>Detalle</th>
+					              </tr>
+					            </thead>
+					            <tbody>
+					            </tbody>
+					        </table>
+
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block footerScripts %}
+	<script src="{{ absolute_url(asset('assets/bundles/bodega/listaProducto.js')) }}"></script>
+{% endblock %}

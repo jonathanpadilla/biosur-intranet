@@ -1,0 +1,80 @@
+<?php
+
+namespace BaseBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Contacto
+ *
+ * @ORM\Table(name="contacto", indexes={@ORM\Index(name="con_tipo_fk", columns={"con_tipo_fk"}), @ORM\Index(name="cti_sucursal_fk", columns={"con_sucursal_fk"}), @ORM\Index(name="cti_usuario_fk", columns={"con_usuario_fk"}), @ORM\Index(name="cti_cliente_fk", columns={"con_cliente_fk"})})
+ * @ORM\Entity
+ */
+class Contacto
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="con_id_pk", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $conIdPk;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="con_detalle", type="string", length=50, nullable=true)
+     */
+    private $conDetalle;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="con_nombrepersona", type="string", length=100, nullable=true)
+     */
+    private $conNombrepersona;
+
+    /**
+     * @var \ContactoTipo
+     *
+     * @ORM\ManyToOne(targetEntity="ContactoTipo")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="con_tipo_fk", referencedColumnName="cti_id_pk")
+     * })
+     */
+    private $conTipoFk;
+
+    /**
+     * @var \Sucursal
+     *
+     * @ORM\ManyToOne(targetEntity="Sucursal")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="con_sucursal_fk", referencedColumnName="suc_id_pk")
+     * })
+     */
+    private $conSucursalFk;
+
+    /**
+     * @var \Usuario
+     *
+     * @ORM\ManyToOne(targetEntity="Usuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="con_usuario_fk", referencedColumnName="usu_id_pk")
+     * })
+     */
+    private $conUsuarioFk;
+
+    /**
+     * @var \Cliente
+     *
+     * @ORM\ManyToOne(targetEntity="Cliente")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="con_cliente_fk", referencedColumnName="cli_id_pk")
+     * })
+     */
+    private $conClienteFk;
+
+
+}
+

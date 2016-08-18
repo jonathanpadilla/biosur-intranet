@@ -1,0 +1,239 @@
+<form id="form_imprimir" action="{{ url('mantencion_pdf_mantencion_diaria') }}" method="post">
+	{% for formulario in listaFormularios %}
+	<div class="row" style="border:2px solid #666;">
+
+		<div class="col-md-12">
+			<h3>INFORMACIÓN GENERADOR</h3>
+		</div>
+
+		<div class="col-md-6">
+
+			<div class="row">
+				<div class="col-md-12">
+					<span>Nombre Empresa / Institución / Particular</span>
+					<div class="form-group">
+					    <!-- <label for="input_nombre" class="control-label">Nombre*</label> -->
+					    <input type="text" name="input_nombre" class="form-control" placeholder="" value="{{ formulario.empresaNombre }}">
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<table class="table" style="border:1px solid #eeeeee;">
+						<thead>
+							<tr>
+								<th>Servicios</th>
+								<th>Cantidad</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Mantención P.T.A.S.</td>
+								<td><input type="number" name="servicio1" class="form-control" value="{{ formulario.servicio1 }}"></td>
+							</tr>
+							<tr>
+								<td>Mantención de Fosa</td>
+								<td><input type="number" name="servicio2" class="form-control" value="{{ formulario.servicio2 }}"></td>
+							</tr>
+							<tr>
+								<td>Mantención de Fosa Elevadora</td>
+								<td><input type="number" name="servicio3" class="form-control" value="{{ formulario.servicio3 }}"></td>
+							</tr>
+							<tr>
+								<td>Mantención de Baño Químico</td>
+								<td><input type="number" name="servicio4" class="form-control" value="{{ formulario.servicio4 }}"></td>
+							</tr>
+							<tr>
+								<td>Instalación de Baño Químico</td>
+								<td><input type="number" name="servicio5" class="form-control" value="{{ formulario.servicio5 }}"></td>
+							</tr>
+							<tr>
+								<td>Retiro de Baño Químico</td>
+								<td><input type="number" name="servicio6" class="form-control" value="{{ formulario.servicio6 }}"></td>
+							</tr>
+							<tr>
+								<td>Arriendo de Baño Quimico</td>
+								<td><input type="number" name="servicio7" class="form-control" value="{{ formulario.servicio7 }}"></td>
+							</tr>
+							<tr>
+								<td>Varillaje - Destape</td>
+								<td><input type="number" name="servicio8" class="form-control" value="{{ formulario.servicio8 }}"></td>
+							</tr>
+							<tr>
+								<td>Visita en Terreno Supervisor</td>
+								<td><input type="number" name="servicio9" class="form-control" value="{{ formulario.servicio9 }}"></td>
+							</tr>
+							<tr>
+								<td>Horas Trabajo</td>
+								<td><input type="number" name="servicio10" class="form-control" value="{{ formulario.servicio10 }}"></td>
+							</tr>
+							<tr>
+								<td>Otros</td>
+								<td><input type="number" name="servicio11" class="form-control" value="{{ formulario.servicio11 }}"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<br>
+			<div class="row">
+				<div class="col-md-12">
+					<span>Dirección</span>
+					<div class="form-group">
+					    <input type="text" name="input_direccion" class="form-control" value="{{ formulario.direccion }}" placeholder="">
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<span>Fono</span>
+					<div class="form-group">
+					    <input type="text" name="input_fono" class="form-control" value="{{ formulario.fono }}" placeholder="">
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<span>Comuna</span>
+					<div class="form-group">
+					    <input type="text" name="input_comuna" class="form-control" value="{{ formulario.comuna }}" placeholder="">
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="col-md-6">
+
+			<div class="row">
+				<div class="col-md-12">
+					<span>Nombre Responsable</span>
+					<div class="form-group">
+					    <input type="text" name="input_nombre_responsable" class="form-control" value="{{ formulario.nombreResponsable }}" placeholder="">
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<span>Fecha</span>
+					<div class="form-group">
+					    <input type="text" name="input_fecha" class="form-control" value="{{ formulario.fecha }}" placeholder="">
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<span>Hora</span>
+					<div class="form-group">
+					    <input type="text" name="input_hora" class="form-control" value="{{ formulario.hora }}" placeholder="">
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<span>Firma</span>
+					<div class="form-group">
+					    <textarea name="" id="" class="form-control" disabled cols="30" rows="10"></textarea>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<span>Observaciones del cliente</span>
+					<div class="form-group">
+						<textarea name="txt_observacion" class="form-control" id="" cols="30" rows="10">{{ formulario.observacionCliente }}</textarea>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="col-md-12">
+			<h3>INFORMACIÓN EMPRESA</h3>
+		</div>
+		
+		<div class="col-md-6">
+
+
+			<div class="row">
+				<div class="col-md-12">
+					<span>Nombre Conductor</span>
+					<div class="form-group">
+					    <input type="text" name="input_nombre_conductor" class="form-control" value="{{ formulario.nombreConductor }}" placeholder="">
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<span>Patente Vehiculo</span>
+					<div class="form-group">
+					    <input type="text" name="input_patente" class="form-control" value="{{ formulario.patente }}" placeholder="">
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<span>Firma</span>
+					<div class="form-group">
+					    <textarea name="" id="" class="form-control" disabled cols="30" rows="10"></textarea>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="col-md-6">
+
+
+			<div class="row">
+				<div class="col-md-12">
+					<span>Horario de Servicio</span>
+					<div class="form-group">
+					    <input type="text" name="input_hora_servicio" class="form-control" value="{{ formulario.horarioServicio }}" placeholder="">
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<span>Cantidad Transportada</span>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+							    <input type="text" name="input_cantidadm3" class="form-control" value="{{ formulario.cantidadM3 }}" placeholder="M3">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+							    <input type="text" name="input_cantidadlitro" class="form-control" value="{{ formulario.cantidadLitro }}" placeholder="Litros">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<span>Observación de Biosur</span>
+					<div class="form-group">
+					    <textarea name="txt_observacion_biosur" id="" class="form-control" cols="30" rows="10">{{ formulario.observacionBiosur }}</textarea>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		
+	</div>
+	<br>
+	{% endfor %}
+</form>

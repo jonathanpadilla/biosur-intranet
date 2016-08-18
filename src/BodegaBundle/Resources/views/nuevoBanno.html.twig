@@ -1,0 +1,91 @@
+{% extends "BodegaBundle:Layouts:body.html.twig" %}
+{% block content %}
+<div class="row">
+  	<div class="col-md-12">
+  		<div class="content-header">
+        <h2> Agregar <b class="text-biosur">Productos</b> al sistema.</h2>
+        <p class="lead">El baño producto será válido para sucursal <b class="text-biosur">{{ sucursal }}</b>.</p>
+      </div>
+			<div id="alerts"></div>
+  		<div class="panel">
+				<div class="panel-heading">
+					<div class="topbar_options"><!--
+			         --><div class="btn-group">
+			                  <button type="button" id="button_guardarbanno" class="btn btn-md btn-biosur"><i class="fa fa-save"> </i> Guardar</button>
+			              </div><!--
+			         --><div class="btn-group">
+			                    <button type="button" class="btn btn-md btn-biosur dropdown-toggle" data-toggle="dropdown"><i class="fa fa-share"> </i> Ir a
+			                    <span class="caret ml5"></span>
+			                  </button>
+			                <ul class="dropdown-menu" role="menu">
+			                  <li>
+			                      <a href="{{ url('bodega_vista_listabannos') }}">Lista de productos</a>
+			                  </li>
+			                </ul>
+			            </div>
+			        </div>
+				</div>
+				<div class="panel-body">
+					<form id="form_banno" method="post" action="{{ url('bodega_ajax_guardarbanno') }}" class="form-horizontal" role="form">
+						<div class="row">
+							<div class="col-md-12">
+								<h3>Información general</h3>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-8">
+								<div class="row">
+									<div class="col-md-12">
+										<div class="form-group">
+									    <label for="input_id" class="control-label">Número de serie</label>
+									    <input type="text" name="input_id" class="form-control" placeholder="Número de serie" disabled="true" value="{{ message }}">
+									  </div>
+									</div>
+									<div class="col-md-12">
+										<div class="form-group">
+									    <label for="select_producto" class="control-label">Producto</label>
+									    <select name="select_producto" id="select_producto" class="form-control">
+							          		<option value="1">Baño (B)</option>
+							          		<option value="2">Caseta (C)</option>
+							          		<option value="3">Ducha (D)</option>
+							          		<option value="5">Lavamanos (L)</option>
+							          		<option value="4">Baño Externo (E)</option>
+							        	</select>
+									  </div>
+									</div>
+									<div id="tipo_producto" class="col-md-12">
+										<div class="form-group">
+									    <label for="select_tipoproducto" class="control-label">Tipo de producto</label>
+									    <select name="select_tipoproducto" id="select_tipoproducto" data-select="0" class="form-control">
+							        	</select>
+									  </div>
+									</div>
+									<div class="col-md-12">
+										<div class="form-group">
+									    <label for="textarea_comentario" class="control-label">Comentario</label>
+									    <textarea class="form-control" name="textarea_comentario" id="textarea_comentario" rows="3"></textarea>
+									  </div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="row">
+									<div class="col-md-12">
+										<h4>Vista previa</h4>
+										<img src="{{ qrcode_data_uri(message, { size: 200, padding: 10, label: message }) }}" />
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</form>
+				</div>
+			</div>
+  	</div>
+</div>
+{% endblock %}
+
+{% block footerScripts %}
+	<script src="{{ absolute_url(asset('assets/admin-tools/admin-forms/js/jquery.validate.min.js')) }}"></script>
+	<script src="{{ absolute_url(asset('assets/bundles/bodega/nuevoBanno.js')) }}"></script>
+{% endblock %}

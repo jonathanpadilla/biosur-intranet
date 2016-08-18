@@ -1,0 +1,29 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+parameters:
+#    parameter_name: value
+
+services:
+  service.config:
+    class:      BaseBundle\Services\Config
+    arguments:  []
+
+  service.default.data:
+    class:      BaseBundle\Services\DefaultData
+    arguments:  []
+
+  service.user.data:
+    class:      BaseBundle\Services\UserData
+    arguments:  ['@session']
+
+  service.default.text:
+    class:      BaseBundle\Services\DefaultText
+    arguments:  []
+
+  service.global.function:
+    class:      BaseBundle\Services\GlobalFunction
+    arguments:  []
+
+  # knp_snappy.image:
+    
+  # knp_snappy.pdf:

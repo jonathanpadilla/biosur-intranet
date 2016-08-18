@@ -1,0 +1,133 @@
+{% extends "MantencionBundle:Layouts:body.html.twig" %}
+{% block stylesheets %}
+	<link rel="stylesheet" type="text/css" href="{{ absolute_url(asset('vendor/plugins/nestable/nestable.css')) }}">
+{% endblock %}
+{% block content %}
+    <div class="row">
+      <div class="col-md-12">
+          <div class="panel panel-visible" id="spy3">
+            <div class="panel-heading">
+            	<div class="topbar_options"><!--
+            	--><div class="btn-group">
+                        <button type="button" class="btn btn-md btn-biosur dropdown-toggle" data-toggle="dropdown"><i class="fa fa-calendar-o"> </i> {{ dia_nombre }}
+                        <span class="caret ml5"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                     	<li>
+                        	<a href="{{ url('mantencion_vista_verruta', {dia:1, camion: camion}) }}">Lunes</a>
+                      	</li>
+                      	<li>
+                        	<a href="{{ url('mantencion_vista_verruta', {dia:2, camion: camion}) }}">Martes</a>
+                      	</li>
+                      	<li>
+                        	<a href="{{ url('mantencion_vista_verruta', {dia:3, camion: camion}) }}">Miercoles</a>
+                      	</li>
+                      	<li>
+                        	<a href="{{ url('mantencion_vista_verruta', {dia:4, camion: camion}) }}">Jueves</a>
+                      	</li>
+                      	<li>
+                        	<a href="{{ url('mantencion_vista_verruta', {dia:5, camion: camion}) }}">Viernes</a>
+                      	</li>
+                      	<li>
+                        	<a href="{{ url('mantencion_vista_verruta', {dia:6, camion: camion}) }}">Sabado</a>
+                      	</li>
+                      	<li>
+                        	<a href="{{ url('mantencion_vista_verruta', {dia:7, camion: camion}) }}">Domingo</a>
+                      	</li>
+                    </ul>
+                  </div><!--
+                  --><div class="btn-group">
+                        <button type="button" class="btn btn-md btn-biosur dropdown-toggle" data-toggle="dropdown"><i class="fa fa-truck"> </i> Chofer
+                        <span class="caret ml5"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                      {% for chofer in listaChofer %}
+                      <li>
+                          <a href="{{ url('mantencion_vista_verruta', {dia:dia, camion: chofer.id_camion}) }}">{{ chofer.nombre_chofer }} {{ chofer.apellido_chofer }}</a>
+                      </li>
+                      {% endfor %}
+                    </ul>
+                  </div><!--
+                 --><div class="btn-group">
+                        <button type="button" class="btn btn-md btn-biosur dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cloud-download"> </i> Exportar
+                        <span class="caret ml5"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                     	<li>
+                        	<a href="#">Excel</a>
+                      	</li>
+                      	<li>
+                        	<a href="#">PDF</a>
+                      	</li>
+                      	<li>
+                        	<a href="#">HTML</a>
+                      	</li>
+                    </ul>
+                  </div><!--
+             --><div class="btn-group">
+                    <button type="button" class="btn btn-md btn-biosur dropdown-toggle" data-toggle="dropdown"><i class="fa fa-share"> </i> Ir a
+                    <span class="caret ml5"></span>
+                  </button>
+                <ul class="dropdown-menu" role="menu">
+                  <li>
+                      <a href="{{ url('venta_vista_ventaservicio') }}">Nueva venta</a>
+                  </li>
+                  <li class="divider"></li>
+                  <li>
+                      <a href="#">Asignación ruta</a>
+                  </li>
+                  <li>
+                      <a href="#">Asignación baños</a>
+                  </li>
+                </ul>
+              </div>
+                </div>
+            </div>
+            <div class="panel-body">
+            	<div class="row">
+            		<div class="col-md-12">
+            			<h3>Ruta día <span id="dia" data-dia="{{ dia }}">{{ dia_nombre }}</span></h3>
+            			<h4>Chofer: <span id="camion" data-camion="{{ camion }}">{{ chofer }}</span></h4>
+            		</div>
+            	</div>
+            	<div class="row">
+      					<div class="col-md-12">
+      						<h3>Ordenar Rutas</h3>
+      						<div class="dd mb35">
+      							<ol id="sortable" class="dd-list">
+                      {% for destino in destinos %}
+      							  <li class="dd-item" id="{{ destino.ruta_id }}">
+      							  	<div class="dd-handle">{{ destino.venta_cliente }} - <small class="text-success">{{ destino.detalle_direccion }}, {{ destino.detalle_ciudad }}</small>
+                          (<span class="text-primary">
+                          {% if destino.detalle_cbano > 0 %}Baños {{ destino.detalle_cbano }},{% endif %}
+                          {% if destino.detalle_ccaseta > 0 %} Casetas {{ destino.detalle_ccaseta }},{% endif %}
+                          {% if destino.detalle_cducha > 0 %} Duchas {{ destino.detalle_cducha }},{% endif %}
+                          {% if destino.detalle_clavamano > 0 %} Lavamanos {{ destino.detalle_clavamano }},{% endif %}
+                          {% if destino.detalle_cexterno > 0 %} Externos {{ destino.detalle_cexterno }}{% endif %}
+                          </span>)
+                          <span class="pull-right fs11 fw600">{{ destino.ruta_chofer_nombre }} {{ destino.ruta_chofer_apellido }} - {{ destino.ruta_patente }}</span>
+      							  	</div>
+      							  </li>
+                      {% endfor %}
+      							</ol>
+      						</div>
+      					</div>
+  					    <div class="col-md-12">
+    						  <h3>Vista previa</h3>
+  			          <div id="mapa" style="height: 700px;"></div>
+                  <div id="data_map" data-icon="{{ absolute_url(asset('assets/img/bano1.png')) }}"></div>
+  			        </div>
+
+            	</div>
+            </div>
+          </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footerScripts %}
+	<script src="{{ absolute_url(asset('vendor/plugins/nestable/jquery.nestable.js')) }}"></script>
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAk4HzcdPciUZejfLnYpXqVPXH9wfBEAj8&callback=initialize"></script>
+  <script src="{{ absolute_url(asset('vendor/plugins/gmap/gmaps.js')) }}"></script>
+	<script src="{{ absolute_url(asset('assets/bundles/mantencion/verRuta.js')) }}"></script>
+{% endblock %}

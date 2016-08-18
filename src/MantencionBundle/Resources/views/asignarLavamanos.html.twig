@@ -1,0 +1,120 @@
+{% extends "MantencionBundle:Layouts:body.html.twig" %}
+{% block content %}
+	<div id="alerts"></div>
+  	<div class="panel invoice-panel">
+      	<div class="panel-heading">
+	        <div class="topbar_options">
+	        	<div class="btn-group">
+	                  <button type="button" class="btn btn-md btn-biosur dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cloud-download"> </i> Exportar
+	                  <span class="caret ml5"></span>
+	              </button>
+					<ul class="dropdown-menu" role="menu">
+						<li>
+						    <a href="#">Excel</a>
+						</li>
+						<li>
+						    <a href="#">PDF</a>
+						</li>
+						<li>
+						    <a href="#">HTML</a>
+						</li>
+					</ul>
+	            </div><!--
+	           --><div class="btn-group">
+	                  <button type="button" class="btn btn-md btn-biosur dropdown-toggle" data-toggle="dropdown"><i class="fa fa-share"> </i> Ir a
+	                  <span class="caret ml5"></span>
+		              </button>
+						<ul class="dropdown-menu" role="menu">
+							<li>
+							    <a href="{{ url('bodega_vista_nuevobanno') }}">Agregar Baño</a>
+							</li>
+							<li class="divider"></li>
+							<li>
+							    <a href="{{ url('venta_vista_verventa', {id: id}) }}">Ver arriendo</a>
+							</li>
+							<li>
+							    <a href="{{ url('venta_vista_listaventa') }}">Lista de arriendos</a>
+							</li>
+						</ul>
+		        </div>
+	        </div>
+      	</div>
+      	<div class="panel-body p20" id="invoice-item">
+	      	<div class="row">
+	      		<div class="col-md-12">
+	      			<h3>Asignar lavamanos y candados a baños despachados</h3>
+	      			<br>
+	      		</div>
+	      	</div>
+			<form id="form_asignarbannos" method="post" action="{{ url('mantencion_ajax_guardarasignacionbannos') }}">
+				<div class="row">
+					
+					<table class="table mbn table-striped admin-form theme-info">
+						<thead>
+							<tr class="hiden">
+								<th class="w30">#</th>
+								<th class="hidden-xs">Baños</th>
+								<th class="w175 text-right">Lavamanos</th>
+								<th class="w175 text-right">Candado</th>
+							</tr>
+						</thead>
+					  	<tbody>
+					  		{% if bannos %}
+					  		{% for key, banno in bannos %}
+								<tr>
+							      	<td class="fs15 fw600">{{ key+1 }}.</td>
+							      	<td>B{{ banno.banno_id }} - {{ banno.banno_tipo }}</td>
+							      	<td class="text-right">
+							        	<button type="button" class="btn btn-{{ banno.banno_lavamanos != 0 ? 'info':'warning' }} btn-sm fs12 button_lavamanos" data-id="{{ banno.id }}" data-contrato="{{ id }}" data-lavamanos="{{ banno.banno_lavamanos }}" data-banno="{{ banno.banno_id }}" data-toggle="modal" data-target="#modal_lavamanos">
+							        		{{ banno.banno_lavamanos != 0 ? 'L'~banno.banno_lavamanos:'Seleccionar' }}
+							        	</button>
+							      		<button type="button" class="btn btn-danger btn-sm fs12 button_quitarasignacion" data-id="{{ banno.id }}" title="Quitar asignación"><i class="fa fa-eraser"></i></button>
+							      	</td>
+							      	<td class="text-right">
+							        	<label class="option block mn">
+							          		<input type="checkbox" data-id="{{ banno.id }}" class="check_candado" {{ banno.candado ? 'checked' }}>
+							          		<span class="checkbox"></span>
+							        	</label>
+							      	</td>
+							    </tr>
+					  		{% endfor %}
+					  		{% endif %}
+					  	</tbody>
+					</table>
+				</div>
+	      	</form>
+	    </div>
+    </div>
+
+    <!-- Modal -->
+	<div class="modal fade" id="modal_lavamanos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  	<div class="modal-dialog">
+	    	<div class="modal-content">
+	    		<div class="modal-header">
+	        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        		<h4 class="modal-title" id="myModalLabel">Lavamanos asignados al arriendo</h4>
+	      		</div>
+	      		<div class="modal-body">
+	        		<table id="table_lavamanos" class="table mbn table-striped admin-form theme-info">
+						<thead>
+							<tr class="hiden">
+								<th class="w30">#</th>
+								<th class="hidden-xs">Lavamanos</th>
+								<th class="w175 text-right"></th>
+							</tr>
+						</thead>
+					  	<tbody>
+					  	</tbody>
+					</table>
+	      		</div>
+		      	<div class="modal-footer">
+		        	<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+		      	</div>
+	    	</div>
+	  	</div>
+	</div>
+{% endblock %}
+
+{% block footerScripts %}
+	<script src="{{ absolute_url(asset('assets/bundles/mantencion/asignarLavamanos.js')) }}"></script>
+{% endblock %}

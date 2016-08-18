@@ -1,0 +1,105 @@
+<?php
+
+namespace BaseBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Bannos
+ *
+ * @ORM\Table(name="bannos", indexes={@ORM\Index(name="ban_sucursal_fk", columns={"ban_sucursal_fk"}), @ORM\Index(name="ban_tipo_id", columns={"ban_tipo_id"}), @ORM\Index(name="ban_cliente_fk", columns={"ban_cliente_fk"})})
+ * @ORM\Entity
+ */
+class Bannos
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ban_id_pk", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $banIdPk;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ban_key", type="string", length=200, nullable=true)
+     */
+    private $banKey;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ban_tipo", type="string", length=2, nullable=true)
+     */
+    private $banTipo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ban_marca", type="string", length=100, nullable=true)
+     */
+    private $banMarca;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ban_modelo", type="string", length=100, nullable=true)
+     */
+    private $banModelo;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ban_asignado", type="integer", nullable=true)
+     */
+    private $banAsignado;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ban_comentario", type="text", length=65535, nullable=true)
+     */
+    private $banComentario;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="ban_fecharegistro", type="datetime", nullable=true)
+     */
+    private $banFecharegistro;
+
+    /**
+     * @var \Sucursal
+     *
+     * @ORM\ManyToOne(targetEntity="Sucursal")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ban_sucursal_fk", referencedColumnName="suc_id_pk")
+     * })
+     */
+    private $banSucursalFk;
+
+    /**
+     * @var \BannosTipo
+     *
+     * @ORM\ManyToOne(targetEntity="BannosTipo")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ban_tipo_id", referencedColumnName="bti_id_pk")
+     * })
+     */
+    private $banTipo2;
+
+    /**
+     * @var \Cliente
+     *
+     * @ORM\ManyToOne(targetEntity="Cliente")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ban_cliente_fk", referencedColumnName="cli_id_pk")
+     * })
+     */
+    private $banClienteFk;
+
+
+}
+
