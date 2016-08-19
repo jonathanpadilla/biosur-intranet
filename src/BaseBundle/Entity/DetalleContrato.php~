@@ -78,6 +78,20 @@ class DetalleContrato
     private $dcoLon;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="dco_papel", type="integer", nullable=true)
+     */
+    private $dcoPapel;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="dco_sachet", type="integer", nullable=true)
+     */
+    private $dcoSachet;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="dco_comentario", type="text", length=65535, nullable=true)

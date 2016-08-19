@@ -78,6 +78,20 @@ class DetalleContrato
     private $dcoLon;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="dco_papel", type="integer", nullable=true)
+     */
+    private $dcoPapel;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="dco_sachet", type="integer", nullable=true)
+     */
+    private $dcoSachet;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="dco_comentario", type="text", length=65535, nullable=true)
@@ -316,6 +330,54 @@ class DetalleContrato
     public function getDcoLon()
     {
         return $this->dcoLon;
+    }
+
+    /**
+     * Set dcoPapel
+     *
+     * @param integer $dcoPapel
+     *
+     * @return DetalleContrato
+     */
+    public function setDcoPapel($dcoPapel)
+    {
+        $this->dcoPapel = $dcoPapel;
+
+        return $this;
+    }
+
+    /**
+     * Get dcoPapel
+     *
+     * @return integer
+     */
+    public function getDcoPapel()
+    {
+        return $this->dcoPapel;
+    }
+
+    /**
+     * Set dcoSachet
+     *
+     * @param integer $dcoSachet
+     *
+     * @return DetalleContrato
+     */
+    public function setDcoSachet($dcoSachet)
+    {
+        $this->dcoSachet = $dcoSachet;
+
+        return $this;
+    }
+
+    /**
+     * Get dcoSachet
+     *
+     * @return integer
+     */
+    public function getDcoSachet()
+    {
+        return $this->dcoSachet;
     }
 
     /**
