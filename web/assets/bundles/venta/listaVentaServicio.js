@@ -26,5 +26,28 @@ function cargarLista()
 		// tooltips
 		$('[data-toggle="tooltip"]').tooltip();
 
+		$(".button_eliminarVenta").on('click', function(){
+
+			// variables
+			var button = $(this);
+			var id = button.data('id');
+
+			$.ajax({
+				url: Routing.generate('venta_ajax_finalizararriendo'),
+				data: {'id':id},
+				dataType: 'json',
+				method: 'post',
+			}).success(function(json){
+				if(json.result)
+				{
+					cargarLista();
+				}
+			
+			}).done(function(){
+				
+			});
+			
+		});
+
 	});
 }

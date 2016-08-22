@@ -28,7 +28,7 @@ class AgregarMantencionController extends Controller
                 $comentario = $post->comentario;
                 // $foto   = $post->foto;
 
-                if($key == '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.' && $dnnb = $em->getRepository('BaseBundle:DetcontratoNnBanno')->findOneBy(array('dnnbBannoFk' => $codigo, 'dnnbActivo' => 1 )) )
+                if($key == '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.' && $dnnb = $em->getRepository('BaseBundle:DetcontratoNnBanno')->findOneBy(array('dnnbBannoFk' => $codigo,'dnnbActivo' => 1 )) )
                 {
 
                     $dia = new \DateTime(date("Y-m-d H:i:s"));
@@ -38,7 +38,7 @@ class AgregarMantencionController extends Controller
                     $idDetalle = $dnnb->getDnnbDetcontratoFk()->getDcoIdPk();
 
                     // foraneas
-                    $fkRuta             = $em->getRepository('BaseBundle:Ruta')->findOneBy(array('rutDetallecontratoFk' => $idDetalle, 'rutDia' => $ndia ));
+                    $fkRuta             = $em->getRepository('BaseBundle:Ruta')->findOneBy(array('rutDetallecontratoFk' => $idDetalle, 'rutDia' => $ndia, 'rutActivo' => 1 ));
                     $fkDetalleContrato  = $em->getRepository('BaseBundle:DetalleContrato')->findOneBy(array('dcoIdPk' => $dnnb->getDnnbDetcontratoFk() ));
                     // $fkBanno    = $em->getRepository('BaseBundle:Bannos')->findOneBy(array('banIdPk' => $codigo ));
 

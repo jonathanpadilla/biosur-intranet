@@ -6,17 +6,17 @@ $(function(){
 
 	var win = $(window);
 
-	$("#txt_buscar").keyup(function(){
-		cargarLista();
-	});
+	// $("#txt_buscar").keyup(function(){
+	// 	cargarLista();
+	// });
 
-	// Each time the user scrolls
-	win.scroll(function() {
-		// End of the document reached?
-		if ($(document).height() - win.height() == win.scrollTop()) {
-			cargarLista();
-		}
-	});
+	// // Each time the user scrolls
+	// win.scroll(function() {
+	// 	// End of the document reached?
+	// 	if ($(document).height() - win.height() == win.scrollTop()) {
+	// 		cargarLista();
+	// 	}
+	// });
 	
 });
 

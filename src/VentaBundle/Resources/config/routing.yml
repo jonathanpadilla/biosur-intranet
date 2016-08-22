@@ -45,3 +45,9 @@ venta_ajax_verdetallemantencion:
     defaults: { _controller: VentaBundle:VerVenta:detalleMantencion }
     options:
         expose: true
+
+venta_ajax_finalizararriendo:
+    path:     /lista-venta/finalizar-venta/
+    defaults: { _controller: VentaBundle:ListaVenta:finalizarVenta }
+    options:
+        expose: true

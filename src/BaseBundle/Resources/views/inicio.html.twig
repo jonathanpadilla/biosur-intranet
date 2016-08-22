@@ -1,57 +1,59 @@
 {% extends "BaseBundle:Layouts:body.html.twig" %}
 {% block content %}
   <div class="row" id="pchart5">
-    <div class="col-md-8">
+    <div class="col-md-12">
+      <div class="panel">
+        <div class="panel-heading">
+            <span class="panel-title fw600 text-info">Detalle</span>
+          </div>
+          <div class="panel-body">
+            ...
+          </div>
+      </div>
+    </div>
+    
+    <div class="col-md-12">
       <!-- Circle Stats -->
       <div class="panel">
         <div class="panel-heading">
-          <span class="panel-title fw600 text-info">Baños arrendados</span>
+          <span class="panel-title fw600 text-info">Productos arrendados</span>
         </div>
         <div class="panel-body">
           <div class="mb20 text-right">
             <span class="fs11 text-muted">
-              <i class="fa fa-circle text-warning fs12 pr5"></i> Modelo 1</span>
+              <i class="fa fa-circle text-warning fs12 pr5"></i> Baños</span>
             <span class="fs11 text-muted ml10">
-              <i class="fa fa-circle text-info fs12 pr5"></i> Modelo 2</span>
+              <i class="fa fa-circle text-info fs12 pr5"></i> Casetas</span>
             <span class="fs11 text-muted ml10">
-              <i class="fa fa-circle text-primary fs12 pr5"></i> Con lavamanos</span>
+              <i class="fa fa-circle text-primary fs12 pr5"></i> Duchas</span>
             <span class="fs11 text-muted ml10">
-              <i class="fa fa-circle text-alert fs12 pr5"></i> Sin lavamanos</span>
+              <i class="fa fa-circle text-alert fs12 pr5"></i> Lavamanos</span>
           </div>
           <div class="row">
             <div class="col-md-3 col-sm-6">
-              <div class="info-circle" id="c1" title="Modelo 1" value="80" data-circle-color="primary"></div>
+              <div class="info-circle" id="c1" title="Baños" value="0%" data-circle-color="primary"></div>
             </div>
             <div class="col-md-3 col-sm-6">
-              <div class="info-circle" id="c2" title="Modelo 2" value="30" data-circle-color="info"></div>
+              <div class="info-circle" id="c2" title="Casetas" value="0%" data-circle-color="info"></div>
             </div>
             <div class="col-md-3 col-sm-6">
-              <div class="info-circle" id="c3" title="Con lavamanos" value="55" data-circle-color="warning"></div>
+              <div class="info-circle" id="c3" title="Duchas" value="0%" data-circle-color="warning"></div>
             </div>
             <div class="col-md-3 col-sm-6">
-              <div class="info-circle" id="c4" title="Sin lavamanos" value="49" data-circle-color="alert"></div>
+              <div class="info-circle" id="c4" title="Lavamanos" value="0%" data-circle-color="alert"></div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-md-4">
-    	<div class="panel">
-    		<div class="panel-heading">
-	          <span class="panel-title fw600 text-info">Detalle</span>
-	        </div>
-	        <div class="panel-body">
-	        	detalle
-	        </div>
-    	</div>
-    </div>
+    
   </div>
-  <div class="row">
+  <!-- <div class="row">
   	<div class="col-md-12">
   		<div class="panel" id="pchart10">
         <div class="panel-heading">
           <span class="panel-title text-info fw600">
-            <i class="fa fa-pencil hidden"></i> Baños totales</span>
+            <i class="fa fa-pencil hidden"></i> Cantidad de productos</span>
         </div>
         <div class="panel-menu">
           <div class="chart-legend" data-chart-id="#high-bars">
@@ -65,7 +67,7 @@
         </div>
       </div>
   	</div>
-  </div>
+  </div> -->
 {% endblock %}
 
 {% block footerScripts %}

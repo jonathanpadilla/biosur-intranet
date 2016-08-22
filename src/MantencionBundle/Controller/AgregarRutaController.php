@@ -54,7 +54,7 @@ class AgregarRutaController extends Controller
             		$ruta['nombre_cliente'] = $value->getDcoVentaFk()->getVenClienteFk()->getCliNombre();
 
             		// informacion de ruta
-            		$rutaVenta = $em->getRepository('BaseBundle:Ruta')->findBy(array('rutDetallecontratoFk' => $datos->id_detalle));
+            		$rutaVenta = $em->getRepository('BaseBundle:Ruta')->findBy(array('rutDetallecontratoFk' => $datos->id_detalle, 'rutActivo' => 1));
 
             		if($rutaVenta)
             		{

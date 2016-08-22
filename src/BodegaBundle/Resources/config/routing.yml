@@ -1,4 +1,8 @@
 ## VISTAS ##
+bodega_vista_inicio:
+    path:     /inicio/
+    defaults: { _controller: BodegaBundle:Inicio:inicio }
+
 bodega_vista_nuevobanno:
     path:     /nuevo-bano/
     defaults: { _controller: BodegaBundle:NuevoBanno:nuevoBanno }

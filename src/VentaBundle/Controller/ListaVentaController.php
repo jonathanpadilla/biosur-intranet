@@ -41,7 +41,7 @@ FUNCIONES AJAX
 		// variables
 		$em     = $this->getDoctrine()->getManager();
         $qb     = $em->createQueryBuilder();
-        $where	= 'v.venSucursalFk = '.$userData->getUserData()->sucursalActiva;
+        $where	= 'v.venSucursalFk = '.$userData->getUserData()->sucursalActiva.' AND v.venFinalizado = 1';
 
         // cargar lista
         $q  = $qb->select(array('v'))
@@ -66,7 +66,7 @@ FUNCIONES AJAX
                 $detDireccion = '';
                 $detServicio  = '';
                 $detCantidad  = 0;
-                if($detalleVenta = $em->getRepository('BaseBundle:DetalleContrato')->findBy(array('dcoVentaFk' => $value->getVenIdPk())))
+                if($detalleVenta = $em->getRepository('BaseBundle:DetalleContrato')->findBy(array('dcoVentaFk' => $value->getVenIdPk() )))
                 {
                     foreach($detalleVenta as $value2)
                     {
@@ -130,7 +130,7 @@ FUNCIONES AJAX
                 $cargarLista.= $bottonBannos;
         		$cargarLista.= $bottonRuta;
         		$cargarLista.= '<a href="'.$this->get('router')->generate('venta_vista_verventa', array('id' => $value->getVenIdPk() )).'" class="btn btn-sm btn-default"><i class="fa fa-search"></i></a>';
-        		$cargarLista.= '<button type="button" data-id="" class="btn btn-sm btn-danger button_eliminarVenta"><i class="fa fa-power-off"></i></button>';
+        		$cargarLista.= '<button type="button" data-id="'.$value->getVenIdPk().'" class="btn btn-sm btn-danger button_eliminarVenta"><i class="fa fa-power-off"></i></button>';
         		$cargarLista.= '</div></td>';
         		$cargarLista.= '</tr>';
 
@@ -145,4 +145,48 @@ FUNCIONES AJAX
 		echo json_encode(array('result' => $result, 'cargarlista' => $cargarLista));
 		exit;
 	}
+
+    public function finalizarVentaAction(Request $request)
+    {
+        // validar session
+        if(!$this->get('service.user.data')->ValidarSession('Arriendos')){return $this->redirectToRoute('base_vista_ingreso');}
+
+        $result = false;
+
+        if( $request->getMethod() == 'POST' )
+        {
+            $id = ($request->get('id', false))? $request->get('id'): null;
+            $em = $this->getDoctrine()->getManager();
+
+            // obtener venta para finalizarlo
+            if($venta = $em->getRepository('BaseBundle:Venta')->findOneBy(array('venIdPk' => $id )))
+            {
+                $venta->setVenFinalizado(0);
+                $em->persist($venta);
+
+                if($detalleVenta = $em->getRepository('BaseBundle:DetalleContrato')->findBy(array('dcoVentaFk' => $id )))
+                {
+                    foreach($detalleVenta as $value)
+                    {
+                        // obtener contrato nn baño para finalizarlo
+                        if($dnnb = $em->getRepository('BaseBundle:DetcontratoNnBanno')->findBy(array('dnnbDetcontratoFk' => $value->getDcoIdPk() )))
+                        {
+                            foreach($dnnb as $value2)
+                            {
+                                $value2->setDnnbActivo(0);
+                                $em->persist($value2);
+                            }
+                        }
+                    }
+                }
+
+                $em->flush();
+
+                $result = true;
+            }
+        }
+
+        echo json_encode(array('result' => $result));
+        exit;
+    }
 }

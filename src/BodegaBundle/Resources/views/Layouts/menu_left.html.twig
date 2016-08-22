@@ -8,13 +8,13 @@
 
     <!-- Start: Sidebar Left Menu -->
     <ul class="nav sidebar-menu">
-      <li class="sidebar-label pt20">Mantencion</li>
-      <li>
-        <a href="{{ url('venta_vista_inicio') }}">
+      <li class="sidebar-label pt20">Bodega</li>
+      <!-- <li class="{{ menuActivo == 'inicio' ? 'menu-active' }}">
+        <a class="item_menu" href="{{ url('venta_vista_inicio') }}">
           <span class="fa fa-home"></span>
           <span class="sidebar-title">Inicio</span>
         </a>
-      </li>
+      </li> -->
 
       <li class="{{ menuActivo == 'listaproductos' or menuActivo == 'agregarproducto' ? 'menu-active' }}">
         <a class="accordion-toggle {{ menuActivo == 'listaproductos' or menuActivo == 'agregarproducto' ? 'menu-open' }} item_menu" href="#">

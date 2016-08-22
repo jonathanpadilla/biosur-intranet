@@ -49,8 +49,8 @@ class ListaBannosController extends Controller
                     ->from('BaseBundle:Bannos', 'b')
                     ->where($where)
                     ->orderBy('b.banIdPk', 'DESC')
-                    ->setFirstResult($first)
-                    ->setMaxResults($max)
+                    // ->setFirstResult($first)
+                    // ->setMaxResults($max)
                     ->getQuery();
 
         if($resultQuery = $q->getResult())
