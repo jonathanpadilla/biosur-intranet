@@ -11,7 +11,7 @@ class VerRutasController extends Controller
     public function verRutasAction(Request $request, $dia, $camion)
     {
         // validar session
-        if(!$this->get('service.user.data')->ValidarSession()){return $this->redirectToRoute('base_vista_ingreso');}
+        if(!$this->get('service.user.data')->ValidarSession('Mantenciones')){return $this->redirectToRoute('base_vista_ingreso');}
 
         // servicios
         $defaultData = $this->get('service.default.data');
@@ -113,7 +113,7 @@ class VerRutasController extends Controller
     public function cargarRutaAction(Request $request)
     {
         // validar session
-        if(!$this->get('service.user.data')->ValidarSession()){return $this->redirectToRoute('base_vista_ingreso');}
+        if(!$this->get('service.user.data')->ValidarSession('Mantenciones')){return $this->redirectToRoute('base_vista_ingreso');}
 
         $order = $this->get('service.global.function');
 
@@ -193,7 +193,7 @@ class VerRutasController extends Controller
     public function guardarOrdenRutaAction(Request $request)
     {
         // validar session
-        if(!$this->get('service.user.data')->ValidarSession()){return $this->redirectToRoute('base_vista_ingreso');}
+        if(!$this->get('service.user.data')->ValidarSession('Mantenciones')){return $this->redirectToRoute('base_vista_ingreso');}
 
         $result = false;
 

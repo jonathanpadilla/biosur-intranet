@@ -12,7 +12,7 @@ class NuevoBannoController extends Controller
     public function nuevoBannoAction()
     {
         // validar session
-        if(!$this->get('service.user.data')->ValidarSession()){return $this->redirectToRoute('base_vista_ingreso');}
+        if(!$this->get('service.user.data')->ValidarSession('Bodega')){return $this->redirectToRoute('base_vista_ingreso');}
 
     	// variables
     	$em         = $this->getDoctrine()->getManager();
@@ -80,7 +80,7 @@ FUNCIONES AJAX
     public function guardarBannoAction(Request $request)
     {
         // validar session
-        if(!$this->get('service.user.data')->ValidarSession()){return $this->redirectToRoute('base_vista_ingreso');}
+        if(!$this->get('service.user.data')->ValidarSession('Bodega')){return $this->redirectToRoute('base_vista_ingreso');}
 
         // variables
         $result = false;
@@ -125,7 +125,7 @@ FUNCIONES AJAX
     public function cargarTipoBannoAction(Request $request)
     {
         // validar session
-        if(!$this->get('service.user.data')->ValidarSession()){return $this->redirectToRoute('base_vista_ingreso');}
+        if(!$this->get('service.user.data')->ValidarSession('Bodega')){return $this->redirectToRoute('base_vista_ingreso');}
         
         // variables
         $select     = ($request->get('select', false))? $request->get('select', false): false;

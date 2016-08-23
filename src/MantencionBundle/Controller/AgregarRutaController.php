@@ -13,7 +13,7 @@ class AgregarRutaController extends Controller
     public function agregarRutaAction(Request $request, $id)
     {
         // validar session
-        if(!$this->get('service.user.data')->ValidarSession()){return $this->redirectToRoute('base_vista_ingreso');}
+        if(!$this->get('service.user.data')->ValidarSession('Mantenciones')){return $this->redirectToRoute('base_vista_ingreso');}
 
     	if(is_numeric($id) && $id > 0)
     	{
@@ -109,7 +109,7 @@ class AgregarRutaController extends Controller
     public function guardarRutaAction(Request $request)
     {
         // validar session
-        if(!$this->get('service.user.data')->ValidarSession()){return $this->redirectToRoute('base_vista_ingreso');}
+        if(!$this->get('service.user.data')->ValidarSession('Mantenciones')){return $this->redirectToRoute('base_vista_ingreso');}
 
         // variables
         $select_camion = ($request->get('select_camion', false))? $request->get('select_camion'): null;

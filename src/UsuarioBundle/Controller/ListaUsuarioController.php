@@ -15,7 +15,7 @@ VISTAS
     public function listaUsuarioAction()
     {
         // validar session
-        if(!$this->get('service.user.data')->ValidarSession()){return $this->redirectToRoute('base_vista_ingreso');}
+        if(!$this->get('service.user.data')->ValidarSession('Usuarios')){return $this->redirectToRoute('base_vista_ingreso');}
 
         // servicios
         $defaultData = $this->get('service.default.data');
@@ -34,7 +34,7 @@ FUNCIONES AJAX
 	public function cargarListaAction(Request $request)
 	{
         // validar session
-        if(!$this->get('service.user.data')->ValidarSession()){return $this->redirectToRoute('base_vista_ingreso');}
+        if(!$this->get('service.user.data')->ValidarSession('Usuarios')){return $this->redirectToRoute('base_vista_ingreso');}
 
         // variables
 		$em     = $this->getDoctrine()->getManager();
@@ -185,7 +185,7 @@ FUNCIONES AJAX
     public function eliminarUsuarioAction(Request $request)
     {
         // validar session
-        if(!$this->get('service.user.data')->ValidarSession()){return $this->redirectToRoute('base_vista_ingreso');}
+        if(!$this->get('service.user.data')->ValidarSession('Usuarios')){return $this->redirectToRoute('base_vista_ingreso');}
 
         if($request->getMethod() == 'POST')
         {

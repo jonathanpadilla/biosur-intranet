@@ -12,6 +12,8 @@ class ImprimirSeguimientoController extends Controller
 {
     public function inicioAction()
     {
+        // validar session
+        if(!$this->get('service.user.data')->ValidarSession('Mantenciones')){return $this->redirectToRoute('base_vista_ingreso');}
 
         // servicios
         $defaultData    = $this->get('service.default.data');
@@ -29,6 +31,9 @@ AJAX
 **/
     public function cargarFormulariosAction(Request $request)
     {
+        // validar session
+        if(!$this->get('service.user.data')->ValidarSession('Mantenciones')){return $this->redirectToRoute('base_vista_ingreso');}
+
         // variables
         $listaFormularios   = array();
         $em                 = $this->getDoctrine()->getManager();
@@ -98,6 +103,9 @@ AJAX
 
     public function mantencionDiariaAction()
     {
+        // validar session
+        if(!$this->get('service.user.data')->ValidarSession('Mantenciones')){return $this->redirectToRoute('base_vista_ingreso');}
+
         // exportar a pdf
         // $html = $this->renderView('MantencionBundle:Plantillas:imprimir_ruta_semanal.html.twig');
 

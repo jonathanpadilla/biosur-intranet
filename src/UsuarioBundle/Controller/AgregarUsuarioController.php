@@ -18,7 +18,7 @@ VISTAS
     public function agregarUsuarioAction()
     {
         // validar session
-        if(!$this->get('service.user.data')->ValidarSession()){return $this->redirectToRoute('base_vista_ingreso');}
+        if(!$this->get('service.user.data')->ValidarSession('Usuarios')){return $this->redirectToRoute('base_vista_ingreso');}
 
         // variables
     	$em = $this->getDoctrine()->getManager();
@@ -70,7 +70,7 @@ FUNCIONES SIN VISTA
     public function guardarUsuarioAction(Request $request)
     {
         // validar session
-        if(!$this->get('service.user.data')->ValidarSession()){return $this->redirectToRoute('base_vista_ingreso');}
+        if(!$this->get('service.user.data')->ValidarSession('Usuarios')){return $this->redirectToRoute('base_vista_ingreso');}
         
         if( $request->getMethod() == 'POST' )
         {

@@ -14,7 +14,7 @@ class ListaBannosController extends Controller
     public function listaBannosAction()
     {
         // validar session
-        if(!$this->get('service.user.data')->ValidarSession()){return $this->redirectToRoute('base_vista_ingreso');}
+        if(!$this->get('service.user.data')->ValidarSession('Bodega')){return $this->redirectToRoute('base_vista_ingreso');}
 
     	// servicios
     	$defaultData = $this->get('service.default.data');
@@ -31,7 +31,7 @@ class ListaBannosController extends Controller
     public function cargarBannosAction(Request $request)
     {
         // validar session
-        if(!$this->get('service.user.data')->ValidarSession()){return $this->redirectToRoute('base_vista_ingreso');}
+        if(!$this->get('service.user.data')->ValidarSession('Bodega')){return $this->redirectToRoute('base_vista_ingreso');}
 
         // variables
         $first          = ($request->get('first', false))   ?$request->get('first')     :0;
@@ -124,7 +124,7 @@ class ListaBannosController extends Controller
     public function excelListaBanosAction()
     {
         // validar session
-        if(!$this->get('service.user.data')->ValidarSession()){return $this->redirectToRoute('base_vista_ingreso');}
+        if(!$this->get('service.user.data')->ValidarSession('Bodega')){return $this->redirectToRoute('base_vista_ingreso');}
 
         $userData = $this->get('service.user.data');
 

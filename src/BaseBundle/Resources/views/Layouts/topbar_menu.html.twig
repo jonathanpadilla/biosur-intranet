@@ -8,36 +8,46 @@
       </a>
     </div>
     {% endif %}
+    {% if userData.configuracion.permisos.Bodega is defined and userData.configuracion.permisos.Bodega %}
     <div class="col-xs-4 col-sm-2">
       <a href="{{ url('bodega_vista_listainsumo') }}" class="metro-tile">
         <img src="{{ absolute_url(asset('assets/img/bodega.png')) }}" alt="">
         <span class="metro-title">Bodega</span>
       </a>
     </div>
+    {% endif %}
+    {% if userData.configuracion.permisos.Clientes is defined and userData.configuracion.permisos.Clientes %}
     <div class="col-xs-4 col-sm-2">
-      <a href="#" class="metro-tile">
+      <a href="{{ url('cliente_view_listacliente') }}" class="metro-tile">
         <img src="{{ absolute_url(asset('assets/img/clientes.png')) }}" alt="">
         <span class="metro-title">Clientes</span>
       </a>
     </div>
+    {% endif %}
+    {% if userData.configuracion.permisos.Usuarios is defined and userData.configuracion.permisos.Usuarios %}
     <div class="col-xs-4 col-sm-2">
       <a href="{{ url('usuario_vista_listar') }}" class="metro-tile">
         <img src="{{ absolute_url(asset('assets/img/usuarios.png')) }}" alt="">
-        <span class="metro-title">Usuiarios</span>
+        <span class="metro-title">Usuarios</span>
       </a>
     </div>
+    {% endif %}
+    {% if userData.configuracion.permisos.Sucursales is defined and userData.configuracion.permisos.Sucursales %}
     <div class="col-xs-4 col-sm-2">
       <a href="#" class="metro-tile">
         <span class="imoon imoon-office"></span>
         <span class="metro-title">Sucursales</span>
       </a>
     </div>
+    {% endif %}
+    {% if userData.configuracion.permisos.Mantenciones is defined and userData.configuracion.permisos.Mantenciones %}
     <div class="col-xs-4 col-sm-2">
       <a href="{{ url('mantencion_vista_verruta') }}" class="metro-tile">
         <img src="{{ absolute_url(asset('assets/img/mantencion.png')) }}" alt="">
         <span class="metro-title">Mantenciones</span>
       </a>
     </div>
+    {% endif %}
     <!-- <div class="col-xs-4 col-sm-2">
       <a href="#" class="metro-tile">
         <span class="fa fa-gears"></span>

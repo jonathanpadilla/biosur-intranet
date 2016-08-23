@@ -1,0 +1,39 @@
+<aside id="sidebar_left" class="nano nano-primary affix">
+  <!-- Start: Sidebar Left Content -->
+  <div class="sidebar-left-content nano-content">
+
+    <!-- Start: Sidebar Header -->
+    {% include 'BaseBundle:Layouts:menu_left_head.html.twig' %}
+    <!-- End: Sidebar Header -->
+
+    <!-- Start: Sidebar Left Menu -->
+    <ul class="nav sidebar-menu">
+      <li class="sidebar-label pt20">Clientes</li>
+      <!-- <li>
+        <a href="pages_calendar.html">
+          <span class="fa fa-home"></span>
+          <span class="sidebar-title">Inicio</span>
+        </a>
+      </li> -->
+      <li>
+        <a href="{{ url('usuario_vista_listar') }}">
+          <span class="fa fa-list"></span>
+          <span class="sidebar-title">Lista de clientes</span>
+        </a>
+      </li>
+      <!-- <li>
+        <a href="{{ url('usuario_vista_agregar') }}">
+          <span class="glyphicons glyphicons-user_add"></span>
+          <span class="sidebar-title">Agregar</span>
+        </a>
+      </li> -->
+
+      <!-- sidebar bullets -->
+      {% include 'BaseBundle:Layouts:menu_left_foot.html.twig' %}
+    </ul>
+    <!-- End: Sidebar Menu -->
+
+  </div>
+  <!-- End: Sidebar Left Content -->
+
+</aside>

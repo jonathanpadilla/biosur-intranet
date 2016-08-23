@@ -18,7 +18,7 @@ VISTAS
     public function verAction($id)
     {
         // validar session
-        if(!$this->get('service.user.data')->ValidarSession()){return $this->redirectToRoute('base_vista_ingreso');}
+        if(!$this->get('service.user.data')->ValidarSession('Usuarios')){return $this->redirectToRoute('base_vista_ingreso');}
 
         if(is_numeric($id) && $id > 0)
         {

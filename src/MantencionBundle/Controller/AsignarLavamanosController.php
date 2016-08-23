@@ -14,7 +14,7 @@ class AsignarLavamanosController extends Controller
     public function asignarLavamanosAction(Request $request, $id)
     {
         // validar session
-        if(!$this->get('service.user.data')->ValidarSession()){return $this->redirectToRoute('base_vista_ingreso');}
+        if(!$this->get('service.user.data')->ValidarSession('Mantenciones')){return $this->redirectToRoute('base_vista_ingreso');}
 
     	// variables
     	$em     = $this->getDoctrine()->getManager();
@@ -71,7 +71,7 @@ AJAX
     public function guardarCandadoAction(Request $request)
     {
         // validar session
-        if(!$this->get('service.user.data')->ValidarSession()){return $this->redirectToRoute('base_vista_ingreso');}
+        if(!$this->get('service.user.data')->ValidarSession('Mantenciones')){return $this->redirectToRoute('base_vista_ingreso');}
 
         // variables
         $id         = ($request->get('id', false))? $request->get('id'): null;
@@ -101,7 +101,7 @@ AJAX
     public function asignacionLavamanosAction(Request $request)
     {
         // validar session
-        if(!$this->get('service.user.data')->ValidarSession()){return $this->redirectToRoute('base_vista_ingreso');}
+        if(!$this->get('service.user.data')->ValidarSession('Mantenciones')){return $this->redirectToRoute('base_vista_ingreso');}
 
         // variables
         $id             = ($request->get('id', false))          ?$request->get('id')        :null;
@@ -191,7 +191,7 @@ AJAX
     public function guardarAsignacionLavamanosAction(Request $request)
     {
         // validar session
-        if(!$this->get('service.user.data')->ValidarSession()){return $this->redirectToRoute('base_vista_ingreso');}
+        if(!$this->get('service.user.data')->ValidarSession('Mantenciones')){return $this->redirectToRoute('base_vista_ingreso');}
 
         // variables
         $id         = ($request->get('id', false))? $request->get('id'): null;
@@ -252,7 +252,7 @@ AJAX
     public function eliminarAsignacionLavamanosAction(Request $request)
     {
         // validar session
-        if(!$this->get('service.user.data')->ValidarSession()){return $this->redirectToRoute('base_vista_ingreso');}
+        if(!$this->get('service.user.data')->ValidarSession('Mantenciones')){return $this->redirectToRoute('base_vista_ingreso');}
 
         // variables
         $result = false;

@@ -13,7 +13,7 @@ class RutasController extends Controller
     public function rutasAction()
     {
         // validar session y permisos
-        if(!$this->get('service.user.data')->ValidarSession('Arriendos')){return $this->redirectToRoute('base_vista_ingreso');}
+        if(!$this->get('service.user.data')->ValidarSession('Mantenciones')){return $this->redirectToRoute('base_vista_ingreso');}
 
         // servicios
         $defaultData    = $this->get('service.default.data');
@@ -85,7 +85,7 @@ class RutasController extends Controller
     public function pdfRutaSemanalAction()
     {
         // validar session y permisos
-        if(!$this->get('service.user.data')->ValidarSession('Arriendos')){return $this->redirectToRoute('base_vista_ingreso');}
+        if(!$this->get('service.user.data')->ValidarSession('Mantenciones')){return $this->redirectToRoute('base_vista_ingreso');}
 
         // variables
         $em             = $this->getDoctrine()->getManager();
@@ -173,7 +173,7 @@ class RutasController extends Controller
     public function excelRutaSemanalAction()
     {
         // validar session y permisos
-        if(!$this->get('service.user.data')->ValidarSession('Arriendos')){return $this->redirectToRoute('base_vista_ingreso');}
+        if(!$this->get('service.user.data')->ValidarSession('Mantenciones')){return $this->redirectToRoute('base_vista_ingreso');}
 
         // variables
         $em             = $this->getDoctrine()->getManager();

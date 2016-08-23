@@ -10,7 +10,7 @@ class VerBannoController extends Controller
     public function verBannoAction($id)
     {
     	// validar session
-        if(!$this->get('service.user.data')->ValidarSession()){return $this->redirectToRoute('base_vista_ingreso');}
+        if(!$this->get('service.user.data')->ValidarSession('Bodega')){return $this->redirectToRoute('base_vista_ingreso');}
 
         // servicios
     	$defaultData = $this->get('service.default.data');

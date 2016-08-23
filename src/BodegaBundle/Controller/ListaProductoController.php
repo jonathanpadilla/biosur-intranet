@@ -13,7 +13,7 @@ class ListaProductoController extends Controller
     public function listaProductoAction()
     {
         // validar session
-        if(!$this->get('service.user.data')->ValidarSession()){return $this->redirectToRoute('base_vista_ingreso');}
+        if(!$this->get('service.user.data')->ValidarSession('Bodega')){return $this->redirectToRoute('base_vista_ingreso');}
 
         // servicios
         $defaultData = $this->get('service.default.data');
@@ -53,7 +53,7 @@ FUNCIONES AJAX
     public function historialProductoAction(Request $request)
     {
         // validar session
-        if(!$this->get('service.user.data')->ValidarSession()){return $this->redirectToRoute('base_vista_ingreso');}
+        if(!$this->get('service.user.data')->ValidarSession('Bodega')){return $this->redirectToRoute('base_vista_ingreso');}
 
         // variables
         $result             = false;

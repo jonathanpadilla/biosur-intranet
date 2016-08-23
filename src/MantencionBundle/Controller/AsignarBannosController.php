@@ -14,7 +14,7 @@ class AsignarBannosController extends Controller
     public function asignarBannosAction(Request $request, $id)
     {
         // validar session
-        if(!$this->get('service.user.data')->ValidarSession()){return $this->redirectToRoute('base_vista_ingreso');}
+        if(!$this->get('service.user.data')->ValidarSession('Mantenciones')){return $this->redirectToRoute('base_vista_ingreso');}
 
     	// variables
     	$em 			= $this->getDoctrine()->getManager();
@@ -164,7 +164,7 @@ class AsignarBannosController extends Controller
     public function guardarAsignacionAction(Request $request)
     {
         // validar session
-        if(!$this->get('service.user.data')->ValidarSession()){return $this->redirectToRoute('base_vista_ingreso');}
+        if(!$this->get('service.user.data')->ValidarSession('Mantenciones')){return $this->redirectToRoute('base_vista_ingreso');}
 
     	if( $request->getMethod() == 'POST' )
         {

@@ -11,7 +11,7 @@ class EstadisticaBannoController extends Controller
     public function graficoMenuAction(Request $request)
     {
         // validar session
-        if(!$this->get('service.user.data')->ValidarSession()){return $this->redirectToRoute('base_vista_ingreso');}
+        if(!$this->get('service.user.data')->ValidarSession('Bodega')){return $this->redirectToRoute('base_vista_ingreso');}
 
         // servicios
         $userData = $this->get('service.user.data');

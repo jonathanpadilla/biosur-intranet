@@ -13,7 +13,7 @@ class NuevoProductoController extends Controller
     public function nuevoProductoAction()
     {
         // validar session
-        if(!$this->get('service.user.data')->ValidarSession()){return $this->redirectToRoute('base_vista_ingreso');}
+        if(!$this->get('service.user.data')->ValidarSession('Bodega')){return $this->redirectToRoute('base_vista_ingreso');}
 
     	// variables
     	$em         = $this->getDoctrine()->getManager();
@@ -50,7 +50,7 @@ FUNCIONES AJAX
     public function listaProductosAction()
     {
         // validar session
-        if(!$this->get('service.user.data')->ValidarSession()){return $this->redirectToRoute('base_vista_ingreso');}
+        if(!$this->get('service.user.data')->ValidarSession('Bodega')){return $this->redirectToRoute('base_vista_ingreso');}
 
         $result     = false;
         $em         = $this->getDoctrine()->getManager();
@@ -74,7 +74,7 @@ FUNCIONES AJAX
     public function guardarProductoAction(Request $request)
     {
         // validar session
-        if(!$this->get('service.user.data')->ValidarSession()){return $this->redirectToRoute('base_vista_ingreso');}
+        if(!$this->get('service.user.data')->ValidarSession('Bodega')){return $this->redirectToRoute('base_vista_ingreso');}
 
         // variables
         $result = false;
@@ -106,6 +106,9 @@ FUNCIONES AJAX
 
     public function guardarStockProductoAction(Request $request)
     {
+        // validar session
+        if(!$this->get('service.user.data')->ValidarSession('Bodega')){return $this->redirectToRoute('base_vista_ingreso');}
+        
         // variables
         $result     = false;
         $producto   = ($request->get('producto', false))? $request->get('producto', false): false;
