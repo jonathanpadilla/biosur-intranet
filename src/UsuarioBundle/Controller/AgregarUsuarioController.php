@@ -95,6 +95,8 @@ FUNCIONES SIN VISTA
                 $privilegios = $userConfig->getAllPrivilegios('json');
             }else{
                 $privilegios = $userConfig->getArrayPrivilegios($select_privilegios, 'json');
+                $privilegios = ($privilegios)?$privilegios: '{"permisos":{}}';
+
             }
 
             $em = $this->getDoctrine()->getManager();

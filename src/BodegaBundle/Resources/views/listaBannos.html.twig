@@ -1,31 +1,19 @@
 {% extends "BodegaBundle:Layouts:body.html.twig" %}
 {% block content %}
-	<!-- <div class="row">
+	<div class="row">
 		<div class="col-md-12">
 			<div class="panel">
 				<div class="panel-body">
-					<div class="row">
-						<div class="col-md-4">
-							<input type="number" id="txt_buscar" class="form-control" placeholder="Buscar por código">
-						</div>
-						<div class="col-md-4">
-							<select class="form-control">
-							  	<option value="0" selected>Todos</option>
-							  	<option value="1">En Bodega</option>
-							  	<option value="2">Arrendado</option>
-							</select>
-						</div>
-						<div class="col-md-4">
-						</div>
-					</div>
+					<a href="{{ url('bodega_excel_listaproductos') }}" class="btn btn-biosur">Exportar a excel</a>
 				</div>
 			</div>
 		</div>
-	</div> -->
+	</div>
 	<div class="row content_lista" data-first="0" data-max="12">
 	</div>
 	<div class="row">
 		<div class="col-md-12 text-center div_load"><i class="fa fa-cog fa-spin fa-3x fa-fw"></i></div>
+		<div class="col-md-12 text-center div_btn_load" hidden><button id="btn_cargar_mas" class="btn btn-biosur">Cargar más</button></div>
 	</div>
 
 {% endblock %}

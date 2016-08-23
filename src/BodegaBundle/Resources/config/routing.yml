@@ -75,3 +75,8 @@ bodega_ajax_verhistorialproductos:
     defaults: { _controller: BodegaBundle:ListaProducto:historialProducto }
     options:
         expose: true
+
+## EXPORTAR ##
+bodega_excel_listaproductos:
+    path:     /lista-producto/exportar/excel/
+    defaults: { _controller: BodegaBundle:ListaBannos:excelListaBanos }

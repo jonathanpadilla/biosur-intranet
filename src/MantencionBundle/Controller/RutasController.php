@@ -267,14 +267,14 @@ class RutasController extends Controller
             ->setCellValue('D'.$row, 'cantidad de productos')
             ->setCellValue('E'.$row, 'chofer');
 
-        // $row++;
+        $row++;
 
         $writer = $this->get('phpexcel')->createWriter($phpExcelObject, 'Excel5');
         $response = $this->get('phpexcel')->createStreamedResponse($writer);
 
         $dispositionHeader = $response->headers->makeDisposition(
             ResponseHeaderBag::DISPOSITION_ATTACHMENT,
-            'ejemplo.xls'
+            'Ruta semanal.xls'
         );
 
         $response->headers->set('Content-Type', 'text/vnd.ms-excel; charset=utf-8');

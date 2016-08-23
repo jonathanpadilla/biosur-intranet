@@ -4,25 +4,16 @@ var max 	= 60;
 $(function(){
 	cargarLista();
 
-	var win = $(window);
-
-	// $("#txt_buscar").keyup(function(){
-	// 	cargarLista();
-	// });
-
-	// // Each time the user scrolls
-	// win.scroll(function() {
-	// 	// End of the document reached?
-	// 	if ($(document).height() - win.height() == win.scrollTop()) {
-	// 		cargarLista();
-	// 	}
-	// });
+	$("#btn_cargar_mas").on('click', function(){
+		cargarLista();
+	});
 	
 });
 
 function cargarLista()
 {
 	$(".div_load").show();
+	$(".div_btn_load").hide();
 
 	// var buscar = $("#txt_buscar").val();
 
@@ -32,9 +23,11 @@ function cargarLista()
 		dataType: 'html'
 	}).success(function(html){
 
-		first = first + 60;
+		first = first + max;
 
 		$(".div_load").hide();
+		$(".div_btn_load").show();
+		
 		$(".content_lista").append(html);
 
 	});

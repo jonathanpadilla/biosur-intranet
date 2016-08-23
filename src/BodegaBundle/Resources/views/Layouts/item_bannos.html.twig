@@ -14,8 +14,8 @@
 				    	<li><i class="fa fa-minus"></i></li>
 				    </ul> -->
 				    <div class="info-listaproductos">
-				    	<span>Jonathan Padilla</span>
-				    	<span>Direccion, Comuna</span>
+				    	<span>- {{ bano.cliente_nombre }}</span>
+				    	<span>- {{ bano.cliente_direccion }} {{ bano.cliente_comuna }}</span>
 				    </div>
 				    <a download="barcode_{{ bano.id }}" href="{{ qrcode_data_uri(bano.id , { size: 200, padding: 10, label: bano.id }) }}" class="btn btn-biosur btn-sm"><i class="fa fa-cloud-download"></i> Exportar</a>
 
