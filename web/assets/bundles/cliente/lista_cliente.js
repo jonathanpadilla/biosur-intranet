@@ -1,23 +1,17 @@
-$(fucntion(){
+$(function(){
 	cargarLista();
 });
 
 function cargarLista()
 {
 	$.ajax({
-		url: Routing.generate(''),
-		data: nData,
+		url: Routing.generate('cliente_ajax_cargarlista'),
 		dataType: 'json',
-		method: 'post',
 	}).success(function(json){
 		if(json.result)
 		{
-	
+			$("#table_listacliente tbody").append(json.lista_cliente);
 		}
-	
-		console.log(json);
-	}).done(function(){
-		
 	});
 	
 }

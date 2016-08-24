@@ -33,6 +33,41 @@ FUNCIONES AJAX
 */
 	public function cargarListaAction(Request $request)
 	{
+		 // validar session
+        if(!$this->get('service.user.data')->ValidarSession('Clientes')){return $this->redirectToRoute('base_vista_ingreso');}
 
+        // variables
+        $em     		= $this->getDoctrine()->getManager();
+        $qb     		= $em->createQueryBuilder();
+        $result 		= false;
+        $listaClientes 	= '';
+
+        // servicios
+        $userData = $this->get('service.user.data');
+
+         $q  = $qb->select(array('c'))
+            ->from('BaseBundle:Cliente', 'c')
+            ->where('c.cliSucursalFk = '.$userData->getUserData()->sucursalActiva)
+            // ->orderBy('b.banIdPk', 'ASC')
+            ->getQuery();
+
+        if($resultQuery = $q->getResult())
+        {
+        	foreach($resultQuery as $value)
+        	{
+        		$listaClientes .= '<tr>';
+        		$listaClientes .= '<td>'.$value->getCliIdPk().'</td>';
+        		$listaClientes .= '<td>'.$value->getCliNombre().'</td>';
+        		$listaClientes .= '<td>'.$value->getCliGiro().'</td>';
+        		$listaClientes .= '<td>'.$value->getCliDireccion().', '.$value->getCliComunaFk()->getComNombre().'</td>';
+        		$listaClientes .= '<td></td>';
+        		$listaClientes .= '</tr>';
+        	}
+
+        	$result = true;
+        }
+
+        echo json_encode(array('result' => $result, 'lista_cliente' => $listaClientes));
+        exit;
 	}
 }

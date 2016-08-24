@@ -15,3 +15,9 @@ cliente_ajax_clienteporid:
     defaults: { _controller: ClienteBundle:FnFormulario:obtenerClientePorId }
     options:
         expose: true
+
+cliente_ajax_cargarlista:
+    path:     /lista-cliente/cargar-lista/
+    defaults: { _controller: ClienteBundle:ListaCliente:cargarLista }
+    options:
+        expose: true
