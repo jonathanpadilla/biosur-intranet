@@ -1,3 +1,7 @@
+sucursal:
+    resource: "@SucursalBundle/Resources/config/routing.yml"
+    prefix:   /sucursal/
+
 bodega:
     resource: "@BodegaBundle/Resources/config/routing.yml"
     prefix:   /bodega/

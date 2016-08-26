@@ -2,6 +2,7 @@
 namespace BaseBundle\Services;
 
 use Symfony\Component\HttpFoundation\Session\Session;
+use \stdClass;
 
 class UserData
 {
@@ -57,6 +58,48 @@ SETTERS
 		}
 
 		return $result;
+	}
+
+	public function setSucursalActiva($id)
+	{
+		if(is_numeric($id))
+		{
+
+			$this->userData->sucursalActiva = $id;
+
+			$this->session->set('userData', json_encode($this->userData));
+
+			$result = true;
+		}else{
+			$result = false;
+		}
+
+		return $result;
+	}
+
+	public function setSucursal($arr)
+	{
+		if(is_array($arr))
+		{
+
+			$datos = new stdClass();
+
+			$datos->id 				= $arr['id'];
+			$datos->sucursalId 		= $arr['sucursalId'];
+			$datos->sucursalNombre 	= $arr['sucursalNombre'];
+			$datos->activa 			= $arr['activa'];
+
+			array_push($this->userData->sucursales, $datos);
+
+			$this->session->set('userData', json_encode($this->userData));
+
+			$result = true;
+		}else{
+			$result = false;
+		}
+
+		return $result;
+
 	}
 
 /**

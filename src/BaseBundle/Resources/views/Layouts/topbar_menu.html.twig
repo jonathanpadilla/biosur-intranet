@@ -34,7 +34,7 @@
     {% endif %}
     {% if userData.configuracion.permisos.Sucursales is defined and userData.configuracion.permisos.Sucursales %}
     <div class="col-xs-4 col-sm-2">
-      <a href="#" class="metro-tile">
+      <a href="{{ url('sucursal_view_agregarsucursal') }}" class="metro-tile">
         <span class="imoon imoon-office"></span>
         <span class="metro-title">Sucursales</span>
       </a>

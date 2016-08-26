@@ -33,6 +33,7 @@ class ListaProductoController extends Controller
                 $datos->id          = $value->getProIdPk();
                 $datos->nombre      = $value->getProNombre();
                 $datos->cantidad    = $value->getProCantidad();
+                $datos->alertStock  = ($value->getProCantidad() <= 60 )? 1: 0;
 
                 $listaProductos[] = $datos;
             }

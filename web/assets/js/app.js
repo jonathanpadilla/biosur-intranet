@@ -7,6 +7,24 @@ $(function(){
 	graficoMenu(3, 'menubar_ducha');
 	graficoMenu(4, 'menubar_externo');
 	graficoMenu(5, 'menubar_lavamano');
+
+	$(".link_sucursal").on('click', function(){
+		var button 	= $(this);
+		var id 		= button.data('id');
+
+		$.ajax({
+			url: Routing.generate('sucursal_ajax_cambiarsucursal'),
+			data: {'id': id},
+			dataType: 'json'
+		}).success(function(json){
+			if(json.result)
+			{
+				location.reload(true);
+			}
+		});
+		
+	});
+
 });
 
 function msg(tipo, mensaje)

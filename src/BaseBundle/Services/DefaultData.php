@@ -9,7 +9,7 @@ class DefaultData
 	// variables del header del sitio web
 	private $htmlHeaderTitle 		= 'Bienvenido';
 	private $htmlHeaderDescription 	= 'Intranet Biosur Ltda.';
-	private $htmlHeaderAutor 		= 'www.tuciudad.cl';
+	private $htmlHeaderAutor 		= 'jonathanpadilla09@outlook.com';
 	private $htmlHeaderKeywords 	= 'biosur, intranet, sistema';
 
 	// variables del footer del sitio web

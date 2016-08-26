@@ -21370,7 +21370,8 @@ a.bg-biosur:hover {
 }
 
 .bg-biosur li a:hover, .bg-biosur li a:focus{
-  background-color: #d86b47 !important;
+  /*background-color: #d86b47 !important;*/
+  background-color: #da5d17 !important;
 }
 
 .bg-primary {
@@ -21882,7 +21883,8 @@ fieldset[disabled] .btn-default.active {
 .btn-biosur.active,
 .open > .dropdown-toggle.btn-biosur {
   color: #ffffff;
-  background-color: #d86b47;
+  /*background-color: #d86b47;*/
+  background-color: #da5d17;
   border-color: rgba(0, 0, 0, 0.05);
 }
 .btn-biosur:active,

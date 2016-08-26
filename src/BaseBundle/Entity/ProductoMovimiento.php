@@ -36,6 +36,13 @@ class ProductoMovimiento
     private $pmoCantidad;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="pmo_precio", type="integer", nullable=true)
+     */
+    private $pmoPrecio;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="pmo_detalle", type="string", length=200, nullable=true)
@@ -137,6 +144,30 @@ class ProductoMovimiento
     public function getPmoCantidad()
     {
         return $this->pmoCantidad;
+    }
+
+    /**
+     * Set pmoPrecio
+     *
+     * @param integer $pmoPrecio
+     *
+     * @return ProductoMovimiento
+     */
+    public function setPmoPrecio($pmoPrecio)
+    {
+        $this->pmoPrecio = $pmoPrecio;
+
+        return $this;
+    }
+
+    /**
+     * Get pmoPrecio
+     *
+     * @return integer
+     */
+    public function getPmoPrecio()
+    {
+        return $this->pmoPrecio;
     }
 
     /**

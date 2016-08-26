@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	<div id="main">
+	
+	<!--HEADER-->
+	{% include 'BaseBundle:Layouts:head.html.twig' %}
+
+	<!--MENU IZQUIERDA-->
+	{% include 'SucursalBundle:Layouts:menu_left.html.twig' %}
+	
+		<div id="content_wrapper">
+			
+			<!--MENU SUPERIOR DE CONTENT-->
+			{% include 'BaseBundle:Layouts:topbar_menu.html.twig' %}
+
+			<!--CONTENIDO PRINCIPAL DEL SITIO-->
+			<div id="content" class="animated fadeIn">
+				{% block content %}{% endblock %}
+			</div>
+
+			<!--FOOTER-->
+			{% include 'BaseBundle:Layouts:footer.html.twig' %}
+
+		</div>
+		
+	</div>
+
+{% endblock %}

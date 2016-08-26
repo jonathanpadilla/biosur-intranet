@@ -1,0 +1,15 @@
+sucursal_view_agregarsucursal:
+    path:     /agregar-sucursal/
+    defaults: { _controller: SucursalBundle:AgregarSucursal:agregarSucursal }
+
+sucursal_ajax_cambiarsucursal:
+    path:     /cambiar-sucursal/
+    defaults: { _controller: SucursalBundle:CambiarSucursal:cambiarSucursal }
+    options:
+        expose: true
+
+sucursal_ajax_guardarsucursal:
+    path:     /agregar-sucursal/guardar-sucursal/
+    defaults: { _controller: SucursalBundle:AgregarSucursal:guardarSucursal }
+    options:
+        expose: true

@@ -2,9 +2,9 @@
 <li class="sidebar-label pt20">Sucursales</li>
 {% for sucursal in userData.sucursales %}
 <li class="sidebar-proj">
-  <a href="#">
-    <span class="fa fa-dot-circle-o text-biosur"></span>
-    <span class="sidebar-title {{ sucursal.activa == 1 ? 'text-biosur' }}">{{ sucursal.sucursalNombre }}</span>
+  <a href="#" data-id="{{ sucursal.sucursalId }}" class="link_sucursal">
+    <span class="fa fa-dot-circle-o {{ sucursal.sucursalId == userData.sucursalActiva ? 'text-biosur': 'text-deshabilitado' }}"></span>
+    <span class="sidebar-title {{ sucursal.sucursalId == userData.sucursalActiva ? 'text-biosur': 'text-deshabilitado' }}">{{ sucursal.sucursalNombre }}</span>
   </a>
 </li>
 {% endfor %}

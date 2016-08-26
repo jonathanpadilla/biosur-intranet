@@ -113,6 +113,7 @@ FUNCIONES AJAX
         $result     = false;
         $producto   = ($request->get('producto', false))? $request->get('producto', false): false;
         $cantidad   = ($request->get('cantidad', false))? $request->get('cantidad', false): false;
+        $precio     = ($request->get('input_precio', false))? $request->get('input_precio', false): 0;
         $comentario = ($request->get('comentario', false))? $request->get('comentario', false): false;
         $em         = $this->getDoctrine()->getManager();
 
@@ -130,6 +131,7 @@ FUNCIONES AJAX
 
             $movimiento_producto->setPmoTipo(1);
             $movimiento_producto->setPmoCantidad($cantidad);
+            $movimiento_producto->setPmoPrecio($precio);
             $movimiento_producto->setPmoDetalle($comentario);
             $movimiento_producto->setPmoFecha(new \DateTime(date("Y-m-d H:i:s")));
             $movimiento_producto->setPmoSucursalFk($fkSucursal);

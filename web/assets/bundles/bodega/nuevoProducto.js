@@ -27,13 +27,14 @@ $(function(){
 	$("#button_guardarstock").on('click', function(){
 		var select_producto 	= $("#select_producto").val();
 		var input_cantidad 		= $("#input_cantidad").val();
+		var input_precio 		= $("#input_precio").val();
 		var textarea_comentario = $("#textarea_comentario").val();
 
 		if(select_producto && input_cantidad )
 		{
 			$.ajax({
 				url: Routing.generate('bodega_ajax_guardarstockproductos'),
-				data: {'producto':select_producto, 'cantidad': input_cantidad, 'comentario': textarea_comentario },
+				data: {'producto':select_producto, 'cantidad': input_cantidad, 'input_precio': input_precio, 'comentario': textarea_comentario },
 				dataType: 'json',
 				method: 'post',
 			}).success(function(json){

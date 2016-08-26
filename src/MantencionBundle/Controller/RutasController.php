@@ -28,7 +28,7 @@ class RutasController extends Controller
         // cargar tablas
         $q  = $qb->select(array('v'))
             ->from('BaseBundle:Venta', 'v')
-            ->where('v.venFinalizado = 1')
+            ->where('v.venFinalizado = 1 AND v.venSucursalFk = '.$userData->getUserData()->sucursalActiva)
             ->getQuery();
 
         if($resultQuery = $q->getResult())

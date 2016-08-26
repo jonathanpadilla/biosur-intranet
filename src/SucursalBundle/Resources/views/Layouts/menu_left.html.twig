@@ -1,0 +1,39 @@
+<aside id="sidebar_left" class="nano nano-primary affix">
+  <!-- Start: Sidebar Left Content -->
+  <div class="sidebar-left-content nano-content">
+
+    <!-- Start: Sidebar Header -->
+    {% include 'BaseBundle:Layouts:menu_left_head.html.twig' %}
+    <!-- End: Sidebar Header -->
+
+    <!-- Start: Sidebar Left Menu -->
+    <ul class="nav sidebar-menu">
+      <li class="sidebar-label pt20">Sucursal</li>
+      <!-- <li class="{{ menuActivo == 'inicio' ? 'menu-active' }}">
+        <a class="item_menu" href="{{ url('venta_vista_inicio') }}">
+          <span class="fa fa-home"></span>
+          <span class="sidebar-title">Inicio</span>
+        </a>
+      </li> -->
+      <li class="{{ menuActivo == 'listaventa' ? 'menu-active' }}">
+        <a class="item_menu" href="{{ url('venta_vista_listaventa') }}">
+          <span class="fa fa-list"></span>
+          <span class="sidebar-title">Lista de arriendos</span>
+        </a>
+      </li>
+      <li class="{{ menuActivo == 'nuevaventa' ? 'menu-active' }}">
+        <a class="item_menu" href="{{ url('venta_vista_ventaservicio') }}">
+          <span class="fa fa-plus"></span>
+          <span class="sidebar-title">Nueva sucursal</span>
+        </a>
+      </li>
+
+      <!-- sidebar progress bars -->
+    </ul>
+      {% include 'BaseBundle:Layouts:menu_left_foot.html.twig' %}
+    <!-- End: Sidebar Menu -->
+
+  </div>
+  <!-- End: Sidebar Left Content -->
+
+</aside>

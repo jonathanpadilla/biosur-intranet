@@ -36,6 +36,13 @@ class ProductoMovimiento
     private $pmoCantidad;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="pmo_precio", type="integer", nullable=true)
+     */
+    private $pmoPrecio;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="pmo_detalle", type="string", length=200, nullable=true)

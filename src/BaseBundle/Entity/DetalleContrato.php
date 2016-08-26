@@ -64,6 +64,13 @@ class DetalleContrato
     private $dcoClavamano;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="dco_precio", type="integer", nullable=true)
+     */
+    private $dcoPrecio;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="dco_lat", type="string", length=100, nullable=true)
@@ -282,6 +289,30 @@ class DetalleContrato
     public function getDcoClavamano()
     {
         return $this->dcoClavamano;
+    }
+
+    /**
+     * Set dcoPrecio
+     *
+     * @param integer $dcoPrecio
+     *
+     * @return DetalleContrato
+     */
+    public function setDcoPrecio($dcoPrecio)
+    {
+        $this->dcoPrecio = $dcoPrecio;
+
+        return $this;
+    }
+
+    /**
+     * Get dcoPrecio
+     *
+     * @return integer
+     */
+    public function getDcoPrecio()
+    {
+        return $this->dcoPrecio;
     }
 
     /**

@@ -31,7 +31,7 @@ class VerRutasController extends Controller
 
         $q  = $qb->select(array('v'))
                 ->from('BaseBundle:Venta', 'v')
-                ->where('v.venFinalizado = 1')
+                ->where('v.venFinalizado = 1 AND v.venSucursalFk = '.$userData->getUserData()->sucursalActiva)
                 ->getQuery();
 
         if($resultQuery = $q->getResult())
@@ -117,6 +117,8 @@ class VerRutasController extends Controller
 
         $order = $this->get('service.global.function');
 
+        $userData = $this->get('service.user.data');
+
         $result         = false;
         $dia            = ($request->get('dia', false))? $request->get('dia'): null;
         $camion         = ($request->get('camion', false))? $request->get('camion'): null;
@@ -128,7 +130,7 @@ class VerRutasController extends Controller
         {
             $q  = $qb->select(array('v'))
                 ->from('BaseBundle:Venta', 'v')
-                ->where('v.venFinalizado = 1')
+                ->where('v.venFinalizado = 1 AND v.venSucursalFk = '.$userData->getUserData()->sucursalActiva)
                 ->getQuery();
 
             if($resultQuery = $q->getResult())
