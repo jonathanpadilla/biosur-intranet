@@ -1,4 +1,4 @@
-<form id="form_imprimir" action="{{ url('mantencion_pdf_mantencion_diaria') }}" method="post">
+<form id="form_imprimir" action="{{ url('mantencion_pdf_mantencion_diaria') }}" method="post" target="_blank">
 	{% for formulario in listaFormularios %}
 	<div class="row" style="border:2px solid #666;">
 
@@ -13,7 +13,7 @@
 					<span>Nombre Empresa / Institución / Particular</span>
 					<div class="form-group">
 					    <!-- <label for="input_nombre" class="control-label">Nombre*</label> -->
-					    <input type="text" name="input_nombre" class="form-control" placeholder="" value="{{ formulario.empresaNombre }}">
+					    <input type="text" name="form[{{ formulario.id }}][input_nombre]" class="form-control" placeholder="" value="{{ formulario.empresaNombre }}">
 					</div>
 				</div>
 			</div>
@@ -30,47 +30,47 @@
 						<tbody>
 							<tr>
 								<td>Mantención P.T.A.S.</td>
-								<td><input type="number" name="servicio1" class="form-control" value="{{ formulario.servicio1 }}"></td>
+								<td><input type="number" name="form[{{ formulario.id }}][servicio1]" class="form-control" value="{{ formulario.servicio1 }}"></td>
 							</tr>
 							<tr>
 								<td>Mantención de Fosa</td>
-								<td><input type="number" name="servicio2" class="form-control" value="{{ formulario.servicio2 }}"></td>
+								<td><input type="number" name="form[{{ formulario.id }}][servicio2]" class="form-control" value="{{ formulario.servicio2 }}"></td>
 							</tr>
 							<tr>
 								<td>Mantención de Fosa Elevadora</td>
-								<td><input type="number" name="servicio3" class="form-control" value="{{ formulario.servicio3 }}"></td>
+								<td><input type="number" name="form[{{ formulario.id }}][servicio3]" class="form-control" value="{{ formulario.servicio3 }}"></td>
 							</tr>
 							<tr>
 								<td>Mantención de Baño Químico</td>
-								<td><input type="number" name="servicio4" class="form-control" value="{{ formulario.servicio4 }}"></td>
+								<td><input type="number" name="form[{{ formulario.id }}][servicio4]" class="form-control" value="{{ formulario.servicio4 }}"></td>
 							</tr>
 							<tr>
 								<td>Instalación de Baño Químico</td>
-								<td><input type="number" name="servicio5" class="form-control" value="{{ formulario.servicio5 }}"></td>
+								<td><input type="number" name="form[{{ formulario.id }}][servicio5]" class="form-control" value="{{ formulario.servicio5 }}"></td>
 							</tr>
 							<tr>
 								<td>Retiro de Baño Químico</td>
-								<td><input type="number" name="servicio6" class="form-control" value="{{ formulario.servicio6 }}"></td>
+								<td><input type="number" name="form[{{ formulario.id }}][servicio6]" class="form-control" value="{{ formulario.servicio6 }}"></td>
 							</tr>
 							<tr>
 								<td>Arriendo de Baño Quimico</td>
-								<td><input type="number" name="servicio7" class="form-control" value="{{ formulario.servicio7 }}"></td>
+								<td><input type="number" name="form[{{ formulario.id }}][servicio7]" class="form-control" value="{{ formulario.servicio7 }}"></td>
 							</tr>
 							<tr>
 								<td>Varillaje - Destape</td>
-								<td><input type="number" name="servicio8" class="form-control" value="{{ formulario.servicio8 }}"></td>
+								<td><input type="number" name="form[{{ formulario.id }}][servicio8]" class="form-control" value="{{ formulario.servicio8 }}"></td>
 							</tr>
 							<tr>
 								<td>Visita en Terreno Supervisor</td>
-								<td><input type="number" name="servicio9" class="form-control" value="{{ formulario.servicio9 }}"></td>
+								<td><input type="number" name="form[{{ formulario.id }}][servicio9]" class="form-control" value="{{ formulario.servicio9 }}"></td>
 							</tr>
 							<tr>
 								<td>Horas Trabajo</td>
-								<td><input type="number" name="servicio10" class="form-control" value="{{ formulario.servicio10 }}"></td>
+								<td><input type="number" name="form[{{ formulario.id }}][servicio10]" class="form-control" value="{{ formulario.servicio10 }}"></td>
 							</tr>
 							<tr>
 								<td>Otros</td>
-								<td><input type="number" name="servicio11" class="form-control" value="{{ formulario.servicio11 }}"></td>
+								<td><input type="number" name="form[{{ formulario.id }}][servicio11]" class="form-control" value="{{ formulario.servicio11 }}"></td>
 							</tr>
 						</tbody>
 					</table>
@@ -81,7 +81,7 @@
 				<div class="col-md-12">
 					<span>Dirección</span>
 					<div class="form-group">
-					    <input type="text" name="input_direccion" class="form-control" value="{{ formulario.direccion }}" placeholder="">
+					    <input type="text" name="form[{{ formulario.id }}][input_direccion]" class="form-control" value="{{ formulario.direccion }}" placeholder="">
 					</div>
 				</div>
 			</div>
@@ -90,7 +90,7 @@
 				<div class="col-md-12">
 					<span>Fono</span>
 					<div class="form-group">
-					    <input type="text" name="input_fono" class="form-control" value="{{ formulario.fono }}" placeholder="">
+					    <input type="text" name="form[{{ formulario.id }}][input_fono]" class="form-control" value="{{ formulario.fono }}" placeholder="">
 					</div>
 				</div>
 			</div>
@@ -99,7 +99,7 @@
 				<div class="col-md-12">
 					<span>Comuna</span>
 					<div class="form-group">
-					    <input type="text" name="input_comuna" class="form-control" value="{{ formulario.comuna }}" placeholder="">
+					    <input type="text" name="form[{{ formulario.id }}][input_comuna]" class="form-control" value="{{ formulario.comuna }}" placeholder="">
 					</div>
 				</div>
 			</div>
@@ -112,7 +112,7 @@
 				<div class="col-md-12">
 					<span>Nombre Responsable</span>
 					<div class="form-group">
-					    <input type="text" name="input_nombre_responsable" class="form-control" value="{{ formulario.nombreResponsable }}" placeholder="">
+					    <input type="text" name="form[{{ formulario.id }}][input_nombre_responsable]" class="form-control" value="{{ formulario.nombreResponsable }}" placeholder="">
 					</div>
 				</div>
 			</div>
@@ -121,7 +121,7 @@
 				<div class="col-md-12">
 					<span>Fecha</span>
 					<div class="form-group">
-					    <input type="text" name="input_fecha" class="form-control" value="{{ formulario.fecha }}" placeholder="">
+					    <input type="text" name="form[{{ formulario.id }}][input_fecha]" class="form-control" value="{{ formulario.fecha }}" placeholder="">
 					</div>
 				</div>
 			</div>
@@ -130,7 +130,7 @@
 				<div class="col-md-12">
 					<span>Hora</span>
 					<div class="form-group">
-					    <input type="text" name="input_hora" class="form-control" value="{{ formulario.hora }}" placeholder="">
+					    <input type="text" name="form[{{ formulario.id }}][input_hora]" class="form-control" value="{{ formulario.hora }}" placeholder="">
 					</div>
 				</div>
 			</div>
@@ -139,19 +139,19 @@
 				<div class="col-md-12">
 					<span>Firma</span>
 					<div class="form-group">
-					    <textarea name="" id="" class="form-control" disabled cols="30" rows="10"></textarea>
+					    <textarea name="form[{{ formulario.id }}][firma1]" id="" class="form-control" disabled cols="30" rows="10"></textarea>
 					</div>
 				</div>
 			</div>
 
-			<div class="row">
+			<!-- <div class="row">
 				<div class="col-md-12">
 					<span>Observaciones del cliente</span>
 					<div class="form-group">
-						<textarea name="txt_observacion" class="form-control" id="" cols="30" rows="10">{{ formulario.observacionCliente }}</textarea>
+						<textarea name="form[{{ formulario.id }}][txt_observacion]" class="form-control" id="" cols="30" rows="10">{{ formulario.observacionCliente }}</textarea>
 					</div>
 				</div>
-			</div>
+			</div> -->
 
 		</div>
 
@@ -166,7 +166,7 @@
 				<div class="col-md-12">
 					<span>Nombre Conductor</span>
 					<div class="form-group">
-					    <input type="text" name="input_nombre_conductor" class="form-control" value="{{ formulario.nombreConductor }}" placeholder="">
+					    <input type="text" name="form[{{ formulario.id }}][input_nombre_conductor]" class="form-control" value="{{ formulario.nombreConductor }}" placeholder="">
 					</div>
 				</div>
 			</div>
@@ -175,7 +175,7 @@
 				<div class="col-md-12">
 					<span>Patente Vehiculo</span>
 					<div class="form-group">
-					    <input type="text" name="input_patente" class="form-control" value="{{ formulario.patente }}" placeholder="">
+					    <input type="text" name="form[{{ formulario.id }}][input_patente]" class="form-control" value="{{ formulario.patente }}" placeholder="">
 					</div>
 				</div>
 			</div>
@@ -184,7 +184,7 @@
 				<div class="col-md-12">
 					<span>Firma</span>
 					<div class="form-group">
-					    <textarea name="" id="" class="form-control" disabled cols="30" rows="10"></textarea>
+					    <textarea name="form[{{ formulario.id }}][firma2]" id="" class="form-control" disabled cols="30" rows="10"></textarea>
 					</div>
 				</div>
 			</div>
@@ -194,11 +194,11 @@
 		<div class="col-md-6">
 
 
-			<div class="row">
+			<!-- <div class="row">
 				<div class="col-md-12">
 					<span>Horario de Servicio</span>
 					<div class="form-group">
-					    <input type="text" name="input_hora_servicio" class="form-control" value="{{ formulario.horarioServicio }}" placeholder="">
+					    <input type="text" name="form[{{ formulario.id }}][input_hora_servicio]" class="form-control" value="{{ formulario.horarioServicio }}" placeholder="">
 					</div>
 				</div>
 			</div>
@@ -209,27 +209,65 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-							    <input type="text" name="input_cantidadm3" class="form-control" value="{{ formulario.cantidadM3 }}" placeholder="M3">
+							    <input type="text" name="form[{{ formulario.id }}][input_cantidadm3]" class="form-control" value="{{ formulario.cantidadM3 }}" placeholder="M3">
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-							    <input type="text" name="input_cantidadlitro" class="form-control" value="{{ formulario.cantidadLitro }}" placeholder="Litros">
+							    <input type="text" name="form[{{ formulario.id }}][input_cantidadlitro]" class="form-control" value="{{ formulario.cantidadLitro }}" placeholder="Litros">
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> -->
 
-			<div class="row">
+			<!-- <div class="row">
 				<div class="col-md-12">
 					<span>Observación de Biosur</span>
 					<div class="form-group">
-					    <textarea name="txt_observacion_biosur" id="" class="form-control" cols="30" rows="10">{{ formulario.observacionBiosur }}</textarea>
+					    <textarea name="form[{{ formulario.id }}][txt_observacion_biosur]" id="" class="form-control" cols="30" rows="10">{{ formulario.observacionBiosur }}</textarea>
 					</div>
 				</div>
-			</div>
+			</div> -->
 
+		</div>
+
+		<div class="col-md-12">
+			<div class="row">
+				<div class="col-md-12">
+					<table class="table" style="border:1px solid #eeeeee;">
+						<thead>
+							<tr>
+								<th>Insumo</th>
+								<th>Cantidad</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th>Papel Higiénico</th>
+								<td><input type="number" name="form[{{ formulario.id }}][insumo1]" class="form-control" value="{{ formulario.insumo1 }}"></td>
+							</tr>
+							<tr>
+								<th>Producto Químico 1 (sachet)</th>
+								<td><input type="number" name="form[{{ formulario.id }}][insumo2]" class="form-control" value="{{ formulario.insumo2 }}"></td>
+							</tr>
+							<tr>
+								<th>Producto Quimico 2 (Sachet)</th>
+								<td><input type="number" name="form[{{ formulario.id }}][insumo3]" class="form-control" value=""></td>
+							</tr>
+							<tr>
+								<th>Jabón</th>
+								<td><input type="number" name="form[{{ formulario.id }}][insumo4]" class="form-control" value=""></td>
+							</tr>
+							<tr>
+								<th>Alcohol Gel</th>
+								<td><input type="number" name="form[{{ formulario.id }}][insumo5]" class="form-control" value=""></td>
+							</tr>
+						</tbody>
+					</table>
+					
+				</div>
+			</div>
 		</div>
 
 		

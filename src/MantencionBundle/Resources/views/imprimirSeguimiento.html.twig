@@ -6,7 +6,7 @@
 			<div class="panel-heading">
 				<div class="topbar_options"><!--
 				--><div class="btn-group">
-	                  <a href="#" id="button_descargar_formulario" class="btn btn-md btn-biosur"><i class="fa fa-cloud-download"></i> Descargar</a>
+	                  <a href="#" id="button_descargar_formulario" class="btn btn-md btn-biosur"><i class="fa fa-cloud-download"></i> Imprimir</a>
 	              </div><!--
              --><div class="btn-group">
                     <button type="button" class="btn btn-md btn-biosur dropdown-toggle" data-toggle="dropdown"><i class="fa fa-share"> </i> Ir a
@@ -44,6 +44,9 @@
 						  	<option value="7">Domingo</option>
 						</select>
 					</div>
+					<div class="col-md-4">
+						<input type="text" class="form-control" id="text_fecha" value="{{ fecha }}">
+					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-12">
@@ -60,5 +63,7 @@
 {% endblock %}
 
 {% block footerScripts %}
+	<script src="{{ absolute_url(asset('vendor/plugins/moment/moment.min.js')) }}"></script>
+	<script src="{{ absolute_url(asset('vendor/plugins/datepicker/js/bootstrap-datetimepicker.js')) }}"></script>
 	<script src="{{ absolute_url(asset('assets/bundles/mantencion/imprimirSeguimiento.js')) }}"></script>
 {% endblock %}

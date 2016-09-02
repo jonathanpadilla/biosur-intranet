@@ -83,7 +83,7 @@ FUNCIONES AJAX
                 $listaMovimiento .= '<td>'.$value->getPmoUsuarioFk()->getUsuNombre().' '.$value->getPmoUsuarioFk()->getUsuApellido().'</td>';
                 $listaMovimiento .= '<td>'.$value->getPmoCantidad().'</td>';
                 $movimiento = ($value->getPmoTipo() == 1)? '<span class="label label-success">Ingreso</span>': '<span class="label label-warning">Salida</span>';
-                $listaMovimiento .= '<td>'.$movimiento.'</td>';
+                $listaMovimiento .= '<td>'.$movimiento.' $'.number_format($value->getPmoPrecio(), 0, ',', '.' ).'</td>';
                 $listaMovimiento .= '<td>'.$value->getPmoDetalle().'</td>';
                 $listaMovimiento .= '</tr>';
 

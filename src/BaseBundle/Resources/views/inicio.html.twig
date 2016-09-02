@@ -31,16 +31,16 @@
           </div>
           <div class="row">
             <div class="col-md-3 col-sm-6">
-              <div class="info-circle" id="c1" title="Baños" value="0%" data-circle-color="primary"></div>
+              <div class="info-circle" id="c1" title="{{ bannos.arrendados ? bannos.arrendados : '0' }} baños arrendados" value="{{ bannos.porcentaje ? bannos.porcentaje : '0' }}" data-circle-color="primary"></div>
             </div>
             <div class="col-md-3 col-sm-6">
-              <div class="info-circle" id="c2" title="Casetas" value="0%" data-circle-color="info"></div>
+              <div class="info-circle" id="c2" title="{{ casetas.arrendados ? casetas.arrendados : '0' }} casetas arrendadas" value="{{ casetas.porcentaje ? casetas.porcentaje : '0' }}" data-circle-color="info"></div>
             </div>
             <div class="col-md-3 col-sm-6">
-              <div class="info-circle" id="c3" title="Duchas" value="0%" data-circle-color="warning"></div>
+              <div class="info-circle" id="c3" title="{{ duchas.arrendados ? duchas.arrendados : '0' }} duchas arrendadas" value="{{ duchas.porcentaje ? duchas.porcentaje : '0' }}" data-circle-color="warning"></div>
             </div>
             <div class="col-md-3 col-sm-6">
-              <div class="info-circle" id="c4" title="Lavamanos" value="0%" data-circle-color="alert"></div>
+              <div class="info-circle" id="c4" title="{{ lavamanos.arrendados ? lavamanos.arrendados : '0' }} lavamanos arrendados" value="{{ lavamanos.porcentaje ? lavamanos.porcentaje : '0' }}" data-circle-color="alert"></div>
             </div>
           </div>
         </div>

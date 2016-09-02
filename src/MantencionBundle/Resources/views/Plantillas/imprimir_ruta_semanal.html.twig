@@ -3,6 +3,11 @@
 
 	<head>
 		<style>
+			
+			p, li{
+				font-family: Helvetica, Arial, Sans-Serif;
+				letter-spacing: 1px;
+			}
 
 			.pagina{
 				overflow: hidden;
@@ -13,6 +18,12 @@
 				width:50%;
 				float: left;
 				padding:0px;
+			}
+
+			.div-12{
+				width:100%;
+				padding:0px;
+				float:left;
 			}
 
 			.item{
@@ -30,8 +41,9 @@
 			}
 
 			.item-1 p{
-				margin-left:60px;
+				margin-left:30px;
 				margin-top:30px;
+				width: 300px;
 			}
 			/* nuevo item */
 			.item-2{
@@ -39,8 +51,9 @@
 			}
 
 			.item-2 p{
-				margin-left:70px;
-				margin-top:35px;
+				margin-left:10px;
+				margin-top:30px;
+				width:300px;
 			}
 			/* nuevo item */
 			.item-3{
@@ -51,7 +64,7 @@
 				list-style: none;
 				margin-top:0;
 				margin-bottom:0;
-				margin-left:255px;
+				margin-left:220px;
 			}
 
 			.item-3 ul li{
@@ -66,7 +79,7 @@
 				list-style: none;
 				margin-top:7px;
 				margin-bottom:0;
-				margin-left:93px;
+				margin-left:40px;
 			}
 
 			.item-4 ul li{
@@ -80,7 +93,7 @@
 			}
 
 			.item-5 span{
-				margin-left:110px;
+				margin-left:50px;
 			}
 			/* nuevo item */
 			.item-6{
@@ -88,7 +101,7 @@
 			}
 
 			.item-6 p{
-				margin-left:160px;
+				margin-left:100px;
 				margin-top:12px;
 			}
 			/* nuevo item */
@@ -97,7 +110,7 @@
 			}
 
 			.item-7 p{
-				margin-left:160px;
+				margin-left:100px;
 				margin-top:15px;
 			}
 			/* nuevo item */
@@ -106,7 +119,8 @@
 			}
 
 			.item-8 p{
-				margin-left:160px;
+				margin-left:100px;
+				width:200px;
 				/*margin-top:20px;*/
 			}
 			/* nuevo item */
@@ -116,7 +130,8 @@
 			}
 
 			.item-9 p{
-				margin-left:70px;
+				margin-left:0px;
+				width:300px;
 			}
 
 			/* nuevo item */
@@ -126,132 +141,127 @@
 			}
 
 			.item-10 p{
-				margin-left:190px;
+				margin-left:160px;
+				margin-bottom:22px;
+			}
+
+			.item-11{
+				height:100px;
+			}
+
+			.item-11 ul{
+				list-style: none;
+				margin-left: 440px;
+				margin-top:30px;
+			}
+
+			.item-11 ul li{
+				height:11.5px;
 			}
 
 			.salto{
-				height:400px;
+				height: 8px;
 			}
 
 		</style>
 	</head>
 
 	<body>
+		<div id="contenido_paginas">
+		{% set salto = 0 %}
+
+		{% for pagina in formulario %}
+
+			{% if salto == 1 %}
+				{% set div_salto = '<div class="salto"></div>' %}
+			{% else %}
+				{% set div_salto = '' %}
+				{% set salto = 1 %}
+			{% endif %}
+
+
 
 		<div class="pagina">
-
-
+			{{ div_salto|raw }}
 			<div class="div-6">
 				<div class="item item-1">
-					<p>Nombre de empresa a realizar Nombre de empresa a realizar Nombre de empresa a realizar</p>
+					<p>{{ pagina.input_nombre }}</p>
 				</div>
 				<div class="item item-3">
 					<ul>
-						<li>111</li>
-						<li>222</li>
-						<li>333</li>
-						<li></li>
-						<li>555</li>
-						<li>666</li>
-						<li></li>
-						<li>888</li>
-						<li>999</li>
-						<li>10</li>
-						<li>11</li>
+						<li>{{ pagina.servicio1 }}</li>
+						<li>{{ pagina.servicio2 }}</li>
+						<li>{{ pagina.servicio3 }}</li>
+						<li>{{ pagina.servicio4 }}</li>
+						<li>{{ pagina.servicio5 }}</li>
+						<li>{{ pagina.servicio6 }}</li>
+						<li>{{ pagina.servicio7 }}</li>
+						<li>{{ pagina.servicio8 }}</li>
+						<li>{{ pagina.servicio9 }}</li>
+						<li>{{ pagina.servicio10 }}</li>
+						<li>{{ pagina.servicio11 }}</li>
 					</ul>
 				</div>
 				<div class="item item-6">
-					<p>Nombre de empresa a realizar</p>
+					<p>{{ pagina.input_direccion }}</p>
 				</div>
 				<div class="item item-7">
-					<p>343456456546</p>
+					<p>{{ pagina.input_fono }}</p>
 				</div>
 				<div class="item item-8">
-					<p>nombre comuna sdadas asdasdas  s a sd adas a da das d sd</p>
+					<p>{{ pagina.input_comuna }}</p>
 				</div>
 				<div class="item item-10">
-					<p>nombre comuna sdadas asdasdas  s a tryrtyrtyas d ttsd trytry</p>
-					<p>fd4335</p>
+					<p>{{ pagina.input_nombre_conductor }}</p>
+					<p>{{ pagina.input_patente }}</p>
 				</div>
 			</div>
 			<div class="div-6">
 				<div class="item item-2">
-					<p>Nombre responsable Nombre responsable Nombre responsable Nombre responsable Nombre responsable Nombre responsable</p>
+					<p>{{ pagina.input_nombre_responsable }}</p>
 				</div>
 				<div class="item item-4">
 					<ul>
-						<li>11</li>
-						<li>08</li>
-						<li>2016</li>
+						{% set nueva_fecha = pagina.input_fecha|split('/') %}
+						<li>{{ nueva_fecha.0 is defined ? nueva_fecha.0 }}</li>
+						<li>{{ nueva_fecha.1 is defined ? nueva_fecha.1 }}</li>
+						<li>{{ nueva_fecha.2 is defined ? nueva_fecha.2 }}</li>
 					</ul>
 				</div>
 				<div class="item item-5">
-					<span>12:55</span>
+					<span>{{ pagina.input_hora }}</span>
 				</div>
 				<div class="item item-9">
-					<p>Observacio del cliente Observacio del cliente Observacio del cliente Observacio del cliente Observacio del cliente</p>
+					<p></p>
+				</div>
+			</div>
+			<div class="div-12">
+				<div class="item item-11">
+					<ul>
+						<li>{{ pagina.insumo1 }}</li>
+						<li>{{ pagina.insumo2 }}</li>
+						<li>{{ pagina.insumo3 }}</li>
+						<li>{{ pagina.insumo4 }}</li>
+						<li>{{ pagina.insumo5 }}</li>
+					</ul>
 				</div>
 			</div>
 	
 		</div>
-		<div class="pagina">
 
-
-			<div class="div-6">
-				<div class="item item-1">
-					<p>Nombre de empresa a realizar Nombre de empresa a realizar Nombre de empresa a realizar</p>
-				</div>
-				<div class="item item-3">
-					<ul>
-						<li>111</li>
-						<li>222</li>
-						<li>333</li>
-						<li></li>
-						<li>555</li>
-						<li>666</li>
-						<li></li>
-						<li>888</li>
-						<li>999</li>
-						<li>10</li>
-						<li>11</li>
-					</ul>
-				</div>
-				<div class="item item-6">
-					<p>Nombre de empresa a realizar</p>
-				</div>
-				<div class="item item-7">
-					<p>343456456546</p>
-				</div>
-				<div class="item item-8">
-					<p>nombre comuna sdadas asdasdas  s a sd adas a da das d sd</p>
-				</div>
-				<div class="item item-10">
-					<p>nombre comuna sdadas asdasdas  s a tryrtyrtyas d ttsd trytry</p>
-					<p>fd4335</p>
-				</div>
-			</div>
-			<div class="div-6">
-				<div class="item item-2">
-					<p>Nombre responsable Nombre responsable Nombre responsable Nombre responsable Nombre responsable Nombre responsable</p>
-				</div>
-				<div class="item item-4">
-					<ul>
-						<li>11</li>
-						<li>08</li>
-						<li>2016</li>
-					</ul>
-				</div>
-				<div class="item item-5">
-					<span>12:55</span>
-				</div>
-				<div class="item item-9">
-					<p>Observacio del cliente Observacio del cliente Observacio del cliente Observacio del cliente Observacio del cliente</p>
-				</div>
-			</div>
-	
+		{% endfor %}
+		<form id="form_pdf" action="{{ url('mantencion_pdf_reporte') }}" method="post">
+			<input type="hidden" name="json" value="{{ informe }}">
+		</form>
 		</div>
+		<script src="{{ absolute_url(asset('vendor/jquery/jquery-1.11.1.min.js')) }}"></script>
 		<script>
+		$(function(){
 			window.print();
+
+			$("#form_pdf").submit();
+		});
+
 		</script>
 		
 	</body>

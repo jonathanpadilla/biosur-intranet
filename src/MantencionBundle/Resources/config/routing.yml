@@ -95,6 +95,10 @@ mantencion_pdf_rutasemanal:
     path:     /exportar/pdf/ruta-semanal/
     defaults: { _controller: MantencionBundle:Rutas:pdfRutaSemanal }
 
+mantencion_pdf_reporte:
+    path:     /exportar/pdf/mantencion-diaria-pdf/
+    defaults: { _controller: MantencionBundle:ImprimirSeguimiento:mantencionDiariaPdf }
+
 mantencion_excel_rutasemanal:
     path:     /exportar/excel/ruta-semanal/
     defaults: { _controller: MantencionBundle:Rutas:excelRutaSemanal }

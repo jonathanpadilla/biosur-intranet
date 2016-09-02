@@ -351,6 +351,8 @@ FUNCIONES AJAX
                             $detalle->setDcoClavamano($value['cantidadlavamano']);
                             $detalle->setDcoLat($value['lat']);
                             $detalle->setDcoLon($value['lon']);
+                            $detalle->setDcoPapel($value['cantidadbano']);
+                            $detalle->setDcoSachet($value['cantidadbano']);
                             $em->persist($detalle);
                             $em->flush();
 
