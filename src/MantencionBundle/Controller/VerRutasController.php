@@ -84,7 +84,7 @@ class VerRutasController extends Controller
         }
 
         // camiones
-        if($chofer = $em->getRepository('BaseBundle:Camion')->findBy(array('camActivo' => 1, 'camSucursalFk' => 2 )) )
+        if($chofer = $em->getRepository('BaseBundle:Camion')->findBy(array('camActivo' => 1, 'camSucursalFk' => $userData->getUserData()->sucursalActiva )) )
         {
             foreach($chofer as $value)
             {

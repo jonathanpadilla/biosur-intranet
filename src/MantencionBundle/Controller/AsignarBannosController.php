@@ -34,7 +34,7 @@ class AsignarBannosController extends Controller
         }
 
         // cargar select
-    	if($bannos = $em->getRepository('BaseBundle:Bannos')->findBy(array('banSucursalFk' => 2)))
+    	if($bannos = $em->getRepository('BaseBundle:Bannos')->findBy(array('banSucursalFk' => $userData->getUserData()->sucursalActiva)))
     	{
     		foreach($bannos as $value)
     		{
@@ -177,8 +177,8 @@ class AsignarBannosController extends Controller
             $detalle        = '';
 
             // foranea
-            $fkSucursal = $em->getRepository('BaseBundle:Sucursal')->findOneBy(array('sucIdPk' => 2 ));
-            $fkUsuario  = $em->getRepository('BaseBundle:Usuario')->findOneBy(array('usuIdPk' => 30 ));
+            $fkSucursal = $em->getRepository('BaseBundle:Sucursal')->findOneBy(array('sucIdPk' => $userData->getUserData()->sucursalActiva ));
+            $fkUsuario  = $em->getRepository('BaseBundle:Usuario')->findOneBy(array('usuIdPk' => $userData->getUserData()->id ));
 
             foreach($select_bannos as $key => $value)
             {

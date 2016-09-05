@@ -132,7 +132,10 @@ FUNCIONES AJAX
         $em         = $this->getDoctrine()->getManager();
         $options    = '';
 
-        $tipoBanno = $em->getRepository('BaseBundle:BannosTipo')->findBy(array('btiProducto' => $request->get('producto', false), 'btiActivo' => 1, 'btiSucursalFk' => 2));
+        // servicios
+        $userData = $this->get('service.user.data');
+
+        $tipoBanno = $em->getRepository('BaseBundle:BannosTipo')->findBy(array('btiProducto' => $request->get('producto', false), 'btiActivo' => 1, 'btiSucursalFk' => $userData->getUserData()->sucursalActiva));
 
         if($tipoBanno)
         {

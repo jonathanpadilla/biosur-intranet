@@ -89,6 +89,7 @@ FUNCIONES SIN VISTA
 
             // cargar privilegios
             $userConfig = $this->get('service.config');
+            $userData = $this->get('service.user.data');
 
             if($select_tipousuario == 1)
             {
@@ -126,7 +127,7 @@ FUNCIONES SIN VISTA
             if($usuario->getUsuIdPk())
             {
                 // sucursal
-                $sucIdPk = 2;
+                $sucIdPk = $userData->getUserData()->sucursalActiva;
                 $fkSucursal = $em->getRepository('BaseBundle:Sucursal')
                                 ->find($sucIdPk);
 

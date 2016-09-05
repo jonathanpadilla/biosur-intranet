@@ -75,7 +75,7 @@ class AgregarRutaController extends Controller
             	}
 
             	// cargar camiones
-            	$camiones = $em->getRepository('BaseBundle:Camion')->findBy(array('camSucursalFk' => 2));
+            	$camiones = $em->getRepository('BaseBundle:Camion')->findBy(array('camSucursalFk' => $userData->getUserData()->sucursalActiva));
 
             	$listaCamiones = array();
             	if($camiones)
@@ -119,12 +119,12 @@ class AgregarRutaController extends Controller
         if( $select_camion )
         {
             $em = $this->getDoctrine()->getManager();
+            $userData       = $this->get('service.user.data');
 
-            $fkSucursal = $em->getRepository('BaseBundle:Sucursal')->findOneBy(array('sucIdPk' => 2 ));
-            $fkUsuario  = $em->getRepository('BaseBundle:Usuario')->findOneBy(array('usuIdPk' => 30 ));
+            $fkSucursal = $em->getRepository('BaseBundle:Sucursal')->findOneBy(array('sucIdPk' => $userData->getUserData()->sucursalActiva ));
+            $fkUsuario  = $em->getRepository('BaseBundle:Usuario')->findOneBy(array('usuIdPk' => $userData->getUserData()->id ));
 
             // registrar en bitacora de ventas y logs de usuario
-            $userData       = $this->get('service.user.data');
 
             // recorrer el detalle
             foreach($select_camion as $key => $value)

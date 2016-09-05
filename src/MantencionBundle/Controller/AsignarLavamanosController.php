@@ -197,11 +197,12 @@ AJAX
         $id         = ($request->get('id', false))? $request->get('id'): null;
         $lavamanos  = ($request->get('lavamano', false))? $request->get('lavamano'): null;
         $result     = false;
+        $userData   = $this->get('service.user.data');
 
         if($id)
         {
             $em = $this->getDoctrine()->getManager();
-            $fkSucursal = $em->getRepository('BaseBundle:Sucursal')->findOneBy(array('sucIdPk' => 2 ));
+            $fkSucursal = $em->getRepository('BaseBundle:Sucursal')->findOneBy(array('sucIdPk' => $userData->getUserData()->sucursalActiva ));
 
             if($dnnb = $em->getRepository('BaseBundle:DetcontratoNnBanno')->findOneBy(array('dnnbIdPk' => $id)))
             {
@@ -217,7 +218,6 @@ AJAX
 
                     // registrar en bitacora de ventas y logs de usuario
                     // bitacora venta
-                    $userData       = $this->get('service.user.data');
                     $defaultText    = $this->get('service.default.text');
                     $defaultText->setBitacoraVenta('asignar_lavamanos', array('lavamanos' => str_pad($fkLavamanos->getBanIdPk(),7, '0', STR_PAD_LEFT), 'banno' => str_pad($dnnb->getDnnbBannoFk()->getBanIdPk(),7, '0', STR_PAD_LEFT), 'usuario' => $userData->getUserData()->nombre.' '.$userData->getUserData()->apellido ));
 
