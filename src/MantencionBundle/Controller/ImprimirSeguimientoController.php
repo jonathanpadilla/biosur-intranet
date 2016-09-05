@@ -133,11 +133,22 @@ AJAX
         $total_insumo5 = 0;
         foreach($form as $value)
         {
-            $informe['chofer'][$value['input_nombre_conductor']]['papel']      = ( isset($informe[$value['input_nombre_conductor']]['papel']) )       ?$informe[$value['input_nombre_conductor']]['papel'] + $value['insumo1']    :$value['insumo1'];
-            $informe['chofer'][$value['input_nombre_conductor']]['sachet1']    = ( isset($informe[$value['input_nombre_conductor']]['sachet1']) )     ?$informe[$value['input_nombre_conductor']]['sachet1'] + $value['insumo2']  :$value['insumo2'];
-            $informe['chofer'][$value['input_nombre_conductor']]['sachet2']    = ( isset($informe[$value['input_nombre_conductor']]['sachet2']) )     ?$informe[$value['input_nombre_conductor']]['sachet2'] + $value['insumo3']  :$value['insumo3'];
-            $informe['chofer'][$value['input_nombre_conductor']]['jabon']      = ( isset($informe[$value['input_nombre_conductor']]['jabon']) )       ?$informe[$value['input_nombre_conductor']]['jabon'] + $value['insumo4']    :$value['insumo4'];
-            $informe['chofer'][$value['input_nombre_conductor']]['alcohol']    = ( isset($informe[$value['input_nombre_conductor']]['alcohol']) )     ?$informe[$value['input_nombre_conductor']]['alcohol'] + $value['insumo5']  :$value['insumo5'];
+            if(!isset($informe['chofer'][$value['input_nombre_conductor']]))
+            {
+                // echo $value['input_nombre_conductor'].' - ';
+                $informe['chofer'][$value['input_nombre_conductor']]['papel']       = 0;
+                $informe['chofer'][$value['input_nombre_conductor']]['sachet1']     = 0;
+                $informe['chofer'][$value['input_nombre_conductor']]['sachet2']     = 0;
+                $informe['chofer'][$value['input_nombre_conductor']]['jabon']       = 0;
+                $informe['chofer'][$value['input_nombre_conductor']]['alcohol']     = 0;
+            }
+
+
+            $informe['chofer'][$value['input_nombre_conductor']]['papel']      += $value['insumo1'];
+            $informe['chofer'][$value['input_nombre_conductor']]['sachet1']    += $value['insumo2'];
+            $informe['chofer'][$value['input_nombre_conductor']]['sachet2']    += $value['insumo3'];
+            $informe['chofer'][$value['input_nombre_conductor']]['jabon']      += $value['insumo4'];
+            $informe['chofer'][$value['input_nombre_conductor']]['alcohol']    += $value['insumo5'];
 
             $total_insumo1 += $value['insumo1'];
             $total_insumo2 += $value['insumo2'];
@@ -147,13 +158,14 @@ AJAX
         }
 
         $informe['total'] = array(
-            'insumo1' => $total_insumo1,
-            'insumo2' => $total_insumo2,
-            'insumo3' => $total_insumo3,
-            'insumo4' => $total_insumo4,
-            'insumo5' => $total_insumo5,
+            'papel' => $total_insumo1,
+            'sachet1' => $total_insumo2,
+            'sachet2' => $total_insumo3,
+            'jabon' => $total_insumo4,
+            'alcohol' => $total_insumo5,
             );
-        
+
+        // echo '<pre>';print_r($informe);exit;
         $this->agregarStockInsumo(1, $total_insumo1, 'Insumos para mntención diaria');
         $this->agregarStockInsumo(2, $total_insumo2, 'Insumos para mntención diaria');
         $this->agregarStockInsumo(3, $total_insumo4, 'Insumos para mntención diaria');
@@ -168,38 +180,42 @@ AJAX
 
     public function mantencionDiariaPdfAction(Request $request)
     {
-        // $informe = ($request->get('json', false))? $request->get('json'): array();
+        $informe = ($request->get('json', false))? $request->get('json'): array();
 
-        // $html = $this->renderView('MantencionBundle:Plantillas:imprimir_ruta_semanal_pdf.html.twig', array(
-        //     'informe' => json_decode($informe)
-        // ));
+        // $choferes   = json_decode($informe);
 
-        // $response = new Response (
-        //     $this->get('knp_snappy.pdf')->getOutputFromHtml($html,
-        //         array(
-        //             'lowquality' => false,
-        //             'print-media-type' => true,
-        //             'encoding' => 'utf-8',
-        //             'page-size' => 'Letter',
-        //             'outline-depth' => 8,
-        //             'orientation' => 'Portrait',
-        //             // 'orientation' => 'Landscape',
-        //             'title'=> 'Informe de Mantencion',
-        //             'header-right'=>'',
-        //             'header-font-size'=>0,
-        //             )),
-        //             200,
-        //         array(
-        //             'Content-Type'          =>'/',
-        //             'Content-Disposition'   => 'attachment; filename="Informe de Mantencion.pdf"',
-        //         )
-        //     );
+        // echo '<pre>';print_r(json_decode($informe, true));exit;
 
-        // return $response;
-
-        return $this->render('MantencionBundle:Plantillas:imprimir_ruta_semanal_pdf.html.twig', array(
-        //     'informe' => json_decode($informe)
+        $html = $this->renderView('MantencionBundle:Plantillas:imprimir_ruta_semanal_pdf.html.twig', array(
+            'informe' => json_decode($informe, true)
         ));
+
+        $response = new Response (
+            $this->get('knp_snappy.pdf')->getOutputFromHtml($html,
+                array(
+                    'lowquality' => false,
+                    'print-media-type' => true,
+                    'encoding' => 'utf-8',
+                    'page-size' => 'Letter',
+                    'outline-depth' => 8,
+                    'orientation' => 'Portrait',
+                    // 'orientation' => 'Landscape',
+                    'title'=> 'Informe de Mantencion',
+                    'header-right'=>'',
+                    'header-font-size'=>0,
+                    )),
+                    200,
+                array(
+                    'Content-Type'          =>'/',
+                    'Content-Disposition'   => 'attachment; filename="Informe de Mantencion.pdf"',
+                )
+            );
+
+        return $response;
+
+        // return $this->render('MantencionBundle:Plantillas:imprimir_ruta_semanal_pdf.html.twig', array(
+        // //     'informe' => json_decode($informe)
+        // ));
     }
 
     private function sumaFecha($fecha,$dia)
