@@ -166,7 +166,7 @@
 				<div class="col-md-12">
 					<span>Nombre Conductor</span>
 					<div class="form-group">
-					    <input type="text" name="form[{{ formulario.id }}][input_nombre_conductor]" class="form-control" value="{{ formulario.nombreConductor }}" placeholder="">
+					    <input type="text" name="form[{{ formulario.id }}][input_nombre_conductor]" class="form-control" value="{{ formulario.nombreConductor ? formulario.nombreConductor : '' }}" placeholder="">
 					</div>
 				</div>
 			</div>
@@ -175,7 +175,7 @@
 				<div class="col-md-12">
 					<span>Patente Vehiculo</span>
 					<div class="form-group">
-					    <input type="text" name="form[{{ formulario.id }}][input_patente]" class="form-control" value="{{ formulario.patente }}" placeholder="">
+					    <input type="text" name="form[{{ formulario.id }}][input_patente]" class="form-control" value="{{ formulario.patente ? formulario.patente : '' }}" placeholder="">
 					</div>
 				</div>
 			</div>
@@ -248,7 +248,7 @@
 								<td><input type="number" name="form[{{ formulario.id }}][insumo1]" class="form-control" value="{{ formulario.insumo1 }}"></td>
 							</tr>
 							<tr>
-								<th>Producto Químico 1 (sachet)</th>
+								<th>Desinfectante (sachet)</th>
 								<td><input type="number" name="form[{{ formulario.id }}][insumo2]" class="form-control" value="{{ formulario.insumo2 }}"></td>
 							</tr>
 							<tr>

@@ -42,7 +42,7 @@ FUNCIONES AJAX
         $limite = 50;
         $pagina = ($request->get('pagina', 0))?$request->get('pagina')*$limite:0;
 
-        $where = 'u.usuVinculado <> 0';
+        $where = 'u.usuVinculado <> 0 AND u.usuTipo <> 0';
         // filtros
         if($request->getMethod() == 'POST')
         {
@@ -176,6 +176,7 @@ FUNCIONES AJAX
         }else{
             $result         = false;
             $cargarLista    = false;
+            $paginador      = '';
         }
 
 		echo json_encode(array('result' => $result, 'lista' => $cargarLista, 'paginador' => $paginador));

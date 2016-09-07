@@ -18,42 +18,52 @@
       <li class="sidebar-label pt20">Módulos</li>
       {% if userData.configuracion.permisos.Arriendos is defined and userData.configuracion.permisos.Arriendos %}
       <li>
-        <a href="{{ url('venta_vista_inicio') }}">
-          <span class="fa fa-shopping-cart"></span>
+        <a href="{{ url('venta_vista_listaventa') }}">
+          <img src="{{ absolute_url(asset('assets/img/arriendo.png')) }}" alt="" style="width: 16px;margin-left: 19px;">
           <span class="sidebar-title">Arriendos</span>
         </a>
       </li>
       {% endif %}
+      {% if userData.configuracion.permisos.Bodega is defined and userData.configuracion.permisos.Bodega %}
       <li>
-        <a href="{{ url('base_vista_homepage') }}">
-          <span class="fa fa-users"></span>
+        <a href="{{ url('bodega_vista_listainsumo') }}">
+          <img src="{{ absolute_url(asset('assets/img/bodega.png')) }}" alt="" style="width: 16px;margin-left: 19px;">
+          <span class="sidebar-title">Bodega</span>
+        </a>
+      </li>
+      {% endif %}
+      {% if userData.configuracion.permisos.Clientes is defined and userData.configuracion.permisos.Clientes %}
+      <li>
+        <a href="{{ url('cliente_view_listacliente') }}">
+          <img src="{{ absolute_url(asset('assets/img/clientes.png')) }}" alt="" style="width: 16px;margin-left: 19px;">
           <span class="sidebar-title">Clientes</span>
         </a>
       </li>
+      {% endif %}
+      {% if userData.configuracion.permisos.Usuarios is defined and userData.configuracion.permisos.Usuarios %}
       <li>
-        <a href="{{ url('base_vista_homepage') }}">
-          <span class="glyphicon glyphicon-user"></span>
+        <a href="{{ url('usuario_vista_listar') }}">
+          <img src="{{ absolute_url(asset('assets/img/usuarios.png')) }}" alt="" style="width: 16px;margin-left: 19px;">
           <span class="sidebar-title">Usuarios</span>
         </a>
       </li>
+      {% endif %}
+      {% if userData.configuracion.permisos.Sucursales is defined and userData.configuracion.permisos.Sucursales %}
       <li>
-        <a href="{{ url('base_vista_homepage') }}">
+        <a href="{{ url('sucursal_view_agregarsucursal') }}">
           <span class="imoon imoon-office"></span>
           <span class="sidebar-title">Sucursales</span>
         </a>
       </li>
+      {% endif %}
+      {% if userData.configuracion.permisos.Mantenciones is defined and userData.configuracion.permisos.Mantenciones %}
       <li>
-        <a href="{{ url('base_vista_homepage') }}">
-          <span class="fa fa-wrench"></span>
+        <a href="{{ url('mantencion_vista_rutas') }}">
+          <img src="{{ absolute_url(asset('assets/img/mantencion.png')) }}" alt="" style="width: 16px;margin-left: 19px;">
           <span class="sidebar-title">Mantenciones</span>
         </a>
       </li>
-      <li>
-        <a href="{{ url('base_vista_homepage') }}">
-          <span class="fa fa-gears"></span>
-          <span class="sidebar-title">Configuración</span>
-        </a>
-      </li>
+      {% endif %}
 
       <!-- sidebar bullets -->
       {% include 'BaseBundle:Layouts:menu_left_foot.html.twig' %}

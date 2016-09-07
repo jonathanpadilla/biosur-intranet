@@ -69,6 +69,8 @@ AJAX
                     }
                 }
 
+$conductor = ($value->getRutCamionFk())? $value->getRutCamionFk()->getCamUsuarioFk()->getUsuNombre().' '.$value->getRutCamionFk()->getCamUsuarioFk()->getUsuApellido():'';
+
                 // fecha
                 // $fecha = date('d/m/Y');
 
@@ -90,8 +92,8 @@ AJAX
                 $datos->direccion           = $value->getRutDetallecontratoFk()->getDcoDireccion();
                 $datos->fono                = $fono;
                 $datos->comuna              = $value->getRutDetallecontratoFk()->getDcoComunaFk()->getComNombre();
-                $datos->nombreConductor     = $value->getRutCamionFk()->getCamUsuarioFk()->getUsuNombre().' '.$value->getRutCamionFk()->getCamUsuarioFk()->getUsuApellido();
-                $datos->patente             = $value->getRutCamionFk()->getCamPatente();
+                $datos->nombreConductor     = $conductor;
+                $datos->patente             = ($value->getRutCamionFk())?$value->getRutCamionFk()->getCamPatente():'';
                 $datos->firma               = '';
                 $datos->nombreResponsable   = '';
                 $datos->fecha               = $fecha;
@@ -111,9 +113,9 @@ AJAX
 
         }
 
-        // echo '<pre>';print_r($listaFormularios);exit;
+        //echo '<pre>';print_r($listaFormularios);exit;
 
-        return $this->render('MantencionBundle:plantillas:formularios.html.twig', array(
+        return $this->render('MantencionBundle:Plantillas:formularios.html.twig', array(
             'listaFormularios' => $listaFormularios
             ));
     }

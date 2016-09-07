@@ -10,10 +10,10 @@ class DefaultData
 	private $htmlHeaderTitle 		= 'Bienvenido';
 	private $htmlHeaderDescription 	= 'Intranet Biosur Ltda.';
 	private $htmlHeaderAutor 		= 'jonathanpadilla09@outlook.com';
-	private $htmlHeaderKeywords 	= 'biosur, intranet, sistema';
+	private $htmlHeaderKeywords 	= 'biosur, intranet, sistema, bbiosur';
 
 	// variables del footer del sitio web
-	private $htmlFooterCopyright 	= '© 2016 Todos los derechos reservados | Intranet BioSur | Desarrollado por www.tuciudad.cl';
+	private $htmlFooterCopyright 	= '© 2016 Todos los derechos reservados | Intranet Biosur | Desarrollado por <strong>agenciatuciudad</strong>';
 
 	public function __construct()
 	{

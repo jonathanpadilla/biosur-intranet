@@ -206,6 +206,7 @@ FUNCIONES AJAX
         {
             // variables
             $em = $this->getDoctrine()->getManager();
+date_default_timezone_set('America/Santiago');
 
             // servicios
 
