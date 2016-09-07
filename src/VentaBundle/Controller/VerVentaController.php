@@ -4,6 +4,7 @@ namespace VentaBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use \stdClass;
 
 class VerVentaController extends Controller
@@ -367,5 +368,34 @@ FUNCIONES AJAX
 
         echo json_encode(array('result' => $result, 'lista_mantencion' => $listaMantencion));
         exit;
+	}
+
+	public function contratoPdfAction()
+	{
+		// return $this->render('VentaBundle:Plantillas:contrato.html.twig');
+		$html = $this->renderView('VentaBundle:Plantillas:contrato.html.twig');
+
+        $response = new Response (
+            $this->get('knp_snappy.pdf')->getOutputFromHtml($html,
+                array(
+                    'lowquality' => false,
+                    'print-media-type' => true,
+                    'encoding' => 'utf-8',
+                    'page-size' => 'Letter',
+                    'outline-depth' => 8,
+                    'orientation' => 'Portrait',
+                    // 'orientation' => 'Landscape',
+                    'title'=> 'Contrato',
+                    'header-right'=>'',
+                    'header-font-size'=>0,
+                    )),
+                    200,
+                array(
+                    'Content-Type'          =>'/',
+                    'Content-Disposition'   => 'attachment; filename="Contrato.pdf"',
+                )
+            );
+
+        return $response;
 	}
 }

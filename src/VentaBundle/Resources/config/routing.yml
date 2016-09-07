@@ -20,6 +20,10 @@ venta_vista_verventa:
 venta_vista_completarventa:
     path:     /completar/{id}
     defaults: { _controller: VentaBundle:CompletarVenta:inicio, id: 1 }
+
+venta_exportar_imprimircontrato:
+    path:     /imprimir-contrato/{id}
+    defaults: { _controller: VentaBundle:VerVenta:contratoPdf, id: 1 }
     
 ## METODOS SIN VISTA ##
 venta_vista_guardarventa:
