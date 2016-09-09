@@ -66,6 +66,34 @@ class DetalleContrato
     /**
      * @var integer
      *
+     * @ORM\Column(name="dco_netobanno", type="integer", nullable=true)
+     */
+    private $dcoNetobanno;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="dco_netocaseta", type="integer", nullable=true)
+     */
+    private $dcoNetocaseta;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="dco_netoducha", type="integer", nullable=true)
+     */
+    private $dcoNetoducha;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="dco_netoexterno", type="integer", nullable=true)
+     */
+    private $dcoNetoexterno;
+
+    /**
+     * @var integer
+     *
      * @ORM\Column(name="dco_precio", type="integer", nullable=true)
      */
     private $dcoPrecio;
@@ -87,16 +115,16 @@ class DetalleContrato
     /**
      * @var integer
      *
-     * @ORM\Column(name="dco_papel", type="integer", nullable=true)
+     * @ORM\Column(name="dco_sachet", type="integer", nullable=true)
      */
-    private $dcoPapel;
+    private $dcoSachet;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="dco_sachet", type="integer", nullable=true)
+     * @ORM\Column(name="dco_papel", type="integer", nullable=true)
      */
-    private $dcoSachet;
+    private $dcoPapel;
 
     /**
      * @var string
@@ -292,6 +320,102 @@ class DetalleContrato
     }
 
     /**
+     * Set dcoNetobanno
+     *
+     * @param integer $dcoNetobanno
+     *
+     * @return DetalleContrato
+     */
+    public function setDcoNetobanno($dcoNetobanno)
+    {
+        $this->dcoNetobanno = $dcoNetobanno;
+
+        return $this;
+    }
+
+    /**
+     * Get dcoNetobanno
+     *
+     * @return integer
+     */
+    public function getDcoNetobanno()
+    {
+        return $this->dcoNetobanno;
+    }
+
+    /**
+     * Set dcoNetocaseta
+     *
+     * @param integer $dcoNetocaseta
+     *
+     * @return DetalleContrato
+     */
+    public function setDcoNetocaseta($dcoNetocaseta)
+    {
+        $this->dcoNetocaseta = $dcoNetocaseta;
+
+        return $this;
+    }
+
+    /**
+     * Get dcoNetocaseta
+     *
+     * @return integer
+     */
+    public function getDcoNetocaseta()
+    {
+        return $this->dcoNetocaseta;
+    }
+
+    /**
+     * Set dcoNetoducha
+     *
+     * @param integer $dcoNetoducha
+     *
+     * @return DetalleContrato
+     */
+    public function setDcoNetoducha($dcoNetoducha)
+    {
+        $this->dcoNetoducha = $dcoNetoducha;
+
+        return $this;
+    }
+
+    /**
+     * Get dcoNetoducha
+     *
+     * @return integer
+     */
+    public function getDcoNetoducha()
+    {
+        return $this->dcoNetoducha;
+    }
+
+    /**
+     * Set dcoNetoexterno
+     *
+     * @param integer $dcoNetoexterno
+     *
+     * @return DetalleContrato
+     */
+    public function setDcoNetoexterno($dcoNetoexterno)
+    {
+        $this->dcoNetoexterno = $dcoNetoexterno;
+
+        return $this;
+    }
+
+    /**
+     * Get dcoNetoexterno
+     *
+     * @return integer
+     */
+    public function getDcoNetoexterno()
+    {
+        return $this->dcoNetoexterno;
+    }
+
+    /**
      * Set dcoPrecio
      *
      * @param integer $dcoPrecio
@@ -364,30 +488,6 @@ class DetalleContrato
     }
 
     /**
-     * Set dcoPapel
-     *
-     * @param integer $dcoPapel
-     *
-     * @return DetalleContrato
-     */
-    public function setDcoPapel($dcoPapel)
-    {
-        $this->dcoPapel = $dcoPapel;
-
-        return $this;
-    }
-
-    /**
-     * Get dcoPapel
-     *
-     * @return integer
-     */
-    public function getDcoPapel()
-    {
-        return $this->dcoPapel;
-    }
-
-    /**
      * Set dcoSachet
      *
      * @param integer $dcoSachet
@@ -409,6 +509,30 @@ class DetalleContrato
     public function getDcoSachet()
     {
         return $this->dcoSachet;
+    }
+
+    /**
+     * Set dcoPapel
+     *
+     * @param integer $dcoPapel
+     *
+     * @return DetalleContrato
+     */
+    public function setDcoPapel($dcoPapel)
+    {
+        $this->dcoPapel = $dcoPapel;
+
+        return $this;
+    }
+
+    /**
+     * Get dcoPapel
+     *
+     * @return integer
+     */
+    public function getDcoPapel()
+    {
+        return $this->dcoPapel;
     }
 
     /**

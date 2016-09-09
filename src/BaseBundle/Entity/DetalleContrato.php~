@@ -66,6 +66,34 @@ class DetalleContrato
     /**
      * @var integer
      *
+     * @ORM\Column(name="dco_netobanno", type="integer", nullable=true)
+     */
+    private $dcoNetobanno;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="dco_netocaseta", type="integer", nullable=true)
+     */
+    private $dcoNetocaseta;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="dco_netoducha", type="integer", nullable=true)
+     */
+    private $dcoNetoducha;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="dco_netoexterno", type="integer", nullable=true)
+     */
+    private $dcoNetoexterno;
+
+    /**
+     * @var integer
+     *
      * @ORM\Column(name="dco_precio", type="integer", nullable=true)
      */
     private $dcoPrecio;
@@ -87,16 +115,16 @@ class DetalleContrato
     /**
      * @var integer
      *
-     * @ORM\Column(name="dco_papel", type="integer", nullable=true)
+     * @ORM\Column(name="dco_sachet", type="integer", nullable=true)
      */
-    private $dcoPapel;
+    private $dcoSachet;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="dco_sachet", type="integer", nullable=true)
+     * @ORM\Column(name="dco_papel", type="integer", nullable=true)
      */
-    private $dcoSachet;
+    private $dcoPapel;
 
     /**
      * @var string

@@ -370,10 +370,77 @@ FUNCIONES AJAX
         exit;
 	}
 
-	public function contratoPdfAction()
+	public function contratoPdfAction($id)
 	{
-		// return $this->render('VentaBundle:Plantillas:contrato.html.twig');
-		$html = $this->renderView('VentaBundle:Plantillas:contrato.html.twig');
+
+		setlocale(LC_ALL, "es_ES.UTF-8");
+		$em = $this->getDoctrine()->getManager();
+        $qb = $em->createQueryBuilder();
+
+        $q  = $qb->select(array('v'))
+            ->from('BaseBundle:Venta', 'v')
+            ->where('v.venIdPk ='.$id)
+            ->getQuery();
+	    
+	    if($resultQuery = $q->getResult())
+	    {
+	    	$datos_arriendo = array();
+	    	foreach($resultQuery as $value)
+	    	{
+	    		// meses español
+	    		$mes = '';
+	    		switch($value->getVenFechainicio()->format('m'))
+	    		{
+	    			case 1: $mes = 'Enero';break;
+	    			case 2: $mes = 'Febrero';break;
+	    			case 3: $mes = 'Marzo';break;
+	    			case 4: $mes = 'Abril';break;
+	    			case 5: $mes = 'Mayo';break;
+	    			case 6: $mes = 'Junio';break;
+	    			case 7: $mes = 'Julio';break;
+	    			case 8: $mes = 'Agosto';break;
+	    			case 9: $mes = 'Septiembre';break;
+	    			case 10: $mes = 'Octubre';break;
+	    			case 11: $mes = 'Noviembre';break;
+	    			case 12: $mes = 'Diciembre';break;
+	    		}
+
+	    		$datos_arriendo['id_usuario'] 			= $value->getVenUsuarioFk()->getUsuIdPk();
+	    		$datos_arriendo['dia_venta']	 		= $value->getVenFechainicio()->format('d');
+	    		$datos_arriendo['mes_venta']	 		= $mes;
+	    		$datos_arriendo['anno_venta']	 		= $value->getVenFechainicio()->format('Y');
+	    		$datos_arriendo['nombre_cliente']		= $value->getVenClienteFk()->getCliNombre();
+	    		$datos_arriendo['rut_cliente']			= $value->getVenClienteFk()->getCliRut();
+	    		$datos_arriendo['direccion_cliente']	= $value->getVenClienteFk()->getCliDireccion();
+	    		$datos_arriendo['comuna_cliente']		= $value->getVenClienteFk()->getCliComunaFk()->getComNombre();
+	    	}
+	    }
+
+	    if($detalleVenta = $em->getRepository('BaseBundle:DetalleContrato')->findBy(array('dcoVentaFk' => $id )))
+	    {
+	    	$detalle_contrato = array(
+	    		'bannos' => 0,
+	    		'casetas' => 0,
+	    		'duchas' => 0,
+	    		'externos' => 0,
+	    		);
+	    	foreach($detalleVenta as $value)
+	    	{
+	    		$detalle_contrato['bannos'] += $value->getDcoCbano();
+	    		$detalle_contrato['casetas'] += $value->getDcoCcaseta();
+	    		$detalle_contrato['duchas'] += $value->getDcoCducha();
+	    		$detalle_contrato['externos'] += $value->getDcoCexterno();
+	    	}
+	    }
+
+	    echo '<pre>';print_r($detalle_contrato);exit;
+
+		// return $this->render('VentaBundle:Plantillas:contrato.html.twig',array(
+		// 	'datos_arriendo' => $datos_arriendo
+		// 	));
+		$html = $this->renderView('VentaBundle:Plantillas:contrato.html.twig', array(
+			'datos_arriendo' => $datos_arriendo
+			));
 
         $response = new Response (
             $this->get('knp_snappy.pdf')->getOutputFromHtml($html,

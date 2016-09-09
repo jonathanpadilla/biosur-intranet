@@ -124,6 +124,8 @@ FUNCIONES AJAX
                 'detalle'           => $detalle
                 );
 
+            // echo '<pre>';print_r($datosVenta);exit;
+
         	// comuna, provincia y region
             $q  = $qb->select(array('c'))
                 ->from('BaseBundle:Comuna', 'c')
@@ -148,20 +150,11 @@ FUNCIONES AJAX
                 if($value['cantidadbano'] != '' || $value['cantidadcaseta'] != '' || $value['cantidadducha'] != '' || $value['cantidadexterno'] != '' || $value['cantidadlavamano'] != '')
                 {
 
-                    $q2  = $qb->select(array('c2'.$key))
-                        ->from('BaseBundle:Comuna', 'c2'.$key)
-                        ->where('c2'.$key.'.comIdPk = '.$value['comuna'])
-                        ->getQuery();
-                    $resultQuery2 = $q2->getResult();
-
-                    if($resultQuery2)
+                    if( $ubicacion = $em->getRepository('BaseBundle:Comuna')->findOneBy(array('comIdPk' => $value['comuna'] )) )
                     {
-                        foreach($resultQuery2 as $value2)
-                        {
-                            $datosVenta['detalle'][$key]['nombre_comuna']    = $value2->getComNombre();
-                            $datosVenta['detalle'][$key]['nombre_provincia'] = $value2->getComProvinciaFk()->getProNombre();
-                            $datosVenta['detalle'][$key]['nombre_region']    = $value2->getComProvinciaFk()->getProRegionFk()->getRegNombre();
-                        }
+                            $datosVenta['detalle'][$key]['nombre_comuna']    = $ubicacion->getComNombre();
+                            $datosVenta['detalle'][$key]['nombre_provincia'] = $ubicacion->getComProvinciaFk()->getProNombre();
+                            $datosVenta['detalle'][$key]['nombre_region']    = $ubicacion->getComProvinciaFk()->getProRegionFk()->getRegNombre();
                     }
 
                     // dias
@@ -350,6 +343,12 @@ date_default_timezone_set('America/Santiago');
                             $detalle->setDcoCducha($value['cantidadducha']);
                             $detalle->setDcoCexterno($value['cantidadexterno']);
                             $detalle->setDcoClavamano($value['cantidadlavamano']);
+                            
+                            $detalle->setDcoNetobanno($value['netobano']);
+                            $detalle->setDcoNetocaseta($value['netocaseta']);
+                            $detalle->setDcoNetoducha($value['netoducha']);
+                            $detalle->setDcoNetoexterno($value['netoexterno']);
+
                             $detalle->setDcoLat($value['lat']);
                             $detalle->setDcoLon($value['lon']);
                             $detalle->setDcoPapel($value['cantidadbano']);
@@ -374,30 +373,6 @@ date_default_timezone_set('America/Santiago');
 
                                 if($ruta->getRutIdPk())
                                 {
-                                    // registrar en bitacora de ventas y logs de usuario
-                                    // bitacora venta
-                                    $userData       = $this->get('service.user.data');
-                                    $defaultText    = $this->get('service.default.text');
-                                    $defaultText->setBitacoraVenta('guardar_venta', array('usuario' => $userData->getUserData()->nombre.' '.$userData->getUserData()->apellido));
-
-                                    $bitacora = new Bitacora();
-                                    $bitacora->setBitFecha(new \DateTime(date("Y-m-d H:i:s")));
-                                    $bitacora->setBitDescripcion($defaultText->getBitacoraVenta('guardar_venta'));
-                                    $bitacora->setBitSucursalFk($fkSucursal);
-                                    $bitacora->setBitVentaFk($venta);
-                                    $em->persist($bitacora);
-                                    $em->flush();
-
-                                    // log usuario
-                                    $defaultText->setLogUsuario('guardar_venta', array('cliente' => $input_nombre, 'id' => $venta->getVenIdPk() ));
-
-                                    $logUsu = new UsuarioLog();
-                                    $logUsu->setUloFecha(new \DateTime(date("Y-m-d H:i:s")));
-                                    $logUsu->setUloDescripcion($defaultText->getLogUsuario('guardar_venta'));
-                                    $logUsu->setUloUsuarioFk($fkUsuario);
-                                    $logUsu->setUloSucursalFk($fkSucursal);
-                                    $em->persist($logUsu);
-                                    $em->flush();
 
                                     $result     = true;
                                     $idventa    = $venta->getVenIdPk();
@@ -409,6 +384,31 @@ date_default_timezone_set('America/Santiago');
 
                     }
                 }
+
+                // registrar en bitacora de ventas y logs de usuario
+                // bitacora venta
+                $userData       = $this->get('service.user.data');
+                $defaultText    = $this->get('service.default.text');
+                $defaultText->setBitacoraVenta('guardar_venta', array('usuario' => $userData->getUserData()->nombre.' '.$userData->getUserData()->apellido));
+
+                $bitacora = new Bitacora();
+                $bitacora->setBitFecha(new \DateTime(date("Y-m-d H:i:s")));
+                $bitacora->setBitDescripcion($defaultText->getBitacoraVenta('guardar_venta'));
+                $bitacora->setBitSucursalFk($fkSucursal);
+                $bitacora->setBitVentaFk($venta);
+                $em->persist($bitacora);
+                $em->flush();
+
+                // log usuario
+                $defaultText->setLogUsuario('guardar_venta', array('cliente' => $input_nombre, 'id' => $venta->getVenIdPk() ));
+
+                $logUsu = new UsuarioLog();
+                $logUsu->setUloFecha(new \DateTime(date("Y-m-d H:i:s")));
+                $logUsu->setUloDescripcion($defaultText->getLogUsuario('guardar_venta'));
+                $logUsu->setUloUsuarioFk($fkUsuario);
+                $logUsu->setUloSucursalFk($fkSucursal);
+                $em->persist($logUsu);
+                $em->flush();
 
             }
             

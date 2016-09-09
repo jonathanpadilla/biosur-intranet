@@ -23,7 +23,7 @@ venta_vista_completarventa:
 
 venta_exportar_imprimircontrato:
     path:     /imprimir-contrato/{id}
-    defaults: { _controller: VentaBundle:VerVenta:contratoPdf, id: 1 }
+    defaults: { _controller: VentaBundle:VerVenta:contratoPdf, id: 0 }
     
 ## METODOS SIN VISTA ##
 venta_vista_guardarventa:
