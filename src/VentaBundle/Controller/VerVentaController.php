@@ -419,25 +419,43 @@ FUNCIONES AJAX
 	    if($detalleVenta = $em->getRepository('BaseBundle:DetalleContrato')->findBy(array('dcoVentaFk' => $id )))
 	    {
 	    	$detalle_contrato = array(
-	    		'bannos' => 0,
-	    		'casetas' => 0,
-	    		'duchas' => 0,
-	    		'externos' => 0,
+	    		'bannos' 	=> array(
+	    			'cantidad' 	=> 0,
+	    			'valor'		=> 0
+	    			),
+	    		'casetas' 	=> array(
+	    			'cantidad' 	=> 0,
+	    			'valor'		=> 0
+	    			),
+	    		'duchas' 	=> array(
+	    			'cantidad' 	=> 0,
+	    			'valor'		=> 0
+	    			),
+	    		'externos' 	=> array(
+	    			'cantidad' 	=> 0,
+	    			'valor'		=> 0
+	    			),
 	    		);
 	    	foreach($detalleVenta as $value)
 	    	{
-	    		$detalle_contrato['bannos'] += $value->getDcoCbano();
-	    		$detalle_contrato['casetas'] += $value->getDcoCcaseta();
-	    		$detalle_contrato['duchas'] += $value->getDcoCducha();
-	    		$detalle_contrato['externos'] += $value->getDcoCexterno();
+	    		$detalle_contrato['bannos']['cantidad'] 	+= $value->getDcoCbano();
+	    		$detalle_contrato['casetas']['cantidad'] 	+= $value->getDcoCcaseta();
+	    		$detalle_contrato['duchas']['cantidad'] 	+= $value->getDcoCducha();
+	    		$detalle_contrato['externos']['cantidad'] 	+= $value->getDcoCexterno();
+
+	    		$detalle_contrato['bannos']['valor'] 	+= $value->getDcoNetobanno();
+	    		$detalle_contrato['casetas']['valor'] 	+= $value->getDcoNetocaseta();
+	    		$detalle_contrato['duchas']['valor'] 	+= $value->getDcoNetoducha();
+	    		$detalle_contrato['externos']['valor'] 	+= $value->getDcoNetoexterno();
 	    	}
 	    }
 
-	    echo '<pre>';print_r($detalle_contrato);exit;
+	    // echo '<pre>';print_r($detalle_contrato);exit;
 
-		// return $this->render('VentaBundle:Plantillas:contrato.html.twig',array(
-		// 	'datos_arriendo' => $datos_arriendo
-		// 	));
+		return $this->render('VentaBundle:Plantillas:contrato.html.twig',array(
+			'datos_arriendo' => $datos_arriendo,
+			'detalle_contrato' => $detalle_contrato
+			));
 		$html = $this->renderView('VentaBundle:Plantillas:contrato.html.twig', array(
 			'datos_arriendo' => $datos_arriendo
 			));

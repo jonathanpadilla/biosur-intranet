@@ -121,18 +121,14 @@
 						</tr>
 					</thead>
 					<tbody>
+						{% for key, value in detalle_contrato if value.cantidad != 0 %}
 						<tr>
-							<td>xdfsdfsdf</td>
-							<td>sdfsdf</td>
-							<td>sdfsdfdsf</td>
-							<td>dsfdsf</td>
+							<td>Documento de Contrato</td>
+							<td>{{ datos_arriendo.dia_venta }} de {{ datos_arriendo.mes_venta }} {{ datos_arriendo.anno_venta }}</td>
+							<td>{{ key }}: {{ value.cantidad }}</td>
+							<td>{{ value.valor }}</td>
 						</tr>
-						<tr>
-							<td>xdfsdfsdf</td>
-							<td>sdfsdf</td>
-							<td>sdfsdfdsf</td>
-							<td>dsfdsf</td>
-						</tr>
+						{% endfor %}
 					</tbody>
 				</table>
 				<span class="text-1">Cláusulas:</span>
