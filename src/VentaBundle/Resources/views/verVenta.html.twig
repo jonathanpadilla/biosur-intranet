@@ -244,7 +244,7 @@
               <tbody>
                 {% for key, val in listaMantencion %}
                   <tr>
-                    <td>{{ key }}</td>
+                    <td>{{ val.fecha }}</td>
                     <td>{{ val.descripcion }}</td>
                     <td>{{ val.ciudad }}, {{ val.direccion }}</td>
                     <td><span class="label label-{{ val.cant_realizado >= val.cant_total ? 'system':'warning' }}">{{ val.cant_realizado }}{{ val.cant_total != 0 ? '/'~val.cant_total }}</span></td>

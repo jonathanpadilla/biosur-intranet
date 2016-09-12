@@ -231,31 +231,58 @@ VISTAS
 		        	foreach($resultQuery3 as $value)
 		        	{
 		        		// cantidades
+		        		// $cant_bannos 	= ($value->getManRutaFk())?$value->getManRutaFk()->getRutDetallecontratoFk()->getDcoCbano(): 0;
+		        		// $cant_casetas 	= ($value->getManRutaFk())?$value->getManRutaFk()->getRutDetallecontratoFk()->getDcoCcaseta(): 0;
+		        		// $cant_duchas 	= ($value->getManRutaFk())?$value->getManRutaFk()->getRutDetallecontratoFk()->getDcoCducha(): 0;
+		        		// $cant_externos 	= ($value->getManRutaFk())?$value->getManRutaFk()->getRutDetallecontratoFk()->getDcoCexterno(): 0;
+
+			        	// $listaMantencion[$value->getManFecharegistro()->format('d/m/Y')]['planificado'] 	= ($value->getManRutaFk())?1:0;
+			        	// $listaMantencion[$value->getManFecharegistro()->format('d/m/Y')]['fecha'] 			= $value->getManFecharegistro()->format('Y-m-d');
+		        		// $listaMantencion[$value->getManFecharegistro()->format('d/m/Y')]['id_ruta'] 		= ($value->getManRutaFk())?$value->getManRutaFk()->getRutIdPk(): 0;
+		        		// $listaMantencion[$value->getManFecharegistro()->format('d/m/Y')]['id_detalle'] 		= ($value->getManDetallecontratoFk())?$value->getManDetallecontratoFk()->getDcoIdPk(): 0;
+		        		// $listaMantencion[$value->getManFecharegistro()->format('d/m/Y')]['cant_realizado']	= (!isset($listaMantencion[$value->getManFecharegistro()->format('d/m/Y')]['cant_realizado']))? 1: $listaMantencion[$value->getManFecharegistro()->format('d/m/Y')]['cant_realizado']+1;
+		        		// $listaMantencion[$value->getManFecharegistro()->format('d/m/Y')]['cant_total'] 		= $cant_bannos+$cant_casetas+$cant_duchas+$cant_externos;
+		        		
+		        		// if($value->getManRutaFk())
+		        		// {
+		        		// 	$listaMantencion[$value->getManFecharegistro()->format('d/m/Y')]['descripcion'] 	= 'Limpieza baño quimico';
+		        		// 	$listaMantencion[$value->getManFecharegistro()->format('d/m/Y')]['ciudad'] 			= ($value->getManRutaFk())?	$value->getManRutaFk()->getRutDetallecontratoFk()->getDcoComunaFk()->getComNombre(): 'no especificada';
+		        		// 	$listaMantencion[$value->getManFecharegistro()->format('d/m/Y')]['direccion'] 		= ($value->getManRutaFk())?	$value->getManRutaFk()->getRutDetallecontratoFk()->getDcoDireccion(): 'no especificada';
+		        		// 	$listaMantencion[$value->getManFecharegistro()->format('d/m/Y')]['nn_banno_id']		= '';
+		        		// }else{
+		        		// 	$listaMantencion[$value->getManFecharegistro()->format('d/m/Y')]['descripcion'] 	= 'Limpieza baño quimico - no programado';
+		        		// 	$listaMantencion[$value->getManFecharegistro()->format('d/m/Y')]['ciudad'] 			= ($value->getManNnbannoFk())?	$value->getManNnbannoFk()->getDnnbDetcontratoFk()->getDcoComunaFk()->getComNombre(): 'no especificada';
+		        		// 	$listaMantencion[$value->getManFecharegistro()->format('d/m/Y')]['direccion'] 		= ($value->getManNnbannoFk())?	$value->getManNnbannoFk()->getDnnbDetcontratoFk()->getDcoDireccion(): 'no especificada';
+		        		// 	$listaMantencion[$value->getManFecharegistro()->format('d/m/Y')]['nn_banno_id']		= ($value->getManNnbannoFk())? 	$value->getManNnbannoFk()->getDnnbIdPk():'';
+		        		// }
+		        		
 		        		$cant_bannos 	= ($value->getManRutaFk())?$value->getManRutaFk()->getRutDetallecontratoFk()->getDcoCbano(): 0;
 		        		$cant_casetas 	= ($value->getManRutaFk())?$value->getManRutaFk()->getRutDetallecontratoFk()->getDcoCcaseta(): 0;
 		        		$cant_duchas 	= ($value->getManRutaFk())?$value->getManRutaFk()->getRutDetallecontratoFk()->getDcoCducha(): 0;
 		        		$cant_externos 	= ($value->getManRutaFk())?$value->getManRutaFk()->getRutDetallecontratoFk()->getDcoCexterno(): 0;
 
-			        	$listaMantencion[$value->getManFecharegistro()->format('d/m/Y')]['planificado'] 	= ($value->getManRutaFk())?1:0;
-			        	$listaMantencion[$value->getManFecharegistro()->format('d/m/Y')]['fecha'] 			= $value->getManFecharegistro()->format('Y-m-d');
-		        		$listaMantencion[$value->getManFecharegistro()->format('d/m/Y')]['id_ruta'] 		= ($value->getManRutaFk())?$value->getManRutaFk()->getRutIdPk(): 0;
-		        		$listaMantencion[$value->getManFecharegistro()->format('d/m/Y')]['id_detalle'] 		= ($value->getManDetallecontratoFk())?$value->getManDetallecontratoFk()->getDcoIdPk(): 0;
-		        		$listaMantencion[$value->getManFecharegistro()->format('d/m/Y')]['cant_realizado']	= (!isset($listaMantencion[$value->getManFecharegistro()->format('d/m/Y')]['cant_realizado']))? 1: $listaMantencion[$value->getManFecharegistro()->format('d/m/Y')]['cant_realizado']+1;
-		        		$listaMantencion[$value->getManFecharegistro()->format('d/m/Y')]['cant_total'] 		= $cant_bannos+$cant_casetas+$cant_duchas+$cant_externos;
+		        		$idDetalleContrato = $value->getManDetallecontratoFk()->getDcoIdPk();
+
+			        	$listaMantencion[$value->getManFecharegistro()->format('d/m/Y').'_'.$idDetalleContrato]['planificado'] 		= ($value->getManRutaFk())?1:0;
+			        	$listaMantencion[$value->getManFecharegistro()->format('d/m/Y').'_'.$idDetalleContrato]['fecha'] 			= $value->getManFecharegistro()->format('Y-m-d');
+		        		$listaMantencion[$value->getManFecharegistro()->format('d/m/Y').'_'.$idDetalleContrato]['id_ruta'] 			= ($value->getManRutaFk())?$value->getManRutaFk()->getRutIdPk(): 0;
+		        		$listaMantencion[$value->getManFecharegistro()->format('d/m/Y').'_'.$idDetalleContrato]['id_detalle'] 		= ($value->getManDetallecontratoFk())?$value->getManDetallecontratoFk()->getDcoIdPk(): 0;
+		        		$listaMantencion[$value->getManFecharegistro()->format('d/m/Y').'_'.$idDetalleContrato]['cant_realizado']	= (!isset($listaMantencion[$value->getManFecharegistro()->format('d/m/Y').'_'.$idDetalleContrato]['cant_realizado']))? 1: $listaMantencion[$value->getManFecharegistro()->format('d/m/Y').'_'.$idDetalleContrato]['cant_realizado']+1;
+		        		$listaMantencion[$value->getManFecharegistro()->format('d/m/Y').'_'.$idDetalleContrato]['cant_total'] 		= $cant_bannos+$cant_casetas+$cant_duchas+$cant_externos;
 		        		
 		        		if($value->getManRutaFk())
 		        		{
-		        			$listaMantencion[$value->getManFecharegistro()->format('d/m/Y')]['descripcion'] 	= 'Limpieza baño quimico';
-		        			$listaMantencion[$value->getManFecharegistro()->format('d/m/Y')]['ciudad'] 			= ($value->getManRutaFk())?	$value->getManRutaFk()->getRutDetallecontratoFk()->getDcoComunaFk()->getComNombre(): 'no especificada';
-		        			$listaMantencion[$value->getManFecharegistro()->format('d/m/Y')]['direccion'] 		= ($value->getManRutaFk())?	$value->getManRutaFk()->getRutDetallecontratoFk()->getDcoDireccion(): 'no especificada';
-		        			$listaMantencion[$value->getManFecharegistro()->format('d/m/Y')]['nn_banno_id']		= '';
+		        			$listaMantencion[$value->getManFecharegistro()->format('d/m/Y').'_'.$idDetalleContrato]['descripcion'] 		= 'Limpieza baño quimico';
+		        			$listaMantencion[$value->getManFecharegistro()->format('d/m/Y').'_'.$idDetalleContrato]['ciudad'] 			= ($value->getManRutaFk())?	$value->getManRutaFk()->getRutDetallecontratoFk()->getDcoComunaFk()->getComNombre(): 'no especificada';
+		        			$listaMantencion[$value->getManFecharegistro()->format('d/m/Y').'_'.$idDetalleContrato]['direccion'] 		= ($value->getManRutaFk())?	$value->getManRutaFk()->getRutDetallecontratoFk()->getDcoDireccion(): 'no especificada';
+		        			$listaMantencion[$value->getManFecharegistro()->format('d/m/Y').'_'.$idDetalleContrato]['nn_banno_id']		= '';
 		        		}else{
-		        			$listaMantencion[$value->getManFecharegistro()->format('d/m/Y')]['descripcion'] 	= 'Limpieza baño quimico - no programado';
-		        			$listaMantencion[$value->getManFecharegistro()->format('d/m/Y')]['ciudad'] 			= ($value->getManNnbannoFk())?	$value->getManNnbannoFk()->getDnnbDetcontratoFk()->getDcoComunaFk()->getComNombre(): 'no especificada';
-		        			$listaMantencion[$value->getManFecharegistro()->format('d/m/Y')]['direccion'] 		= ($value->getManNnbannoFk())?	$value->getManNnbannoFk()->getDnnbDetcontratoFk()->getDcoDireccion(): 'no especificada';
-		        			$listaMantencion[$value->getManFecharegistro()->format('d/m/Y')]['nn_banno_id']		= ($value->getManNnbannoFk())? 	$value->getManNnbannoFk()->getDnnbIdPk():'';
+		        			$listaMantencion[$value->getManFecharegistro()->format('d/m/Y').'_'.$idDetalleContrato]['descripcion'] 		= 'Limpieza baño quimico - no programado';
+		        			$listaMantencion[$value->getManFecharegistro()->format('d/m/Y').'_'.$idDetalleContrato]['ciudad'] 			= ($value->getManNnbannoFk())?	$value->getManNnbannoFk()->getDnnbDetcontratoFk()->getDcoComunaFk()->getComNombre(): 'no especificada';
+		        			$listaMantencion[$value->getManFecharegistro()->format('d/m/Y').'_'.$idDetalleContrato]['direccion'] 		= ($value->getManNnbannoFk())?	$value->getManNnbannoFk()->getDnnbDetcontratoFk()->getDcoDireccion(): 'no especificada';
+		        			$listaMantencion[$value->getManFecharegistro()->format('d/m/Y').'_'.$idDetalleContrato]['nn_banno_id']		= ($value->getManNnbannoFk())? 	$value->getManNnbannoFk()->getDnnbIdPk():'';
 		        		}
-		        		
+
 		        	}
 		        }
 
@@ -333,7 +360,7 @@ FUNCIONES AJAX
 
         		$listaMantencion .= '<tr>';
         		$listaMantencion .= '<td>'.$value->getManFecharegistro()->format('H:i:s').'</td>';
-        		$listaMantencion .= '<td>'.$value->getManUsuarioFk()->getUsuNombre().' '.$value->getManUsuarioFk()->getUsuApellido().'</td>';
+        		$listaMantencion .= '<td>'.( ($value->getManUsuarioFk()) ? $value->getManUsuarioFk()->getUsuNombre() : '' ).' '.( ($value->getManUsuarioFk()) ?$value->getManUsuarioFk()->getUsuApellido() : '' ).'</td>';
         		$listaMantencion .= '<td>'.$letra.str_pad($value->getManNnbannoFk()->getDnnbBannoFk()->getBanIdPk(), 7, '0', STR_PAD_LEFT).'</td>';
         		$listaMantencion .= '<td class="text-right">'.$lavamano.$candado.'</td>';
         		$listaMantencion .= '<td>'.$value->getManComentario().'</td>';
