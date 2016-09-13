@@ -168,10 +168,10 @@ $conductor = ($value->getRutCamionFk())? $value->getRutCamionFk()->getCamUsuario
             );
 
         // echo '<pre>';print_r($informe);exit;
-        $this->agregarStockInsumo(1, $total_insumo1, 'Insumos para mntención diaria');
-        $this->agregarStockInsumo(2, $total_insumo2, 'Insumos para mntención diaria');
-        $this->agregarStockInsumo(3, $total_insumo4, 'Insumos para mntención diaria');
-        $this->agregarStockInsumo(4, $total_insumo5, 'Insumos para mntención diaria');
+        $this->agregarStockInsumo(1, $total_insumo1, 'Salida de insumos para mantención');
+        $this->agregarStockInsumo(2, $total_insumo2, 'Salida de insumos para mantención');
+        $this->agregarStockInsumo(3, $total_insumo4, 'Salida de insumos para mantención');
+        $this->agregarStockInsumo(4, $total_insumo5, 'Salida de insumos para mantención');
 
         return $this->render('MantencionBundle:Plantillas:imprimir_ruta_semanal.html.twig', array(
                 'formulario'    => $form,
