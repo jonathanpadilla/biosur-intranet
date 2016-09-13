@@ -177,6 +177,16 @@ FUNCIONES AJAX
                                 $em->persist($value2);
                             }
                         }
+
+                        // obtener ruta para finalizarla
+                        if($ruta = $em->getRepository('BaseBundle:Ruta')->findBy(array('rutDetallecontratoFk' => $value->getDcoIdPk() )))
+                        {
+                            foreach($ruta as $value3)
+                            {
+                                $value3->setRutActivo(0);
+                                $em->persist($value3);
+                            }
+                        }
                     }
                 }
 
