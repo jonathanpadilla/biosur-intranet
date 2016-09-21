@@ -46,7 +46,7 @@
         <div class="row mb30">
           <div class="col-md-8">
             <div class="pull-left">
-              <h1 class="mt10">Arriendo de {{ datosCliente.nombre_cliente }}</h1>
+              <h1 class="mt10">ARRIENDO DE {{ datosCliente.nombre_cliente }}</h1>
               <h5 class="mn">Arriendo N° {{ datosCliente.id_venta }}</h5>
               <h5 class="mn"> Creado el {{ datosCliente.fecha_registro }} </h5>
               <h5 class="mn"> Estado de arriendo
@@ -172,7 +172,8 @@
           </div>
         </div>
         <br>
-      
+
+        <form id="form_detalle" method="post" action="{{ url('venta_ajax_guardardetalleventa') }}">
         {% for detalle in datosCliente.detalle %}
         <div class="row" id="invoice-info">
           <div class="col-md-12">
@@ -184,7 +185,7 @@
               </div>
               <div class="panel-body">
               	<div class="row">
-              		<div class="col-md-4">
+              		<div class="col-md-3">
               			<address>
 	                      <strong>Cantidad</strong>
                         {% if detalle.cbano != 0 %}     <br>Baños: {{ detalle.cbano }}         {% endif %}
@@ -195,7 +196,7 @@
 	                      <br> <strong>total</strong> {{ detalle.cantidadReal }} Productos
 	                    </address>
               		</div>
-              		<div class="col-md-4">
+              		<div class="col-md-3">
               			<address>
 	                      <strong>Mantención</strong>
                         {% for ruta in detalle.ruta %}
@@ -203,10 +204,22 @@
                         {% endfor %}
 	                    </address>
               		</div>
-              		<div class="col-md-4">
-              			<address>
-	                      <strong>Otra información</strong>
+                  <div class="col-md-3">
+                    <address>
+                        <strong>Otra información</strong>
                         <p>{{ detalle.comentario }}</p>
+                      </address>
+                  </div>
+              		<div class="col-md-3">
+              			<address>
+                        <div class="form-group">
+                          <label for="txt_sachet" class="control-label">Sachet</label> <label class="load"></label>
+                          <input type="text" name="txt_datos[{{ detalle.id }}][sachet]" id="txt_sachet" class="form-control txt_datos" value="{{ detalle.sachet}}">
+                        </div>
+                        <div class="form-group">
+                          <label for="txt_papel" class="control-label">Papel Higienico</label> <label class="load"></label>
+                          <input type="text" name="txt_datos[{{ detalle.id }}][papel]" id="txt_papel" class="form-control txt_datos" value="{{ detalle.papel}}">
+                        </div>
 	                    </address>
               		</div>
               	</div>
@@ -216,7 +229,8 @@
         </div>
 
         {% endfor %}
-        
+        </form>
+
       </div>
     </div>
     <div class="panel">

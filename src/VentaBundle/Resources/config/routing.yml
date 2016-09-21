@@ -55,3 +55,9 @@ venta_ajax_finalizararriendo:
     defaults: { _controller: VentaBundle:ListaVenta:finalizarVenta }
     options:
         expose: true
+
+venta_ajax_guardardetalleventa:
+    path:     /ver/guardar-detalle-venta/
+    defaults: { _controller: VentaBundle:VerVenta:guardarDetalleVenta }
+    options:
+        expose: true

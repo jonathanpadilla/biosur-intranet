@@ -119,6 +119,8 @@ VISTAS
 	        			$datos->region 				= $value->getDcoComunaFk()->getComProvinciaFk()->getProRegionFk()->getRegNombre();
 	        			$datos->id_servicio 		= $value->getDcoServicioFk()->getSerIdPk();
 	        			$datos->nombre_servicio 	= $value->getDcoServicioFk()->getSerNombre();
+	        			$datos->sachet 				= $value->getDcoSachet();
+	        			$datos->papel 				= $value->getDcoPapel();
 
 	        			// asignacion de baños completa o sin asignar
 	        			if($dnnb = $em->getRepository('BaseBundle:DetcontratoNnBanno')->findBy(array('dnnbDetcontratoFk' => $value->getDcoIdPk() )))
@@ -205,7 +207,12 @@ VISTAS
 	        				}
 	        			}
 
-	        			$datosCliente['detalle'][] = $datos;
+	        			if($value->getDcoActivo() == 1)
+	        			{
+	        				$datosCliente['detalle'][] = $datos;
+	        			}else{
+	        				$datosCliente['detalle'] = array();
+	        			}
 
 	        			$where .= ($mayor == 1)? ' OR ':'';
 		        		$where .= 'm.manDetallecontratoFk = '.$value->getDcoIdPk();
@@ -229,33 +236,7 @@ VISTAS
 		        if($resultQuery3 = $q3->getResult())
 		        {
 		        	foreach($resultQuery3 as $value)
-		        	{
-		        		// cantidades
-		        		// $cant_bannos 	= ($value->getManRutaFk())?$value->getManRutaFk()->getRutDetallecontratoFk()->getDcoCbano(): 0;
-		        		// $cant_casetas 	= ($value->getManRutaFk())?$value->getManRutaFk()->getRutDetallecontratoFk()->getDcoCcaseta(): 0;
-		        		// $cant_duchas 	= ($value->getManRutaFk())?$value->getManRutaFk()->getRutDetallecontratoFk()->getDcoCducha(): 0;
-		        		// $cant_externos 	= ($value->getManRutaFk())?$value->getManRutaFk()->getRutDetallecontratoFk()->getDcoCexterno(): 0;
-
-			        	// $listaMantencion[$value->getManFecharegistro()->format('d/m/Y')]['planificado'] 	= ($value->getManRutaFk())?1:0;
-			        	// $listaMantencion[$value->getManFecharegistro()->format('d/m/Y')]['fecha'] 			= $value->getManFecharegistro()->format('Y-m-d');
-		        		// $listaMantencion[$value->getManFecharegistro()->format('d/m/Y')]['id_ruta'] 		= ($value->getManRutaFk())?$value->getManRutaFk()->getRutIdPk(): 0;
-		        		// $listaMantencion[$value->getManFecharegistro()->format('d/m/Y')]['id_detalle'] 		= ($value->getManDetallecontratoFk())?$value->getManDetallecontratoFk()->getDcoIdPk(): 0;
-		        		// $listaMantencion[$value->getManFecharegistro()->format('d/m/Y')]['cant_realizado']	= (!isset($listaMantencion[$value->getManFecharegistro()->format('d/m/Y')]['cant_realizado']))? 1: $listaMantencion[$value->getManFecharegistro()->format('d/m/Y')]['cant_realizado']+1;
-		        		// $listaMantencion[$value->getManFecharegistro()->format('d/m/Y')]['cant_total'] 		= $cant_bannos+$cant_casetas+$cant_duchas+$cant_externos;
-		        		
-		        		// if($value->getManRutaFk())
-		        		// {
-		        		// 	$listaMantencion[$value->getManFecharegistro()->format('d/m/Y')]['descripcion'] 	= 'Limpieza baño quimico';
-		        		// 	$listaMantencion[$value->getManFecharegistro()->format('d/m/Y')]['ciudad'] 			= ($value->getManRutaFk())?	$value->getManRutaFk()->getRutDetallecontratoFk()->getDcoComunaFk()->getComNombre(): 'no especificada';
-		        		// 	$listaMantencion[$value->getManFecharegistro()->format('d/m/Y')]['direccion'] 		= ($value->getManRutaFk())?	$value->getManRutaFk()->getRutDetallecontratoFk()->getDcoDireccion(): 'no especificada';
-		        		// 	$listaMantencion[$value->getManFecharegistro()->format('d/m/Y')]['nn_banno_id']		= '';
-		        		// }else{
-		        		// 	$listaMantencion[$value->getManFecharegistro()->format('d/m/Y')]['descripcion'] 	= 'Limpieza baño quimico - no programado';
-		        		// 	$listaMantencion[$value->getManFecharegistro()->format('d/m/Y')]['ciudad'] 			= ($value->getManNnbannoFk())?	$value->getManNnbannoFk()->getDnnbDetcontratoFk()->getDcoComunaFk()->getComNombre(): 'no especificada';
-		        		// 	$listaMantencion[$value->getManFecharegistro()->format('d/m/Y')]['direccion'] 		= ($value->getManNnbannoFk())?	$value->getManNnbannoFk()->getDnnbDetcontratoFk()->getDcoDireccion(): 'no especificada';
-		        		// 	$listaMantencion[$value->getManFecharegistro()->format('d/m/Y')]['nn_banno_id']		= ($value->getManNnbannoFk())? 	$value->getManNnbannoFk()->getDnnbIdPk():'';
-		        		// }
-		        		
+		        	{		        		
 		        		$cant_bannos 	= ($value->getManRutaFk())?$value->getManRutaFk()->getRutDetallecontratoFk()->getDcoCbano(): 0;
 		        		$cant_casetas 	= ($value->getManRutaFk())?$value->getManRutaFk()->getRutDetallecontratoFk()->getDcoCcaseta(): 0;
 		        		$cant_duchas 	= ($value->getManRutaFk())?$value->getManRutaFk()->getRutDetallecontratoFk()->getDcoCducha(): 0;
@@ -286,7 +267,7 @@ VISTAS
 		        	}
 		        }
 
-	        	// echo '<pre>';print_r($listaMantencion);exit;
+	        	// echo '<pre>';print_r($datosCliente);exit;
 
     			return $this->render('VentaBundle::verVenta.html.twig', array(
     				'defaultData' 		=> $defaultData->getAll(),
@@ -401,8 +382,10 @@ FUNCIONES AJAX
 	{
 
 		setlocale(LC_ALL, "es_ES.UTF-8");
-		$em = $this->getDoctrine()->getManager();
-        $qb = $em->createQueryBuilder();
+		$em 			= $this->getDoctrine()->getManager();
+        $qb 			= $em->createQueryBuilder();
+        $nombreCliente 	= '';
+        $fecha 			= '';
 
         $q  = $qb->select(array('v'))
             ->from('BaseBundle:Venta', 'v')
@@ -440,13 +423,17 @@ FUNCIONES AJAX
 	    		$datos_arriendo['rut_cliente']			= $value->getVenClienteFk()->getCliRut();
 	    		$datos_arriendo['direccion_cliente']	= $value->getVenClienteFk()->getCliDireccion();
 	    		$datos_arriendo['comuna_cliente']		= $value->getVenClienteFk()->getCliComunaFk()->getComNombre();
+
+	    		$nombreCliente = $value->getVenClienteFk()->getCliNombre();
+	    		$fecha = $value->getVenFechainicio()->format('d').' de '.$mes.' '.$value->getVenFechainicio()->format('Y');
 	    	}
 	    }
+	    $dias = array(1 => 0, 2 => 0, 3 => 0, 4 => 0, 5 => 0, 6 => 0, 7 => 0);
 
 	    if($detalleVenta = $em->getRepository('BaseBundle:DetalleContrato')->findBy(array('dcoVentaFk' => $id )))
 	    {
 	    	$detalle_contrato = array(
-	    		'bannos' 	=> array(
+	    		'baños' 	=> array(
 	    			'cantidad' 	=> 0,
 	    			'valor'		=> 0
 	    			),
@@ -465,26 +452,37 @@ FUNCIONES AJAX
 	    		);
 	    	foreach($detalleVenta as $value)
 	    	{
-	    		$detalle_contrato['bannos']['cantidad'] 	+= $value->getDcoCbano();
+	    		$detalle_contrato['baños']['cantidad'] 		+= $value->getDcoCbano();
 	    		$detalle_contrato['casetas']['cantidad'] 	+= $value->getDcoCcaseta();
 	    		$detalle_contrato['duchas']['cantidad'] 	+= $value->getDcoCducha();
 	    		$detalle_contrato['externos']['cantidad'] 	+= $value->getDcoCexterno();
 
-	    		$detalle_contrato['bannos']['valor'] 	+= $value->getDcoNetobanno();
+	    		$detalle_contrato['baños']['valor'] 	+= $value->getDcoNetobanno();
 	    		$detalle_contrato['casetas']['valor'] 	+= $value->getDcoNetocaseta();
 	    		$detalle_contrato['duchas']['valor'] 	+= $value->getDcoNetoducha();
 	    		$detalle_contrato['externos']['valor'] 	+= $value->getDcoNetoexterno();
+
+	    		if($ruta = $em->getRepository('BaseBundle:Ruta')->findBy(array('rutDetallecontratoFk' => $value->getDcoIdPk() )))
+	    		{
+	    			foreach($ruta as $value2)
+	    			{
+	    				$dias[$value2->getRutDia()] = 1;
+	    			}
+	    		}
 	    	}
 	    }
 
-	    // echo '<pre>';print_r($detalle_contrato);exit;
+	    $suma_dias = array_sum($dias);
 
-		return $this->render('VentaBundle:Plantillas:contrato.html.twig',array(
-			'datos_arriendo' => $datos_arriendo,
-			'detalle_contrato' => $detalle_contrato
-			));
+		// return $this->render('VentaBundle:Plantillas:contrato.html.twig',array(
+		// 	'datos_arriendo' => $datos_arriendo,
+		// 	'detalle_contrato' => $detalle_contrato,
+		// 	'mantenciones' => $suma_dias
+		// 	));
 		$html = $this->renderView('VentaBundle:Plantillas:contrato.html.twig', array(
-			'datos_arriendo' => $datos_arriendo
+			'datos_arriendo' => $datos_arriendo,
+			'detalle_contrato' => $detalle_contrato,
+			'mantenciones' => $suma_dias
 			));
 
         $response = new Response (
@@ -504,10 +502,43 @@ FUNCIONES AJAX
                     200,
                 array(
                     'Content-Type'          =>'/',
-                    'Content-Disposition'   => 'attachment; filename="Contrato.pdf"',
+                    'Content-Disposition'   => 'attachment; filename="'.$nombreCliente.' - '.$fecha.'.pdf"',
                 )
             );
 
         return $response;
+	}
+
+	public function guardarDetalleVentaAction(Request $request)
+	{
+		// validar session
+        if(!$this->get('service.user.data')->ValidarSession('Arriendos')){return $this->redirectToRoute('base_vista_ingreso');}
+
+        $result = false;
+
+		if( $request->getMethod() == 'POST' )
+		{
+			$datos = $request->get('txt_datos', false);
+        	$em = $this->getDoctrine()->getManager();
+
+        	foreach($datos as $key => $value)
+            {
+                // buscar camion
+                if($detalle = $em->getRepository('BaseBundle:DetalleContrato')->findOneBy(array('dcoIdPk' => $key)))
+                {
+                    $detalle->setDcoSachet($value['sachet']);
+                    $detalle->setDcoPapel($value['papel']);
+                    $em->persist($detalle);
+                }
+
+            }
+
+            $em->flush();
+            $result = true;
+
+		}
+
+		echo json_encode(array('result' => $result));
+		exit;
 	}
 }

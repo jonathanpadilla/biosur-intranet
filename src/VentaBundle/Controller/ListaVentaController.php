@@ -66,7 +66,7 @@ FUNCIONES AJAX
                 $detDireccion = '';
                 $detServicio  = '';
                 $detCantidad  = 0;
-                if($detalleVenta = $em->getRepository('BaseBundle:DetalleContrato')->findBy(array('dcoVentaFk' => $value->getVenIdPk() )))
+                if($detalleVenta = $em->getRepository('BaseBundle:DetalleContrato')->findBy(array('dcoVentaFk' => $value->getVenIdPk(), 'dcoActivo' => 1 )))
                 {
                     foreach($detalleVenta as $value2)
                     {

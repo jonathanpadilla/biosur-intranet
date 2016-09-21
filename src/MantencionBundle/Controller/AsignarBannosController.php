@@ -79,12 +79,11 @@ class AsignarBannosController extends Controller
     		}
 
     		// cargar detalles de arriendo
-    		if($detalleContrato = $em->getRepository('BaseBundle:DetalleContrato')->findBy(array('dcoVentaFk' => $id)))
+    		if($detalleContrato = $em->getRepository('BaseBundle:DetalleContrato')->findBy(array('dcoVentaFk' => $id, 'dcoActivo' => 1)))
     		{
     			foreach ($detalleContrato as $value)
     			{
                     $datos = new stdClass();
-
                     // cargar baños asignados
                     if($bannosAsignados = $em->getRepository('BaseBundle:DetcontratoNnBanno')->findBy(array('dnnbDetcontratoFk' => $value->getDcoIdPk(), 'dnnbActivo' => 1 )))
                     {
@@ -175,6 +174,8 @@ class AsignarBannosController extends Controller
             $nombreCliente;
             $idVenta;
             $detalle        = '';
+            
+            $userData = $this->get('service.user.data');
 
             // foranea
             $fkSucursal = $em->getRepository('BaseBundle:Sucursal')->findOneBy(array('sucIdPk' => $userData->getUserData()->sucursalActiva ));

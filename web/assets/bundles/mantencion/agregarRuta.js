@@ -19,10 +19,10 @@ $(function(){
 			if(ajax.result)
 			{
 				$("#alerts").html(msg('success', 'La información se ha guardado correctamente.'));
-				button_guardarruta.html('<i class="fa fa-save"> </i> Guardar</i>');
+				button_guardarruta.html('<i class="fa fa-save"> </i> Guardar');
 			}else{
 				$("#alerts").html(msg('damage', 'Error al guardar la información.'));
-				button_guardarruta.html('<i class="fa fa-save"> </i> Guardar</i>');
+				button_guardarruta.html('<i class="fa fa-save"> </i> Guardar');
 			}
 		});
 

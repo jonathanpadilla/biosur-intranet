@@ -1,15 +1,15 @@
-/app/config/parameters.yml
-/bin/
-/build/
-/composer.phar
-/vendor/
+#/app/config/parameters.yml
+#/bin/
+#/build/
+#/composer.phar
+#/vendor/
 /web/bundles/
 /app/bootstrap.php.cache
 /app/cache/*
 !app/cache/.gitkeep
-/app/config/parameters.yml
+#/app/config/parameters.yml
 /app/logs/*
 !app/logs/.gitkeep
-/app/phpunit.xml
+#/app/phpunit.xml
 
-DB/*
+#DB/*

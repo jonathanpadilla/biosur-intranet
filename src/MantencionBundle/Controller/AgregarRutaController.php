@@ -28,56 +28,59 @@ class AgregarRutaController extends Controller
             $defaultData->setHtmlHeader(array('title' => 'Inicio'));
             $userData = $this->get('service.user.data');
 
-            $detalleVenta = $em->getRepository('BaseBundle:DetalleContrato')->findBy(array('dcoVentaFk' => $id));
+            $detalleVenta = $em->getRepository('BaseBundle:DetalleContrato')->findBy(array('dcoVentaFk' => $id, 'dcoActivo' => 1));
 
+            $ruta = array(
+                'nombre_cliente' => '---',
+                'detalle' => array()
+                );
+            $listaCamiones = array();
             if($detalleVenta)
             {
-            	// cargar datos de ruta
-            	$ruta = array();
-            	foreach($detalleVenta as $value)
-            	{
-            		$datos = new stdClass();
+                // cargar datos de ruta
+                foreach($detalleVenta as $value)
+                {
+                    $datos = new stdClass();
 
-            		// informacion de detalle
-            		$datos->id_detalle 		= $value->getDcoIdPk();
-            		$datos->direccion 		= $value->getDcoDireccion();
-            		$datos->servicio 		= $value->getDcoServicioFk()->getSerNombre();
+                    // informacion de detalle
+                    $datos->id_detalle      = $value->getDcoIdPk();
+                    $datos->direccion       = $value->getDcoDireccion();
+                    $datos->servicio        = $value->getDcoServicioFk()->getSerNombre();
                     $datos->cbanos          = $value->getDcoCbano();
                     $datos->ccasetas        = $value->getDcoCcaseta();
                     $datos->cduchas         = $value->getDcoCducha();
                     $datos->cexternos       = $value->getDcoCexterno();
-            		$datos->clavamanos 		= $value->getDcoClavamano();
-            		$datos->comuna 			= $value->getDcoComunaFk()->getComNombre();
-            		$datos->provincia		= $value->getDcoComunaFk()->getComProvinciaFk()->getProNombre();
-            		$datos->region			= $value->getDcoComunaFk()->getComProvinciaFk()->getProRegionFk()->getRegNombre();
+                    $datos->clavamanos      = $value->getDcoClavamano();
+                    $datos->comuna          = $value->getDcoComunaFk()->getComNombre();
+                    $datos->provincia       = $value->getDcoComunaFk()->getComProvinciaFk()->getProNombre();
+                    $datos->region          = $value->getDcoComunaFk()->getComProvinciaFk()->getProRegionFk()->getRegNombre();
 
-            		$ruta['nombre_cliente'] = $value->getDcoVentaFk()->getVenClienteFk()->getCliNombre();
+                    $ruta['nombre_cliente'] = $value->getDcoVentaFk()->getVenClienteFk()->getCliNombre();
 
-            		// informacion de ruta
-            		$rutaVenta = $em->getRepository('BaseBundle:Ruta')->findBy(array('rutDetallecontratoFk' => $datos->id_detalle, 'rutActivo' => 1));
+                    // informacion de ruta
+                    $rutaVenta = $em->getRepository('BaseBundle:Ruta')->findBy(array('rutDetallecontratoFk' => $datos->id_detalle, 'rutActivo' => 1));
 
-            		if($rutaVenta)
-            		{
-            			foreach($rutaVenta as $value2)
-            			{
-            				$datos2 = new stdClass();
+                    if($rutaVenta)
+                    {
+                        foreach($rutaVenta as $value2)
+                        {
+                            $datos2 = new stdClass();
 
-            				$datos2->id 		= $value2->getRutIdPk();
-            				$datos2->id_camion 	= ($value2->getRutCamionFk())?$value2->getRutCamionFk()->getCamIdPk():null;
-            				$datos2->dia 		= $value2->getRutDia();
-            				$datos2->nombre_dia = str_replace($listaDiasB, $listaDiasA, $datos2->dia);
+                            $datos2->id         = $value2->getRutIdPk();
+                            $datos2->id_camion  = ($value2->getRutCamionFk())?$value2->getRutCamionFk()->getCamIdPk():null;
+                            $datos2->dia        = $value2->getRutDia();
+                            $datos2->nombre_dia = str_replace($listaDiasB, $listaDiasA, $datos2->dia);
 
-            				$datos->ruta[] = $datos2;
-            			}
-            		}
+                            $datos->ruta[] = $datos2;
+                        }
+                    }
 
-            		$ruta['detalle'][] = $datos;
-            	}
+                    $ruta['detalle'][] = $datos;
+                }
 
-            	// cargar camiones
-            	$camiones = $em->getRepository('BaseBundle:Camion')->findBy(array('camSucursalFk' => $userData->getUserData()->sucursalActiva));
+                // cargar camiones
+                $camiones = $em->getRepository('BaseBundle:Camion')->findBy(array('camSucursalFk' => $userData->getUserData()->sucursalActiva));
 
-            	$listaCamiones = array();
             	if($camiones)
             	{
             		foreach($camiones as $key => $value2)
@@ -88,21 +91,19 @@ class AgregarRutaController extends Controller
             		}
             	}
 
-            	// echo '<pre>';print_r($listaCamiones);exit;
 
-            	return $this->render('MantencionBundle::agregarRuta.html.twig', array(
-                    'defaultData' => $defaultData->getAll(),
-                    'userData'      => $userData->getUserData(),
-            		'datosRuta' => $ruta,
-            		'camiones'	=> $listaCamiones,
-                    'id'        => $id
-            		));
-            }else{
-            	echo 'error';exit;
             }
+            // echo '<pre>';print_r($ruta);exit;
 
-    	}else{
-    		echo 'error';exit;
+        	return $this->render('MantencionBundle::agregarRuta.html.twig', array(
+                'defaultData' => $defaultData->getAll(),
+                'userData'      => $userData->getUserData(),
+        		'datosRuta' => $ruta,
+        		'camiones'	=> $listaCamiones,
+                'id'        => $id
+        		));
+        }else{
+            echo 'error';exit;
     	}
     }
 

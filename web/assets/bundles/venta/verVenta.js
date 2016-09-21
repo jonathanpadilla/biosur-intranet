@@ -58,4 +58,25 @@ $(function(){
 		$('#detalleMantencion').modal('show');
 	});
 
-})
+	$(".txt_datos").focusout(function() {
+		var input = $(this);
+
+		input.parent().find("label.load").html('<i class="fa fa-cog fa-spin"></i>');
+		
+		$.ajax({
+			url: $("#form_detalle").attr('action'),
+			data: $("#form_detalle").serialize(),
+			dataType: 'json',
+			method: 'post'
+		}).success(function(json){
+			if(json.result)
+			{
+
+				input.parent().find("label.load").html('');
+			}else{
+				input.parent().find("label.load").html('');
+			}
+		});
+	});
+
+});

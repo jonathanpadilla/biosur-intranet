@@ -147,7 +147,7 @@ FUNCIONES AJAX
         		$cargarLista.= '<td>'.$usuarioSucursal.'</td>';
         		$cargarLista.= '<td>'.$value->getUsuDireccion().'</td>';
         		$cargarLista.= '<td class="text-right"><div class="btn-group">';
-        		$cargarLista.= '<a href="'.$this->get('router')->generate('usuario_vista_ver', array('id' => $value->getUsuIdPk() )).'" class="btn btn-sm btn-default"><i class="fa fa-user"></i></a>';
+        		// $cargarLista.= '<a href="'.$this->get('router')->generate('usuario_vista_ver', array('id' => $value->getUsuIdPk() )).'" class="btn btn-sm btn-default"><i class="fa fa-user"></i></a>';
         		$cargarLista.= '<button type="button" data-id="'.$value->getUsuIdPk().'" class="btn btn-sm btn-danger button_eliminarUsuario"><i class="fa fa-trash"></i></button>';
         		$cargarLista.= '</div></td></tr>';
         	}

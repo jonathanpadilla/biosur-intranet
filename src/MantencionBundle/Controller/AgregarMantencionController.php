@@ -25,6 +25,7 @@ class AgregarMantencionController extends Controller
                 $codigo = eregi_replace("[a-zA-Z]","",$post->codigo);
                 $lat    = $post->lat;
                 $lng    = $post->lng;
+                $user   = $post->usuario;
                 $comentario = $post->comentario;
                 // $foto   = $post->foto;
 
@@ -40,11 +41,12 @@ class AgregarMantencionController extends Controller
                     // foraneas
                     $fkRuta             = $em->getRepository('BaseBundle:Ruta')->findOneBy(array('rutDetallecontratoFk' => $idDetalle, 'rutDia' => $ndia, 'rutActivo' => 1 ));
                     $fkDetalleContrato  = $em->getRepository('BaseBundle:DetalleContrato')->findOneBy(array('dcoIdPk' => $dnnb->getDnnbDetcontratoFk() ));
-                    // $fkBanno    = $em->getRepository('BaseBundle:Bannos')->findOneBy(array('banIdPk' => $codigo ));
+                    $fkUsuario          = $em->getRepository('BaseBundle:Usuario')->findOneBy(array('usuIdPk' => $user ));
 
                     $mantencion = new Mantencion();
 
                     $mantencion->setManRutaFk($fkRuta);
+                    $mantencion->setManUsuarioFk($fkUsuario);
                     $mantencion->setManNnbannoFk($dnnb);
                     $mantencion->setManDetallecontratoFk($fkDetalleContrato);
                     $mantencion->setManLat($lat);
@@ -54,6 +56,14 @@ class AgregarMantencionController extends Controller
                     $mantencion->setManFecharegistro(new \DateTime(date("Y-m-d H:i:s")));
 
                     $em->persist($mantencion);
+
+                    if( !$fkDetalleContrato->getDcoLat() || !$fkDetalleContrato->getDcoLon() )
+                    {
+                        $fkDetalleContrato->setDcoLat($lat);
+                        $fkDetalleContrato->setDcoLon($lng);
+                        $em->persist($fkDetalleContrato);
+                    }
+                    
                     $em->flush();
 
                     $result = true;

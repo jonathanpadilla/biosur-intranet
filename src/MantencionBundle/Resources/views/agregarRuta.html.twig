@@ -7,7 +7,7 @@
 	           --><div class="btn-group">
 	                  <button type="button" id="button_guardarruta" class="btn btn-md btn-biosur"><i class="fa fa-save"> </i> Guardar</button>
 	              </div><!--
-	           --><div class="btn-group">
+	           --><!--<div class="btn-group">
 	                  <button type="button" class="btn btn-md btn-biosur dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cloud-download"> </i> Exportar
 	                  <span class="caret ml5"></span>
 	              </button>
@@ -29,7 +29,7 @@
 	              </button>
 					<ul class="dropdown-menu" role="menu">
 						<li>
-						    <a href="{{ url('venta_vista_ventaservicio') }}">Agregar camiones</a>
+						    <a href="{{ url('mantencion_vista_agregarcamion') }}">Agregar camiones</a>
 						</li>
 						<li class="divider"></li>
 						<li>
@@ -45,7 +45,7 @@
       	<div class="panel-body p20" id="invoice-item">
 	      	<div class="row">
 	      		<div class="col-md-12">
-	      			<h3>Agregar dirección de arriendo de {{ datosRuta.nombre_cliente|e }} a la ruta</h3>
+	      			<h3>Agregar dirección de arriendo de {{ datosRuta ? datosRuta.nombre_cliente|e }} a la ruta</h3>
 	      			<p>Asigne los camiónes que realizarán las mantenciónes</p>
 	      			<br>
 	      		</div>

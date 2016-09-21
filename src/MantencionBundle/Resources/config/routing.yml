@@ -22,6 +22,10 @@ mantencion_vista_inicioimprimirseguimiento:
     path:     /rutas/imprimir-seguimiento/
     defaults: { _controller: MantencionBundle:ImprimirSeguimiento:inicio }
 
+mantencion_vista_agregarcamion:
+    path:     /agregar-camion/
+    defaults: { _controller: MantencionBundle:AgregarCamion:agregarCamion }
+
 mantencion_vista_imprimirrutasemanal:
     path:     /rutas/imprimir-ruta-semanal/
     defaults: { _controller: MantencionBundle:ImprimirSeguimiento:mantencionDiariaJs }
@@ -87,6 +91,18 @@ mantencion_ajax_eliminarasignacionlavamano:
 mantencion_ajax_cargarformularios:
     path:     /rutas/imprimir-seguimiento/cargar-formularios/
     defaults: { _controller: MantencionBundle:ImprimirSeguimiento:cargarFormularios }
+    options:
+        expose: true
+
+mantencion_ajax_guardarcamion:
+    path:     /guardar-camion/
+    defaults: { _controller: MantencionBundle:AgregarCamion:guardarAsignacionCamion }
+    options:
+        expose: true
+
+mantencion_ajax_agregarcamion:
+    path:     /agregar-nuevo-camion/
+    defaults: { _controller: MantencionBundle:AgregarCamion:agregarNuevoCamion }
     options:
         expose: true
 

@@ -127,6 +127,13 @@ class DetalleContrato
     private $dcoPapel;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="dco_activo", type="integer", nullable=true)
+     */
+    private $dcoActivo;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="dco_comentario", type="text", length=65535, nullable=true)
@@ -533,6 +540,30 @@ class DetalleContrato
     public function getDcoPapel()
     {
         return $this->dcoPapel;
+    }
+
+    /**
+     * Set dcoActivo
+     *
+     * @param integer $dcoActivo
+     *
+     * @return DetalleContrato
+     */
+    public function setDcoActivo($dcoActivo)
+    {
+        $this->dcoActivo = $dcoActivo;
+
+        return $this;
+    }
+
+    /**
+     * Get dcoActivo
+     *
+     * @return integer
+     */
+    public function getDcoActivo()
+    {
+        return $this->dcoActivo;
     }
 
     /**

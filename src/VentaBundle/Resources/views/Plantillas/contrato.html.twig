@@ -5,7 +5,7 @@
 			#wrapper{
 				margin-left:80px;
 				margin-right:80px;
-				font-size: 26px;
+				font-size: 16px;
 				font-family: "Times New Roman", Georgia, Serif;
 				page-break-before: always;
 			}
@@ -44,12 +44,12 @@
 
 			table th{
 				text-align: left;
-				font-size: 24px;
+				font-size: 16px;
 			}
 
 			table td{
 				border: 1px solid black;
-				font-size: 24px;
+				font-size: 16px;
 			}
 
 			ul{
@@ -136,7 +136,11 @@
 				<ul>
 					<li>& Desinfectante</li>
 					<li>& Papel Higiénico</li>
-					<li>& Con 3 Mantenciones a la semana</li>
+					{% if mantenciones == 1 %}
+					<li>& Con {{ mantenciones }} Mantención a la semana</li>
+					{% else %}
+					<li>& Con {{ mantenciones }} Mantenciones a la semana</li>
+					{% endif %}
 				</ul>
 
 				<p class="p1">2.- El Presente Contrato entrara en vigencia con fecha <span class="text-1">{{ datos_arriendo.dia_venta }} de {{ datos_arriendo.mes_venta }} {{ datos_arriendo.anno_venta }}</span> con fecha indefinida o hasta que las partes lo estimen conveniente. </p>

@@ -47,6 +47,7 @@ AJAX
         $em                 = $this->getDoctrine()->getManager();
         $dia                = ($request->get('dia', false))? $request->get('dia'): null;
         $fecha              = ($request->get('fecha', false))? $request->get('fecha'): null;
+        $extra              = ($request->get('extra', false))? $request->get('extra'): 0;
 
         if($productos = $em->getRepository('BaseBundle:Ruta')->findBy(array('rutDia' => $dia, 'rutActivo' => 1 )))
         {
@@ -69,7 +70,7 @@ AJAX
                     }
                 }
 
-$conductor = ($value->getRutCamionFk())? $value->getRutCamionFk()->getCamUsuarioFk()->getUsuNombre().' '.$value->getRutCamionFk()->getCamUsuarioFk()->getUsuApellido():'';
+                $conductor = ($value->getRutCamionFk())? $value->getRutCamionFk()->getCamUsuarioFk()->getUsuNombre().' '.$value->getRutCamionFk()->getCamUsuarioFk()->getUsuApellido():'';
 
                 // fecha
                 // $fecha = date('d/m/Y');
@@ -113,7 +114,49 @@ $conductor = ($value->getRutCamionFk())? $value->getRutCamionFk()->getCamUsuario
 
         }
 
-        //echo '<pre>';print_r($listaFormularios);exit;
+        if($extra)
+        {
+            for($i=1; $i <= $extra; $i++){
+                
+                $datos = new stdClass();
+
+                $datos->id                  = abs($i);
+                $datos->empresaNombre       = '';
+                $datos->servicio1           = '';
+                $datos->servicio2           = '';
+                $datos->servicio3           = '';
+                $datos->servicio4           = '';
+                $datos->servicio5           = '';
+                $datos->servicio6           = '';
+                $datos->servicio7           = '';
+                $datos->servicio8           = '';
+                $datos->servicio9           = '';
+                $datos->servicio10          = '';
+                $datos->servicio11          = '';
+                $datos->direccion           = '';
+                $datos->fono                = '';
+                $datos->comuna              = '';
+                $datos->nombreConductor     = '';
+                $datos->patente             = '';
+                $datos->firma               = '';
+                $datos->nombreResponsable   = '';
+                $datos->fecha               = $fecha;
+                $datos->hora                = '';
+                $datos->firma2              = '';
+                $datos->observacionCliente  = '';
+                $datos->horarioServicio     = '';
+                $datos->cantidadM3          = '';
+                $datos->cantidadLitro       = '';
+                $datos->observacionBiosur   = '';
+                $datos->insumo1             = '';
+                $datos->insumo2             = '';
+
+                $listaFormularios[] = $datos;
+
+            }
+        }
+
+        // echo '<pre>';print_r($listaFormularios);exit;
 
         return $this->render('MantencionBundle:Plantillas:formularios.html.twig', array(
             'listaFormularios' => $listaFormularios

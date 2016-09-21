@@ -47,22 +47,23 @@ class RutasController extends Controller
                                 // $listaDestinos[$value3->getRutDia()]['cliente_id']      = $value->getVenClienteFk()->getCliIdPk();
                                 $dia        = $value3->getRutDia();
                                 $cliente    = $value->getVenClienteFk()->getCliIdPk();
+                                $id  = $value2->getDcoIdPk();
                                 $productos  = $value2->getDcoCbano() + $value2->getDcoCcaseta() + $value2->getDcoCducha() + $value2->getDcoCexterno() + $value2->getDcoClavamano();
 
-                                $listaDestinos[$dia][$cliente]['venta_cliente']         = $value->getVenClienteFk()->getCliNombre();
+                                $listaDestinos[$dia][$cliente][$id]['venta_cliente']         = $value->getVenClienteFk()->getCliNombre();
 
-                                $listaDestinos[$dia][$cliente]['detalle_direccion']     = $value2->getDcoDireccion();
-                                $listaDestinos[$dia][$cliente]['detalle_ciudad']        = $value2->getDcoComunaFk()->getComNombre();
-                                $listaDestinos[$dia][$cliente]['detalle_productos']     = $productos;
-                                $listaDestinos[$dia][$cliente]['detalle_pbano']         = $value2->getDcoCbano();
-                                $listaDestinos[$dia][$cliente]['detalle_pcaseta']       = $value2->getDcoCcaseta();
-                                $listaDestinos[$dia][$cliente]['detalle_pducha']        = $value2->getDcoCducha();
-                                $listaDestinos[$dia][$cliente]['detalle_pexterno']      = $value2->getDcoCexterno();
-                                $listaDestinos[$dia][$cliente]['detalle_plavamano']     = $value2->getDcoClavamano();
+                                $listaDestinos[$dia][$cliente][$id]['detalle_direccion']     = $value2->getDcoDireccion();
+                                $listaDestinos[$dia][$cliente][$id]['detalle_ciudad']        = $value2->getDcoComunaFk()->getComNombre();
+                                $listaDestinos[$dia][$cliente][$id]['detalle_productos']     = $productos;
+                                $listaDestinos[$dia][$cliente][$id]['detalle_pbano']         = $value2->getDcoCbano();
+                                $listaDestinos[$dia][$cliente][$id]['detalle_pcaseta']       = $value2->getDcoCcaseta();
+                                $listaDestinos[$dia][$cliente][$id]['detalle_pducha']        = $value2->getDcoCducha();
+                                $listaDestinos[$dia][$cliente][$id]['detalle_pexterno']      = $value2->getDcoCexterno();
+                                $listaDestinos[$dia][$cliente][$id]['detalle_plavamano']     = $value2->getDcoClavamano();
 
-                                $listaDestinos[$dia][$cliente]['ruta_patente']          = ($value3->getRutCamionFk())?$value3->getRutCamionFk()->getCamPatente():null;
-                                $listaDestinos[$dia][$cliente]['ruta_chofer_nombre']    = ($value3->getRutCamionFk())?$value3->getRutCamionFk()->getCamUsuarioFk()->getUsuNombre():null;
-                                $listaDestinos[$dia][$cliente]['ruta_chofer_apellido']  = ($value3->getRutCamionFk())?$value3->getRutCamionFk()->getCamUsuarioFk()->getUsuApellido():null;
+                                $listaDestinos[$dia][$cliente][$id]['ruta_patente']          = ($value3->getRutCamionFk())?$value3->getRutCamionFk()->getCamPatente():null;
+                                $listaDestinos[$dia][$cliente][$id]['ruta_chofer_nombre']    = ($value3->getRutCamionFk())?$value3->getRutCamionFk()->getCamUsuarioFk()->getUsuNombre():null;
+                                $listaDestinos[$dia][$cliente][$id]['ruta_chofer_apellido']  = ($value3->getRutCamionFk())?$value3->getRutCamionFk()->getCamUsuarioFk()->getUsuApellido():null;
                                 
                             }
                         }

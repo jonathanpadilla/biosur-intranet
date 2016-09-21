@@ -126,7 +126,7 @@ $(function(){
 
       if(form.valid() && Fn.validaRut($("#input_rut").val()))
       {
-        $("#table_listadetalle").html('<tr><td colspan="5" class="text-center"><i class="fa fa-cog fa-spin fa-3x fa-fw"></i></td></tr>');
+        $("#table_listadetalle").html('<tr><td colspan="4" class="text-center"><i class="fa fa-cog fa-spin fa-3x fa-fw"></i></td></tr>');
         // console.log(form.serialize());
         var url = Routing.generate('venta_ajax_crearventa');
         $.ajax({
@@ -183,40 +183,33 @@ $(function(){
 
             // detalle cliente
             var fila_detalle = '';
-            var total_final = 0;
             $.each(json.info_venta.detalle, function(index, value){
               if(value['cantidadbano'] != '' || value['cantidadcaseta'] != '' || value['cantidadducha'] != '' || value['cantidadexterno'] != '' || value['cantidadlavamano'] != '' )
               {
-                var cant_bano       = ((value['cantidadbano'] != '')? '<li>Baños: '+value['cantidadbano']+' - $'+value['netobano']+'</li>':'');
-                var cant_caseta     = ((value['cantidadcaseta'] != '')? '<li>Casetas: '+ value['cantidadcaseta']+' - $'+value['netocaseta']+'</li>':'');
-                var cant_ducha      = ((value['cantidadducha'] != '')? '<li>Duchas: '+ value['cantidadducha']+' - $'+value['netoducha']+'</li>':'');
-                var cant_externos   = ((value['cantidadexterno'] != '')? '<li>Baños externos: '+ value['cantidadexterno']+' - $'+value['netoexterno']+'</li>':'');
+                var cant_bano       = ((value['cantidadbano'] != '')? '<li>Baños: '+ value['cantidadbano']+'</li>':'');
+                var cant_caseta     = ((value['cantidadcaseta'] != '')? '<li>Casetas: '+ value['cantidadcaseta']+'</li>':'');
+                var cant_ducha      = ((value['cantidadducha'] != '')? '<li>Duchas: '+ value['cantidadducha']+'</li>':'');
+                var cant_externos   = ((value['cantidadexterno'] != '')? '<li>Baños externos: '+ value['cantidadexterno']+'</li>':'');
                 var cant_lavamanos  = ((value['cantidadlavamano'] != '')? '<li>Lavamanos: '+ value['cantidadlavamano']+'</li>':'');
 
-                var text_cant = cant_bano+cant_caseta+cant_ducha+cant_externos+cant_lavamanos;
-                var total     = parseInt((value['netobano'] || 0)) + parseInt((value['netocaseta'] || 0)) + parseInt((value['netoducha'] || 0)) + parseInt((value['netoexterno'] || 0));
+                var text_cant   = cant_bano+cant_caseta+cant_ducha+cant_externos+cant_lavamanos;
 
                 fila_detalle = fila_detalle + '<tr><td>Arriendo baño químico</td>';
                 fila_detalle = fila_detalle + '<td><ul>'+text_cant+'</ul></td>';
                 fila_detalle = fila_detalle + '<td>'+value['dias']+'</td>';
-                fila_detalle = fila_detalle + '<td>'+value['direccion']+', '+value['nombre_comuna']+', '+value['nombre_provincia']+', '+value['nombre_region']+'</td>';
-                fila_detalle = fila_detalle + '<td>'+total+'</td></tr>';
-
-                total_final = parseInt(total_final) + parseInt(total);
+                fila_detalle = fila_detalle + '<td>'+value['direccion']+', '+value['nombre_comuna']+', '+value['nombre_provincia']+', '+value['nombre_region']+'</td></tr>';
               }
             });
-
-            $("#into_totaldetalle").html(total_final);
 
             if(fila_detalle)
             {
               $("#table_listadetalle").html(fila_detalle);
             }else{
-              $("#table_listadetalle").html('<tr><td colspan="5">Sin información</td></tr>');
+              $("#table_listadetalle").html('<tr><td colspan="4">Sin información</td></tr>');
             }
 
           }else{
-            $("#table_listadetalle").html('<tr><td colspan="5">Sin información</td></tr>');
+            $("#table_listadetalle").html('<tr><td colspan="4">Sin información</td></tr>');
           }
         });
         return form.valid();
@@ -229,6 +222,7 @@ $(function(){
     },
     onFinished: function(event, currentIndex) {
       
+      $('.actions > ul > li:last-child').addClass('hidden');
       // validar campos
       if($("#rut_invalido").data('valid') == 1)
       {
@@ -244,12 +238,14 @@ $(function(){
             window.location.href = Routing.generate('venta_vista_verventa', {id:json.idventa}, true);
           }else{
             $("#alert_error").removeClass('hidden');
+            $('.actions > ul > li:last-child').removeClass('hidden');
             // $(".actions ul li").last().html('<a href="#finish" role="menuitem">Finalizar</a>');
           }
           
         });
       }else{
         console.log('faltan datos');
+        $('.actions > ul > li:last-child').removeClass('hidden');
         return false;
       }
         

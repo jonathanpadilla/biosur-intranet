@@ -9,12 +9,12 @@
     <!-- Start: Sidebar Left Menu -->
     <ul class="nav sidebar-menu">
       <li class="sidebar-label pt20">Mantencion</li>
-      <li>
+      {# <li>
         <a href="{{ url('venta_vista_inicio') }}">
           <span class="fa fa-home"></span>
           <span class="sidebar-title">Inicio</span>
         </a>
-      </li>
+      </li> #}
       <li>
         <a href="{{ url('mantencion_vista_rutas') }}">
           <span class="fa fa-list"></span>
@@ -25,6 +25,12 @@
         <a href="{{ url('mantencion_vista_verruta') }}">
           <span class="fa fa-plus"></span>
           <span class="sidebar-title">Ordenar ruta</span>
+        </a>
+      </li>
+      <li>
+        <a href="{{ url('mantencion_vista_agregarcamion') }}">
+          <span class="fa fa-plus"></span>
+          <span class="sidebar-title">Camiones</span>
         </a>
       </li>
 

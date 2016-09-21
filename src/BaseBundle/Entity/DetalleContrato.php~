@@ -127,6 +127,13 @@ class DetalleContrato
     private $dcoPapel;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="dco_activo", type="integer", nullable=true)
+     */
+    private $dcoActivo;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="dco_comentario", type="text", length=65535, nullable=true)

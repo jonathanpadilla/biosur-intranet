@@ -25,10 +25,11 @@ function cargarFormularios()
 
 		var dia 	= $("#select_dia").val();
 		var fecha 	= $("#text_fecha").val();
+		var extra 	= $("#text_hoja_extra").val();
 
 		$.ajax({
 			url: Routing.generate('mantencion_ajax_cargarformularios'),
-			data: {'dia': dia, 'fecha': fecha},
+			data: {'dia': dia, 'fecha': fecha, 'extra': extra},
 			dataType: 'html',
 		}).success(function(json){
 			$("#formularios").html(json);
