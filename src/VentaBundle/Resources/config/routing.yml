@@ -61,3 +61,9 @@ venta_ajax_guardardetalleventa:
     defaults: { _controller: VentaBundle:VerVenta:guardarDetalleVenta }
     options:
         expose: true
+
+venta_ajax_guardarnombrecliente:
+    path:     /ver/guardar-nombre-cliente/
+    defaults: { _controller: VentaBundle:VerVenta:guardarNombreCliente }
+    options:
+        expose: true

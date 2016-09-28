@@ -16,10 +16,9 @@ $(function(){
 		}).success(function(json){
 			if(json.result)
 			{
-		
+				location.reload(true);
 			}
 		
-			console.log(json);
 		});
 		
 

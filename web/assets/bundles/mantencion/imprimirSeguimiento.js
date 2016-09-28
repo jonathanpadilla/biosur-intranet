@@ -2,6 +2,11 @@ var button_descargar_formulario = $("#button_descargar_formulario");
 
 $(function(){
 
+	$(".btn_subir").on('click', function(){
+		$('body,html').animate({scrollTop : 0}, 500);
+    	return false;
+	});
+
 	$('#text_fecha').datepicker({
 		dateFormat: "dd/mm/yy"
 	});
@@ -41,5 +46,16 @@ function cargarFormularios()
 
 			});
 		
+			$(".check_formularios").find('input[type=checkbox]').on('click', function(){
+
+				if($(this).is(':checked'))
+				{
+					$(this).parent().parent().parent().parent().css('background-color', '#fff');
+				}else{
+					$(this).parent().parent().parent().parent().css('background-color', '#c5c5c5');
+
+				}
+			});
+
 		});
 }

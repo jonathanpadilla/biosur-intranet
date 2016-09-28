@@ -71,3 +71,24 @@
 .text-deshabilitado{
 	color:#bfbfbf;
 }
+
+.check_formularios{
+	margin-top: 20px;
+}
+
+.check_formularios label{
+	font-size: 18px;
+}
+
+.btn_editar_nombre, .btn_guardar_nombre{
+	background-color: #fff;
+    border: 0;
+    font-size: 20px;
+    color: #c1b8b8;
+    height: 30px;
+    vertical-align: top;
+}
+
+.btn_editar_nombre:hover, .btn_guardar_nombre:hover{
+	color: #888585;
+}

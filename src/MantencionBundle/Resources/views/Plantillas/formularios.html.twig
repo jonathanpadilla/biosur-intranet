@@ -2,8 +2,16 @@
 	{% for formulario in listaFormularios %}
 	<div class="row" style="border:2px solid #666;border-top: 15px solid #ea661c;">
 
-		<div class="col-md-12">
-			<h3>INFORMACIÓN GENERADOR</h3>
+		<div class="col-md-12 check_formularios">
+
+			<div class="form-group">
+				<div class="radio-custom radio-default mb5">
+			        <input type="checkbox" id="form[{{ formulario.id }}][check_imprimir]" name="form[{{ formulario.id }}][check_imprimir]" checked>
+			        <label for="form[{{ formulario.id }}][check_imprimir]">INFORMACIÓN GENERADOR</label>
+					<!-- <h3>INFORMACIÓN GENERADOR</h3> -->
+		        </div>
+		    </div>
+
 		</div>
 
 		<div class="col-md-6">

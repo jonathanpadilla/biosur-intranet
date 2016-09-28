@@ -170,7 +170,7 @@
 		<div id="contenido_paginas">
 		{% set salto = 0 %}
 
-		{% for pagina in formulario %}
+		{% for pagina in formulario if pagina.check_imprimir is defined %}
 
 			{% if salto == 1 %}
 				{% set div_salto = '<div class="salto"></div>' %}

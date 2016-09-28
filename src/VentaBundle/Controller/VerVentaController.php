@@ -541,4 +541,27 @@ FUNCIONES AJAX
 		echo json_encode(array('result' => $result));
 		exit;
 	}
+
+	public function guardarNombreClienteAction(Request $request)
+	{
+		$result = false;
+		
+		if( $request->getMethod() == 'POST' )
+		{
+			$em 	= $this->getDoctrine()->getManager();
+			$nombre = $request->get('nombre', false);
+			$id 	= $request->get('id', false);
+
+			if($cliente = $em->getRepository('BaseBundle:Cliente')->findOneBy(array('cliIdPk' => $id)))
+			{
+				$cliente->setCliNombre($nombre);
+                $em->persist($cliente);
+                $em->flush();
+			}
+			
+		}
+
+		echo json_encode(array('result' => $result));
+		exit;
+	}
 }

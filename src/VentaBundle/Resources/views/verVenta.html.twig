@@ -46,7 +46,8 @@
         <div class="row mb30">
           <div class="col-md-8">
             <div class="pull-left">
-              <h1 class="mt10">ARRIENDO DE {{ datosCliente.nombre_cliente }}</h1>
+                <h1 id="content_nombre_cliente" class="mt10">ARRIENDO DE <span id="nombre_cliente">{{ datosCliente.nombre_cliente }}</span> <button type="button" class="btn_editar_nombre"><i class="fa fa-pencil"></i></button></h1>
+                <h1 id="content_input_cliente" style="display:none"><input id="txt_nombre_cliente" type="text" value="{{ datosCliente.nombre_cliente }}" data-id="{{ datosCliente.id_cliente }}"><button type="button" class="btn_guardar_nombre"><i class="fa fa-save"></i></button></h1>
               <h5 class="mn">Arriendo N° {{ datosCliente.id_venta }}</h5>
               <h5 class="mn"> Creado el {{ datosCliente.fecha_registro }} </h5>
               <h5 class="mn"> Estado de arriendo

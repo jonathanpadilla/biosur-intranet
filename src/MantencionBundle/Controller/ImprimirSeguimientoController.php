@@ -178,28 +178,31 @@ AJAX
         $total_insumo5 = 0;
         foreach($form as $value)
         {
-            if(!isset($informe['chofer'][$value['input_nombre_conductor']]))
+            if(isset($value['check_imprimir']))
             {
-                // echo $value['input_nombre_conductor'].' - ';
-                $informe['chofer'][$value['input_nombre_conductor']]['papel']       = 0;
-                $informe['chofer'][$value['input_nombre_conductor']]['sachet1']     = 0;
-                $informe['chofer'][$value['input_nombre_conductor']]['sachet2']     = 0;
-                $informe['chofer'][$value['input_nombre_conductor']]['jabon']       = 0;
-                $informe['chofer'][$value['input_nombre_conductor']]['alcohol']     = 0;
+                if(!isset($informe['chofer'][$value['input_nombre_conductor']]))
+                {
+                    // echo $value['input_nombre_conductor'].' - ';
+                    $informe['chofer'][$value['input_nombre_conductor']]['papel']       = 0;
+                    $informe['chofer'][$value['input_nombre_conductor']]['sachet1']     = 0;
+                    $informe['chofer'][$value['input_nombre_conductor']]['sachet2']     = 0;
+                    $informe['chofer'][$value['input_nombre_conductor']]['jabon']       = 0;
+                    $informe['chofer'][$value['input_nombre_conductor']]['alcohol']     = 0;
+                }
+
+
+                $informe['chofer'][$value['input_nombre_conductor']]['papel']      += $value['insumo1'];
+                $informe['chofer'][$value['input_nombre_conductor']]['sachet1']    += $value['insumo2'];
+                $informe['chofer'][$value['input_nombre_conductor']]['sachet2']    += $value['insumo3'];
+                $informe['chofer'][$value['input_nombre_conductor']]['jabon']      += $value['insumo4'];
+                $informe['chofer'][$value['input_nombre_conductor']]['alcohol']    += $value['insumo5'];
+
+                $total_insumo1 += $value['insumo1'];
+                $total_insumo2 += $value['insumo2'];
+                $total_insumo3 += $value['insumo3'];
+                $total_insumo4 += $value['insumo4'];
+                $total_insumo5 += $value['insumo5'];
             }
-
-
-            $informe['chofer'][$value['input_nombre_conductor']]['papel']      += $value['insumo1'];
-            $informe['chofer'][$value['input_nombre_conductor']]['sachet1']    += $value['insumo2'];
-            $informe['chofer'][$value['input_nombre_conductor']]['sachet2']    += $value['insumo3'];
-            $informe['chofer'][$value['input_nombre_conductor']]['jabon']      += $value['insumo4'];
-            $informe['chofer'][$value['input_nombre_conductor']]['alcohol']    += $value['insumo5'];
-
-            $total_insumo1 += $value['insumo1'];
-            $total_insumo2 += $value['insumo2'];
-            $total_insumo3 += $value['insumo3'];
-            $total_insumo4 += $value['insumo4'];
-            $total_insumo5 += $value['insumo5'];
         }
 
         $informe['total'] = array(
@@ -208,13 +211,13 @@ AJAX
             'sachet2' => $total_insumo3,
             'jabon' => $total_insumo4,
             'alcohol' => $total_insumo5,
-            );
+        );
 
-        // echo '<pre>';print_r($informe);exit;
-        $this->agregarStockInsumo(1, $total_insumo1, 'Salida de insumos para mantención');
-        $this->agregarStockInsumo(2, $total_insumo2, 'Salida de insumos para mantención');
-        $this->agregarStockInsumo(3, $total_insumo4, 'Salida de insumos para mantención');
-        $this->agregarStockInsumo(4, $total_insumo5, 'Salida de insumos para mantención');
+        // echo '<pre>';print_r($form);exit;
+        $this->agregarStockInsumo(1, $total_insumo1, 'Mantención');
+        $this->agregarStockInsumo(2, $total_insumo2, 'Mantención');
+        $this->agregarStockInsumo(3, $total_insumo4, 'Mantención');
+        $this->agregarStockInsumo(4, $total_insumo5, 'Mantención');
 
         return $this->render('MantencionBundle:Plantillas:imprimir_ruta_semanal.html.twig', array(
                 'formulario'    => $form,

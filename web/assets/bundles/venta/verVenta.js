@@ -2,6 +2,37 @@
 var btn_detalle_mantencion = $(".btn-detalle-mantencion");
 $(function(){
 
+	$(".btn_editar_nombre").on('click', function(){
+		$("#content_nombre_cliente").hide();
+		$("#content_input_cliente").show();
+	});
+
+	$(".btn_guardar_nombre").on('click', function(){
+		$("#content_nombre_cliente").show();
+		$("#content_input_cliente").hide();
+
+		var nombre 	= $("#txt_nombre_cliente").val();
+		var id 		= $("#txt_nombre_cliente").data('id');
+
+		$.ajax({
+			url: Routing.generate('venta_ajax_guardarnombrecliente'),
+			data: {'nombre': nombre, 'id':id},
+			dataType: 'json',
+			method: 'post',
+		}).success(function(json){
+			if(json.result)
+			{
+		
+			}
+		
+			console.log(json);
+		});
+		
+
+		$("#nombre_cliente").text(nombre);
+
+	});
+
 	// ver detalle mantencion
 	btn_detalle_mantencion.on('click', function(e){
 		e.preventDefault();
