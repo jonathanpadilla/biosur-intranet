@@ -164,12 +164,19 @@
         <span class="panel-icon">
           <i class="fa fa-map-marker"></i>
         </span>
-        <span class="panel-title">Destinos</span>
+        <span class="panel-title">Direcciónes</span>
       </div>
       <div class="panel-body p20" id="invoice-item">
         <div class="row">
           <div class="col-md-12">
             <div id="mapa" style="height: 300px;"></div>
+          </div>
+        </div>
+        <br>
+
+        <div class="row">
+          <div class="col-md-12 text-right">
+            <button id="btn_agregar_destino" class="btn btn-biosur">Agregar Dirección</button>
           </div>
         </div>
         <br>
@@ -182,6 +189,9 @@
               <div class="panel-heading">
                 <span class="panel-title">
                   <i class="fa fa-info"></i> {{ detalle.nombre_servicio }} - {{ detalle.direccion }}, {{ detalle.comuna }}, {{ detalle.provincia }}, {{ detalle.region }}
+                </span>
+                <span class="panel-controls">
+                  <a href="#" data-id="{{ detalle.id }}" class="btn_eliminar_detalle"><i class="fa fa-close"></i></a>
                 </span>
               </div>
               <div class="panel-body">
@@ -358,6 +368,114 @@
         <div id="nmapa" style="height: 300px;"></div>
       </div>
       <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="agregar_direccion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Nueva dirección</h4>
+      </div>
+      <div class="modal-body">
+        <form id="form_nuevo_detalle" action="#" method="post">
+          <input type="hidden" name="hide_id" value="{{ datosCliente.id_venta }}">
+          <div class="row">
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="inputStandard" class="control-label">Cantidad baños</label>
+                <input type="number" name="txt_cantidad_banno" id="valid_cantidad" class="form-control" placeholder="">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="inputStandard" class="control-label">Cantidad casetas</label>
+                <input type="number" name="txt_cantidad_caseta" id="valid_cantidad" class="form-control" placeholder="">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="inputStandard" class="control-label">Cantidad duchas</label>
+                <input type="number" name="txt_cantidad_ducha" id="valid_cantidad" class="form-control" placeholder="">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="inputStandard" class="control-label">Cantidad baños externos</label>
+                <input type="number" name="txt_cantidad_externo" id="valid_cantidad" class="form-control" placeholder="">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="inputStandard" class="control-label">Cantidad lavamanos</label>
+                <input type="number" name="txt_cantidad_lavamano" id="valid_cantidad" class="form-control" placeholder="">
+              </div>
+            </div>
+
+          </div>
+          <div class="row">
+
+            <div class="col-md-6">
+              <label class="control-label mb15">Dias de mantención*</label>
+              <div class="form-group">
+                <div class="checkbox-custom mb10">
+                  <input type="checkbox" name="dia[1]" id="chk_lunes">
+                  <label for="chk_lunes">Lunes</label>
+                </div>
+                <div class="checkbox-custom mb10">
+                  <input type="checkbox" name="dia[2]" id="chk_martes">
+                  <label for="chk_martes">Martes</label>
+                </div>
+                <div class="checkbox-custom mb10">
+                  <input type="checkbox" name="dia[3]" id="chk_miercoles">
+                  <label for="chk_miercoles">Miercoles</label>
+                </div>
+                <div class="checkbox-custom mb10">
+                  <input type="checkbox" name="dia[4]" id="chk_jueves">
+                  <label for="chk_jueves">Jueves</label>
+                </div>
+                <div class="checkbox-custom mb10">
+                  <input type="checkbox" name="dia[5]" id="chk_viernes">
+                  <label for="chk_viernes">Viernes</label>
+                </div>
+                <div class="checkbox-custom mb10">
+                  <input type="checkbox" name="dia[6]" id="chk_sabado">
+                  <label for="chk_sabado">Sabado</label>
+                </div>
+                <div class="checkbox-custom mb10">
+                  <input type="checkbox" name="dia[7]" id="chk_domingo">
+                  <label for="chk_domingo">Domingo</label>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="row">
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="select_comuna" class="control-label">Comuna*</label>
+                <select name="select_comuna" id="select_comuna" class="form-control select2-single">
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="txt_direccion" class="control-label">Dirección*</label>
+                <input type="text" name="txt_direccion" id="txt_direccion" class="form-control" placeholder="">
+              </div>
+            </div>
+
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-biosur btn_guardar_detalle" data-dismiss="modal">Guardar</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
       </div>
     </div>

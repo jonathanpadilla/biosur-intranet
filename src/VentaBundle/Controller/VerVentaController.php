@@ -5,6 +5,8 @@ namespace VentaBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use BaseBundle\Entity\DetalleContrato;
+use BaseBundle\Entity\Ruta;
 use \stdClass;
 
 class VerVentaController extends Controller
@@ -94,7 +96,7 @@ VISTAS
 		        // echo '<pre>';print_r(array_reverse($listaBitacora));exit;
 
 	        	// detalle de venta
-	        	$detalleVenta = $em->getRepository('BaseBundle:DetalleContrato')->findBy(array('dcoVentaFk' => $id ));
+	        	$detalleVenta = $em->getRepository('BaseBundle:DetalleContrato')->findBy(array('dcoVentaFk' => $id, 'dcoActivo' => 1 ));
 
 	        	if($detalleVenta)
 	        	{
@@ -559,6 +561,140 @@ FUNCIONES AJAX
                 $em->flush();
 			}
 			
+		}
+
+		echo json_encode(array('result' => $result));
+		exit;
+	}
+
+	public function crearDetalleArriendoAction(Request $request)
+	{
+		$result = false;
+
+		if( $request->getMethod() == 'POST' )
+		{
+			$hide_id 				= $request->get('hide_id', false);
+			$txt_cantidad_banno 	= $request->get('txt_cantidad_banno', false);
+			$txt_cantidad_caseta 	= $request->get('txt_cantidad_caseta', false);
+			$txt_cantidad_ducha 	= $request->get('txt_cantidad_ducha', false);
+			$txt_cantidad_externo 	= $request->get('txt_cantidad_externo', false);
+			$txt_cantidad_lavamano 	= $request->get('txt_cantidad_lavamano', false);
+			$dia 					= $request->get('dia', false);
+			$select_comuna 			= $request->get('select_comuna', false);
+			$txt_direccion 			= $request->get('txt_direccion', false);
+
+			if(is_numeric($hide_id) && is_array($dia))
+			{
+				$em = $this->getDoctrine()->getManager();
+
+				// claves foraneas
+				$fkVenta 	= $em->getRepository('BaseBundle:Venta')->findOneBy(array('venIdPk' => $hide_id));
+				$fkComuna 	= $em->getRepository('BaseBundle:Comuna')->findOneBy(array('comIdPk' => $select_comuna));
+				$fkServicio = $em->getRepository('BaseBundle:Servicio')->findOneBy(array('serIdPk' => 1));
+
+				// guardar detalle
+				$detalle = new DetalleContrato();
+				$detalle->setDcoVentaFk($fkVenta);
+				$detalle->setDcoComunaFk($fkComuna);
+				$detalle->setDcoServicioFk($fkServicio);
+				$detalle->setDcoDireccion($txt_direccion);
+				$detalle->setDcoCbano($txt_cantidad_banno);
+				$detalle->setDcoCcaseta($txt_cantidad_caseta);
+				$detalle->setDcoCducha($txt_cantidad_ducha);
+				$detalle->setDcoCexterno($txt_cantidad_externo);
+				$detalle->setDcoClavamano($txt_cantidad_lavamano);
+				$detalle->setDcoSachet($txt_cantidad_banno);
+				$detalle->setDcoPapel($txt_cantidad_banno);
+				$detalle->setDcoActivo(1);
+
+				$em->persist($detalle);
+                $em->flush();
+
+                // guardar ruta
+                if($detalle->getDcoIdPk())
+                {
+                    foreach($dia as $key => $value)
+                    {
+                        $ruta = new Ruta();
+                        $ruta->setRutDetallecontratoFk($detalle);
+                        $ruta->setRutDia($key);
+                        $ruta->setRutActivo(1);
+                        $ruta->setRutFecharegistro(new \DateTime(date("Y-m-d H:i:s")));
+                        $ruta->setRutOrden(0);
+                        $em->persist($ruta);
+                        $em->flush();
+                    }
+
+                    $result = true;
+
+                }
+
+			}
+
+
+		}
+
+		echo json_encode(array('result' => $result));
+		exit;
+	}
+
+	public function cargarComunasAction()
+	{
+		$em = $this->getDoctrine()->getManager();
+        $qb = $em->createQueryBuilder();
+        $result = false;
+
+		// cargar comunas
+        $q  = $qb->select(array('c'))
+            ->from('BaseBundle:Comuna', 'c')
+            ->getQuery();
+        $resultQuery = $q->getResult();
+
+        $listaComunas = '';
+        if($resultQuery)
+        {
+        	foreach($resultQuery as $value)
+        	{
+        		$listaComunas .= '<option value="'.$value->getComIdPk().'">'.$value->getComNombre().'</option>';
+        	}
+
+        	$result = true;
+
+        }
+
+        echo json_encode(array('result' => $result, 'listaComunas' => $listaComunas));
+        exit;
+
+	}
+
+	public function eliminarDetalleAction(request $request)
+	{
+		$result = false;
+
+		if( $request->getMethod() == 'POST' )
+		{
+			$em = $this->getDoctrine()->getManager();
+			$id = $request->get('id', false);
+
+			if(is_numeric($id) && $detalle = $em->getRepository('BaseBundle:DetalleContrato')->findOneBy(array('dcoIdPk' => $id)))
+			{
+
+				$detalle->setDcoActivo(0);
+				$em->persist($detalle);
+
+                if($ruta = $em->getRepository('BaseBundle:Ruta')->findBy(array('rutDetallecontratoFk' => $detalle )))
+                {
+                    foreach($ruta as $value)
+                    {
+                        $value->setRutActivo(0);
+                        $em->persist($value);
+                    }
+                }
+                
+                $em->flush();
+			}
+
+			$result = true;
 		}
 
 		echo json_encode(array('result' => $result));

@@ -67,3 +67,21 @@ venta_ajax_guardarnombrecliente:
     defaults: { _controller: VentaBundle:VerVenta:guardarNombreCliente }
     options:
         expose: true
+
+venta_ajax_crearnuevodetalle:
+    path:     /ver/crear-detalle-arriendo/
+    defaults: { _controller: VentaBundle:VerVenta:crearDetalleArriendo }
+    options:
+        expose: true
+
+venta_ajax_cargarcomunas:
+    path:     /ver/cargar-comunas/
+    defaults: { _controller: VentaBundle:VerVenta:cargarComunas }
+    options:
+        expose: true
+
+venta_ajax_eliminardetalle:
+    path:     /ver/eliminar-detalle/
+    defaults: { _controller: VentaBundle:VerVenta:eliminarDetalle }
+    options:
+        expose: true

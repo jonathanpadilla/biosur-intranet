@@ -35,7 +35,7 @@ class RutasController extends Controller
         {
             foreach($resultQuery as $value)
             {
-                if($detalleVenta = $em->getRepository('BaseBundle:DetalleContrato')->findBy(array('dcoVentaFk' => $value->getVenIdPk() )) )
+                if($detalleVenta = $em->getRepository('BaseBundle:DetalleContrato')->findBy(array('dcoVentaFk' => $value->getVenIdPk(), 'dcoActivo' => 1 )) )
                 {
                     foreach($detalleVenta as $value2)
                     {
@@ -92,11 +92,12 @@ class RutasController extends Controller
         $em             = $this->getDoctrine()->getManager();
         $qb             = $em->createQueryBuilder();
         $listaDestinos  = array();
+        $userData       = $this->get('service.user.data');
 
         // cargar datos
         $q  = $qb->select(array('v'))
             ->from('BaseBundle:Venta', 'v')
-            ->where('v.venFinalizado = 1')
+            ->where('v.venFinalizado = 1 AND v.venSucursalFk = '.$userData->getUserData()->sucursalActiva)
             ->getQuery();
 
         if($resultQuery = $q->getResult())

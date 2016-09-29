@@ -199,7 +199,7 @@ FUNCIONES AJAX
         {
             // variables
             $em = $this->getDoctrine()->getManager();
-date_default_timezone_set('America/Santiago');
+            date_default_timezone_set('America/Santiago');
 
             // servicios
 
@@ -353,7 +353,7 @@ date_default_timezone_set('America/Santiago');
                             $detalle->setDcoLon($value['lon']);
                             $detalle->setDcoPapel($value['cantidadbano']);
                             $detalle->setDcoSachet($value['cantidadbano']);
-$detalle->setDcoActivo(1);
+                            $detalle->setDcoActivo(1);
                             $em->persist($detalle);
                             $em->flush();
 

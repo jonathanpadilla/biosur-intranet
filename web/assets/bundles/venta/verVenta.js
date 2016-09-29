@@ -33,6 +33,22 @@ $(function(){
 
 	});
 
+	$("#btn_agregar_destino").on('click', function(){
+
+		$.ajax({
+			url: Routing.generate('venta_ajax_cargarcomunas'),
+			dataType: 'json',
+		}).success(function(json){
+			if(json.result)
+			{
+				$("#select_comuna").html(json.listaComunas);
+				$('#agregar_direccion').modal('show');
+			}
+
+		});
+		
+	});
+
 	// ver detalle mantencion
 	btn_detalle_mantencion.on('click', function(e){
 		e.preventDefault();
@@ -108,6 +124,48 @@ $(function(){
 				input.parent().find("label.load").html('');
 			}
 		});
+	});
+
+	$(".btn_guardar_detalle").on('click', function(){
+		var datos = $("#form_nuevo_detalle").serialize();
+
+		$.ajax({
+			url: Routing.generate('venta_ajax_crearnuevodetalle'),
+			data: datos,
+			dataType: 'json',
+			method: 'post',
+		}).success(function(json){
+			if(json.result)
+			{
+				location.reload(true);
+			}
+		
+		});
+		
+	});
+
+	$(".btn_eliminar_detalle").on('click', function(e){
+		var btn = $(this);
+		var id = btn.data('id');
+
+		e.preventDefault();
+
+		if(confirm('¿Realmente desea eliminar esta dirección?'))
+		{
+			$.ajax({
+				url: Routing.generate('venta_ajax_eliminardetalle'),
+				data: {'id': id},
+				dataType: 'json',
+				method: 'post',
+			}).success(function(json){
+				if(json.result)
+				{
+					location.reload(true);
+				}
+			
+			});
+			
+		}
 	});
 
 });
