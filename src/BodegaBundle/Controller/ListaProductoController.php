@@ -28,11 +28,20 @@ class ListaProductoController extends Controller
         {
             foreach($productos as $value)
             {
+                // verificar si esta en negativo el stock
+                $cantidad = $value->getProCantidad();
+                if($cantidad < 0)
+                {
+                    $value->setProCantidad(0);
+                    $em->persist($value);
+                    $em->flush();
+                }
+
                 $datos = new stdClass();
 
                 $datos->id          = $value->getProIdPk();
                 $datos->nombre      = $value->getProNombre();
-                $datos->cantidad    = $value->getProCantidad();
+                $datos->cantidad    = $cantidad;
                 $datos->alertStock  = ($value->getProCantidad() <= 60 )? 1: 0;
 
                 $listaProductos[] = $datos;

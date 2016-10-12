@@ -92,3 +92,7 @@
 .btn_editar_nombre:hover, .btn_guardar_nombre:hover{
 	color: #888585;
 }
+
+.btn_eliminar_insumo{
+	color:red;
+}

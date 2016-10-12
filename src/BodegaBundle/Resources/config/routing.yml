@@ -64,6 +64,12 @@ bodega_ajax_guardarproductos:
     options:
         expose: true
 
+bodega_ajax_eliminarproductos:
+    path:     /nuevo-producto/eliminar-producto/
+    defaults: { _controller: BodegaBundle:NuevoProducto:eliminarProducto }
+    options:
+        expose: true
+
 bodega_ajax_guardarstockproductos:
     path:     /nuevo-producto/guardar-stock-producto/
     defaults: { _controller: BodegaBundle:NuevoProducto:guardarStockProducto }

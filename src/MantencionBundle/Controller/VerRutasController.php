@@ -47,17 +47,19 @@ class VerRutasController extends Controller
                         {
                             foreach ($ruta as $value3){
 
-                                if($value3->getRutDia() == $dia && $value3->getRutCamionFk()->getCamIdPk() == $camion)
+                                $cam = ($value3->getRutCamionFk())? $value3->getRutCamionFk()->getCamIdPk(): false;
+
+                                if($value3->getRutDia() == $dia && $cam == $camion)
                                 {
                                     $datos = new stdClass();
 
                                     $datos->ruta_id                 = $value3->getRutIdPk();
                                     $datos->ruta_dia                = $value3->getRutDia();
                                     $datos->ruta_orden              = $value3->getRutOrden();
-                                    $datos->ruta_camion             = $value3->getRutCamionFk()->getCamIdPk();
-                                    $datos->ruta_patente            = $value3->getRutCamionFk()->getCamPatente();
-                                    $datos->ruta_chofer_nombre      = $value3->getRutCamionFk()->getCamUsuarioFk()->getUsuNombre();
-                                    $datos->ruta_chofer_apellido    = $value3->getRutCamionFk()->getCamUsuarioFk()->getUsuApellido();
+                                    $datos->ruta_camion             = ($value3->getRutCamionFk())?$value3->getRutCamionFk()->getCamIdPk(): null;
+                                    $datos->ruta_patente            = ($value3->getRutCamionFk())?$value3->getRutCamionFk()->getCamPatente():null;
+                                    $datos->ruta_chofer_nombre      = ($value3->getRutCamionFk())?$value3->getRutCamionFk()->getCamUsuarioFk()->getUsuNombre(): null;
+                                    $datos->ruta_chofer_apellido    = ($value3->getRutCamionFk())?$value3->getRutCamionFk()->getCamUsuarioFk()->getUsuApellido(): null;
 
                                     $datos->detalle_id          = $value2->getDcoIdPk();
                                     $datos->detalle_direccion   = $value2->getDcoDireccion();

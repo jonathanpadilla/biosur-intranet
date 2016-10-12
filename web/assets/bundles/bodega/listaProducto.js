@@ -19,5 +19,24 @@ $(function(){
 			$("#historialProducto").modal('show');
 		});
 
-	});	
+	});
+
+	$(".btn_eliminar_insumo").on('click', function(){
+		var btn = $(this);
+		var id = btn.data('id');
+
+		$.ajax({
+			url: Routing.generate(''),
+			data: {'id': id},
+			dataType: 'json',
+			method: 'post',
+		}).success(function(json){
+			if(json.result)
+			{
+				location.reload(true);
+			}
+
+		});
+		
+	});
 });

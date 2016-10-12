@@ -33,6 +33,9 @@ VISTAS
         $defaultData->setHtmlHeader(array('title' => 'Inicio'));
         $userData = $this->get('service.user.data');
 
+        $now = new \DateTime();
+        $fecha = $now->format('d/m/Y');
+
     	// cargar comunas
         $q  = $qb->select(array('c'))
             ->from('BaseBundle:Comuna', 'c')
@@ -81,6 +84,7 @@ VISTAS
             'userData'      => $userData->getUserData(),
         	'comunas'       => $listaComunas,
             'clientes'      => $listaClientes,
+            'fecha'         => $fecha,
             'menuActivo'    => 'nuevaventa'
         	));
     }

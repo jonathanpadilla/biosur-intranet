@@ -129,7 +129,7 @@
                   </div>
                 </div>
 
-                <div  class="row">
+                <div class="row">
                   <div class="col-md-12">
                     <div class="form-group">
                       <label for="textarea_comentario" class="control-label">Comentario</label>
@@ -146,37 +146,56 @@
               <i class="fa fa-file pr5"></i> Detalle de arriendo
             </h4>
             <section class="wizard-section">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="input_fecha_detalle" class="control-label">Fecha*</label>
+                    <input type="text" name="input_fecha_detalle" id="input_fecha_detalle" class="form-control" placeholder="" value="{{ fecha }}">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="inputStandard" class="control-label">Comentario</label>
+                    <textarea class="form-control" name="comentario_detalle" rows="3"></textarea>
+                  </div>
+                </div>
+              </div>
+
+              <h3>Agregar ubicación de baños</h3>
               <div class="tab-block mb25">
                 <ul class="nav tabs-left">
                   <li class="active">
-                    <a href="#tab_1" class="tab tab_1" data-tab="1" data-toggle="tab">Dirección 1</a>
+                    <a href="#tab_1" class="tab tab_1" data-tab="1" data-toggle="tab">Ubicación 1</a>
                   </li>
                   <li>
-                    <a href="#tab_2" class="tab tab_2" data-tab="2" data-toggle="tab">Dirección 2</a>
+                    <a href="#tab_2" class="tab tab_2" data-tab="2" data-toggle="tab">Ubicación 2</a>
                   </li>
                   <li>
-                    <a href="#tab_3" class="tab tab_3 hidden" data-tab="3" data-toggle="tab">Dirección 3</a>
+                    <a href="#tab_3" class="tab tab_3 hidden" data-tab="3" data-toggle="tab">Ubicación 3</a>
                   </li>
                   <li>
-                    <a href="#tab_4" class="tab tab_4 hidden" data-tab="4" data-toggle="tab">Dirección 4</a>
+                    <a href="#tab_4" class="tab tab_4 hidden" data-tab="4" data-toggle="tab">Ubicación 4</a>
                   </li>
                   <li>
-                    <a href="#tab_5" class="tab tab_5 hidden" data-tab="5" data-toggle="tab">Dirección 5</a>
+                    <a href="#tab_5" class="tab tab_5 hidden" data-tab="5" data-toggle="tab">Ubicación 5</a>
                   </li>
                   <li>
-                    <a href="#tab_6" class="tab tab_6 hidden" data-tab="6" data-toggle="tab">Dirección 6</a>
+                    <a href="#tab_6" class="tab tab_6 hidden" data-tab="6" data-toggle="tab">Ubicación 6</a>
                   </li>
                   <li>
-                    <a href="#tab_7" class="tab tab_7 hidden" data-tab="7" data-toggle="tab">Dirección 7</a>
+                    <a href="#tab_7" class="tab tab_7 hidden" data-tab="7" data-toggle="tab">Ubicación 7</a>
                   </li>
                   <li>
-                    <a href="#tab_8" class="tab tab_8 hidden" data-tab="8" data-toggle="tab">Dirección 8</a>
+                    <a href="#tab_8" class="tab tab_8 hidden" data-tab="8" data-toggle="tab">Ubicación 8</a>
                   </li>
                   <li>
-                    <a href="#tab_9" class="tab tab_9 hidden" data-tab="9" data-toggle="tab">Dirección 9</a>
+                    <a href="#tab_9" class="tab tab_9 hidden" data-tab="9" data-toggle="tab">Ubicación 9</a>
                   </li>
                   <li>
-                    <a href="#tab_10" class="tab tab_10 hidden" data-tab="10" data-toggle="tab">Dirección 10</a>
+                    <a href="#tab_10" class="tab tab_10 hidden" data-tab="10" data-toggle="tab">Ubicación 10</a>
                   </li>
                 </ul>
                 <div class="tab-content">
@@ -310,15 +329,15 @@
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label for="input_direccion2" class="control-label">Dirección*</label>
-                          <input type="text" name="detalle[1][direccion]" class="form-control" placeholder="Dirección">
+                          <label for="input_direccion2" class="control-label">Ubicación*</label>
+                          <input type="text" name="detalle[1][direccion]" class="form-control" placeholder="Ubicación">
                         </div>
                       </div>
                     </div>
 
                     <div class="row">
                       <div class="col-md-12">
-                        <button type="button" class="btn btn-biosur btn-ubicacion" data-id="1" data-toggle="modal" data-target="#myModal">Ubicación</button>
+                        <button type="button" class="btn btn-biosur btn-ubicacion" data-id="1" data-toggle="modal" data-target="#myModal">Mapa</button>
                         <button type="button" class="btn btn-danger btn-limpiarmapa" data-id="1"><i class="fa fa-trash-o" title="Limpiar"></i></button>
                         <strong>Latitud: </strong><span id="slat1">No seleccionado</span>
                         <strong>Longitud: </strong><span id="slon1">No seleccionado</span>
@@ -458,15 +477,15 @@
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label for="input_direccion2" class="control-label">Dirección*</label>
-                          <input type="text" name="detalle[2][direccion]" class="form-control" placeholder="Dirección">
+                          <label for="input_direccion2" class="control-label">Ubicación*</label>
+                          <input type="text" name="detalle[2][direccion]" class="form-control" placeholder="Ubicación">
                         </div>
                       </div>
                     </div>
 
                     <div class="row">
                       <div class="col-md-12">
-                        <button type="button" class="btn btn-biosur btn-ubicacion" data-id="2" data-toggle="modal" data-target="#myModal">Ubicación</button>
+                        <button type="button" class="btn btn-biosur btn-ubicacion" data-id="2" data-toggle="modal" data-target="#myModal">Mapa</button>
                         <button type="button" class="btn btn-danger btn-limpiarmapa" data-id="2"><i class="fa fa-trash-o" title="Limpiar"></i></button>
                         <strong>Latitud: </strong><span id="slat2">No seleccionado</span>
                         <strong>Longitud: </strong><span id="slon2">No seleccionado</span>
@@ -606,15 +625,15 @@
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label for="input_direccion2" class="control-label">Dirección*</label>
-                          <input type="text" name="detalle[3][direccion]" class="form-control" placeholder="Dirección">
+                          <label for="input_direccion2" class="control-label">Ubicación*</label>
+                          <input type="text" name="detalle[3][direccion]" class="form-control" placeholder="Ubicación">
                         </div>
                       </div>
                     </div>
 
                     <div class="row">
                       <div class="col-md-12">
-                        <button type="button" class="btn btn-biosur btn-ubicacion" data-id="3" data-toggle="modal" data-target="#myModal">Ubicación</button>
+                        <button type="button" class="btn btn-biosur btn-ubicacion" data-id="3" data-toggle="modal" data-target="#myModal">Mapa</button>
                         <button type="button" class="btn btn-danger btn-limpiarmapa" data-id=""><i class="fa fa-trash-o" title="Limpiar"></i></button>
                         <strong>Latitud: </strong><span id="slat3">No seleccionado</span>
                         <strong>Longitud: </strong><span id="slon3">No seleccionado</span>
@@ -754,15 +773,15 @@
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label for="input_direccion2" class="control-label">Dirección*</label>
-                          <input type="text" name="detalle[4][direccion]" class="form-control" placeholder="Dirección">
+                          <label for="input_direccion2" class="control-label">Ubicación*</label>
+                          <input type="text" name="detalle[4][direccion]" class="form-control" placeholder="Ubicación">
                         </div>
                       </div>
                     </div>
 
                     <div class="row">
                       <div class="col-md-12">
-                        <button type="button" class="btn btn-biosur btn-ubicacion" data-id="4" data-toggle="modal" data-target="#myModal">Ubicación</button>
+                        <button type="button" class="btn btn-biosur btn-ubicacion" data-id="4" data-toggle="modal" data-target="#myModal">Mapa</button>
                         <button type="button" class="btn btn-danger btn-limpiarmapa" data-id="4"><i class="fa fa-trash-o" title="Limpiar"></i></button>
                         <strong>Latitud: </strong><span id="slat4">No seleccionado</span>
                         <strong>Longitud: </strong><span id="slon4">No seleccionado</span>
@@ -902,15 +921,15 @@
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label for="input_direccion2" class="control-label">Dirección*</label>
-                          <input type="text" name="detalle[5][direccion]" class="form-control" placeholder="Dirección">
+                          <label for="input_direccion2" class="control-label">Ubicación*</label>
+                          <input type="text" name="detalle[5][direccion]" class="form-control" placeholder="Ubicación">
                         </div>
                       </div>
                     </div>
 
                     <div class="row">
                       <div class="col-md-12">
-                        <button type="button" class="btn btn-biosur btn-ubicacion" data-id="5" data-toggle="modal" data-target="#myModal">Ubicación</button>
+                        <button type="button" class="btn btn-biosur btn-ubicacion" data-id="5" data-toggle="modal" data-target="#myModal">Mapa</button>
                         <button type="button" class="btn btn-danger btn-limpiarmapa" data-id="5"><i class="fa fa-trash-o" title="Limpiar"></i></button>
                         <strong>Latitud: </strong><span id="slat5">No seleccionado</span>
                         <strong>Longitud: </strong><span id="slon5">No seleccionado</span>
@@ -1050,15 +1069,15 @@
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label for="input_direccion2" class="control-label">Dirección*</label>
-                          <input type="text" name="detalle[6][direccion]" class="form-control" placeholder="Dirección">
+                          <label for="input_direccion2" class="control-label">Ubicación*</label>
+                          <input type="text" name="detalle[6][direccion]" class="form-control" placeholder="Ubicación">
                         </div>
                       </div>
                     </div>
 
                     <div class="row">
                       <div class="col-md-12">
-                        <button type="button" class="btn btn-biosur btn-ubicacion" data-id="6" data-toggle="modal" data-target="#myModal">Ubicación</button>
+                        <button type="button" class="btn btn-biosur btn-ubicacion" data-id="6" data-toggle="modal" data-target="#myModal">Mapa</button>
                         <button type="button" class="btn btn-danger btn-limpiarmapa" data-id="6"><i class="fa fa-trash-o" title="Limpiar"></i></button>
                         <strong>Latitud: </strong><span id="slat6">No seleccionado</span>
                         <strong>Longitud: </strong><span id="slon6">No seleccionado</span>
@@ -1198,15 +1217,15 @@
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label for="input_direccion2" class="control-label">Dirección*</label>
-                          <input type="text" name="detalle[7][direccion]" class="form-control" placeholder="Dirección">
+                          <label for="input_direccion2" class="control-label">Ubicación*</label>
+                          <input type="text" name="detalle[7][direccion]" class="form-control" placeholder="Ubicación">
                         </div>
                       </div>
                     </div>
 
                     <div class="row">
                       <div class="col-md-12">
-                        <button type="button" class="btn btn-biosur btn-ubicacion" data-id="7" data-toggle="modal" data-target="#myModal">Ubicación</button>
+                        <button type="button" class="btn btn-biosur btn-ubicacion" data-id="7" data-toggle="modal" data-target="#myModal">Mapa</button>
                         <button type="button" class="btn btn-danger btn-limpiarmapa" data-id="7"><i class="fa fa-trash-o" title="Limpiar"></i></button>
                         <strong>Latitud: </strong><span id="slat7">No seleccionado</span>
                         <strong>Longitud: </strong><span id="slon7">No seleccionado</span>
@@ -1346,15 +1365,15 @@
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label for="input_direccion2" class="control-label">Dirección*</label>
-                          <input type="text" name="detalle[8][direccion]" class="form-control" placeholder="Dirección">
+                          <label for="input_direccion2" class="control-label">Ubicación*</label>
+                          <input type="text" name="detalle[8][direccion]" class="form-control" placeholder="Ubicación">
                         </div>
                       </div>
                     </div>
 
                     <div class="row">
                       <div class="col-md-12">
-                        <button type="button" class="btn btn-biosur btn-ubicacion" data-id="8" data-toggle="modal" data-target="#myModal">Ubicación</button>
+                        <button type="button" class="btn btn-biosur btn-ubicacion" data-id="8" data-toggle="modal" data-target="#myModal">Mapa</button>
                         <button type="button" class="btn btn-danger btn-limpiarmapa" data-id="8"><i class="fa fa-trash-o" title="Limpiar"></i></button>
                         <strong>Latitud: </strong><span id="slat8">No seleccionado</span>
                         <strong>Longitud: </strong><span id="slon8">No seleccionado</span>
@@ -1494,15 +1513,15 @@
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label for="input_direccion2" class="control-label">Dirección*</label>
-                          <input type="text" name="detalle[9][direccion]" class="form-control" placeholder="Dirección">
+                          <label for="input_direccion2" class="control-label">Ubicación*</label>
+                          <input type="text" name="detalle[9][direccion]" class="form-control" placeholder="Ubicación">
                         </div>
                       </div>
                     </div>
 
                     <div class="row">
                       <div class="col-md-12">
-                        <button type="button" class="btn btn-biosur btn-ubicacion" data-id="9" data-toggle="modal" data-target="#myModal">Ubicación</button>
+                        <button type="button" class="btn btn-biosur btn-ubicacion" data-id="9" data-toggle="modal" data-target="#myModal">Mapa</button>
                         <button type="button" class="btn btn-danger btn-limpiarmapa" data-id="9"><i class="fa fa-trash-o" title="Limpiar"></i></button>
                         <strong>Latitud: </strong><span id="slat9">No seleccionado</span>
                         <strong>Longitud: </strong><span id="slon9">No seleccionado</span>
@@ -1642,15 +1661,15 @@
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label for="input_direccion2" class="control-label">Dirección*</label>
-                          <input type="text" name="detalle[10][direccion]" class="form-control" placeholder="Dirección">
+                          <label for="input_direccion2" class="control-label">Ubicación*</label>
+                          <input type="text" name="detalle[10][direccion]" class="form-control" placeholder="Ubicación">
                         </div>
                       </div>
                     </div>
 
                     <div class="row">
                       <div class="col-md-12">
-                        <button type="button" class="btn btn-biosur btn-ubicacion" data-id="10" data-toggle="modal" data-target="#myModal">Ubicación</button>
+                        <button type="button" class="btn btn-biosur btn-ubicacion" data-id="10" data-toggle="modal" data-target="#myModal">Mapa</button>
                         <button type="button" class="btn btn-danger btn-limpiarmapa" data-id="10"><i class="fa fa-trash-o" title="Limpiar"></i></button>
                         <strong>Latitud: </strong><span id="slat10">No seleccionado</span>
                         <strong>Longitud: </strong><span id="slon10">No seleccionado</span>
@@ -1661,21 +1680,6 @@
 
                   </div>
 
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col-md-12">
-                  <h3>Otra información</h3>
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label for="inputStandard" class="control-label">Comentario/fecha inicio</label>
-                    <textarea class="form-control" name="comentario_detalle" rows="3"></textarea>
-                  </div>
                 </div>
               </div>
 
@@ -1792,10 +1796,12 @@
 {% block footerScripts %}
 	<script src="{{ absolute_url(asset('vendor/plugins/duallistbox/jquery.bootstrap-duallistbox.min.js')) }}"></script>
 	<script src="{{ absolute_url(asset('assets/admin-tools/admin-forms/js/jquery.validate.min.js')) }}"></script>
+  <script src="{{ absolute_url(asset('vendor/plugins/moment/moment.min.js')) }}"></script>
+  <script src="{{ absolute_url(asset('vendor/plugins/datepicker/js/bootstrap-datetimepicker.js')) }}"></script>
 	<script src="{{ absolute_url(asset('assets/admin-tools/admin-forms/js/jquery.steps.min.js')) }}"></script>
   <script src="{{ absolute_url(asset('vendor/plugins/select2/select2.min.js')) }}"></script>
   <script src="{{ absolute_url(asset('vendor/plugins/gmap/gmaps.js')) }}"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAk4HzcdPciUZejfLnYpXqVPXH9wfBEAj8"></script>
-  <script src="{{ absolute_url(asset('assets/bundles/venta/nuevaVenta.js')) }}"></script>
   <script src="{{ absolute_url(asset('assets/bundles/plugin/jquery.contacto.js')) }}"></script>
+  <script src="{{ absolute_url(asset('assets/bundles/venta/nuevaVenta.js')) }}"></script>
 {% endblock %}

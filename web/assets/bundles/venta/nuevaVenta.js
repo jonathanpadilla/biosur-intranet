@@ -2,7 +2,6 @@ $(function(){
   var form      = $("#form_wizard_venta");
   var crear     = form.data('crear');
 
-
     $('#myModal').on('shown.bs.modal', function (event) {
         $("#plat").html("");
         $("#plon").html("");
@@ -275,6 +274,10 @@ $(function(){
   });
 
   $(".select2-single").select2({ width: '100%' });
+
+  $('#input_fecha_detalle').datepicker({
+    dateFormat: "dd/mm/yy"
+  });
 
   cargarFormularioCliente();
 

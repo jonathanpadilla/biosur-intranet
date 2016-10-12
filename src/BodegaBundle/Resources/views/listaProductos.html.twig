@@ -12,6 +12,8 @@
 						    <h4 class="media-heading">{{ producto.nombre }}  {{ producto.alertStock == 1 ? '<span class="label label-danger">Bajo Stock</span>' }}</h4>
 						    <h4 class="media-heading">{{ producto.cantidad }} unidades</h4>
 						    <a class="text-system btn_historial" href="#" data-id="{{ producto.id }}"> Historial </a>
+						    <br>
+						  	<a class="btn_eliminar_insumo" href="#" data-id="{{ producto.id }}">Eliminar</a>
 						  </div>
 						</div>
 					</div>
