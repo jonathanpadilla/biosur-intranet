@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 21-09-2016 a las 06:15:30
+-- Tiempo de generación: 19-10-2016 a las 06:31:14
 -- Versión del servidor: 5.5.49-cll-lve
 -- Versión de PHP: 5.6.20
 
@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `bannos` (
   KEY `ban_sucursal_fk` (`ban_sucursal_fk`),
   KEY `ban_tipo_id` (`ban_tipo_id`),
   KEY `ban_cliente_fk` (`ban_cliente_fk`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=311 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=312 ;
 
 --
 -- Volcado de datos para la tabla `bannos`
@@ -299,26 +299,26 @@ INSERT INTO `bannos` (`ban_id_pk`, `ban_sucursal_fk`, `ban_tipo_id`, `ban_client
 (0000000248, 0000000001, 0000000004, NULL, '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.', '1', NULL, NULL, 0, NULL, '2016-07-07 18:52:16'),
 (0000000249, 0000000001, 0000000004, NULL, '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.', '1', NULL, NULL, 0, NULL, '2016-07-07 18:52:18'),
 (0000000250, 0000000001, 0000000004, NULL, '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.', '1', NULL, NULL, 0, NULL, '2016-07-07 18:52:21'),
-(0000000251, 0000000001, 0000000004, NULL, '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.', '1', NULL, NULL, 0, NULL, '2016-07-07 18:54:08'),
-(0000000252, 0000000001, 0000000004, NULL, '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.', '1', NULL, NULL, 0, NULL, '2016-07-07 18:55:09'),
-(0000000253, 0000000001, 0000000004, NULL, '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.', '1', NULL, NULL, 0, NULL, '2016-07-07 18:55:11'),
-(0000000254, 0000000001, 0000000004, NULL, '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.', '1', NULL, NULL, 0, NULL, '2016-07-07 18:55:13'),
-(0000000255, 0000000001, 0000000004, NULL, '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.', '1', NULL, NULL, 0, NULL, '2016-07-07 18:55:15'),
-(0000000256, 0000000001, 0000000004, NULL, '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.', '1', NULL, NULL, 0, NULL, '2016-07-07 18:55:17'),
-(0000000257, 0000000001, 0000000004, NULL, '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.', '1', NULL, NULL, 0, NULL, '2016-07-07 18:55:19'),
-(0000000258, 0000000001, 0000000004, NULL, '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.', '1', NULL, NULL, 0, NULL, '2016-07-07 18:55:21'),
-(0000000259, 0000000001, 0000000004, NULL, '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.', '1', NULL, NULL, 0, NULL, '2016-07-07 18:55:23'),
-(0000000260, 0000000001, 0000000004, NULL, '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.', '1', NULL, NULL, 0, NULL, '2016-07-07 18:55:25'),
-(0000000261, 0000000001, 0000000005, NULL, '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.', '1', NULL, NULL, 0, NULL, '2016-07-07 18:55:27'),
-(0000000262, 0000000001, 0000000005, NULL, '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.', '1', NULL, NULL, 0, NULL, '2016-07-07 18:55:29'),
-(0000000263, 0000000001, 0000000005, NULL, '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.', '1', NULL, NULL, 0, NULL, '2016-07-07 18:55:29'),
-(0000000264, 0000000001, 0000000005, NULL, '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.', '1', NULL, NULL, 0, NULL, '2016-07-07 18:55:31'),
-(0000000265, 0000000001, 0000000005, NULL, '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.', '1', NULL, NULL, 0, NULL, '2016-07-07 18:55:33'),
-(0000000266, 0000000001, 0000000005, NULL, '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.', '1', NULL, NULL, 0, NULL, '2016-07-07 18:55:35'),
-(0000000267, 0000000001, 0000000005, NULL, '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.', '1', NULL, NULL, 0, NULL, '2016-07-07 18:55:37'),
-(0000000268, 0000000001, 0000000005, NULL, '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.', '1', NULL, NULL, 0, NULL, '2016-07-07 18:55:39'),
-(0000000269, 0000000001, 0000000005, NULL, '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.', '1', NULL, NULL, 0, NULL, '2016-07-07 18:55:43'),
-(0000000270, 0000000001, 0000000005, NULL, '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.', '1', NULL, NULL, 0, NULL, '2016-07-07 18:55:45'),
+(0000000251, 0000000001, 0000000005, NULL, '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.', '1', NULL, NULL, 0, NULL, '2016-07-07 18:54:08'),
+(0000000252, 0000000001, 0000000005, NULL, '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.', '1', NULL, NULL, 0, NULL, '2016-07-07 18:55:09'),
+(0000000253, 0000000001, 0000000005, NULL, '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.', '1', NULL, NULL, 0, NULL, '2016-07-07 18:55:11'),
+(0000000254, 0000000001, 0000000005, NULL, '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.', '1', NULL, NULL, 0, NULL, '2016-07-07 18:55:13'),
+(0000000255, 0000000001, 0000000005, NULL, '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.', '1', NULL, NULL, 0, NULL, '2016-07-07 18:55:15'),
+(0000000256, 0000000001, 0000000005, NULL, '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.', '1', NULL, NULL, 0, NULL, '2016-07-07 18:55:17'),
+(0000000257, 0000000001, 0000000005, NULL, '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.', '1', NULL, NULL, 0, NULL, '2016-07-07 18:55:19'),
+(0000000258, 0000000001, 0000000005, NULL, '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.', '1', NULL, NULL, 0, NULL, '2016-07-07 18:55:21'),
+(0000000259, 0000000001, 0000000005, NULL, '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.', '1', NULL, NULL, 0, NULL, '2016-07-07 18:55:23'),
+(0000000260, 0000000001, 0000000005, NULL, '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.', '1', NULL, NULL, 0, NULL, '2016-07-07 18:55:25'),
+(0000000261, 0000000001, 0000000004, NULL, '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.', '1', NULL, NULL, 0, NULL, '2016-07-07 18:55:27'),
+(0000000262, 0000000001, 0000000004, NULL, '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.', '1', NULL, NULL, 0, NULL, '2016-07-07 18:55:29'),
+(0000000263, 0000000001, 0000000004, NULL, '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.', '1', NULL, NULL, 0, NULL, '2016-07-07 18:55:29'),
+(0000000264, 0000000001, 0000000004, NULL, '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.', '1', NULL, NULL, 0, NULL, '2016-07-07 18:55:31'),
+(0000000265, 0000000001, 0000000004, NULL, '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.', '1', NULL, NULL, 0, NULL, '2016-07-07 18:55:33'),
+(0000000266, 0000000001, 0000000004, NULL, '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.', '1', NULL, NULL, 0, NULL, '2016-07-07 18:55:35'),
+(0000000267, 0000000001, 0000000004, NULL, '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.', '1', NULL, NULL, 0, NULL, '2016-07-07 18:55:37'),
+(0000000268, 0000000001, 0000000004, NULL, '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.', '1', NULL, NULL, 0, NULL, '2016-07-07 18:55:39'),
+(0000000269, 0000000001, 0000000004, NULL, '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.', '1', NULL, NULL, 0, NULL, '2016-07-07 18:55:43'),
+(0000000270, 0000000001, 0000000004, NULL, '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.', '1', NULL, NULL, 0, NULL, '2016-07-07 18:55:45'),
 (0000000271, 0000000001, NULL, NULL, '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.', '2', NULL, NULL, 0, NULL, '2016-07-07 18:55:47'),
 (0000000272, 0000000001, NULL, NULL, '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.', '2', NULL, NULL, 0, NULL, '2016-07-07 18:55:49'),
 (0000000273, 0000000001, NULL, NULL, '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.', '2', NULL, NULL, 0, NULL, '2016-07-07 18:55:54'),
@@ -358,7 +358,8 @@ INSERT INTO `bannos` (`ban_id_pk`, `ban_sucursal_fk`, `ban_tipo_id`, `ban_client
 (0000000307, 0000000001, NULL, NULL, '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.', '3', NULL, NULL, 0, NULL, '2016-07-07 19:25:10'),
 (0000000308, 0000000001, NULL, NULL, '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.', '3', NULL, NULL, 0, NULL, '2016-07-07 19:25:12'),
 (0000000309, 0000000001, NULL, NULL, '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.', '3', NULL, NULL, 0, NULL, '2016-07-07 19:25:21'),
-(0000000310, 0000000001, NULL, NULL, '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.', '3', NULL, NULL, 0, NULL, '2016-07-07 19:25:23');
+(0000000310, 0000000001, NULL, NULL, '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.', '3', NULL, NULL, 0, NULL, '2016-07-07 19:25:23'),
+(0000000311, 0000000001, 0000000004, NULL, '$2a$07$jpdeveloperstringforsOk0vkvMOVVB8r722xvEQLXl//e23GFq.', '1', NULL, NULL, 0, '333', '2016-10-03 21:57:55');
 
 -- --------------------------------------------------------
 
@@ -399,7 +400,7 @@ CREATE TABLE IF NOT EXISTS `bitacora` (
   PRIMARY KEY (`bit_id_pk`),
   KEY `bit_sucursal_fk` (`bit_sucursal_fk`),
   KEY `bit_venta_fk` (`bit_venta_fk`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=211 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=279 ;
 
 --
 -- Volcado de datos para la tabla `bitacora`
@@ -563,7 +564,75 @@ INSERT INTO `bitacora` (`bit_id_pk`, `bit_sucursal_fk`, `bit_venta_fk`, `bit_fec
 (0000000207, 0000000001, 0000000098, '2016-09-15 20:23:00', '<strong>Modificación de 1 productos</strong> (B0000029, ) al arriendo, por <b class="text-primary">AGENCIA TUCIUDAD</b>'),
 (0000000208, 0000000001, 0000000094, '2016-09-15 20:24:07', '<strong>Modificación de 2 productos</strong> (B0000023, B0000025, ) al arriendo, por <b class="text-primary">AGENCIA TUCIUDAD</b>'),
 (0000000209, 0000000001, 0000000099, '2016-09-16 12:35:41', '<strong>Arriendo registrado</strong> al sistema por <b class="text-primary">AGENCIA TUCIUDAD</b>'),
-(0000000210, 0000000001, 0000000099, '2016-09-16 15:41:37', '<strong>Modificación de 18 productos</strong> (B0000001, B0000002, B0000003, B0000004, B0000005, B0000006, B0000007, B0000008, B0000009, B0000010, B0000011, B0000012, B0000013, B0000014, B0000015, B0000016, B0000017, B0000050, ) al arriendo, por <b class="text-primary">AGENCIA TUCIUDAD</b>');
+(0000000210, 0000000001, 0000000099, '2016-09-16 15:41:37', '<strong>Modificación de 18 productos</strong> (B0000001, B0000002, B0000003, B0000004, B0000005, B0000006, B0000007, B0000008, B0000009, B0000010, B0000011, B0000012, B0000013, B0000014, B0000015, B0000016, B0000017, B0000050, ) al arriendo, por <b class="text-primary">AGENCIA TUCIUDAD</b>'),
+(0000000211, 0000000001, 0000000100, '2016-09-22 12:17:14', '<strong>Arriendo registrado</strong> al sistema por <b class="text-primary">Daniel Poblete</b>'),
+(0000000212, 0000000001, 0000000100, '2016-09-22 15:27:10', '<strong>Modificación de ruta</strong> del día Lunes al camión DFCC36, por <b class="text-primary">Daniel Poblete</b>'),
+(0000000213, 0000000001, 0000000100, '2016-09-22 15:27:10', '<strong>Modificación de ruta</strong> del día Miercoles al camión DFCC36, por <b class="text-primary">Daniel Poblete</b>'),
+(0000000214, 0000000001, 0000000100, '2016-09-22 15:27:10', '<strong>Modificación de ruta</strong> del día Viernes al camión DFCC36, por <b class="text-primary">Daniel Poblete</b>'),
+(0000000215, 0000000001, 0000000100, '2016-09-22 15:27:10', '<strong>Modificación de ruta</strong> del día Lunes al camión DFCC36, por <b class="text-primary">Daniel Poblete</b>'),
+(0000000216, 0000000001, 0000000100, '2016-09-22 15:27:10', '<strong>Modificación de ruta</strong> del día Miercoles al camión DFCC36, por <b class="text-primary">Daniel Poblete</b>'),
+(0000000217, 0000000001, 0000000100, '2016-09-22 15:27:10', '<strong>Modificación de ruta</strong> del día Viernes al camión DFCC36, por <b class="text-primary">Daniel Poblete</b>'),
+(0000000218, 0000000001, 0000000100, '2016-09-22 15:27:10', '<strong>Modificación de ruta</strong> del día Lunes al camión DFCC36, por <b class="text-primary">Daniel Poblete</b>'),
+(0000000219, 0000000001, 0000000100, '2016-09-22 15:27:10', '<strong>Modificación de ruta</strong> del día Miercoles al camión DFCC36, por <b class="text-primary">Daniel Poblete</b>'),
+(0000000220, 0000000001, 0000000100, '2016-09-22 15:27:10', '<strong>Modificación de ruta</strong> del día Viernes al camión DFCC36, por <b class="text-primary">Daniel Poblete</b>'),
+(0000000221, 0000000001, 0000000100, '2016-09-22 15:27:10', '<strong>Modificación de ruta</strong> del día Lunes al camión DFCC36, por <b class="text-primary">Daniel Poblete</b>'),
+(0000000222, 0000000001, 0000000100, '2016-09-22 15:27:10', '<strong>Modificación de ruta</strong> del día Miercoles al camión DFCC36, por <b class="text-primary">Daniel Poblete</b>'),
+(0000000223, 0000000001, 0000000100, '2016-09-22 15:27:10', '<strong>Modificación de ruta</strong> del día Viernes al camión DFCC36, por <b class="text-primary">Daniel Poblete</b>'),
+(0000000224, 0000000001, 0000000100, '2016-09-22 15:27:10', '<strong>Modificación de ruta</strong> del día Lunes al camión DFCC36, por <b class="text-primary">Daniel Poblete</b>'),
+(0000000225, 0000000001, 0000000100, '2016-09-22 15:27:10', '<strong>Modificación de ruta</strong> del día Miercoles al camión DFCC36, por <b class="text-primary">Daniel Poblete</b>'),
+(0000000226, 0000000001, 0000000100, '2016-09-22 15:27:10', '<strong>Modificación de ruta</strong> del día Viernes al camión DFCC36, por <b class="text-primary">Daniel Poblete</b>'),
+(0000000227, 0000000001, 0000000100, '2016-09-22 15:27:10', '<strong>Modificación de ruta</strong> del día Lunes al camión DFCC36, por <b class="text-primary">Daniel Poblete</b>'),
+(0000000228, 0000000001, 0000000100, '2016-09-22 15:27:10', '<strong>Modificación de ruta</strong> del día Miercoles al camión DFCC36, por <b class="text-primary">Daniel Poblete</b>'),
+(0000000229, 0000000001, 0000000100, '2016-09-22 15:27:10', '<strong>Modificación de ruta</strong> del día Viernes al camión DFCC36, por <b class="text-primary">Daniel Poblete</b>'),
+(0000000230, 0000000001, 0000000100, '2016-09-22 15:33:04', '<strong>Modificación de 12 productos</strong> (B0000050, B0000051, B0000052, B0000053, B0000054, B0000055, B0000056, B0000057, B0000058, B0000059, B0000060, B0000061, ) al arriendo, por <b class="text-primary">Daniel Poblete</b>'),
+(0000000231, 0000000001, 0000000101, '2016-09-22 12:38:57', '<strong>Arriendo registrado</strong> al sistema por <b class="text-primary">Daniel Poblete</b>'),
+(0000000232, 0000000001, 0000000101, '2016-09-22 15:39:53', '<strong>Modificación de 4 productos</strong> (B0000062, B0000063, B0000064, B0000065, ) al arriendo, por <b class="text-primary">Daniel Poblete</b>'),
+(0000000233, 0000000001, 0000000101, '2016-09-22 15:40:28', '<strong>Modificación de ruta</strong> del día Lunes al camión DFCC36, por <b class="text-primary">Daniel Poblete</b>'),
+(0000000234, 0000000001, 0000000101, '2016-09-22 15:40:28', '<strong>Modificación de ruta</strong> del día Miercoles al camión DFCC36, por <b class="text-primary">Daniel Poblete</b>'),
+(0000000235, 0000000001, 0000000101, '2016-09-22 15:40:28', '<strong>Modificación de ruta</strong> del día Viernes al camión DFCC36, por <b class="text-primary">Daniel Poblete</b>'),
+(0000000236, 0000000001, 0000000101, '2016-09-22 15:40:28', '<strong>Modificación de ruta</strong> del día Lunes al camión DFCC36, por <b class="text-primary">Daniel Poblete</b>'),
+(0000000237, 0000000001, 0000000101, '2016-09-22 15:40:28', '<strong>Modificación de ruta</strong> del día Miercoles al camión DFCC36, por <b class="text-primary">Daniel Poblete</b>'),
+(0000000238, 0000000001, 0000000101, '2016-09-22 15:40:28', '<strong>Modificación de ruta</strong> del día Viernes al camión DFCC36, por <b class="text-primary">Daniel Poblete</b>'),
+(0000000239, 0000000001, 0000000101, '2016-09-22 15:40:28', '<strong>Modificación de ruta</strong> del día Lunes al camión DFCC36, por <b class="text-primary">Daniel Poblete</b>'),
+(0000000240, 0000000001, 0000000101, '2016-09-22 15:40:28', '<strong>Modificación de ruta</strong> del día Miercoles al camión DFCC36, por <b class="text-primary">Daniel Poblete</b>'),
+(0000000241, 0000000001, 0000000101, '2016-09-22 15:40:28', '<strong>Modificación de ruta</strong> del día Viernes al camión DFCC36, por <b class="text-primary">Daniel Poblete</b>'),
+(0000000242, 0000000001, 0000000102, '2016-09-23 17:15:11', '<strong>Arriendo registrado</strong> al sistema por <b class="text-primary">AGENCIA TUCIUDAD</b>'),
+(0000000243, 0000000001, 0000000102, '2016-09-23 20:16:16', '<strong>Modificación de ruta</strong> del día Martes al camión HYBB13, por <b class="text-primary">AGENCIA TUCIUDAD</b>'),
+(0000000244, 0000000001, 0000000102, '2016-09-23 20:17:15', '<strong>Modificación de 1 productos</strong> (B0000038, ) al arriendo, por <b class="text-primary">AGENCIA TUCIUDAD</b>'),
+(0000000245, 0000000001, 0000000101, '2016-09-29 20:24:58', '<strong>Modificación de ruta</strong> del día Lunes al camión DFCC36, por <b class="text-primary">AGENCIA TUCIUDAD</b>'),
+(0000000246, 0000000001, 0000000101, '2016-09-29 20:24:58', '<strong>Modificación de ruta</strong> del día Miercoles al camión DFCC36, por <b class="text-primary">AGENCIA TUCIUDAD</b>'),
+(0000000247, 0000000001, 0000000101, '2016-09-29 20:24:58', '<strong>Modificación de ruta</strong> del día Viernes al camión DFCC36, por <b class="text-primary">AGENCIA TUCIUDAD</b>'),
+(0000000248, 0000000001, 0000000101, '2016-09-29 20:24:58', '<strong>Modificación de ruta</strong> del día Lunes al camión DFCC36, por <b class="text-primary">AGENCIA TUCIUDAD</b>'),
+(0000000249, 0000000001, 0000000101, '2016-09-29 20:24:58', '<strong>Modificación de ruta</strong> del día Miercoles al camión DFCC36, por <b class="text-primary">AGENCIA TUCIUDAD</b>'),
+(0000000250, 0000000001, 0000000101, '2016-09-29 20:24:58', '<strong>Modificación de ruta</strong> del día Viernes al camión DFCC36, por <b class="text-primary">AGENCIA TUCIUDAD</b>'),
+(0000000251, 0000000001, 0000000101, '2016-09-29 20:24:58', '<strong>Modificación de ruta</strong> del día Lunes al camión DFCC36, por <b class="text-primary">AGENCIA TUCIUDAD</b>'),
+(0000000252, 0000000001, 0000000101, '2016-09-29 20:24:58', '<strong>Modificación de ruta</strong> del día Miercoles al camión DFCC36, por <b class="text-primary">AGENCIA TUCIUDAD</b>'),
+(0000000253, 0000000001, 0000000101, '2016-09-29 20:24:58', '<strong>Modificación de ruta</strong> del día Viernes al camión DFCC36, por <b class="text-primary">AGENCIA TUCIUDAD</b>'),
+(0000000254, 0000000001, 0000000101, '2016-09-29 20:24:58', '<strong>Modificación de ruta</strong> del día Lunes al camión DFCC36, por <b class="text-primary">AGENCIA TUCIUDAD</b>'),
+(0000000255, 0000000001, 0000000101, '2016-09-29 20:24:58', '<strong>Modificación de ruta</strong> del día Miercoles al camión DFCC36, por <b class="text-primary">AGENCIA TUCIUDAD</b>'),
+(0000000256, 0000000001, 0000000101, '2016-09-29 20:24:58', '<strong>Modificación de ruta</strong> del día Viernes al camión DFCC36, por <b class="text-primary">AGENCIA TUCIUDAD</b>'),
+(0000000257, 0000000001, 0000000050, '2016-09-29 20:30:40', '<strong>Modificación de ruta</strong> del día Lunes al camión HYBB13, por <b class="text-primary">AGENCIA TUCIUDAD</b>'),
+(0000000258, 0000000001, 0000000050, '2016-09-29 20:30:40', '<strong>Modificación de ruta</strong> del día Miercoles al camión HYBB13, por <b class="text-primary">AGENCIA TUCIUDAD</b>'),
+(0000000259, 0000000001, 0000000050, '2016-09-29 20:30:40', '<strong>Modificación de ruta</strong> del día Viernes al camión HYBB13, por <b class="text-primary">AGENCIA TUCIUDAD</b>'),
+(0000000260, 0000000001, 0000000101, '2016-09-29 20:44:49', '<strong>Modificación de 5 productos</strong> (B0000062, B0000063, B0000064, B0000065, B0000051, ) al arriendo, por <b class="text-primary">AGENCIA TUCIUDAD</b>'),
+(0000000261, 0000000001, 0000000102, '2016-09-30 17:35:45', '<strong>Modificación de ruta</strong> del día Martes al camión HYBB13, por <b class="text-primary">Daniel Poblete</b>'),
+(0000000262, 0000000001, 0000000093, '2016-09-30 17:43:07', '<strong>Modificación de ruta</strong> del día Sabado al camión DFCC36, por <b class="text-primary">Daniel Poblete</b>'),
+(0000000263, 0000000001, 0000000058, '2016-10-03 14:58:37', '<strong>Modificación de ruta</strong> del día Lunes al camión HYBB13, por <b class="text-primary">Daniel Poblete</b>'),
+(0000000264, 0000000001, 0000000058, '2016-10-03 14:58:37', '<strong>Modificación de ruta</strong> del día Jueves al camión HYBB13, por <b class="text-primary">Daniel Poblete</b>'),
+(0000000265, 0000000001, 0000000103, '2016-10-04 16:23:32', '<strong>Arriendo registrado</strong> al sistema por <b class="text-primary">Carolina Mundaca</b>'),
+(0000000266, 0000000001, 0000000104, '2016-10-11 10:57:38', '<strong>Arriendo registrado</strong> al sistema por <b class="text-primary">Carolina Mundaca</b>'),
+(0000000267, 0000000001, 0000000105, '2016-10-12 09:05:43', '<strong>Arriendo registrado</strong> al sistema por <b class="text-primary">Daniel Poblete</b>'),
+(0000000268, 0000000001, 0000000105, '2016-10-14 14:20:07', '<strong>Modificación de ruta</strong> del día Martes al camión HYBB13, por <b class="text-primary">Daniel Poblete</b>'),
+(0000000269, 0000000001, 0000000104, '2016-10-14 14:20:23', '<strong>Modificación de ruta</strong> del día Martes al camión HYBB13, por <b class="text-primary">Daniel Poblete</b>'),
+(0000000270, 0000000001, 0000000104, '2016-10-14 14:20:23', '<strong>Modificación de ruta</strong> del día Viernes al camión HYBB13, por <b class="text-primary">Daniel Poblete</b>'),
+(0000000271, 0000000001, 0000000103, '2016-10-14 14:20:40', '<strong>Modificación de ruta</strong> del día Lunes al camión HYBB13, por <b class="text-primary">Daniel Poblete</b>'),
+(0000000272, 0000000001, 0000000106, '2016-10-17 12:34:04', '<strong>Arriendo registrado</strong> al sistema por <b class="text-primary">Daniel Poblete</b>'),
+(0000000273, 0000000001, 0000000106, '2016-10-17 15:34:20', '<strong>Modificación de ruta</strong> del día Martes al camión DFCC36, por <b class="text-primary">Daniel Poblete</b>'),
+(0000000274, 0000000001, NULL, '2016-10-17 15:41:54', '<strong>Modificación de 0 productos</strong> () al arriendo, por <b class="text-primary">Daniel Poblete</b>'),
+(0000000275, 0000000001, 0000000104, '2016-10-18 12:22:52', '<strong>Modificación de ruta</strong> del día Martes al camión HYBB13, por <b class="text-primary">Daniel Poblete</b>'),
+(0000000276, 0000000001, 0000000104, '2016-10-18 12:22:52', '<strong>Modificación de ruta</strong> del día Viernes al camión HYBB13, por <b class="text-primary">Daniel Poblete</b>'),
+(0000000277, 0000000001, 0000000080, '2016-10-18 12:29:07', '<strong>Modificación de 15 productos</strong> (B0000080, B0000081, B0000082, B0000083, B0000084, B0000085, B0000086, B0000087, B0000088, B0000089, B0000090, B0000091, B0000092, B0000093, B0000094, ) al arriendo, por <b class="text-primary">Daniel Poblete</b>'),
+(0000000278, 0000000001, 0000000080, '2016-10-18 12:29:19', '<strong>Modificación de 15 productos</strong> (B0000080, B0000081, B0000082, B0000083, B0000084, B0000085, B0000086, B0000087, B0000088, B0000089, B0000090, B0000091, B0000092, B0000093, B0000094, ) al arriendo, por <b class="text-primary">Daniel Poblete</b>');
 
 -- --------------------------------------------------------
 
@@ -582,7 +651,7 @@ CREATE TABLE IF NOT EXISTS `camion` (
   PRIMARY KEY (`cam_id_pk`),
   KEY `cam_usuario_fk` (`cam_usuario_fk`),
   KEY `cam_sucursal_fk` (`cam_sucursal_fk`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Volcado de datos para la tabla `camion`
@@ -591,7 +660,8 @@ CREATE TABLE IF NOT EXISTS `camion` (
 INSERT INTO `camion` (`cam_id_pk`, `cam_usuario_fk`, `cam_sucursal_fk`, `cam_patente`, `cam_activo`, `cam_fecharegistro`, `cam_comentario`) VALUES
 (0000000001, 0000000006, 0000000001, 'WD6728', 1, '2016-09-06 12:10:00', NULL),
 (0000000002, 0000000007, 0000000001, 'DFCC36', 1, '2016-09-06 12:13:00', NULL),
-(0000000003, 0000000008, 0000000001, 'HYBB13', 1, '2016-09-06 12:17:00', NULL);
+(0000000003, 0000000010, 0000000001, 'HYBB13', 1, '2016-09-06 12:17:00', NULL),
+(0000000004, NULL, 0000000001, 'HYBB13', 1, '2016-10-12 13:11:33', NULL);
 
 -- --------------------------------------------------------
 
@@ -614,7 +684,7 @@ CREATE TABLE IF NOT EXISTS `cliente` (
   KEY `cli_sucursal_fk` (`cli_sucursal_fk`),
   KEY `cli_comuna_fk` (`cli_comuna_fk`),
   KEY `cli_usuario_fk` (`cli_usuario_fk`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=58 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=63 ;
 
 --
 -- Volcado de datos para la tabla `cliente`
@@ -641,13 +711,13 @@ INSERT INTO `cliente` (`cli_id_pk`, `cli_sucursal_fk`, `cli_comuna_fk`, `cli_usu
 (0000000018, 0000000001, 0000000301, 0000000001, 'ENERGÍA RÍO CLARO S.A. ', '76101744-6', NULL, '2016-08-31 19:42:40', 'AVDA. EL PARQUE #5339, OF. 409', NULL),
 (0000000019, 0000000001, 0000000165, 0000000001, 'CONSTRUCCIÓN Y SERVICIOS', '76353448-0', NULL, '2016-09-08 17:28:13', 'LOTE 19 CAM. CANTARRANA ', NULL),
 (0000000020, 0000000001, 0000000179, 0000000001, 'FIGUZ S.A.', '77617000-3', NULL, '2016-09-09 16:50:40', 'LOS ROBLES #552', NULL),
-(0000000021, 0000000001, 0000000165, 0000000001, 'FORESTAL MININCO S.A.', '91440000-7', 'FORESTAL', '2016-08-31 20:03:30', 'AVDA. ALEMANIA 751', NULL),
+(0000000021, 0000000001, 0000000165, 0000000004, 'FORESTAL MININCO S.A.', '91440000-7', 'FORESTAL', '2016-10-17 12:34:03', 'AVDA. ALEMANIA 751', NULL),
 (0000000022, 0000000001, 0000000165, 0000000001, 'FRANKLIN SALAS SANDOVAL', '14299626-K', NULL, '2016-09-08 11:04:21', 'OROMPELLO # 1892', NULL),
 (0000000023, 0000000001, 0000000165, 0000000001, 'SOCIEDAD AGRICOLA MAQUENA SPA', '76267264-2', NULL, '2016-08-31 20:09:17', 'CAM. MARÍA DOLORES', 'FUNDO MACKENA'),
 (0000000024, 0000000001, 0000000165, 0000000001, 'CALLAQUI S.A.', '76257118-8', NULL, '2016-08-31 20:11:34', 'HIJUELA LAS VIÑAS A2', 'GREENVIC'),
 (0000000025, 0000000001, 0000000308, 0000000001, 'COBRA CHILE SERVICIOS S.A.', '76872560-8', NULL, '2016-09-08 11:54:23', 'LOS MILITARES #5885, PISO 10', 'GRUPO COBRA'),
 (0000000026, 0000000001, 0000000317, 0000000001, 'AGRICOLA HACIENDA CANTERA S.A.', '86353500-K', 'AGRICOLA', '2016-09-08 16:24:02', 'HERNANDO DE AGUIRRE #430', 'HACIENDA CANTERAS'),
-(0000000027, 0000000001, 0000000295, 0000000001, 'HORTIFRUT S.A.', '96896990-0', 'HORTIFRUTICOLA', '2016-09-08 12:03:53', 'AVDA. EL CONDOR # 600, PISO 3 Y 4', 'HORTIFRUT'),
+(0000000027, 0000000001, 0000000295, 0000000004, 'HORTIFRUT S.A.', '96896990-0', 'HORTIFRUTICOLA', '2016-09-22 12:17:14', 'AVDA. EL CONDOR # 600, PISO 3 Y 4', NULL),
 (0000000028, 0000000001, 0000000165, 0000000001, 'AGRICOLA SANTA BARBARA DE LLANO BLANCO LTDA.', '89897800-1', 'AGRICOLA', '2016-09-08 17:19:09', 'FUNDO HUERTO LA PERLA', 'HUERTO LA PERLA'),
 (0000000029, 0000000001, 0000000165, 0000000001, 'SOC. COM. E ING. GESTION IND. INGHER LTDA.', '76745040-0', NULL, '2016-09-08 17:22:20', 'AVDA. PRAT #460B', 'INGHER'),
 (0000000030, 0000000001, 0000000165, 0000000001, 'INMOBILIARIA ALFA LIMITADA', '76477598-8', 'INMONBILIARIA', '2016-09-08 15:43:52', 'SERVIDUMBRE DE PASO # 2184', NULL),
@@ -668,7 +738,7 @@ INSERT INTO `cliente` (`cli_id_pk`, `cli_sucursal_fk`, `cli_comuna_fk`, `cli_usu
 (0000000045, 0000000001, 0000000169, 0000000001, 'CARLOS BADILLA ROCHA', '11407600-7', NULL, '2016-08-31 22:02:02', 'CALLE MISION #798', NULL),
 (0000000046, 0000000001, 0000000165, 0000000001, 'COMERCIAL GREENVIC S.A.', '78335990-1', NULL, '2016-09-07 14:32:21', 'AVDA APOQUINDO N° 4775 OF. 1601', NULL),
 (0000000047, 0000000001, 0000000207, 0000000001, 'CONSTRUCTORA EL BOSQUE LTDA.', '76019383-6', 'CONSTRUCTORA', '2016-09-08 11:00:21', 'VICUÑA MACKENNA N° 580', NULL),
-(0000000048, 0000000001, 0000000165, 0000000001, 'SOCIEDAD COMERCIALIZADORA ', '76474438-1', 'TRANSPORTE', '2016-09-08 10:49:38', 'SOR VICENTA N° 2664', NULL),
+(0000000048, 0000000001, 0000000165, 0000000001, 'TRANSPORTE PATRICIO GUTIERREZ V. EIRL', '76474438-1', 'TRANSPORTE', '2016-09-08 10:49:38', 'SOR VICENTA N° 2664', NULL),
 (0000000049, 0000000001, 0000000165, 0000000001, 'RICARDO HERNAN BEROIZA TRONCOSO', '15207258-9', NULL, '2016-09-08 11:36:19', 'GRANJA LA PRIMAVERA KM. 1.5  CAMINO NACIMIENTO', NULL),
 (0000000050, 0000000001, 0000000317, 0000000001, 'ARRIGONI INGENIERIA Y CONSTRUCCION S.A', '76091747-8', NULL, '2016-09-08 11:50:51', 'REYES LAVALLE N° 3340 OF. 3', NULL),
 (0000000051, 0000000001, 0000000165, 0000000001, 'ARIDOS SGA LIMITADA', '76344138-5', NULL, '2016-09-08 12:01:40', 'OHIGGINS N° 291', NULL),
@@ -677,7 +747,12 @@ INSERT INTO `cliente` (`cli_id_pk`, `cli_sucursal_fk`, `cli_comuna_fk`, `cli_usu
 (0000000054, 0000000001, 0000000092, 0000000001, 'AGRICOLA HGE SPA ', '76474099-8', NULL, '2016-09-08 16:17:32', 'FUNDO SANTA MARGARITA S/N', NULL),
 (0000000055, 0000000001, 0000000317, 0000000001, 'VIÑA SUTIL S.A.', '99504740-3', NULL, '2016-09-08 17:25:09', 'AVDA 11 DE SEPTIEMBRE Nª 1860 OFICINA 92', NULL),
 (0000000056, 0000000001, 0000000165, 0000000001, 'SOCIEDAD COMERCIAL SANDOVAL & CIFUENTES LIMITADA.', '76934310-5', NULL, '2016-09-08 17:38:30', 'CALLE MALALCAHUELLO # 116, VILLA EL REFUGIO ETAPA II', NULL),
-(0000000057, 0000000001, 0000000165, 0000000003, 'LUIS IVÁN GONZALEZ MUÑOZ', '9228164-7', 'PARTICULAR ', '2016-09-15 12:05:17', 'CAMINO LAJA PUENTE PERALES K. 20 SECTOR CANCHA RALLADA', NULL);
+(0000000057, 0000000001, 0000000165, 0000000003, 'LUIS IVÁN GONZALEZ MUÑOZ', '9228164-7', 'PARTICULAR ', '2016-09-15 12:05:17', 'CAMINO LAJA PUENTE PERALES K. 20 SECTOR CANCHA RALLADA', NULL),
+(0000000058, 0000000001, 0000000317, 0000000004, 'GLOBAL ORGANICS S.A.', '76404690-0', 'EXPLOTACION DE PREDIOS AGRICOLAS', '2016-09-22 12:38:57', 'AVDA. PROVIDENCIA N°1860', NULL),
+(0000000059, 0000000001, 0000000146, 0000000001, 'CONSTRUCTORA ICRE', '76509504-2', 'CONTRUCCION', '2016-09-23 17:15:11', 'PJE LOS CARRERA #39', NULL),
+(0000000060, 0000000001, 0000000165, 0000000003, 'C Y D CONSTRUCCIONES LIMITADA', '76577344-K', 'CONSTRUCCION ', '2016-10-04 16:23:32', 'LAS TRANCAS LOTE A 44 PARCELA N° 11', NULL),
+(0000000061, 0000000001, 0000000326, 0000000003, 'CONSTRUCTORA PITAGORA S.A', '96954290-0', 'CONSTRUCCCION ', '2016-10-11 10:57:38', 'AVDA KENEDY 6160', NULL),
+(0000000062, 0000000001, 0000000165, 0000000004, 'CONSTRUCTORA MOLINA', '8918497-5', NULL, '2016-10-12 09:05:43', 'AV. ERCILLA N° 1235', NULL);
 
 -- --------------------------------------------------------
 
@@ -1064,7 +1139,7 @@ CREATE TABLE IF NOT EXISTS `contacto` (
   KEY `cti_sucursal_fk` (`con_sucursal_fk`),
   KEY `cti_usuario_fk` (`con_usuario_fk`),
   KEY `cti_cliente_fk` (`con_cliente_fk`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=160 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=172 ;
 
 --
 -- Volcado de datos para la tabla `contacto`
@@ -1084,8 +1159,6 @@ INSERT INTO `contacto` (`con_id_pk`, `con_tipo_fk`, `con_sucursal_fk`, `con_usua
 (0000000024, 00000000003, NULL, NULL, 0000000015, 'mcastro@convertec.cl', 'MARCELO CASTRO'),
 (0000000029, 00000000002, NULL, NULL, 0000000018, '999181515', 'ALEJANDRA SUAZO'),
 (0000000030, 00000000003, NULL, NULL, 0000000018, 'lhernandez@rioclaroforestal.cl', 'LAURA HERNANDEZ'),
-(0000000033, 00000000002, NULL, NULL, 0000000021, '942760847', 'VALERIA JARA '),
-(0000000034, 00000000003, NULL, NULL, 0000000021, 'vjarar@forestal.cmpc.cl', 'VALERIA JARA'),
 (0000000036, 00000000001, NULL, NULL, 0000000023, '432322352', 'FERNANDA ORTEGA'),
 (0000000037, 00000000003, NULL, NULL, 0000000023, 'fortega@mcondor.cl', 'FERNANDA ORTEGA'),
 (0000000038, 00000000003, NULL, NULL, 0000000024, 'cquezada@greenvic.cl', 'CAMILA QUEZADA'),
@@ -1117,8 +1190,6 @@ INSERT INTO `contacto` (`con_id_pk`, `con_tipo_fk`, `con_sucursal_fk`, `con_usua
 (0000000100, 00000000003, NULL, NULL, 0000000025, 'oguerrero@grupocobra.cl', 'OSCAR GUERRERO'),
 (0000000101, 00000000001, NULL, NULL, 0000000051, '43-2-39142', ''),
 (0000000102, 00000000002, NULL, NULL, 0000000051, '981299792', ''),
-(0000000103, 00000000002, NULL, NULL, 0000000027, '994378365', 'MIRIAM TRONCOSO'),
-(0000000104, 00000000003, NULL, NULL, 0000000027, 'mtroncoso@hotmail.com', 'MIRIAM TRONCOSO'),
 (0000000105, 00000000002, NULL, NULL, 0000000009, '942314009', 'JOSÉ TOLEDO'),
 (0000000106, 00000000003, NULL, NULL, 0000000009, 'jose.toledo@abengoa.com', 'JOSÉ TOLEDO'),
 (0000000110, 00000000002, NULL, NULL, 0000000013, '962498813', 'BLADIMIR HERRERA'),
@@ -1163,7 +1234,17 @@ INSERT INTO `contacto` (`con_id_pk`, `con_tipo_fk`, `con_sucursal_fk`, `con_usua
 (0000000156, 00000000002, NULL, NULL, 0000000016, 'rmillacoy@cruzdelnorte.cl', 'RAÚL MILLACOY'),
 (0000000157, 00000000002, NULL, NULL, 0000000057, '993379571', 'LUIS GONZALEZ'),
 (0000000158, 00000000002, NULL, NULL, 0000000007, '961571434', 'EDSON PINTO'),
-(0000000159, 00000000003, NULL, NULL, 0000000007, 'epleblanc@gmail.com', 'EDSON PINTO');
+(0000000159, 00000000003, NULL, NULL, 0000000007, 'epleblanc@gmail.com', 'EDSON PINTO'),
+(0000000160, 00000000002, NULL, NULL, 0000000027, '994378365', 'MIRIAM TRONCOSO'),
+(0000000161, 00000000003, NULL, NULL, 0000000027, 'mtroncoso@hotmail.com', 'MIRIAM TRONCOSO'),
+(0000000162, 00000000003, NULL, 0000000009, NULL, 'luis.bianchi@biosur.cl', 'Luis Bianchi'),
+(0000000163, 00000000002, NULL, NULL, 0000000060, '94022111', 'PEDRO CID '),
+(0000000164, 00000000002, NULL, NULL, 0000000060, '92332287', ''),
+(0000000165, 00000000001, NULL, NULL, 0000000061, '24341600', 'FELIPE DELGADO '),
+(0000000166, 00000000001, NULL, NULL, 0000000062, '9-97454135', ''),
+(0000000167, 00000000003, NULL, 0000000010, NULL, 'carolina.m@biosur.cl', 'Carolina'),
+(0000000170, 00000000002, NULL, NULL, 0000000021, '942760847', 'VALERIA JARA '),
+(0000000171, 00000000003, NULL, NULL, 0000000021, 'vjarar@forestal.cmpc.cl', 'VALERIA JARA');
 
 -- --------------------------------------------------------
 
@@ -1218,7 +1299,7 @@ CREATE TABLE IF NOT EXISTS `detalle_contrato` (
   KEY `dco_venta_fk` (`dco_venta_fk`),
   KEY `dco_comuna_fk` (`dco_comuna_fk`),
   KEY `dco_servicio_fk` (`dco_servicio_fk`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=112 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=137 ;
 
 --
 -- Volcado de datos para la tabla `detalle_contrato`
@@ -1229,7 +1310,7 @@ INSERT INTO `detalle_contrato` (`dco_id_pk`, `dco_venta_fk`, `dco_comuna_fk`, `d
 (0000000047, 0000000047, 0000000165, 0000000001, 'CAMINO MARÍA DOLORES KM 8.9', 2, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, '0', '0', 2, 2, 1, NULL),
 (0000000048, 0000000048, 0000000165, 0000000001, 'HIJUELA LAS VIÑAS', 2, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, '0', '0', 2, 2, 1, NULL),
 (0000000049, 0000000049, 0000000165, 0000000001, 'LA PERLA', 4, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, '0', '0', 4, 4, 1, NULL),
-(0000000050, 0000000050, 0000000165, 0000000001, 'AVDA. LAS INDUSTRIAS', 1, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, '0', '0', 1, 1, 1, NULL),
+(0000000050, 0000000050, 0000000165, 0000000001, 'AVDA. LAS INDUSTRIAS', 1, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, '0', '0', 1, 1, 0, NULL),
 (0000000051, 0000000051, 0000000165, 0000000001, 'AVDA. LOS ANGELES', 3, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, '0', '0', 3, 3, 1, NULL),
 (0000000052, 0000000052, 0000000165, 0000000001, 'LA PERLA', 1, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, '0', '0', 1, 1, 1, NULL),
 (0000000053, 0000000053, 0000000165, 0000000001, 'CAMINO A NACIMIENTO KM. 12', 1, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, '0', '0', 1, 1, 1, NULL),
@@ -1237,11 +1318,11 @@ INSERT INTO `detalle_contrato` (`dco_id_pk`, `dco_venta_fk`, `dco_comuna_fk`, `d
 (0000000055, 0000000055, 0000000165, 0000000001, 'CAM. SAN ANTONIO 1', 1, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, '0', '0', 1, 1, 1, NULL),
 (0000000056, 0000000056, 0000000165, 0000000001, 'ANGOL', 1, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, '0', '0', 1, 1, 1, NULL),
 (0000000057, 0000000057, 0000000231, 0000000001, 'VICTORIA', 8, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, '0', '0', 8, 8, 1, NULL),
-(0000000058, 0000000058, 0000000169, 0000000001, 'MULCHEN', 3, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, '0', '0', 3, 3, 1, NULL),
+(0000000058, 0000000058, 0000000169, 0000000001, 'MULCHEN', 3, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, '0', '0', 3, 3, 0, NULL),
 (0000000059, 0000000059, 0000000165, 0000000001, 'RENAICO', 1, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, '0', '0', 1, 1, 1, NULL),
 (0000000060, 0000000060, 0000000222, 0000000001, 'COLLIPULLI', 1, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, '0', '0', 1, 1, 1, NULL),
 (0000000061, 0000000061, 0000000165, 0000000001, 'VIRQUENCO', 16, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, '0', '0', 16, 16, 1, NULL),
-(0000000062, 0000000062, 0000000165, 0000000001, 'CHARRUA', 9, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, '0', '0', 9, 9, 1, NULL),
+(0000000062, 0000000062, 0000000165, 0000000001, 'CHARRUA', 9, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, '0', '0', 8, 8, 0, NULL),
 (0000000063, 0000000063, 0000000165, 0000000001, 'LAS TEJAS', 5, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, '0', '0', 5, 5, 1, NULL),
 (0000000064, 0000000064, 0000000165, 0000000001, 'ERCILLA', 1, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, '0', '0', 1, 1, 1, NULL),
 (0000000065, 0000000065, 0000000165, 0000000001, 'LAS CRUCES', 2, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, '0', '0', 2, 2, 1, NULL),
@@ -1250,24 +1331,24 @@ INSERT INTO `detalle_contrato` (`dco_id_pk`, `dco_venta_fk`, `dco_comuna_fk`, `d
 (0000000068, 0000000067, 0000000165, 0000000001, 'AVDA.LOS ANGELES', 3, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, '0', '0', 3, 3, 1, NULL),
 (0000000069, 0000000067, 0000000165, 0000000001, 'AVDA. GABRIELA MISTRAL, HOSPITAL', 3, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, '0', '0', 3, 3, 1, NULL),
 (0000000070, 0000000068, 0000000165, 0000000001, 'CHILLANCITO', 10, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, '0', '0', 10, 10, 1, NULL),
-(0000000071, 0000000069, 0000000165, 0000000001, 'PATA DE GALLINA', 2, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, '0', '0', 2, 2, 1, NULL),
+(0000000071, 0000000069, 0000000165, 0000000001, 'PATA DE GALLINA', 2, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, '0', '0', 2, 2, 0, NULL),
 (0000000072, 0000000070, 0000000165, 0000000001, 'MENDOZA 171', 1, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, '0', '0', 1, 1, 1, NULL),
 (0000000073, 0000000071, 0000000165, 0000000001, 'COUNTRY SANTA ELIANA', 1, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, '0', '0', 1, 1, 1, NULL),
 (0000000074, 0000000072, 0000000165, 0000000001, 'AVDA. PADRE HURTADO', 7, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, '0', '0', 7, 7, 1, NULL),
 (0000000075, 0000000073, 0000000165, 0000000001, 'TIJERALES', 5, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, '0', '0', 5, 5, 1, NULL),
-(0000000076, 0000000074, 0000000165, 0000000001, 'CAMINO ANTUCO KM 25', 6, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, '0', '0', 6, 6, 1, NULL),
+(0000000076, 0000000074, 0000000165, 0000000001, 'CAMINO ANTUCO KM 25', 6, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, '0', '0', 6, 6, 0, NULL),
 (0000000078, 0000000076, 0000000165, 0000000001, 'RENAICO', 3, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, '0', '0', 3, 3, 1, NULL),
 (0000000079, 0000000077, 0000000165, 0000000001, 'HACIENDA CANTERAS', 1, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, '0', '0', 1, 1, 1, NULL),
 (0000000080, 0000000078, 0000000165, 0000000001, 'HARAS LA MONTAÑA', 1, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, '0', '0', 1, 1, 1, NULL),
 (0000000081, 0000000079, 0000000165, 0000000001, 'RUCAMANQUI', 1, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, '0', '0', 1, 1, 1, NULL),
 (0000000082, 0000000079, 0000000165, 0000000001, 'QUILLECO', 1, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, '0', '0', 1, 1, 1, NULL),
-(0000000083, 0000000080, 0000000165, 0000000001, 'FUNDO LA PERLA', 15, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, '0', '0', 15, 15, 1, NULL),
+(0000000083, 0000000080, 0000000165, 0000000001, 'FUNDO LA PERLA', 15, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, '-37.5241317', '-72.1995335', 15, 15, 1, NULL),
 (0000000084, 0000000081, 0000000165, 0000000001, 'RUCUE', 2, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, '0', '0', 2, 2, 1, NULL),
-(0000000085, 0000000082, 0000000165, 0000000001, 'BUREO', 2, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, '0', '0', 2, 2, 1, NULL),
+(0000000085, 0000000082, 0000000165, 0000000001, 'BUREO', 2, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, '0', '0', 2, 2, 0, NULL),
 (0000000086, 0000000083, 0000000165, 0000000001, 'BALMACEDA', 1, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, '0', '0', 1, 1, 1, NULL),
 (0000000087, 0000000084, 0000000165, 0000000001, 'AVDA. LAS INDUSTRIAS', 1, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, '0', '0', 1, 1, 1, NULL),
 (0000000088, 0000000085, 0000000165, 0000000001, 'CAM. MARIA DOLORES', 1, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, '0', '0', 1, 1, 1, NULL),
-(0000000089, 0000000086, 0000000231, 0000000001, 'VICTORIA', 8, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, '0', '0', 8, 8, 1, NULL),
+(0000000089, 0000000086, 0000000231, 0000000001, 'VICTORIA', 8, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, '0', '0', 8, 16, 1, NULL),
 (0000000090, 0000000087, 0000000165, 0000000001, 'SANTA BARBARA', 1, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, '0', '0', 1, 1, 1, NULL),
 (0000000091, 0000000088, 0000000165, 0000000001, 'PATA DE GALLINA', 1, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, '0', '0', 1, 1, 1, NULL),
 (0000000092, 0000000089, 0000000165, 0000000001, 'CAMINO ANTUCO KM. 20', 1, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, '0', '0', 1, 1, 1, NULL),
@@ -1279,7 +1360,7 @@ INSERT INTO `detalle_contrato` (`dco_id_pk`, `dco_venta_fk`, `dco_comuna_fk`, `d
 (0000000098, 0000000094, 0000000165, 0000000001, 'QUILLECO', 1, 0, 0, 0, 0, 0, 0, 0, 0, NULL, '0', '0', 1, 1, 1, NULL),
 (0000000099, 0000000094, 0000000165, 0000000001, 'VILLA MERCEDES', 3, 0, 0, 0, 0, 0, 0, 0, 0, NULL, '0', '0', 3, 3, 1, NULL),
 (0000000100, 0000000095, 0000000165, 0000000001, 'LOS CARRERAS PAILLIHUE', 2, 0, 0, 0, 0, 0, 0, 0, 0, NULL, '0', '0', 2, 2, 1, NULL),
-(0000000101, 0000000095, 0000000165, 0000000001, 'LAS TRANCAS', 2, 0, 0, 0, 0, 0, 0, 0, 0, NULL, '0', '0', 2, 2, 1, NULL),
+(0000000101, 0000000095, 0000000165, 0000000001, 'LAS TRANCAS', 2, 0, 0, 0, 0, 0, 0, 0, 0, NULL, '0', '0', 2, 2, 0, NULL),
 (0000000102, 0000000096, 0000000169, 0000000001, 'LA BIFURCADA', 1, 0, 0, 0, 0, 0, 0, 0, 0, NULL, '0', '0', 1, 1, 1, NULL),
 (0000000103, 0000000096, 0000000169, 0000000001, 'LA VIÑA', 1, 0, 0, 0, 0, 0, 0, 0, 0, NULL, '0', '0', 1, 1, 1, NULL),
 (0000000104, 0000000096, 0000000169, 0000000001, 'ALTO LA VIÑA', 2, 0, 0, 0, 0, 0, 0, 0, 0, NULL, '0', '0', 2, 2, 1, NULL),
@@ -1289,7 +1370,32 @@ INSERT INTO `detalle_contrato` (`dco_id_pk`, `dco_venta_fk`, `dco_comuna_fk`, `d
 (0000000108, 0000000097, 0000000169, 0000000001, 'ALTO LA VIÑA', 2, 0, 0, 0, 0, 0, 0, 0, 0, NULL, '0', '0', 2, 2, 1, NULL),
 (0000000109, 0000000097, 0000000169, 0000000001, 'EL BRINCO', 1, 0, 0, 0, 0, 0, 0, 0, 0, NULL, '0', '0', 1, 1, 1, NULL),
 (0000000110, 0000000098, 0000000165, 0000000001, 'CAMINO LAJA PUENTE PERALES K. 20 SECTOR CANCHA RALLADA', 2, 0, 0, 0, 0, 120000, 0, 0, 0, NULL, '0', '0', 2, 2, 1, NULL),
-(0000000111, 0000000099, 0000000165, 0000000001, 'Cancha kennedy', 18, 0, 0, 0, 0, 0, 0, 0, 0, NULL, '0', '0', 18, 18, 1, NULL);
+(0000000111, 0000000099, 0000000165, 0000000001, 'Cancha kennedy', 18, 0, 0, 0, 0, 0, 0, 0, 0, NULL, '0', '0', 18, 18, 1, NULL),
+(0000000112, 0000000100, 0000000165, 0000000001, 'CORPORACIÓN', 1, 0, 0, 0, 0, 55000, 0, 0, 0, NULL, '-37.4612966', '-72.5137699', 1, 1, 1, NULL),
+(0000000113, 0000000100, 0000000165, 0000000001, 'VICTOR MOLLER C.GOLF', 1, 0, 0, 0, 0, 55000, 0, 0, 0, NULL, '-37.4478796', '-72.4891265', 1, 1, 0, NULL),
+(0000000114, 0000000100, 0000000165, 0000000001, 'BRAVO', 1, 0, 0, 0, 0, 55000, 0, 0, 0, NULL, '-37.4576451', '-72.5272759', 1, 1, 1, NULL),
+(0000000115, 0000000100, 0000000165, 0000000001, 'REBECA', 1, 0, 0, 0, 0, 55000, 0, 0, 0, NULL, '-37.4819572', '-72.420217', 1, 1, 1, NULL),
+(0000000116, 0000000100, 0000000165, 0000000001, 'JEFE MORA', 4, 0, 0, 0, 0, 220000, 0, 0, 0, NULL, '-37.4633809', '-72.5324987', 4, 4, 1, NULL),
+(0000000117, 0000000100, 0000000165, 0000000001, 'VEGA LARGA SEBASTIAN L.', 4, 0, 0, 0, 0, 220000, 0, 0, 0, NULL, '-37.4104935', '-72.3534966', 4, 4, 1, NULL),
+(0000000118, 0000000101, 0000000165, 0000000001, 'GALPON', 1, 0, 0, 0, 0, 0, 0, 0, 0, NULL, '-37.4821127', '-72.4178623', 1, 1, 1, NULL),
+(0000000119, 0000000101, 0000000165, 0000000001, 'SECTOR AVELLANO (CARRO)', 2, 0, 0, 0, 0, 0, 0, 0, 0, NULL, '-37.4489662', '-72.510612', 2, 2, 1, NULL),
+(0000000120, 0000000101, 0000000165, 0000000001, 'FRENTE MANCION PATRONIAL', 1, 0, 0, 0, 0, 0, 0, 0, 0, NULL, '-37.4104935', '-72.3534966', 1, 1, 1, NULL),
+(0000000121, 0000000102, 0000000165, 0000000001, 'HARAS LA MONTAÑA SITIO #83', 1, 0, 0, 0, 0, 0, 0, 0, 0, NULL, '0', '0', 1, 1, 1, NULL),
+(0000000122, 0000000101, 0000000165, 0000000001, 'CANCHA DE GOLF', 1, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1, NULL),
+(0000000123, 0000000050, 0000000165, 0000000001, 'AVDA. LAS INDUSTRIAS', 2, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, 2, 1, NULL),
+(0000000124, 0000000095, 0000000165, 0000000001, 'CANTARRANA', 1, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1, NULL),
+(0000000125, 0000000095, 0000000165, 0000000001, 'LAS TRANCAS', 1, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1, NULL),
+(0000000126, 0000000058, 0000000169, 0000000001, 'MULCHEN', 3, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 3, 3, 1, NULL),
+(0000000127, 0000000103, 0000000205, 0000000001, 'CAMINO GALVARINO KM 10', 1, 0, 0, 0, 1, 150000, 0, 0, 0, NULL, '0', '0', 1, 1, 1, NULL),
+(0000000128, 0000000082, 0000000171, 0000000001, 'BUREO', 4, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 4, 4, 0, NULL),
+(0000000129, 0000000082, 0000000171, 0000000001, 'BUREO', 2, 0, 0, 2, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 4, 4, 1, NULL),
+(0000000130, 0000000069, 0000000165, 0000000001, 'PATA DE GALLINA ', 1, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1, NULL),
+(0000000131, 0000000068, 0000000165, 0000000001, 'CHILLANCITO', 0, 0, 0, 10, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, NULL),
+(0000000132, 0000000062, 0000000167, 0000000001, 'CHARRUA', 8, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 8, 8, 1, NULL),
+(0000000133, 0000000074, 0000000166, 0000000001, 'HACIENDA CANTERAS', 2, 0, 0, 4, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 6, 6, 1, NULL),
+(0000000134, 0000000104, 0000000165, 0000000001, 'AVDA LAS INDUSTRIAS RUTA Q-25 FRENTE Y CEMENTERIO', 2, 0, 0, 0, 0, 140000, 0, 0, 0, NULL, '0', '0', 2, 2, 1, NULL),
+(0000000135, 0000000105, 0000000165, 0000000001, 'AV. GABRIELA MISTRAL (frente al pueblito siglo XXI)', 1, 0, 0, 0, 0, 0, 0, 0, 0, NULL, '0', '0', 1, 1, 1, NULL),
+(0000000136, 0000000106, 0000000165, 0000000001, 'CAMINO EL PERAL', 2, 0, 0, 0, 0, 0, 0, 0, 0, NULL, '0', '0', 2, 2, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -1309,31 +1415,64 @@ CREATE TABLE IF NOT EXISTS `detcontrato_nn_banno` (
   KEY `dnnb_detcontrato_fk` (`dnnb_detcontrato_fk`),
   KEY `dnnb_banno_fk` (`dnnb_banno_fk`),
   KEY `dnnb_lavamano_fk` (`dnnb_lavamano_fk`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=55 ;
 
 --
 -- Volcado de datos para la tabla `detcontrato_nn_banno`
 --
 
 INSERT INTO `detcontrato_nn_banno` (`dnnb_id_pk`, `dnnb_banno_fk`, `dnnb_lavamano_fk`, `dnnb_detcontrato_fk`, `dnnb_fecharegistro`, `dnnb_candado`, `dnnb_activo`) VALUES
-(0000000004, 0000000001, NULL, 0000000111, '2016-09-16 15:41:37', NULL, 1),
-(0000000005, 0000000002, NULL, 0000000111, '2016-09-16 15:41:37', NULL, 1),
-(0000000006, 0000000003, NULL, 0000000111, '2016-09-16 15:41:37', NULL, 1),
-(0000000007, 0000000004, NULL, 0000000111, '2016-09-16 15:41:37', NULL, 1),
-(0000000008, 0000000005, NULL, 0000000111, '2016-09-16 15:41:37', NULL, 1),
-(0000000009, 0000000006, NULL, 0000000111, '2016-09-16 15:41:37', NULL, 1),
-(0000000010, 0000000007, NULL, 0000000111, '2016-09-16 15:41:37', NULL, 1),
-(0000000011, 0000000008, NULL, 0000000111, '2016-09-16 15:41:37', NULL, 1),
-(0000000012, 0000000009, NULL, 0000000111, '2016-09-16 15:41:37', NULL, 1),
-(0000000013, 0000000010, NULL, 0000000111, '2016-09-16 15:41:37', NULL, 1),
-(0000000014, 0000000011, NULL, 0000000111, '2016-09-16 15:41:37', NULL, 1),
-(0000000015, 0000000012, NULL, 0000000111, '2016-09-16 15:41:37', NULL, 1),
-(0000000016, 0000000013, NULL, 0000000111, '2016-09-16 15:41:37', NULL, 1),
-(0000000017, 0000000014, NULL, 0000000111, '2016-09-16 15:41:37', NULL, 1),
-(0000000018, 0000000015, NULL, 0000000111, '2016-09-16 15:41:37', NULL, 1),
-(0000000019, 0000000016, NULL, 0000000111, '2016-09-16 15:41:37', NULL, 1),
-(0000000020, 0000000017, NULL, 0000000111, '2016-09-16 15:41:37', NULL, 1),
-(0000000021, 0000000050, NULL, 0000000111, '2016-09-16 15:41:37', NULL, 1);
+(0000000004, 0000000001, NULL, 0000000111, '2016-09-16 15:41:37', NULL, 0),
+(0000000005, 0000000002, NULL, 0000000111, '2016-09-16 15:41:37', NULL, 0),
+(0000000006, 0000000003, NULL, 0000000111, '2016-09-16 15:41:37', NULL, 0),
+(0000000007, 0000000004, NULL, 0000000111, '2016-09-16 15:41:37', NULL, 0),
+(0000000008, 0000000005, NULL, 0000000111, '2016-09-16 15:41:37', NULL, 0),
+(0000000009, 0000000006, NULL, 0000000111, '2016-09-16 15:41:37', NULL, 0),
+(0000000010, 0000000007, NULL, 0000000111, '2016-09-16 15:41:37', NULL, 0),
+(0000000011, 0000000008, NULL, 0000000111, '2016-09-16 15:41:37', NULL, 0),
+(0000000012, 0000000009, NULL, 0000000111, '2016-09-16 15:41:37', NULL, 0),
+(0000000013, 0000000010, NULL, 0000000111, '2016-09-16 15:41:37', NULL, 0),
+(0000000014, 0000000011, NULL, 0000000111, '2016-09-16 15:41:37', NULL, 0),
+(0000000015, 0000000012, NULL, 0000000111, '2016-09-16 15:41:37', NULL, 0),
+(0000000016, 0000000013, NULL, 0000000111, '2016-09-16 15:41:37', NULL, 0),
+(0000000017, 0000000014, NULL, 0000000111, '2016-09-16 15:41:37', NULL, 0),
+(0000000018, 0000000015, NULL, 0000000111, '2016-09-16 15:41:37', NULL, 0),
+(0000000019, 0000000016, NULL, 0000000111, '2016-09-16 15:41:37', NULL, 0),
+(0000000020, 0000000017, NULL, 0000000111, '2016-09-16 15:41:37', NULL, 0),
+(0000000021, 0000000050, NULL, 0000000111, '2016-09-16 15:41:37', NULL, 0),
+(0000000022, 0000000050, NULL, 0000000112, '2016-09-22 15:33:04', NULL, 1),
+(0000000023, 0000000051, NULL, 0000000113, '2016-09-22 15:33:04', NULL, 0),
+(0000000024, 0000000052, NULL, 0000000114, '2016-09-22 15:33:04', NULL, 1),
+(0000000025, 0000000053, NULL, 0000000115, '2016-09-22 15:33:04', NULL, 1),
+(0000000026, 0000000054, NULL, 0000000116, '2016-09-22 15:33:04', NULL, 1),
+(0000000027, 0000000055, NULL, 0000000116, '2016-09-22 15:33:04', NULL, 1),
+(0000000028, 0000000056, NULL, 0000000116, '2016-09-22 15:33:04', NULL, 1),
+(0000000029, 0000000057, NULL, 0000000116, '2016-09-22 15:33:04', NULL, 1),
+(0000000030, 0000000058, NULL, 0000000117, '2016-09-22 15:33:04', NULL, 1),
+(0000000031, 0000000059, NULL, 0000000117, '2016-09-22 15:33:04', NULL, 1),
+(0000000032, 0000000060, NULL, 0000000117, '2016-09-22 15:33:04', NULL, 1),
+(0000000033, 0000000061, NULL, 0000000117, '2016-09-22 15:33:04', NULL, 1),
+(0000000034, 0000000062, NULL, 0000000118, '2016-09-22 15:39:53', NULL, 1),
+(0000000035, 0000000063, NULL, 0000000119, '2016-09-22 15:39:53', NULL, 1),
+(0000000036, 0000000064, NULL, 0000000119, '2016-09-22 15:39:53', NULL, 1),
+(0000000037, 0000000065, NULL, 0000000120, '2016-09-22 15:39:53', NULL, 1),
+(0000000038, 0000000038, NULL, 0000000121, '2016-09-23 20:17:15', 0, 1),
+(0000000039, 0000000051, NULL, 0000000122, '2016-09-29 20:44:49', NULL, 1),
+(0000000040, 0000000080, NULL, 0000000083, '2016-10-18 12:29:07', NULL, 1),
+(0000000041, 0000000081, NULL, 0000000083, '2016-10-18 12:29:07', NULL, 1),
+(0000000042, 0000000082, NULL, 0000000083, '2016-10-18 12:29:07', NULL, 1),
+(0000000043, 0000000083, NULL, 0000000083, '2016-10-18 12:29:07', NULL, 1),
+(0000000044, 0000000084, NULL, 0000000083, '2016-10-18 12:29:07', NULL, 1),
+(0000000045, 0000000085, NULL, 0000000083, '2016-10-18 12:29:07', NULL, 1),
+(0000000046, 0000000086, NULL, 0000000083, '2016-10-18 12:29:07', NULL, 1),
+(0000000047, 0000000087, NULL, 0000000083, '2016-10-18 12:29:07', NULL, 1),
+(0000000048, 0000000088, NULL, 0000000083, '2016-10-18 12:29:07', NULL, 1),
+(0000000049, 0000000089, NULL, 0000000083, '2016-10-18 12:29:07', NULL, 1),
+(0000000050, 0000000090, NULL, 0000000083, '2016-10-18 12:29:07', NULL, 1),
+(0000000051, 0000000091, NULL, 0000000083, '2016-10-18 12:29:07', NULL, 1),
+(0000000052, 0000000092, NULL, 0000000083, '2016-10-18 12:29:07', NULL, 1),
+(0000000053, 0000000093, NULL, 0000000083, '2016-10-18 12:29:07', NULL, 1),
+(0000000054, 0000000094, NULL, 0000000083, '2016-10-18 12:29:07', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -1358,7 +1497,37 @@ CREATE TABLE IF NOT EXISTS `mantencion` (
   KEY `man_nnbanno_fk` (`man_nnbanno_fk`),
   KEY `man_usuario` (`man_usuario_fk`),
   KEY `man_detallecontrato_fk` (`man_detallecontrato_fk`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=37 ;
+
+--
+-- Volcado de datos para la tabla `mantencion`
+--
+
+INSERT INTO `mantencion` (`man_id_pk`, `man_ruta_fk`, `man_detallecontrato_fk`, `man_nnbanno_fk`, `man_usuario_fk`, `man_foto`, `man_lat`, `man_lng`, `man_comentario`, `man_realizado`, `man_fecharegistro`) VALUES
+(0000000013, 0000000161, 0000000112, 0000000022, 0000000004, NULL, '-37.4612966', '-72.5137699', '', 1, '2016-09-23 09:42:40'),
+(0000000014, 0000000182, 0000000119, 0000000035, 0000000004, NULL, '-37.4489662', '-72.510612', '', 1, '2016-09-23 09:55:36'),
+(0000000015, 0000000182, 0000000119, 0000000036, 0000000004, NULL, '-37.4550738', '-72.382722', '', 1, '2016-09-23 09:57:20'),
+(0000000016, 0000000164, 0000000113, 0000000023, 0000000004, NULL, '-37.4478796', '-72.4891265', '', 1, '2016-09-23 10:06:19'),
+(0000000017, 0000000167, 0000000114, 0000000024, 0000000004, NULL, '-37.4576451', '-72.5272759', '', 1, '2016-09-23 10:14:43'),
+(0000000018, 0000000170, 0000000115, 0000000025, 0000000004, NULL, '-37.4819572', '-72.420217', '', 1, '2016-09-23 10:27:05'),
+(0000000019, 0000000179, 0000000118, 0000000034, 0000000004, NULL, '-37.4821127', '-72.4178623', '', 1, '2016-09-23 10:36:19'),
+(0000000020, 0000000173, 0000000116, 0000000026, 0000000004, NULL, '-37.4633809', '-72.5324987', '', 1, '2016-09-23 10:46:33'),
+(0000000021, 0000000173, 0000000116, 0000000027, 0000000004, NULL, '-37.4633809', '-72.5324987', '', 1, '2016-09-23 10:50:38'),
+(0000000022, 0000000173, 0000000116, 0000000028, 0000000004, NULL, '-37.4633809', '-72.5324987', '', 1, '2016-09-23 10:57:17'),
+(0000000023, 0000000173, 0000000116, 0000000029, 0000000004, NULL, '-37.4552098', '-72.5361958', '', 1, '2016-09-23 11:07:10'),
+(0000000024, 0000000176, 0000000117, 0000000030, 0000000004, NULL, '-37.4104935', '-72.3534966', '', 1, '2016-09-23 11:27:29'),
+(0000000025, 0000000176, 0000000117, 0000000031, 0000000004, NULL, '-37.4291374', '-72.406722', '', 1, '2016-09-23 11:28:23'),
+(0000000026, 0000000176, 0000000117, 0000000032, 0000000004, NULL, '-37.508755', '-72.4951274', '', 1, '2016-09-23 11:34:11'),
+(0000000027, 0000000176, 0000000117, 0000000033, 0000000004, NULL, '-37.4041326', '-72.3605258', '', 1, '2016-09-23 11:38:30'),
+(0000000028, 0000000185, 0000000120, 0000000037, 0000000004, NULL, '-37.4104935', '-72.3534966', '', 1, '2016-09-23 12:00:02'),
+(0000000029, NULL, 0000000083, 0000000040, 0000000009, NULL, '-37.5241317', '-72.1995335', 'Instalación baño', 1, '2016-10-18 11:55:00'),
+(0000000030, NULL, 0000000083, 0000000046, 0000000009, NULL, '-37.5241317', '-72.1995335', 'Instalación baño', 1, '2016-10-18 11:55:52'),
+(0000000031, NULL, 0000000083, 0000000041, 0000000009, NULL, '-37.5241322', '-72.1995319', 'Instalación baño', 1, '2016-10-18 11:57:38'),
+(0000000032, NULL, 0000000083, 0000000042, 0000000009, NULL, '-37.5241308', '-72.1995331', 'Instalación baño', 1, '2016-10-18 11:58:25'),
+(0000000033, NULL, 0000000083, 0000000048, 0000000009, NULL, '-37.489584', '-72.3312666', 'Instalación baño', 1, '2016-10-18 12:42:03'),
+(0000000034, NULL, 0000000112, 0000000022, 0000000009, NULL, '-37.4579399', '-72.5109929', 'Manutención', 1, '2016-10-18 14:36:47'),
+(0000000035, NULL, 0000000120, 0000000037, 0000000009, NULL, '-37.4489499', '-72.5105785', 'Manutención', 1, '2016-10-18 14:42:10'),
+(0000000036, NULL, 0000000114, 0000000024, 0000000009, NULL, '-37.4663477', '-72.5690979', 'Mantencion', 1, '2016-10-18 15:01:59');
 
 -- --------------------------------------------------------
 
@@ -1371,22 +1540,26 @@ CREATE TABLE IF NOT EXISTS `producto` (
   `pro_sucursal` int(10) unsigned zerofill DEFAULT NULL,
   `pro_nombre` varchar(100) DEFAULT NULL,
   `pro_cantidad` int(11) DEFAULT NULL,
+  `pro_activo` int(11) DEFAULT NULL,
   PRIMARY KEY (`pro_id_pk`),
   KEY `pro_sucursal` (`pro_sucursal`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Volcado de datos para la tabla `producto`
 --
 
-INSERT INTO `producto` (`pro_id_pk`, `pro_sucursal`, `pro_nombre`, `pro_cantidad`) VALUES
-(0000000001, 0000000001, 'Papel Higiénico', 155),
-(0000000002, 0000000001, 'Sachet Azul', -233),
-(0000000003, 0000000001, 'Sachet Amarillo', 900),
-(0000000004, 0000000001, 'Jabón', 0),
-(0000000005, 0000000001, 'Alcohol Gel', 0),
-(0000000006, 0000000001, 'Toalla de Papel', 96),
-(0000000007, 0000000001, 'Cloro', 12);
+INSERT INTO `producto` (`pro_id_pk`, `pro_sucursal`, `pro_nombre`, `pro_cantidad`, `pro_activo`) VALUES
+(0000000001, 0000000001, 'Papel Higiénico', 960, 1),
+(0000000002, 0000000001, 'Sachet Azul', 1412, 1),
+(0000000003, 0000000001, 'Sachet Amarillo', 900, 1),
+(0000000004, 0000000001, 'Jabón', 0, 1),
+(0000000005, 0000000001, 'Alcohol Gel', 0, 1),
+(0000000006, 0000000001, 'Toalla de Papel', 96, 1),
+(0000000007, 0000000001, 'Cloro', 12, 1),
+(0000000008, 0000000001, 'prueba', 0, 1),
+(0000000009, 0000000001, 'confites', 0, 1),
+(0000000010, 0000000001, 'papel impresion', 10, 1);
 
 -- --------------------------------------------------------
 
@@ -1408,7 +1581,7 @@ CREATE TABLE IF NOT EXISTS `producto_movimiento` (
   KEY `pmo_sucursal_fk` (`pmo_sucursal_fk`),
   KEY `pmo_usuario_fk` (`pmo_usuario_fk`),
   KEY `pmo_producto_fk` (`pmo_producto_fk`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=190 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=348 ;
 
 --
 -- Volcado de datos para la tabla `producto_movimiento`
@@ -1535,7 +1708,165 @@ INSERT INTO `producto_movimiento` (`pmo_id_pk`, `pmo_sucursal_fk`, `pmo_usuario_
 (0000000186, 0000000001, 0000000004, 0000000001, 2, 2, NULL, 'Salida de insumos para mantención', '2016-09-20 20:53:54'),
 (0000000187, 0000000001, 0000000004, 0000000002, 2, 2, NULL, 'Salida de insumos para mantención', '2016-09-20 20:53:54'),
 (0000000188, 0000000001, 0000000004, 0000000003, 2, 0, NULL, 'Salida de insumos para mantención', '2016-09-20 20:53:54'),
-(0000000189, 0000000001, 0000000004, 0000000004, 2, 0, NULL, 'Salida de insumos para mantención', '2016-09-20 20:53:54');
+(0000000189, 0000000001, 0000000004, 0000000004, 2, 0, NULL, 'Salida de insumos para mantención', '2016-09-20 20:53:54'),
+(0000000190, 0000000001, 0000000004, 0000000001, 1, 1344, 0, '', '2016-09-21 14:49:13'),
+(0000000191, 0000000001, 0000000004, 0000000001, 2, 61, NULL, 'Salida de insumos para mantención', '2016-09-21 20:34:09'),
+(0000000192, 0000000001, 0000000004, 0000000002, 2, 53, NULL, 'Salida de insumos para mantención', '2016-09-21 20:34:09'),
+(0000000193, 0000000001, 0000000004, 0000000003, 2, 0, NULL, 'Salida de insumos para mantención', '2016-09-21 20:34:09'),
+(0000000194, 0000000001, 0000000004, 0000000004, 2, 0, NULL, 'Salida de insumos para mantención', '2016-09-21 20:34:09'),
+(0000000195, 0000000001, 0000000004, 0000000001, 2, 70, NULL, 'Salida de insumos para mantención', '2016-09-22 11:55:02'),
+(0000000196, 0000000001, 0000000004, 0000000002, 2, 70, NULL, 'Salida de insumos para mantención', '2016-09-22 11:55:02'),
+(0000000197, 0000000001, 0000000004, 0000000003, 2, 0, NULL, 'Salida de insumos para mantención', '2016-09-22 11:55:02'),
+(0000000198, 0000000001, 0000000004, 0000000004, 2, 0, NULL, 'Salida de insumos para mantención', '2016-09-22 11:55:02'),
+(0000000199, 0000000001, 0000000004, 0000000001, 2, 70, NULL, 'Salida de insumos para mantención', '2016-09-22 12:01:22'),
+(0000000200, 0000000001, 0000000004, 0000000002, 2, 70, NULL, 'Salida de insumos para mantención', '2016-09-22 12:01:22'),
+(0000000201, 0000000001, 0000000004, 0000000003, 2, 0, NULL, 'Salida de insumos para mantención', '2016-09-22 12:01:22'),
+(0000000202, 0000000001, 0000000004, 0000000004, 2, 0, NULL, 'Salida de insumos para mantención', '2016-09-22 12:01:22'),
+(0000000203, 0000000001, 0000000004, 0000000001, 2, 3, NULL, 'Salida de insumos para mantención', '2016-09-22 21:01:08'),
+(0000000204, 0000000001, 0000000004, 0000000002, 2, 3, NULL, 'Salida de insumos para mantención', '2016-09-22 21:01:08'),
+(0000000205, 0000000001, 0000000004, 0000000003, 2, 0, NULL, 'Salida de insumos para mantención', '2016-09-22 21:01:08'),
+(0000000206, 0000000001, 0000000004, 0000000004, 2, 0, NULL, 'Salida de insumos para mantención', '2016-09-22 21:01:08'),
+(0000000207, 0000000001, 0000000001, 0000000001, 2, 17, NULL, 'Salida de insumos para mantención', '2016-09-23 19:34:09'),
+(0000000208, 0000000001, 0000000001, 0000000002, 2, 17, NULL, 'Salida de insumos para mantención', '2016-09-23 19:34:09'),
+(0000000209, 0000000001, 0000000001, 0000000003, 2, 0, NULL, 'Salida de insumos para mantención', '2016-09-23 19:34:09'),
+(0000000210, 0000000001, 0000000001, 0000000004, 2, 0, NULL, 'Salida de insumos para mantención', '2016-09-23 19:34:09'),
+(0000000211, 0000000001, 0000000004, 0000000001, 2, 68, NULL, 'Salida de insumos para mantención', '2016-09-24 15:15:54'),
+(0000000212, 0000000001, 0000000004, 0000000002, 2, 76, NULL, 'Salida de insumos para mantención', '2016-09-24 15:15:54'),
+(0000000213, 0000000001, 0000000004, 0000000003, 2, 0, NULL, 'Salida de insumos para mantención', '2016-09-24 15:15:54'),
+(0000000214, 0000000001, 0000000004, 0000000004, 2, 0, NULL, 'Salida de insumos para mantención', '2016-09-24 15:15:54'),
+(0000000215, 0000000001, 0000000004, 0000000001, 2, 2, NULL, 'Salida de insumos para mantención', '2016-09-24 15:37:05'),
+(0000000216, 0000000001, 0000000004, 0000000002, 2, 2, NULL, 'Salida de insumos para mantención', '2016-09-24 15:37:05'),
+(0000000217, 0000000001, 0000000004, 0000000003, 2, 0, NULL, 'Salida de insumos para mantención', '2016-09-24 15:37:05'),
+(0000000218, 0000000001, 0000000004, 0000000004, 2, 0, NULL, 'Salida de insumos para mantención', '2016-09-24 15:37:05'),
+(0000000219, 0000000001, 0000000004, 0000000001, 2, 83, NULL, 'Salida de insumos para mantención', '2016-09-26 16:08:11'),
+(0000000220, 0000000001, 0000000004, 0000000002, 2, 83, NULL, 'Salida de insumos para mantención', '2016-09-26 16:08:11'),
+(0000000221, 0000000001, 0000000004, 0000000003, 2, 0, NULL, 'Salida de insumos para mantención', '2016-09-26 16:08:11'),
+(0000000222, 0000000001, 0000000004, 0000000004, 2, 0, NULL, 'Salida de insumos para mantención', '2016-09-26 16:08:11'),
+(0000000223, 0000000001, 0000000004, 0000000001, 2, 69, NULL, 'Salida de insumos para mantención', '2016-09-27 20:04:51'),
+(0000000224, 0000000001, 0000000004, 0000000002, 2, 69, NULL, 'Salida de insumos para mantención', '2016-09-27 20:04:51'),
+(0000000225, 0000000001, 0000000004, 0000000003, 2, 0, NULL, 'Salida de insumos para mantención', '2016-09-27 20:04:51'),
+(0000000226, 0000000001, 0000000004, 0000000004, 2, 0, NULL, 'Salida de insumos para mantención', '2016-09-27 20:04:51'),
+(0000000227, 0000000001, 0000000004, 0000000001, 2, 54, NULL, 'Salida de insumos para mantención', '2016-09-28 18:46:01'),
+(0000000228, 0000000001, 0000000004, 0000000002, 2, 46, NULL, 'Salida de insumos para mantención', '2016-09-28 18:46:01'),
+(0000000229, 0000000001, 0000000004, 0000000003, 2, 0, NULL, 'Salida de insumos para mantención', '2016-09-28 18:46:01'),
+(0000000230, 0000000001, 0000000004, 0000000004, 2, 0, NULL, 'Salida de insumos para mantención', '2016-09-28 18:46:01'),
+(0000000231, 0000000001, 0000000004, 0000000001, 2, 74, NULL, 'Salida de insumos para mantención', '2016-09-29 16:36:25'),
+(0000000232, 0000000001, 0000000004, 0000000002, 2, 74, NULL, 'Salida de insumos para mantención', '2016-09-29 16:36:25'),
+(0000000233, 0000000001, 0000000004, 0000000003, 2, 0, NULL, 'Salida de insumos para mantención', '2016-09-29 16:36:25'),
+(0000000234, 0000000001, 0000000004, 0000000004, 2, 0, NULL, 'Salida de insumos para mantención', '2016-09-29 16:36:25'),
+(0000000235, 0000000001, 0000000004, 0000000001, 2, 74, NULL, 'Salida de insumos para mantención', '2016-09-29 16:37:36'),
+(0000000236, 0000000001, 0000000004, 0000000002, 2, 74, NULL, 'Salida de insumos para mantención', '2016-09-29 16:37:36'),
+(0000000237, 0000000001, 0000000004, 0000000003, 2, 0, NULL, 'Salida de insumos para mantención', '2016-09-29 16:37:36'),
+(0000000238, 0000000001, 0000000004, 0000000004, 2, 0, NULL, 'Salida de insumos para mantención', '2016-09-29 16:37:36'),
+(0000000239, 0000000001, 0000000004, 0000000001, 2, 74, NULL, 'Salida de insumos para mantención', '2016-09-29 16:41:47'),
+(0000000240, 0000000001, 0000000004, 0000000002, 2, 74, NULL, 'Salida de insumos para mantención', '2016-09-29 16:41:47'),
+(0000000241, 0000000001, 0000000004, 0000000003, 2, 0, NULL, 'Salida de insumos para mantención', '2016-09-29 16:41:47'),
+(0000000242, 0000000001, 0000000004, 0000000004, 2, 0, NULL, 'Salida de insumos para mantención', '2016-09-29 16:41:47'),
+(0000000243, 0000000001, 0000000004, 0000000001, 2, 74, NULL, 'Salida de insumos para mantención', '2016-09-29 16:44:15'),
+(0000000244, 0000000001, 0000000004, 0000000002, 2, 74, NULL, 'Salida de insumos para mantención', '2016-09-29 16:44:15'),
+(0000000245, 0000000001, 0000000004, 0000000003, 2, 0, NULL, 'Salida de insumos para mantención', '2016-09-29 16:44:15'),
+(0000000246, 0000000001, 0000000004, 0000000004, 2, 0, NULL, 'Salida de insumos para mantención', '2016-09-29 16:44:15'),
+(0000000247, 0000000001, 0000000004, 0000000001, 2, 73, NULL, 'Mantención', '2016-09-29 20:03:34'),
+(0000000248, 0000000001, 0000000004, 0000000002, 2, 73, NULL, 'Mantención', '2016-09-29 20:03:34'),
+(0000000249, 0000000001, 0000000004, 0000000003, 2, 0, NULL, 'Mantención', '2016-09-29 20:03:34'),
+(0000000250, 0000000001, 0000000004, 0000000004, 2, 0, NULL, 'Mantención', '2016-09-29 20:03:34'),
+(0000000251, 0000000001, 0000000004, 0000000001, 2, 17, NULL, 'Mantención', '2016-09-30 17:32:28'),
+(0000000252, 0000000001, 0000000004, 0000000002, 2, 17, NULL, 'Mantención', '2016-09-30 17:32:28'),
+(0000000253, 0000000001, 0000000004, 0000000003, 2, 0, NULL, 'Mantención', '2016-09-30 17:32:28'),
+(0000000254, 0000000001, 0000000004, 0000000004, 2, 0, NULL, 'Mantención', '2016-09-30 17:32:28'),
+(0000000255, 0000000001, 0000000004, 0000000001, 2, 2, NULL, 'Mantención', '2016-09-30 17:33:28'),
+(0000000256, 0000000001, 0000000004, 0000000002, 2, 2, NULL, 'Mantención', '2016-09-30 17:33:28'),
+(0000000257, 0000000001, 0000000004, 0000000003, 2, 0, NULL, 'Mantención', '2016-09-30 17:33:28'),
+(0000000258, 0000000001, 0000000004, 0000000004, 2, 0, NULL, 'Mantención', '2016-09-30 17:33:28'),
+(0000000259, 0000000001, 0000000004, 0000000001, 2, 64, NULL, 'Mantención', '2016-09-30 18:33:17'),
+(0000000260, 0000000001, 0000000004, 0000000002, 2, 64, NULL, 'Mantención', '2016-09-30 18:33:17'),
+(0000000261, 0000000001, 0000000004, 0000000003, 2, 0, NULL, 'Mantención', '2016-09-30 18:33:17'),
+(0000000262, 0000000001, 0000000004, 0000000004, 2, 0, NULL, 'Mantención', '2016-09-30 18:33:17'),
+(0000000263, 0000000001, 0000000004, 0000000001, 2, 55, NULL, 'Mantención', '2016-10-03 15:33:07'),
+(0000000264, 0000000001, 0000000004, 0000000002, 2, 55, NULL, 'Mantención', '2016-10-03 15:33:07'),
+(0000000265, 0000000001, 0000000004, 0000000003, 2, 0, NULL, 'Mantención', '2016-10-03 15:33:07'),
+(0000000266, 0000000001, 0000000004, 0000000004, 2, 0, NULL, 'Mantención', '2016-10-03 15:33:07'),
+(0000000267, 0000000001, 0000000001, 0000000010, 1, 10, 2790, '', '2016-10-04 18:51:38'),
+(0000000268, 0000000001, 0000000004, 0000000001, 2, 71, NULL, 'Mantención', '2016-10-04 19:45:43'),
+(0000000269, 0000000001, 0000000004, 0000000002, 2, 71, NULL, 'Mantención', '2016-10-04 19:45:43'),
+(0000000270, 0000000001, 0000000004, 0000000003, 2, 0, NULL, 'Mantención', '2016-10-04 19:45:43'),
+(0000000271, 0000000001, 0000000004, 0000000004, 2, 0, NULL, 'Mantención', '2016-10-04 19:45:43'),
+(0000000272, 0000000001, 0000000004, 0000000001, 2, 71, NULL, 'Mantención', '2016-10-04 19:47:28'),
+(0000000273, 0000000001, 0000000004, 0000000002, 2, 71, NULL, 'Mantención', '2016-10-04 19:47:28'),
+(0000000274, 0000000001, 0000000004, 0000000003, 2, 0, NULL, 'Mantención', '2016-10-04 19:47:28'),
+(0000000275, 0000000001, 0000000004, 0000000004, 2, 0, NULL, 'Mantención', '2016-10-04 19:47:28'),
+(0000000276, 0000000001, 0000000004, 0000000001, 2, 59, NULL, 'Mantención', '2016-10-05 19:57:00'),
+(0000000277, 0000000001, 0000000004, 0000000002, 2, 51, NULL, 'Mantención', '2016-10-05 19:57:00'),
+(0000000278, 0000000001, 0000000004, 0000000003, 2, 0, NULL, 'Mantención', '2016-10-05 19:57:00'),
+(0000000279, 0000000001, 0000000004, 0000000004, 2, 0, NULL, 'Mantención', '2016-10-05 19:57:00'),
+(0000000280, 0000000001, 0000000004, 0000000001, 2, 70, NULL, 'Mantención', '2016-10-06 19:57:35'),
+(0000000281, 0000000001, 0000000004, 0000000002, 2, 70, NULL, 'Mantención', '2016-10-06 19:57:35'),
+(0000000282, 0000000001, 0000000004, 0000000003, 2, 0, NULL, 'Mantención', '2016-10-06 19:57:35'),
+(0000000283, 0000000001, 0000000004, 0000000004, 2, 0, NULL, 'Mantención', '2016-10-06 19:57:35'),
+(0000000284, 0000000001, 0000000004, 0000000001, 2, 70, NULL, 'Mantención', '2016-10-06 20:05:41'),
+(0000000285, 0000000001, 0000000004, 0000000002, 2, 70, NULL, 'Mantención', '2016-10-06 20:05:41'),
+(0000000286, 0000000001, 0000000004, 0000000003, 2, 0, NULL, 'Mantención', '2016-10-06 20:05:41'),
+(0000000287, 0000000001, 0000000004, 0000000004, 2, 0, NULL, 'Mantención', '2016-10-06 20:05:41'),
+(0000000288, 0000000001, 0000000004, 0000000001, 2, 17, NULL, 'Mantención', '2016-10-07 15:48:54'),
+(0000000289, 0000000001, 0000000004, 0000000002, 2, 17, NULL, 'Mantención', '2016-10-07 15:48:54'),
+(0000000290, 0000000001, 0000000004, 0000000003, 2, 0, NULL, 'Mantención', '2016-10-07 15:48:54'),
+(0000000291, 0000000001, 0000000004, 0000000004, 2, 0, NULL, 'Mantención', '2016-10-07 15:48:54'),
+(0000000292, 0000000001, 0000000004, 0000000001, 2, 68, NULL, 'Mantención', '2016-10-08 15:26:41'),
+(0000000293, 0000000001, 0000000004, 0000000002, 2, 68, NULL, 'Mantención', '2016-10-08 15:26:41'),
+(0000000294, 0000000001, 0000000004, 0000000003, 2, 0, NULL, 'Mantención', '2016-10-08 15:26:41'),
+(0000000295, 0000000001, 0000000004, 0000000004, 2, 0, NULL, 'Mantención', '2016-10-08 15:26:41'),
+(0000000296, 0000000001, 0000000004, 0000000001, 2, 54, NULL, 'Mantención', '2016-10-08 15:49:06'),
+(0000000297, 0000000001, 0000000004, 0000000002, 2, 54, NULL, 'Mantención', '2016-10-08 15:49:06'),
+(0000000298, 0000000001, 0000000004, 0000000003, 2, 0, NULL, 'Mantención', '2016-10-08 15:49:06'),
+(0000000299, 0000000001, 0000000004, 0000000004, 2, 0, NULL, 'Mantención', '2016-10-08 15:49:06'),
+(0000000300, 0000000001, 0000000004, 0000000001, 2, 12, NULL, 'Mantención', '2016-10-08 16:18:51'),
+(0000000301, 0000000001, 0000000004, 0000000002, 2, 12, NULL, 'Mantención', '2016-10-08 16:18:51'),
+(0000000302, 0000000001, 0000000004, 0000000003, 2, 0, NULL, 'Mantención', '2016-10-08 16:18:51'),
+(0000000303, 0000000001, 0000000004, 0000000004, 2, 0, NULL, 'Mantención', '2016-10-08 16:18:51'),
+(0000000304, 0000000001, 0000000004, 0000000001, 2, 74, NULL, 'Mantención', '2016-10-11 18:33:47'),
+(0000000305, 0000000001, 0000000004, 0000000002, 2, 74, NULL, 'Mantención', '2016-10-11 18:33:48'),
+(0000000306, 0000000001, 0000000004, 0000000003, 2, 0, NULL, 'Mantención', '2016-10-11 18:33:48'),
+(0000000307, 0000000001, 0000000004, 0000000004, 2, 0, NULL, 'Mantención', '2016-10-11 18:33:48'),
+(0000000308, 0000000001, 0000000004, 0000000001, 2, 59, NULL, 'Mantención', '2016-10-12 12:48:16'),
+(0000000309, 0000000001, 0000000004, 0000000002, 2, 51, NULL, 'Mantención', '2016-10-12 12:48:16'),
+(0000000310, 0000000001, 0000000004, 0000000003, 2, 0, NULL, 'Mantención', '2016-10-12 12:48:16'),
+(0000000311, 0000000001, 0000000004, 0000000004, 2, 0, NULL, 'Mantención', '2016-10-12 12:48:16'),
+(0000000312, 0000000001, 0000000004, 0000000001, 2, 1, NULL, 'Mantención', '2016-10-12 20:40:08'),
+(0000000313, 0000000001, 0000000004, 0000000002, 2, 1, NULL, 'Mantención', '2016-10-12 20:40:08'),
+(0000000314, 0000000001, 0000000004, 0000000003, 2, 0, NULL, 'Mantención', '2016-10-12 20:40:08'),
+(0000000315, 0000000001, 0000000004, 0000000004, 2, 0, NULL, 'Mantención', '2016-10-12 20:40:08'),
+(0000000316, 0000000001, 0000000004, 0000000001, 2, 0, NULL, 'Mantención', '2016-10-13 19:09:58'),
+(0000000317, 0000000001, 0000000004, 0000000002, 2, 0, NULL, 'Mantención', '2016-10-13 19:09:58'),
+(0000000318, 0000000001, 0000000004, 0000000003, 2, 0, NULL, 'Mantención', '2016-10-13 19:09:58'),
+(0000000319, 0000000001, 0000000004, 0000000004, 2, 0, NULL, 'Mantención', '2016-10-13 19:09:58'),
+(0000000320, 0000000001, 0000000004, 0000000001, 2, 0, NULL, 'Mantención', '2016-10-13 19:10:24'),
+(0000000321, 0000000001, 0000000004, 0000000002, 2, 0, NULL, 'Mantención', '2016-10-13 19:10:24'),
+(0000000322, 0000000001, 0000000004, 0000000003, 2, 0, NULL, 'Mantención', '2016-10-13 19:10:24'),
+(0000000323, 0000000001, 0000000004, 0000000004, 2, 0, NULL, 'Mantención', '2016-10-13 19:10:24'),
+(0000000324, 0000000001, 0000000004, 0000000001, 2, 74, NULL, 'Mantención', '2016-10-13 19:10:33'),
+(0000000325, 0000000001, 0000000004, 0000000002, 2, 74, NULL, 'Mantención', '2016-10-13 19:10:33'),
+(0000000326, 0000000001, 0000000004, 0000000003, 2, 0, NULL, 'Mantención', '2016-10-13 19:10:33'),
+(0000000327, 0000000001, 0000000004, 0000000004, 2, 0, NULL, 'Mantención', '2016-10-13 19:10:33'),
+(0000000328, 0000000001, 0000000004, 0000000002, 1, 1680, 661164, 'SE INGRESAN 4 CAJAS DE BAC PAX 13-10-2016', '2016-10-13 19:31:55'),
+(0000000329, 0000000001, 0000000004, 0000000001, 2, 15, NULL, 'Mantención', '2016-10-14 14:07:18'),
+(0000000330, 0000000001, 0000000004, 0000000002, 2, 15, NULL, 'Mantención', '2016-10-14 14:07:18'),
+(0000000331, 0000000001, 0000000004, 0000000003, 2, 0, NULL, 'Mantención', '2016-10-14 14:07:18'),
+(0000000332, 0000000001, 0000000004, 0000000004, 2, 0, NULL, 'Mantención', '2016-10-14 14:07:18'),
+(0000000333, 0000000001, 0000000004, 0000000001, 2, 62, NULL, 'Mantención', '2016-10-15 13:20:09'),
+(0000000334, 0000000001, 0000000004, 0000000002, 2, 62, NULL, 'Mantención', '2016-10-15 13:20:09'),
+(0000000335, 0000000001, 0000000004, 0000000003, 2, 0, NULL, 'Mantención', '2016-10-15 13:20:09'),
+(0000000336, 0000000001, 0000000004, 0000000004, 2, 0, NULL, 'Mantención', '2016-10-15 13:20:09'),
+(0000000337, 0000000001, 0000000004, 0000000001, 2, 62, NULL, 'Mantención', '2016-10-15 13:22:26'),
+(0000000338, 0000000001, 0000000004, 0000000002, 2, 62, NULL, 'Mantención', '2016-10-15 13:22:26'),
+(0000000339, 0000000001, 0000000004, 0000000003, 2, 0, NULL, 'Mantención', '2016-10-15 13:22:26'),
+(0000000340, 0000000001, 0000000004, 0000000004, 2, 0, NULL, 'Mantención', '2016-10-15 13:22:26'),
+(0000000341, 0000000001, 0000000004, 0000000001, 2, 59, NULL, 'Mantención', '2016-10-17 15:04:07'),
+(0000000342, 0000000001, 0000000004, 0000000002, 2, 59, NULL, 'Mantención', '2016-10-17 15:04:07'),
+(0000000343, 0000000001, 0000000004, 0000000003, 2, 0, NULL, 'Mantención', '2016-10-17 15:04:07'),
+(0000000344, 0000000001, 0000000004, 0000000004, 2, 0, NULL, 'Mantención', '2016-10-17 15:04:07'),
+(0000000345, 0000000001, 0000000004, 0000000001, 2, 70, NULL, 'Mantención', '2016-10-18 19:31:54'),
+(0000000346, 0000000001, 0000000004, 0000000002, 2, 70, NULL, 'Mantención', '2016-10-18 19:31:54'),
+(0000000347, 0000000001, 0000000004, 0000000001, 1, 960, 94220, 'INGRESAN 960 PAPEL HIGIENICO ECONOMICO MAGIKLIN', '2016-10-18 19:37:52');
 
 -- --------------------------------------------------------
 
@@ -1666,7 +1997,7 @@ CREATE TABLE IF NOT EXISTS `ruta` (
   PRIMARY KEY (`rut_id_pk`),
   KEY `man_camion_fk` (`rut_camion_fk`),
   KEY `man_detallecontrato_fk` (`rut_detallecontrato_fk`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=159 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=215 ;
 
 --
 -- Volcado de datos para la tabla `ruta`
@@ -1680,8 +2011,8 @@ INSERT INTO `ruta` (`rut_id_pk`, `rut_detallecontrato_fk`, `rut_camion_fk`, `rut
 (0000000052, 0000000048, 0000000003, 3, NULL, 1, '2016-09-07 14:32:21', 0),
 (0000000053, 0000000048, 0000000002, 5, NULL, 1, '2016-09-07 14:32:21', 0),
 (0000000054, 0000000049, 0000000003, 1, NULL, 1, '2016-09-08 10:42:18', 0),
-(0000000055, 0000000050, 0000000003, 1, NULL, 1, '2016-09-08 10:49:38', 0),
-(0000000056, 0000000050, 0000000002, 3, NULL, 1, '2016-09-08 10:49:38', 0),
+(0000000055, 0000000050, 0000000003, 1, NULL, 0, '2016-09-08 10:49:38', 0),
+(0000000056, 0000000050, 0000000002, 3, NULL, 0, '2016-09-08 10:49:38', 13),
 (0000000057, 0000000051, 0000000003, 1, NULL, 0, '2016-09-08 10:58:19', 0),
 (0000000058, 0000000052, 0000000002, 2, NULL, 1, '2016-09-08 11:00:21', 0),
 (0000000059, 0000000053, 0000000003, 1, NULL, 1, '2016-09-08 11:04:21', 0),
@@ -1689,19 +2020,19 @@ INSERT INTO `ruta` (`rut_id_pk`, `rut_detallecontrato_fk`, `rut_camion_fk`, `rut
 (0000000061, 0000000055, 0000000003, 1, NULL, 1, '2016-09-08 11:36:19', 0),
 (0000000062, 0000000056, 0000000002, 1, NULL, 1, '2016-09-08 11:41:16', 0),
 (0000000063, 0000000057, 0000000002, 1, NULL, 1, '2016-09-08 11:47:32', 0),
-(0000000064, 0000000058, 0000000002, 1, NULL, 1, '2016-09-08 11:50:51', 0),
+(0000000064, 0000000058, 0000000002, 1, NULL, 0, '2016-09-08 11:50:51', 0),
 (0000000065, 0000000059, 0000000002, 1, NULL, 1, '2016-09-08 11:54:23', 0),
-(0000000066, 0000000059, 0000000002, 3, NULL, 1, '2016-09-08 11:54:23', 0),
+(0000000066, 0000000059, 0000000002, 3, NULL, 1, '2016-09-08 11:54:23', 8),
 (0000000067, 0000000059, 0000000002, 5, NULL, 1, '2016-09-08 11:54:23', 0),
 (0000000068, 0000000060, 0000000003, 1, NULL, 1, '2016-09-08 12:01:40', 0),
-(0000000069, 0000000061, 0000000002, 1, NULL, 1, '2016-09-08 12:03:53', 0),
-(0000000070, 0000000061, 0000000002, 3, NULL, 1, '2016-09-08 12:03:53', 0),
-(0000000071, 0000000061, 0000000002, 5, NULL, 1, '2016-09-08 12:03:53', 0),
-(0000000072, 0000000062, 0000000002, 2, NULL, 1, '2016-09-08 12:11:12', 0),
-(0000000073, 0000000062, 0000000002, 4, NULL, 1, '2016-09-08 12:11:12', 0),
+(0000000069, 0000000061, 0000000002, 1, NULL, 0, '2016-09-08 12:03:53', 0),
+(0000000070, 0000000061, 0000000002, 3, NULL, 0, '2016-09-08 12:03:53', 0),
+(0000000071, 0000000061, 0000000002, 5, NULL, 0, '2016-09-08 12:03:53', 0),
+(0000000072, 0000000062, 0000000002, 2, NULL, 0, '2016-09-08 12:11:12', 0),
+(0000000073, 0000000062, 0000000002, 4, NULL, 0, '2016-09-08 12:11:12', 0),
 (0000000074, 0000000063, 0000000003, 2, NULL, 1, '2016-09-08 12:14:17', 0),
 (0000000075, 0000000063, 0000000002, 4, NULL, 1, '2016-09-08 12:14:17', 0),
-(0000000076, 0000000064, 0000000002, 2, NULL, 1, '2016-09-08 12:21:05', 0),
+(0000000076, 0000000064, 0000000002, 2, NULL, 0, '2016-09-08 12:21:05', 0),
 (0000000077, 0000000065, 0000000002, 2, NULL, 1, '2016-09-08 12:28:40', 0),
 (0000000078, 0000000065, 0000000003, 4, NULL, 1, '2016-09-08 12:28:40', 0),
 (0000000079, 0000000066, 0000000002, 2, NULL, 1, '2016-09-08 12:40:33', 0),
@@ -1715,37 +2046,37 @@ INSERT INTO `ruta` (`rut_id_pk`, `rut_detallecontrato_fk`, `rut_camion_fk`, `rut
 (0000000087, 0000000070, 0000000003, 2, NULL, 1, '2016-09-08 12:51:12', 0),
 (0000000088, 0000000070, 0000000002, 4, NULL, 1, '2016-09-08 12:51:12', 0),
 (0000000089, 0000000070, 0000000003, 6, NULL, 1, '2016-09-08 12:51:12', 0),
-(0000000090, 0000000071, 0000000003, 2, NULL, 1, '2016-09-08 12:54:40', 0),
-(0000000091, 0000000071, 0000000002, 5, NULL, 1, '2016-09-08 12:54:40', 0),
+(0000000090, 0000000071, 0000000003, 2, NULL, 0, '2016-09-08 12:54:40', 0),
+(0000000091, 0000000071, 0000000002, 5, NULL, 0, '2016-09-08 12:54:40', 0),
 (0000000092, 0000000072, 0000000002, 2, NULL, 1, '2016-09-08 15:43:52', 0),
 (0000000093, 0000000073, 0000000003, 2, NULL, 1, '2016-09-08 15:58:28', 0),
-(0000000094, 0000000074, 0000000002, 2, NULL, 1, '2016-09-08 16:02:57', 0),
-(0000000095, 0000000074, 0000000003, 4, NULL, 1, '2016-09-08 16:02:57', 0),
+(0000000094, 0000000074, 0000000002, 2, NULL, 0, '2016-09-08 16:02:57', 0),
+(0000000095, 0000000074, 0000000003, 4, NULL, 0, '2016-09-08 16:02:57', 0),
 (0000000096, 0000000075, 0000000002, 2, NULL, 1, '2016-09-08 16:17:32', 0),
 (0000000097, 0000000075, 0000000002, 5, NULL, 1, '2016-09-08 16:17:32', 0),
-(0000000098, 0000000076, 0000000002, 2, NULL, 1, '2016-09-08 16:24:03', 0),
-(0000000099, 0000000076, 0000000003, 5, NULL, 1, '2016-09-08 16:24:03', 0),
-(0000000102, 0000000078, 0000000002, 3, NULL, 1, '2016-09-08 16:49:30', 0),
+(0000000098, 0000000076, 0000000002, 2, NULL, 0, '2016-09-08 16:24:03', 0),
+(0000000099, 0000000076, 0000000003, 5, NULL, 0, '2016-09-08 16:24:03', 0),
+(0000000102, 0000000078, 0000000002, 3, NULL, 1, '2016-09-08 16:49:30', 7),
 (0000000103, 0000000078, 0000000002, 5, NULL, 1, '2016-09-08 16:49:30', 0),
 (0000000104, 0000000079, 0000000003, 3, NULL, 1, '2016-09-08 17:04:31', 0),
 (0000000105, 0000000080, 0000000003, 3, NULL, 1, '2016-09-08 17:12:34', 0),
 (0000000106, 0000000081, 0000000003, 3, NULL, 1, '2016-09-08 17:16:46', 0),
 (0000000107, 0000000082, 0000000003, 3, NULL, 1, '2016-09-08 17:16:46', 0),
-(0000000108, 0000000083, 0000000002, 3, NULL, 1, '2016-09-08 17:19:09', 0),
+(0000000108, 0000000083, 0000000002, 3, NULL, 1, '2016-09-08 17:19:09', 9),
 (0000000109, 0000000084, 0000000003, 3, NULL, 1, '2016-09-08 17:22:20', 0),
-(0000000110, 0000000085, 0000000003, 3, NULL, 1, '2016-09-08 17:25:09', 0),
-(0000000111, 0000000085, 0000000002, 5, NULL, 1, '2016-09-08 17:25:09', 0),
-(0000000112, 0000000086, 0000000002, 3, NULL, 1, '2016-09-08 17:28:13', 0),
-(0000000113, 0000000087, 0000000003, 4, NULL, 1, '2016-09-08 17:30:41', 0),
+(0000000110, 0000000085, 0000000003, 3, NULL, 0, '2016-09-08 17:25:09', 0),
+(0000000111, 0000000085, 0000000002, 5, NULL, 0, '2016-09-08 17:25:09', 0),
+(0000000112, 0000000086, 0000000002, 3, NULL, 1, '2016-09-08 17:28:13', 10),
+(0000000113, 0000000087, 0000000003, 4, NULL, 0, '2016-09-08 17:30:41', 0),
 (0000000114, 0000000088, 0000000002, 4, NULL, 1, '2016-09-08 17:32:09', 0),
 (0000000115, 0000000089, 0000000002, 4, NULL, 1, '2016-09-08 17:34:33', 0),
 (0000000116, 0000000090, 0000000003, 4, NULL, 1, '2016-09-08 17:38:30', 0),
-(0000000117, 0000000091, 0000000002, 5, NULL, 1, '2016-09-08 17:40:07', 0),
-(0000000118, 0000000092, 0000000002, 5, NULL, 1, '2016-09-08 17:44:01', 0),
+(0000000117, 0000000091, 0000000002, 5, NULL, 0, '2016-09-08 17:40:07', 0),
+(0000000118, 0000000092, 0000000002, 5, NULL, 0, '2016-09-08 17:44:01', 0),
 (0000000119, 0000000093, 0000000003, 4, NULL, 1, '2016-09-08 17:47:20', 0),
 (0000000120, 0000000094, 0000000003, 5, NULL, 1, '2016-09-08 17:50:18', 0),
 (0000000121, 0000000095, 0000000003, 5, NULL, 1, '2016-09-08 17:52:12', 0),
-(0000000122, 0000000096, 0000000003, 6, NULL, 1, '2016-09-08 17:56:44', 0),
+(0000000122, 0000000096, 0000000002, 6, NULL, 1, '2016-09-08 17:56:44', 0),
 (0000000123, 0000000097, 0000000003, 3, NULL, 1, '2016-09-09 16:50:40', 0),
 (0000000124, 0000000097, 0000000003, 5, NULL, 1, '2016-09-09 16:50:40', 0),
 (0000000125, 0000000098, 0000000003, 3, NULL, 1, '2016-09-09 16:50:40', 0),
@@ -1754,12 +2085,12 @@ INSERT INTO `ruta` (`rut_id_pk`, `rut_detallecontrato_fk`, `rut_camion_fk`, `rut
 (0000000128, 0000000099, 0000000003, 5, NULL, 1, '2016-09-09 16:50:40', 0),
 (0000000129, 0000000100, 0000000002, 1, NULL, 1, '2016-09-09 18:12:09', 0),
 (0000000130, 0000000100, 0000000002, 2, NULL, 1, '2016-09-09 18:12:09', 0),
-(0000000131, 0000000100, 0000000002, 3, NULL, 1, '2016-09-09 18:12:09', 0),
+(0000000131, 0000000100, 0000000002, 3, NULL, 1, '2016-09-09 18:12:09', 12),
 (0000000132, 0000000100, 0000000002, 5, NULL, 1, '2016-09-09 18:12:09', 0),
 (0000000133, 0000000100, 0000000003, 6, NULL, 1, '2016-09-09 18:12:09', 0),
 (0000000134, 0000000100, 0000000003, 7, NULL, 1, '2016-09-09 18:12:09', 0),
-(0000000135, 0000000101, 0000000003, 1, NULL, 1, '2016-09-09 18:12:09', 0),
-(0000000136, 0000000101, 0000000002, 2, NULL, 1, '2016-09-09 18:12:09', 0),
+(0000000135, 0000000101, 0000000003, 1, NULL, 0, '2016-09-09 18:12:09', 0),
+(0000000136, 0000000101, 0000000002, 2, NULL, 0, '2016-09-09 18:12:09', 0),
 (0000000137, 0000000102, 0000000003, 2, NULL, 1, '2016-09-12 17:42:02', 0),
 (0000000138, 0000000102, 0000000003, 4, NULL, 1, '2016-09-12 17:42:02', 0),
 (0000000139, 0000000103, 0000000003, 2, NULL, 1, '2016-09-12 17:42:02', 0),
@@ -1776,12 +2107,68 @@ INSERT INTO `ruta` (`rut_id_pk`, `rut_detallecontrato_fk`, `rut_camion_fk`, `rut
 (0000000150, 0000000108, NULL, 4, NULL, 0, '2016-09-12 17:42:03', 0),
 (0000000151, 0000000109, NULL, 2, NULL, 0, '2016-09-12 17:42:03', 0),
 (0000000152, 0000000109, NULL, 4, NULL, 0, '2016-09-12 17:42:03', 0),
-(0000000153, 0000000110, NULL, 6, NULL, 1, '2016-09-15 12:05:17', 0),
-(0000000154, 0000000110, NULL, 7, NULL, 1, '2016-09-15 12:05:17', 0),
-(0000000155, 0000000111, NULL, 1, NULL, 1, '2016-09-16 12:35:41', 0),
-(0000000156, 0000000111, NULL, 5, NULL, 1, '2016-09-16 12:35:41', 0),
-(0000000157, 0000000111, NULL, 6, NULL, 1, '2016-09-16 12:35:41', 0),
-(0000000158, 0000000111, NULL, 7, NULL, 1, '2016-09-16 12:35:41', 0);
+(0000000153, 0000000110, NULL, 6, NULL, 0, '2016-09-15 12:05:17', 0),
+(0000000154, 0000000110, NULL, 7, NULL, 0, '2016-09-15 12:05:17', 0),
+(0000000155, 0000000111, NULL, 1, NULL, 0, '2016-09-16 12:35:41', 0),
+(0000000156, 0000000111, NULL, 5, NULL, 0, '2016-09-16 12:35:41', 0),
+(0000000157, 0000000111, NULL, 6, NULL, 0, '2016-09-16 12:35:41', 0),
+(0000000158, 0000000111, NULL, 7, NULL, 0, '2016-09-16 12:35:41', 0),
+(0000000159, 0000000112, 0000000002, 1, NULL, 1, '2016-09-22 12:17:14', 0),
+(0000000160, 0000000112, 0000000002, 3, NULL, 1, '2016-09-22 12:17:14', 11),
+(0000000161, 0000000112, 0000000002, 5, NULL, 1, '2016-09-22 12:17:14', 0),
+(0000000162, 0000000113, 0000000002, 1, NULL, 0, '2016-09-22 12:17:14', 0),
+(0000000163, 0000000113, 0000000002, 3, NULL, 0, '2016-09-22 12:17:14', 14),
+(0000000164, 0000000113, 0000000002, 5, NULL, 0, '2016-09-22 12:17:14', 0),
+(0000000165, 0000000114, 0000000002, 1, NULL, 1, '2016-09-22 12:17:14', 0),
+(0000000166, 0000000114, 0000000002, 3, NULL, 1, '2016-09-22 12:17:14', 6),
+(0000000167, 0000000114, 0000000002, 5, NULL, 1, '2016-09-22 12:17:14', 0),
+(0000000168, 0000000115, 0000000002, 1, NULL, 1, '2016-09-22 12:17:14', 0),
+(0000000169, 0000000115, 0000000002, 3, NULL, 1, '2016-09-22 12:17:14', 1),
+(0000000170, 0000000115, 0000000002, 5, NULL, 1, '2016-09-22 12:17:14', 0),
+(0000000171, 0000000116, 0000000002, 1, NULL, 1, '2016-09-22 12:17:14', 0),
+(0000000172, 0000000116, 0000000002, 3, NULL, 1, '2016-09-22 12:17:14', 0),
+(0000000173, 0000000116, 0000000002, 5, NULL, 1, '2016-09-22 12:17:14', 0),
+(0000000174, 0000000117, 0000000002, 1, NULL, 1, '2016-09-22 12:17:14', 0),
+(0000000175, 0000000117, 0000000002, 3, NULL, 1, '2016-09-22 12:17:14', 2),
+(0000000176, 0000000117, 0000000002, 5, NULL, 1, '2016-09-22 12:17:14', 0),
+(0000000177, 0000000118, 0000000002, 1, NULL, 1, '2016-09-22 12:38:57', 0),
+(0000000178, 0000000118, 0000000002, 3, NULL, 1, '2016-09-22 12:38:57', 3),
+(0000000179, 0000000118, 0000000002, 5, NULL, 1, '2016-09-22 12:38:57', 0),
+(0000000180, 0000000119, 0000000002, 1, NULL, 1, '2016-09-22 12:38:57', 0),
+(0000000181, 0000000119, 0000000002, 3, NULL, 1, '2016-09-22 12:38:57', 5),
+(0000000182, 0000000119, 0000000002, 5, NULL, 1, '2016-09-22 12:38:57', 0),
+(0000000183, 0000000120, 0000000002, 1, NULL, 1, '2016-09-22 12:38:57', 0),
+(0000000184, 0000000120, 0000000002, 3, NULL, 1, '2016-09-22 12:38:57', 4),
+(0000000185, 0000000120, 0000000002, 5, NULL, 1, '2016-09-22 12:38:57', 0),
+(0000000186, 0000000121, 0000000003, 2, NULL, 1, '2016-09-23 17:15:11', 0),
+(0000000187, 0000000122, 0000000002, 1, NULL, 1, '2016-09-29 20:22:32', 0),
+(0000000188, 0000000122, 0000000002, 3, NULL, 1, '2016-09-29 20:22:32', 0),
+(0000000189, 0000000122, 0000000002, 5, NULL, 1, '2016-09-29 20:22:32', 0),
+(0000000190, 0000000123, 0000000003, 1, NULL, 1, '2016-09-29 20:30:08', 0),
+(0000000191, 0000000123, 0000000003, 3, NULL, 1, '2016-09-29 20:30:08', 0),
+(0000000192, 0000000123, 0000000003, 5, NULL, 1, '2016-09-29 20:30:08', 0),
+(0000000193, 0000000124, NULL, 2, NULL, 1, '2016-09-30 17:40:11', 0),
+(0000000194, 0000000125, NULL, 1, NULL, 1, '2016-09-30 17:41:06', 0),
+(0000000195, 0000000126, 0000000003, 1, NULL, 1, '2016-10-03 14:57:57', 0),
+(0000000196, 0000000126, 0000000003, 4, NULL, 1, '2016-10-03 14:57:57', 0),
+(0000000197, 0000000127, 0000000003, 1, NULL, 1, '2016-10-04 16:23:32', 0),
+(0000000198, 0000000128, NULL, 3, NULL, 0, '2016-10-06 20:45:03', 0),
+(0000000199, 0000000128, NULL, 5, NULL, 0, '2016-10-06 20:45:03', 0),
+(0000000200, 0000000129, NULL, 3, NULL, 1, '2016-10-06 20:45:56', 0),
+(0000000201, 0000000129, NULL, 5, NULL, 1, '2016-10-06 20:45:56', 0),
+(0000000202, 0000000130, NULL, 2, NULL, 1, '2016-10-06 20:50:25', 0),
+(0000000203, 0000000130, NULL, 5, NULL, 1, '2016-10-06 20:50:25', 0),
+(0000000204, 0000000131, NULL, 2, NULL, 0, '2016-10-06 20:56:31', 0),
+(0000000205, 0000000131, NULL, 4, NULL, 0, '2016-10-06 20:56:31', 0),
+(0000000206, 0000000131, NULL, 6, NULL, 0, '2016-10-06 20:56:31', 0),
+(0000000207, 0000000132, NULL, 2, NULL, 1, '2016-10-07 18:46:28', 0),
+(0000000208, 0000000132, NULL, 4, NULL, 1, '2016-10-07 18:46:28', 0),
+(0000000209, 0000000133, NULL, 3, NULL, 1, '2016-10-07 18:51:50', 0),
+(0000000210, 0000000133, NULL, 5, NULL, 1, '2016-10-07 18:51:50', 0),
+(0000000211, 0000000134, 0000000003, 2, NULL, 1, '2016-10-11 10:57:38', 0),
+(0000000212, 0000000134, 0000000003, 5, NULL, 1, '2016-10-11 10:57:38', 0),
+(0000000213, 0000000135, 0000000003, 2, NULL, 1, '2016-10-12 09:05:43', 0),
+(0000000214, 0000000136, 0000000002, 2, NULL, 1, '2016-10-17 12:34:03', 0);
 
 -- --------------------------------------------------------
 
@@ -1827,14 +2214,15 @@ CREATE TABLE IF NOT EXISTS `sucursal` (
   PRIMARY KEY (`suc_id_pk`),
   KEY `suc_comuna_fk` (`suc_comuna_fk`),
   KEY `suc_usuario_fk` (`suc_usuario_fk`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Volcado de datos para la tabla `sucursal`
 --
 
 INSERT INTO `sucursal` (`suc_id_pk`, `suc_usuario_fk`, `suc_comuna_fk`, `suc_nombre`, `suc_nombrecomercial`, `suc_giro`, `suc_direccion`, `suc_rut`, `suc_fecharegistro`, `suc_configuracion`, `suc_comentario`) VALUES
-(0000000001, 00000000001, 00000000165, 'Los Ángeles', NULL, NULL, 'Camino Maria Dolores K.M. 6.9', NULL, '2016-08-08 18:21:07', '{}', NULL);
+(0000000001, 00000000001, 00000000165, 'Los Ángeles', NULL, NULL, 'Camino Maria Dolores K.M. 6.9', NULL, '2016-08-08 18:21:07', '{}', NULL),
+(0000000002, 00000000001, 00000000005, 'tuciudad spa', NULL, 'higiene ambiental', NULL, NULL, '2016-10-04 13:22:11', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1859,7 +2247,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `usu_comentario` text,
   PRIMARY KEY (`usu_id_pk`),
   KEY `usu_comuna_fk` (`usu_comuna_fk`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Volcado de datos para la tabla `usuario`
@@ -1870,10 +2258,12 @@ INSERT INTO `usuario` (`usu_id_pk`, `usu_comuna_fk`, `usu_nombre`, `usu_apellido
 (0000000002, 0000000165, 'Lilian', 'Rodriguez', '11242856-9', 'Camino María Dolores Km 6.9', '$6$rounds=5000$usesomesillystri$9RMtq4iKCAkAkdcXsKPlyJqDNKa4WeTZ/SEexnis778NW9saRe1y1SUtbCYwZmSxXuxfm9dwMwBZpCAX39BQF1', '{"permisos":{"Clientes":true,"Arriendos":true,"Mantenciones":true}}', 1, NULL, NULL, 2, '2016-09-06 13:55:49', NULL),
 (0000000003, 0000000165, 'Carolina', 'Mundaca', '14134341-6', 'Camino María Dolores Km 6.9', '$6$rounds=5000$usesomesillystri$8eFkH5fOIGCcy.ytJyyZ0ZysVEGTU327VvX3IjI8vmbS/CDMmw6A3kO8hu343DxmHXSfW63na6l3vTfzQ72aQ0', '{"permisos":{"Clientes":true,"Arriendos":true,"Mantenciones":true}}', 1, NULL, NULL, 2, '2016-09-06 13:57:35', NULL),
 (0000000004, 0000000165, 'Daniel', 'Poblete', '18700374-1', 'Camino María Dolores Km 6.9', '$6$rounds=5000$usesomesillystri$h2N33/XdHebjcg0plqKVtmL22i3EOC185/XKSXRxOOmvTuBtkkyZpYSPHu/ipmNWy3x2Kchsq.2IE2ukjkjCO0', '{"permisos":{"Bodega":true,"Arriendos":true,"Mantenciones":true}}', 1, NULL, NULL, 2, '2016-09-06 13:59:03', NULL),
-(0000000005, 0000000165, 'John', 'Oviedo', '8616994-0', 'Camino María Dolores Km 6.9', '$6$rounds=5000$usesomesillystri$d5FKa1ytOjiJC/rR2uzRL/TZ2hGmCCncwbQpOf.6H895shLajWHXPHpltu.4u.hVCG6/WzVscQICreJrTbig2.', '{"permisos":{"Usuarios":true,"Clientes":true,"Sucursales":true,"Arriendos":true,"Bodega":true,"Mantenciones":true}}', 1, NULL, NULL, 1, '2016-09-06 14:01:01', NULL),
+(0000000005, 0000000165, 'John', 'Oviedo', '8616994-0', 'Camino María Dolores Km 6.9', '$6$rounds=5000$usesomesillystri$a75AayTumDWKqPC/Taerhv01I1.zUAx17I0Zp7VqhjiYf63vTyQ4Qnw9citJesYzGM2X7lqdizfL6xllASrz2.', '{"permisos":{"Usuarios":true,"Clientes":true,"Sucursales":true,"Arriendos":true,"Bodega":true,"Mantenciones":true}}', 1, NULL, NULL, 1, '2016-09-06 14:01:01', NULL),
 (0000000006, 0000000165, 'Misael', 'Burgos', '11243405-4', 'Camino María Dolores Km 6.9', '$6$rounds=5000$usesomesillystri$CvOSqZWSiFPkdqCMMFvg5RfSQcMf.C2ElAFyonvaFHnw/aRDMXf/Jq/BzVZGUKotKuIdebLAkAQBXcL4Zjx.C/', '{"permisos":{}}', 1, NULL, NULL, 3, '2016-09-06 14:58:34', NULL),
 (0000000007, 0000000165, 'Franciso', 'Arancibia', '17006157-8', 'Camino María Dolores Km 6.9', '$6$rounds=5000$usesomesillystri$ZpZo3t.XWBCmXJrkNtzYSLd6LGIUNul55gDuEpn9Apsn9MSPCPV9BjYT/xw6PSWe1dRY80PLLxNdZCRzDeCHI.', '{"permisos":{}}', 1, NULL, NULL, 3, '2016-09-06 15:01:22', NULL),
-(0000000008, 0000000165, 'David', 'Lopez', '16451181-2', 'Camino María Dolores Km 6.9', '$6$rounds=5000$usesomesillystri$Awgd/1/QAvyAQgMQiBsOittYHi38rVotIQTD8CfJK.sDbsVSxRBrte3Qe8V37UD/CwdPwFMBWwsuAZCC8/b1S1', '{"permisos":{}}', 1, NULL, NULL, 3, '2016-09-06 15:03:22', NULL);
+(0000000008, 0000000165, 'David', 'Lopez', '16451181-2', 'Camino María Dolores Km 6.9', '$6$rounds=5000$usesomesillystri$Awgd/1/QAvyAQgMQiBsOittYHi38rVotIQTD8CfJK.sDbsVSxRBrte3Qe8V37UD/CwdPwFMBWwsuAZCC8/b1S1', '{"permisos":{}}', 0, NULL, NULL, 3, '2016-09-06 15:03:22', NULL),
+(0000000009, 0000000165, 'Luis', 'Bianchi', '16204325-0', 'Sevilla, 0456. Villa España.', '$6$rounds=5000$usesomesillystri$mN1qpk7rpi79zR.TAaUJuaLdsmBe60mhS2/wG87vqTfofI.dvxwcWVsCToVjvcdmzHkfERJoXjH3DHNLg8DLI.', '{"permisos":{"Usuarios":true,"Clientes":true,"Sucursales":true,"Arriendos":true,"Bodega":true,"Mantenciones":true}}', 1, NULL, NULL, 1, '2016-10-04 19:08:28', NULL),
+(0000000010, 0000000165, 'Marco Antonio', 'Almendras Gomez', '17217617-8', 'Camino María Dolores Km 6.9', '$6$rounds=5000$usesomesillystri$0yR4yMxYU7uBod1yCRLgeMFEJNNZMMPtukwq64axKn/4IcflnUemCKwbWwkWviLuLQF1ro9A5f6o8tFOuQUNL0', '{"permisos":{}}', 1, NULL, NULL, 3, '2016-10-13 12:58:51', NULL);
 
 -- --------------------------------------------------------
 
@@ -1891,7 +2281,7 @@ CREATE TABLE IF NOT EXISTS `usuario_log` (
   PRIMARY KEY (`ulo_id_pk`),
   KEY `ulo_sucursal_fk` (`ulo_sucursal_fk`),
   KEY `ulo_usuario_fk` (`ulo_usuario_fk`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=211 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=279 ;
 
 --
 -- Volcado de datos para la tabla `usuario_log`
@@ -2106,7 +2496,76 @@ INSERT INTO `usuario_log` (`ulo_id_pk`, `ulo_sucursal_fk`, `ulo_usuario_fk`, `ul
 (0000000207, 0000000001, 0000000001, '<strong>Modificación de 1 productos</strong> (B0000029, ) al arriendo de <b class="text-system">LUIS IVÁN GONZALEZ MUÑOZ</b> (Arriendo N° 98)', '2016-09-15 20:23:00', NULL),
 (0000000208, 0000000001, 0000000001, '<strong>Modificación de 2 productos</strong> (B0000023, B0000025, ) al arriendo de <b class="text-system">FIGUZ S.A.</b> (Arriendo N° 94)', '2016-09-15 20:24:07', NULL),
 (0000000209, 0000000001, 0000000001, '<strong>Registro de nuevo arriendo</strong> al sistema para <b class="text-system">ILUSTRE MUNICIPALIDAD DE LOS ANGELES</b> (Arriendo N° 99)', '2016-09-16 12:35:41', NULL),
-(0000000210, 0000000001, 0000000001, '<strong>Modificación de 18 productos</strong> (B0000001, B0000002, B0000003, B0000004, B0000005, B0000006, B0000007, B0000008, B0000009, B0000010, B0000011, B0000012, B0000013, B0000014, B0000015, B0000016, B0000017, B0000050, ) al arriendo de <b class="text-system">ILUSTRE MUNICIPALIDAD DE LOS ANGELES</b> (Arriendo N° 99)', '2016-09-16 15:41:37', NULL);
+(0000000210, 0000000001, 0000000001, '<strong>Modificación de 18 productos</strong> (B0000001, B0000002, B0000003, B0000004, B0000005, B0000006, B0000007, B0000008, B0000009, B0000010, B0000011, B0000012, B0000013, B0000014, B0000015, B0000016, B0000017, B0000050, ) al arriendo de <b class="text-system">ILUSTRE MUNICIPALIDAD DE LOS ANGELES</b> (Arriendo N° 99)', '2016-09-16 15:41:37', NULL),
+(0000000211, 0000000001, 0000000004, '<strong>Registro de nuevo arriendo</strong> al sistema para <b class="text-system">HORTIFRUT S.A.</b> (Arriendo N° 100)', '2016-09-22 12:17:14', NULL),
+(0000000212, 0000000001, 0000000004, '<strong>Modificación de ruta</strong> del día Lunes al camión DFCC36 al arriendo de <b class="text-system">HORTIFRUT S.A.</b> (Arriendo N° 100)', '2016-09-22 15:27:10', NULL),
+(0000000213, 0000000001, 0000000004, '<strong>Modificación de ruta</strong> del día Miercoles al camión DFCC36 al arriendo de <b class="text-system">HORTIFRUT S.A.</b> (Arriendo N° 100)', '2016-09-22 15:27:10', NULL),
+(0000000214, 0000000001, 0000000004, '<strong>Modificación de ruta</strong> del día Viernes al camión DFCC36 al arriendo de <b class="text-system">HORTIFRUT S.A.</b> (Arriendo N° 100)', '2016-09-22 15:27:10', NULL),
+(0000000215, 0000000001, 0000000004, '<strong>Modificación de ruta</strong> del día Lunes al camión DFCC36 al arriendo de <b class="text-system">HORTIFRUT S.A.</b> (Arriendo N° 100)', '2016-09-22 15:27:10', NULL),
+(0000000216, 0000000001, 0000000004, '<strong>Modificación de ruta</strong> del día Miercoles al camión DFCC36 al arriendo de <b class="text-system">HORTIFRUT S.A.</b> (Arriendo N° 100)', '2016-09-22 15:27:10', NULL),
+(0000000217, 0000000001, 0000000004, '<strong>Modificación de ruta</strong> del día Viernes al camión DFCC36 al arriendo de <b class="text-system">HORTIFRUT S.A.</b> (Arriendo N° 100)', '2016-09-22 15:27:10', NULL),
+(0000000218, 0000000001, 0000000004, '<strong>Modificación de ruta</strong> del día Lunes al camión DFCC36 al arriendo de <b class="text-system">HORTIFRUT S.A.</b> (Arriendo N° 100)', '2016-09-22 15:27:10', NULL),
+(0000000219, 0000000001, 0000000004, '<strong>Modificación de ruta</strong> del día Miercoles al camión DFCC36 al arriendo de <b class="text-system">HORTIFRUT S.A.</b> (Arriendo N° 100)', '2016-09-22 15:27:10', NULL),
+(0000000220, 0000000001, 0000000004, '<strong>Modificación de ruta</strong> del día Viernes al camión DFCC36 al arriendo de <b class="text-system">HORTIFRUT S.A.</b> (Arriendo N° 100)', '2016-09-22 15:27:10', NULL),
+(0000000221, 0000000001, 0000000004, '<strong>Modificación de ruta</strong> del día Lunes al camión DFCC36 al arriendo de <b class="text-system">HORTIFRUT S.A.</b> (Arriendo N° 100)', '2016-09-22 15:27:10', NULL),
+(0000000222, 0000000001, 0000000004, '<strong>Modificación de ruta</strong> del día Miercoles al camión DFCC36 al arriendo de <b class="text-system">HORTIFRUT S.A.</b> (Arriendo N° 100)', '2016-09-22 15:27:10', NULL),
+(0000000223, 0000000001, 0000000004, '<strong>Modificación de ruta</strong> del día Viernes al camión DFCC36 al arriendo de <b class="text-system">HORTIFRUT S.A.</b> (Arriendo N° 100)', '2016-09-22 15:27:10', NULL),
+(0000000224, 0000000001, 0000000004, '<strong>Modificación de ruta</strong> del día Lunes al camión DFCC36 al arriendo de <b class="text-system">HORTIFRUT S.A.</b> (Arriendo N° 100)', '2016-09-22 15:27:10', NULL),
+(0000000225, 0000000001, 0000000004, '<strong>Modificación de ruta</strong> del día Miercoles al camión DFCC36 al arriendo de <b class="text-system">HORTIFRUT S.A.</b> (Arriendo N° 100)', '2016-09-22 15:27:10', NULL),
+(0000000226, 0000000001, 0000000004, '<strong>Modificación de ruta</strong> del día Viernes al camión DFCC36 al arriendo de <b class="text-system">HORTIFRUT S.A.</b> (Arriendo N° 100)', '2016-09-22 15:27:10', NULL),
+(0000000227, 0000000001, 0000000004, '<strong>Modificación de ruta</strong> del día Lunes al camión DFCC36 al arriendo de <b class="text-system">HORTIFRUT S.A.</b> (Arriendo N° 100)', '2016-09-22 15:27:10', NULL),
+(0000000228, 0000000001, 0000000004, '<strong>Modificación de ruta</strong> del día Miercoles al camión DFCC36 al arriendo de <b class="text-system">HORTIFRUT S.A.</b> (Arriendo N° 100)', '2016-09-22 15:27:10', NULL),
+(0000000229, 0000000001, 0000000004, '<strong>Modificación de ruta</strong> del día Viernes al camión DFCC36 al arriendo de <b class="text-system">HORTIFRUT S.A.</b> (Arriendo N° 100)', '2016-09-22 15:27:10', NULL),
+(0000000230, 0000000001, 0000000004, '<strong>Modificación de 12 productos</strong> (B0000050, B0000051, B0000052, B0000053, B0000054, B0000055, B0000056, B0000057, B0000058, B0000059, B0000060, B0000061, ) al arriendo de <b class="text-system">HORTIFRUT S.A.</b> (Arriendo N° 100)', '2016-09-22 15:33:04', NULL),
+(0000000231, 0000000001, 0000000004, '<strong>Registro de nuevo arriendo</strong> al sistema para <b class="text-system">GLOBAL ORGANICS S.A.</b> (Arriendo N° 101)', '2016-09-22 12:38:57', NULL),
+(0000000232, 0000000001, 0000000004, '<strong>Modificación de 4 productos</strong> (B0000062, B0000063, B0000064, B0000065, ) al arriendo de <b class="text-system">GLOBAL ORGANICS S.A.</b> (Arriendo N° 101)', '2016-09-22 15:39:53', NULL);
+INSERT INTO `usuario_log` (`ulo_id_pk`, `ulo_sucursal_fk`, `ulo_usuario_fk`, `ulo_descripcion`, `ulo_fecha`, `ulo_comentario`) VALUES
+(0000000233, 0000000001, 0000000004, '<strong>Modificación de ruta</strong> del día Lunes al camión DFCC36 al arriendo de <b class="text-system">GLOBAL ORGANICS S.A.</b> (Arriendo N° 101)', '2016-09-22 15:40:28', NULL),
+(0000000234, 0000000001, 0000000004, '<strong>Modificación de ruta</strong> del día Miercoles al camión DFCC36 al arriendo de <b class="text-system">GLOBAL ORGANICS S.A.</b> (Arriendo N° 101)', '2016-09-22 15:40:28', NULL),
+(0000000235, 0000000001, 0000000004, '<strong>Modificación de ruta</strong> del día Viernes al camión DFCC36 al arriendo de <b class="text-system">GLOBAL ORGANICS S.A.</b> (Arriendo N° 101)', '2016-09-22 15:40:28', NULL),
+(0000000236, 0000000001, 0000000004, '<strong>Modificación de ruta</strong> del día Lunes al camión DFCC36 al arriendo de <b class="text-system">GLOBAL ORGANICS S.A.</b> (Arriendo N° 101)', '2016-09-22 15:40:28', NULL),
+(0000000237, 0000000001, 0000000004, '<strong>Modificación de ruta</strong> del día Miercoles al camión DFCC36 al arriendo de <b class="text-system">GLOBAL ORGANICS S.A.</b> (Arriendo N° 101)', '2016-09-22 15:40:28', NULL),
+(0000000238, 0000000001, 0000000004, '<strong>Modificación de ruta</strong> del día Viernes al camión DFCC36 al arriendo de <b class="text-system">GLOBAL ORGANICS S.A.</b> (Arriendo N° 101)', '2016-09-22 15:40:28', NULL),
+(0000000239, 0000000001, 0000000004, '<strong>Modificación de ruta</strong> del día Lunes al camión DFCC36 al arriendo de <b class="text-system">GLOBAL ORGANICS S.A.</b> (Arriendo N° 101)', '2016-09-22 15:40:28', NULL),
+(0000000240, 0000000001, 0000000004, '<strong>Modificación de ruta</strong> del día Miercoles al camión DFCC36 al arriendo de <b class="text-system">GLOBAL ORGANICS S.A.</b> (Arriendo N° 101)', '2016-09-22 15:40:28', NULL),
+(0000000241, 0000000001, 0000000004, '<strong>Modificación de ruta</strong> del día Viernes al camión DFCC36 al arriendo de <b class="text-system">GLOBAL ORGANICS S.A.</b> (Arriendo N° 101)', '2016-09-22 15:40:28', NULL),
+(0000000242, 0000000001, 0000000001, '<strong>Registro de nuevo arriendo</strong> al sistema para <b class="text-system">CONSTRUCTORA ICRE</b> (Arriendo N° 102)', '2016-09-23 17:15:11', NULL),
+(0000000243, 0000000001, 0000000001, '<strong>Modificación de ruta</strong> del día Martes al camión HYBB13 al arriendo de <b class="text-system">CONSTRUCTORA ICRE</b> (Arriendo N° 102)', '2016-09-23 20:16:16', NULL),
+(0000000244, 0000000001, 0000000001, '<strong>Modificación de 1 productos</strong> (B0000038, ) al arriendo de <b class="text-system">CONSTRUCTORA ICRE</b> (Arriendo N° 102)', '2016-09-23 20:17:15', NULL),
+(0000000245, 0000000001, 0000000001, '<strong>Modificación de ruta</strong> del día Lunes al camión DFCC36 al arriendo de <b class="text-system">GLOBAL ORGANICS S.A.</b> (Arriendo N° 101)', '2016-09-29 20:24:58', NULL),
+(0000000246, 0000000001, 0000000001, '<strong>Modificación de ruta</strong> del día Miercoles al camión DFCC36 al arriendo de <b class="text-system">GLOBAL ORGANICS S.A.</b> (Arriendo N° 101)', '2016-09-29 20:24:58', NULL),
+(0000000247, 0000000001, 0000000001, '<strong>Modificación de ruta</strong> del día Viernes al camión DFCC36 al arriendo de <b class="text-system">GLOBAL ORGANICS S.A.</b> (Arriendo N° 101)', '2016-09-29 20:24:58', NULL),
+(0000000248, 0000000001, 0000000001, '<strong>Modificación de ruta</strong> del día Lunes al camión DFCC36 al arriendo de <b class="text-system">GLOBAL ORGANICS S.A.</b> (Arriendo N° 101)', '2016-09-29 20:24:58', NULL),
+(0000000249, 0000000001, 0000000001, '<strong>Modificación de ruta</strong> del día Miercoles al camión DFCC36 al arriendo de <b class="text-system">GLOBAL ORGANICS S.A.</b> (Arriendo N° 101)', '2016-09-29 20:24:58', NULL),
+(0000000250, 0000000001, 0000000001, '<strong>Modificación de ruta</strong> del día Viernes al camión DFCC36 al arriendo de <b class="text-system">GLOBAL ORGANICS S.A.</b> (Arriendo N° 101)', '2016-09-29 20:24:58', NULL),
+(0000000251, 0000000001, 0000000001, '<strong>Modificación de ruta</strong> del día Lunes al camión DFCC36 al arriendo de <b class="text-system">GLOBAL ORGANICS S.A.</b> (Arriendo N° 101)', '2016-09-29 20:24:58', NULL),
+(0000000252, 0000000001, 0000000001, '<strong>Modificación de ruta</strong> del día Miercoles al camión DFCC36 al arriendo de <b class="text-system">GLOBAL ORGANICS S.A.</b> (Arriendo N° 101)', '2016-09-29 20:24:58', NULL),
+(0000000253, 0000000001, 0000000001, '<strong>Modificación de ruta</strong> del día Viernes al camión DFCC36 al arriendo de <b class="text-system">GLOBAL ORGANICS S.A.</b> (Arriendo N° 101)', '2016-09-29 20:24:58', NULL),
+(0000000254, 0000000001, 0000000001, '<strong>Modificación de ruta</strong> del día Lunes al camión DFCC36 al arriendo de <b class="text-system">GLOBAL ORGANICS S.A.</b> (Arriendo N° 101)', '2016-09-29 20:24:58', NULL),
+(0000000255, 0000000001, 0000000001, '<strong>Modificación de ruta</strong> del día Miercoles al camión DFCC36 al arriendo de <b class="text-system">GLOBAL ORGANICS S.A.</b> (Arriendo N° 101)', '2016-09-29 20:24:58', NULL),
+(0000000256, 0000000001, 0000000001, '<strong>Modificación de ruta</strong> del día Viernes al camión DFCC36 al arriendo de <b class="text-system">GLOBAL ORGANICS S.A.</b> (Arriendo N° 101)', '2016-09-29 20:24:58', NULL),
+(0000000257, 0000000001, 0000000001, '<strong>Modificación de ruta</strong> del día Lunes al camión HYBB13 al arriendo de <b class="text-system">TRANSPORTE PATRICIO GUTIERREZ V. EIRL</b> (Arriendo N° 50)', '2016-09-29 20:30:40', NULL),
+(0000000258, 0000000001, 0000000001, '<strong>Modificación de ruta</strong> del día Miercoles al camión HYBB13 al arriendo de <b class="text-system">TRANSPORTE PATRICIO GUTIERREZ V. EIRL</b> (Arriendo N° 50)', '2016-09-29 20:30:40', NULL),
+(0000000259, 0000000001, 0000000001, '<strong>Modificación de ruta</strong> del día Viernes al camión HYBB13 al arriendo de <b class="text-system">TRANSPORTE PATRICIO GUTIERREZ V. EIRL</b> (Arriendo N° 50)', '2016-09-29 20:30:40', NULL),
+(0000000260, 0000000001, 0000000001, '<strong>Modificación de 5 productos</strong> (B0000062, B0000063, B0000064, B0000065, B0000051, ) al arriendo de <b class="text-system">GLOBAL ORGANICS S.A.</b> (Arriendo N° 101)', '2016-09-29 20:44:49', NULL),
+(0000000261, 0000000001, 0000000004, '<strong>Modificación de ruta</strong> del día Martes al camión HYBB13 al arriendo de <b class="text-system">CONSTRUCTORA ICRE</b> (Arriendo N° 102)', '2016-09-30 17:35:45', NULL),
+(0000000262, 0000000001, 0000000004, '<strong>Modificación de ruta</strong> del día Sabado al camión DFCC36 al arriendo de <b class="text-system">PLANASA CHILE SPA</b> (Arriendo N° 93)', '2016-09-30 17:43:07', NULL),
+(0000000263, 0000000001, 0000000004, '<strong>Modificación de ruta</strong> del día Lunes al camión HYBB13 al arriendo de <b class="text-system">ARRIGONI INGENIERIA Y CONSTRUCCION S.A</b> (Arriendo N° 58)', '2016-10-03 14:58:37', NULL),
+(0000000264, 0000000001, 0000000004, '<strong>Modificación de ruta</strong> del día Jueves al camión HYBB13 al arriendo de <b class="text-system">ARRIGONI INGENIERIA Y CONSTRUCCION S.A</b> (Arriendo N° 58)', '2016-10-03 14:58:37', NULL),
+(0000000265, 0000000001, 0000000003, '<strong>Registro de nuevo arriendo</strong> al sistema para <b class="text-system">C Y D CONSTRUCCIONES LIMITADA</b> (Arriendo N° 103)', '2016-10-04 16:23:32', NULL),
+(0000000266, 0000000001, 0000000003, '<strong>Registro de nuevo arriendo</strong> al sistema para <b class="text-system">CONSTRUCTORA PITAGORA S.A</b> (Arriendo N° 104)', '2016-10-11 10:57:38', NULL),
+(0000000267, 0000000001, 0000000004, '<strong>Registro de nuevo arriendo</strong> al sistema para <b class="text-system">CONSTRUCTORA MOLINA</b> (Arriendo N° 105)', '2016-10-12 09:05:43', NULL),
+(0000000268, 0000000001, 0000000004, '<strong>Modificación de ruta</strong> del día Martes al camión HYBB13 al arriendo de <b class="text-system">CONSTRUCTORA MOLINA</b> (Arriendo N° 105)', '2016-10-14 14:20:07', NULL),
+(0000000269, 0000000001, 0000000004, '<strong>Modificación de ruta</strong> del día Martes al camión HYBB13 al arriendo de <b class="text-system">CONSTRUCTORA PITAGORA S.A</b> (Arriendo N° 104)', '2016-10-14 14:20:23', NULL),
+(0000000270, 0000000001, 0000000004, '<strong>Modificación de ruta</strong> del día Viernes al camión HYBB13 al arriendo de <b class="text-system">CONSTRUCTORA PITAGORA S.A</b> (Arriendo N° 104)', '2016-10-14 14:20:23', NULL),
+(0000000271, 0000000001, 0000000004, '<strong>Modificación de ruta</strong> del día Lunes al camión HYBB13 al arriendo de <b class="text-system">C Y D CONSTRUCCIONES LIMITADA</b> (Arriendo N° 103)', '2016-10-14 14:20:40', NULL),
+(0000000272, 0000000001, 0000000004, '<strong>Registro de nuevo arriendo</strong> al sistema para <b class="text-system">FORESTAL MININCO S.A.</b> (Arriendo N° 106)', '2016-10-17 12:34:04', NULL),
+(0000000273, 0000000001, 0000000004, '<strong>Modificación de ruta</strong> del día Martes al camión DFCC36 al arriendo de <b class="text-system">FORESTAL MININCO S.A.</b> (Arriendo N° 106)', '2016-10-17 15:34:20', NULL),
+(0000000274, 0000000001, 0000000004, '<strong>Modificación de 0 productos</strong> () al arriendo de <b class="text-system"></b> (Arriendo N° )', '2016-10-17 15:41:54', NULL),
+(0000000275, 0000000001, 0000000004, '<strong>Modificación de ruta</strong> del día Martes al camión HYBB13 al arriendo de <b class="text-system">CONSTRUCTORA PITAGORA S.A</b> (Arriendo N° 104)', '2016-10-18 12:22:52', NULL),
+(0000000276, 0000000001, 0000000004, '<strong>Modificación de ruta</strong> del día Viernes al camión HYBB13 al arriendo de <b class="text-system">CONSTRUCTORA PITAGORA S.A</b> (Arriendo N° 104)', '2016-10-18 12:22:52', NULL),
+(0000000277, 0000000001, 0000000004, '<strong>Modificación de 15 productos</strong> (B0000080, B0000081, B0000082, B0000083, B0000084, B0000085, B0000086, B0000087, B0000088, B0000089, B0000090, B0000091, B0000092, B0000093, B0000094, ) al arriendo de <b class="text-system">AGRICOLA SANTA BARBARA DE LLANO BLANCO LTDA.</b> (Arriendo N° 80)', '2016-10-18 12:29:07', NULL),
+(0000000278, 0000000001, 0000000004, '<strong>Modificación de 15 productos</strong> (B0000080, B0000081, B0000082, B0000083, B0000084, B0000085, B0000086, B0000087, B0000088, B0000089, B0000090, B0000091, B0000092, B0000093, B0000094, ) al arriendo de <b class="text-system">AGRICOLA SANTA BARBARA DE LLANO BLANCO LTDA.</b> (Arriendo N° 80)', '2016-10-18 12:29:19', NULL);
 
 -- --------------------------------------------------------
 
@@ -2123,7 +2582,7 @@ CREATE TABLE IF NOT EXISTS `usuario_nn_sucursal` (
   PRIMARY KEY (`unns_id_pk`),
   KEY `unns_sucursal_fk` (`unns_sucursal_fk`),
   KEY `unns_usuario_fk` (`unns_usuario_fk`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
 -- Volcado de datos para la tabla `usuario_nn_sucursal`
@@ -2137,7 +2596,10 @@ INSERT INTO `usuario_nn_sucursal` (`unns_id_pk`, `unns_sucursal_fk`, `unns_usuar
 (0000000005, 0000000001, 0000000005, 1, '2016-09-06 14:01:01'),
 (0000000006, 0000000001, 0000000006, 1, '2016-09-06 14:58:34'),
 (0000000007, 0000000001, 0000000007, 1, '2016-09-06 15:01:22'),
-(0000000008, 0000000001, 0000000008, 1, '2016-09-06 15:03:22');
+(0000000008, 0000000001, 0000000008, 1, '2016-09-06 15:03:22'),
+(0000000009, 0000000002, 0000000001, 1, '2016-10-04 13:22:11'),
+(0000000010, 0000000001, 0000000009, 1, '2016-10-04 19:08:28'),
+(0000000011, 0000000001, 0000000010, 1, '2016-10-13 12:58:51');
 
 -- --------------------------------------------------------
 
@@ -2155,72 +2617,80 @@ CREATE TABLE IF NOT EXISTS `venta` (
   `ven_fechatermino` datetime DEFAULT NULL,
   `ven_valor` int(11) DEFAULT NULL,
   `ven_diapago` int(11) DEFAULT NULL,
+  `ven_tipopago` int(11) DEFAULT NULL,
   `ven_finalizado` int(11) DEFAULT NULL COMMENT 'finalizado:0, activo:1',
   `ven_comentario` text,
   PRIMARY KEY (`ven_id_pk`),
   KEY `ven_sucursal_fk` (`ven_sucursal_fk`),
   KEY `ven_cliente_fk` (`ven_cliente_fk`),
   KEY `ven_usuario_fk` (`ven_usuario_fk`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=100 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=107 ;
 
 --
 -- Volcado de datos para la tabla `venta`
 --
 
-INSERT INTO `venta` (`ven_id_pk`, `ven_usuario_fk`, `ven_cliente_fk`, `ven_sucursal_fk`, `ven_tipo`, `ven_fechainicio`, `ven_fechatermino`, `ven_valor`, `ven_diapago`, `ven_finalizado`, `ven_comentario`) VALUES
-(0000000045, 0000000003, 0000000028, 0000000001, 1, '2016-09-06 20:36:03', NULL, NULL, NULL, 1, NULL),
-(0000000047, 0000000001, 0000000037, 0000000001, 1, '2016-09-06 21:46:20', NULL, NULL, NULL, 1, NULL),
-(0000000048, 0000000001, 0000000046, 0000000001, 1, '2016-09-07 14:32:21', NULL, NULL, NULL, 1, NULL),
-(0000000049, 0000000001, 0000000047, 0000000001, 1, '2016-09-08 10:42:18', NULL, NULL, NULL, 1, NULL),
-(0000000050, 0000000001, 0000000048, 0000000001, 1, '2016-09-08 10:49:38', NULL, NULL, NULL, 1, NULL),
-(0000000051, 0000000001, 0000000039, 0000000001, 1, '2016-09-08 10:58:19', NULL, NULL, NULL, 0, NULL),
-(0000000052, 0000000001, 0000000047, 0000000001, 1, '2016-09-08 11:00:21', NULL, NULL, NULL, 1, NULL),
-(0000000053, 0000000001, 0000000022, 0000000001, 1, '2016-09-08 11:04:21', NULL, NULL, NULL, 1, NULL),
-(0000000054, 0000000001, 0000000042, 0000000001, 1, '2016-09-08 11:16:22', NULL, NULL, NULL, 1, NULL),
-(0000000055, 0000000001, 0000000049, 0000000001, 1, '2016-09-08 11:36:19', NULL, NULL, NULL, 1, NULL),
-(0000000056, 0000000001, 0000000041, 0000000001, 1, '2016-09-08 11:41:16', NULL, NULL, NULL, 1, NULL),
-(0000000057, 0000000001, 0000000011, 0000000001, 1, '2016-09-08 11:47:32', NULL, NULL, NULL, 1, NULL),
-(0000000058, 0000000001, 0000000050, 0000000001, 1, '2016-09-08 11:50:51', NULL, NULL, NULL, 1, NULL),
-(0000000059, 0000000001, 0000000025, 0000000001, 1, '2016-09-08 11:54:23', NULL, NULL, NULL, 1, NULL),
-(0000000060, 0000000001, 0000000051, 0000000001, 1, '2016-09-08 12:01:40', NULL, NULL, NULL, 1, NULL),
-(0000000061, 0000000001, 0000000027, 0000000001, 1, '2016-09-08 12:03:53', NULL, NULL, NULL, 1, NULL),
-(0000000062, 0000000001, 0000000009, 0000000001, 1, '2016-09-08 12:11:12', NULL, NULL, NULL, 1, NULL),
-(0000000063, 0000000001, 0000000036, 0000000001, 1, '2016-09-08 12:14:17', NULL, NULL, NULL, 1, NULL),
-(0000000064, 0000000001, 0000000005, 0000000001, 1, '2016-09-08 12:21:05', NULL, NULL, NULL, 1, NULL),
-(0000000065, 0000000001, 0000000013, 0000000001, 1, '2016-09-08 12:28:40', NULL, NULL, NULL, 1, NULL),
-(0000000066, 0000000001, 0000000013, 0000000001, 1, '2016-09-08 12:40:33', NULL, NULL, NULL, 1, NULL),
-(0000000067, 0000000001, 0000000039, 0000000001, 1, '2016-09-08 12:46:37', NULL, NULL, NULL, 1, NULL),
-(0000000068, 0000000001, 0000000052, 0000000001, 1, '2016-09-08 12:51:12', NULL, NULL, NULL, 1, NULL),
-(0000000069, 0000000001, 0000000001, 0000000001, 1, '2016-09-08 12:54:40', NULL, NULL, NULL, 1, NULL),
-(0000000070, 0000000001, 0000000030, 0000000001, 1, '2016-09-08 15:43:52', NULL, NULL, NULL, 1, NULL),
-(0000000071, 0000000001, 0000000031, 0000000001, 1, '2016-09-08 15:58:27', NULL, NULL, NULL, 1, NULL),
-(0000000072, 0000000001, 0000000053, 0000000001, 1, '2016-09-08 16:02:57', NULL, NULL, NULL, 1, NULL),
-(0000000073, 0000000001, 0000000054, 0000000001, 1, '2016-09-08 16:17:32', NULL, NULL, NULL, 1, NULL),
-(0000000074, 0000000001, 0000000026, 0000000001, 1, '2016-09-08 16:24:02', NULL, NULL, NULL, 1, NULL),
-(0000000076, 0000000001, 0000000040, 0000000001, 1, '2016-09-08 16:49:30', NULL, NULL, NULL, 1, NULL),
-(0000000077, 0000000001, 0000000034, 0000000001, 1, '2016-09-08 17:04:31', NULL, NULL, NULL, 1, NULL),
-(0000000078, 0000000001, 0000000014, 0000000001, 1, '2016-09-08 17:12:34', NULL, NULL, NULL, 1, NULL),
-(0000000079, 0000000001, 0000000032, 0000000001, 1, '2016-09-08 17:16:46', NULL, NULL, NULL, 1, NULL),
-(0000000080, 0000000001, 0000000028, 0000000001, 1, '2016-09-08 17:19:09', NULL, NULL, NULL, 1, NULL),
-(0000000081, 0000000001, 0000000029, 0000000001, 1, '2016-09-08 17:22:20', NULL, NULL, NULL, 1, NULL),
-(0000000082, 0000000001, 0000000055, 0000000001, 1, '2016-09-08 17:25:09', NULL, NULL, NULL, 1, NULL),
-(0000000083, 0000000001, 0000000019, 0000000001, 1, '2016-09-08 17:28:13', NULL, NULL, NULL, 1, NULL),
-(0000000084, 0000000001, 0000000042, 0000000001, 1, '2016-09-08 17:30:41', NULL, NULL, NULL, 1, NULL),
-(0000000085, 0000000001, 0000000017, 0000000001, 1, '2016-09-08 17:32:09', NULL, NULL, NULL, 1, NULL),
-(0000000086, 0000000001, 0000000011, 0000000001, 1, '2016-09-08 17:34:33', NULL, NULL, NULL, 1, NULL),
-(0000000087, 0000000001, 0000000056, 0000000001, 1, '2016-09-08 17:38:30', NULL, NULL, NULL, 1, NULL),
-(0000000088, 0000000001, 0000000044, 0000000001, 1, '2016-09-08 17:40:07', NULL, NULL, NULL, 1, NULL),
-(0000000089, 0000000001, 0000000043, 0000000001, 1, '2016-09-08 17:44:01', NULL, NULL, NULL, 1, NULL),
-(0000000090, 0000000001, 0000000031, 0000000001, 1, '2016-09-08 17:47:20', NULL, NULL, NULL, 1, NULL),
-(0000000091, 0000000001, 0000000012, 0000000001, 1, '2016-09-08 17:50:18', NULL, NULL, NULL, 1, NULL),
-(0000000092, 0000000001, 0000000008, 0000000001, 1, '2016-09-08 17:52:12', NULL, NULL, NULL, 1, NULL),
-(0000000093, 0000000001, 0000000036, 0000000001, 1, '2016-09-08 17:56:44', NULL, NULL, NULL, 1, NULL),
-(0000000094, 0000000001, 0000000020, 0000000001, 1, '2016-09-09 16:50:40', NULL, NULL, NULL, 1, NULL),
-(0000000095, 0000000001, 0000000007, 0000000001, 1, '2016-09-09 18:12:09', NULL, NULL, NULL, 1, NULL),
-(0000000096, 0000000001, 0000000016, 0000000001, 1, '2016-09-12 17:42:01', NULL, NULL, NULL, 1, NULL),
-(0000000097, 0000000001, 0000000016, 0000000001, 1, '2016-09-12 17:42:03', NULL, NULL, NULL, 0, NULL),
-(0000000098, 0000000003, 0000000057, 0000000001, 1, '2016-09-15 12:05:17', NULL, NULL, NULL, 1, NULL),
-(0000000099, 0000000001, 0000000007, 0000000001, 1, '2016-09-16 12:35:41', NULL, NULL, NULL, 1, NULL);
+INSERT INTO `venta` (`ven_id_pk`, `ven_usuario_fk`, `ven_cliente_fk`, `ven_sucursal_fk`, `ven_tipo`, `ven_fechainicio`, `ven_fechatermino`, `ven_valor`, `ven_diapago`, `ven_tipopago`, `ven_finalizado`, `ven_comentario`) VALUES
+(0000000045, 0000000003, 0000000028, 0000000001, 1, '2016-09-06 20:36:03', NULL, NULL, NULL, NULL, 1, NULL),
+(0000000047, 0000000001, 0000000037, 0000000001, 1, '2016-09-06 21:46:20', NULL, NULL, NULL, NULL, 1, NULL),
+(0000000048, 0000000001, 0000000046, 0000000001, 1, '2016-09-07 14:32:21', NULL, NULL, NULL, NULL, 1, NULL),
+(0000000049, 0000000001, 0000000047, 0000000001, 1, '2016-09-08 10:42:18', NULL, NULL, NULL, NULL, 1, NULL),
+(0000000050, 0000000001, 0000000048, 0000000001, 1, '2016-09-08 10:49:38', NULL, NULL, NULL, NULL, 1, NULL),
+(0000000051, 0000000001, 0000000039, 0000000001, 1, '2016-09-08 10:58:19', NULL, NULL, NULL, NULL, 0, NULL),
+(0000000052, 0000000001, 0000000047, 0000000001, 1, '2016-09-08 11:00:21', NULL, NULL, NULL, NULL, 1, NULL),
+(0000000053, 0000000001, 0000000022, 0000000001, 1, '2016-09-08 11:04:21', NULL, NULL, NULL, NULL, 1, NULL),
+(0000000054, 0000000001, 0000000042, 0000000001, 1, '2016-09-08 11:16:22', NULL, NULL, NULL, NULL, 1, NULL),
+(0000000055, 0000000001, 0000000049, 0000000001, 1, '2016-09-08 11:36:19', NULL, NULL, NULL, NULL, 1, NULL),
+(0000000056, 0000000001, 0000000041, 0000000001, 1, '2016-09-08 11:41:16', NULL, NULL, NULL, NULL, 1, NULL),
+(0000000057, 0000000001, 0000000011, 0000000001, 1, '2016-09-08 11:47:32', NULL, NULL, NULL, NULL, 1, NULL),
+(0000000058, 0000000001, 0000000050, 0000000001, 1, '2016-09-08 11:50:51', NULL, NULL, NULL, NULL, 1, NULL),
+(0000000059, 0000000001, 0000000025, 0000000001, 1, '2016-09-08 11:54:23', NULL, NULL, NULL, NULL, 1, NULL),
+(0000000060, 0000000001, 0000000051, 0000000001, 1, '2016-09-08 12:01:40', NULL, NULL, NULL, NULL, 1, NULL),
+(0000000061, 0000000001, 0000000027, 0000000001, 1, '2016-09-08 12:03:53', NULL, NULL, NULL, NULL, 0, NULL),
+(0000000062, 0000000001, 0000000009, 0000000001, 1, '2016-09-08 12:11:12', NULL, NULL, NULL, NULL, 1, NULL),
+(0000000063, 0000000001, 0000000036, 0000000001, 1, '2016-09-08 12:14:17', NULL, NULL, NULL, NULL, 1, NULL),
+(0000000064, 0000000001, 0000000005, 0000000001, 1, '2016-09-08 12:21:05', NULL, NULL, NULL, NULL, 0, NULL),
+(0000000065, 0000000001, 0000000013, 0000000001, 1, '2016-09-08 12:28:40', NULL, NULL, NULL, NULL, 1, NULL),
+(0000000066, 0000000001, 0000000013, 0000000001, 1, '2016-09-08 12:40:33', NULL, NULL, NULL, NULL, 1, NULL),
+(0000000067, 0000000001, 0000000039, 0000000001, 1, '2016-09-08 12:46:37', NULL, NULL, NULL, NULL, 1, NULL),
+(0000000068, 0000000001, 0000000052, 0000000001, 1, '2016-09-08 12:51:12', NULL, NULL, NULL, NULL, 1, NULL),
+(0000000069, 0000000001, 0000000001, 0000000001, 1, '2016-09-08 12:54:40', NULL, NULL, NULL, NULL, 1, NULL),
+(0000000070, 0000000001, 0000000030, 0000000001, 1, '2016-09-08 15:43:52', NULL, NULL, NULL, NULL, 1, NULL),
+(0000000071, 0000000001, 0000000031, 0000000001, 1, '2016-09-08 15:58:27', NULL, NULL, NULL, NULL, 1, NULL),
+(0000000072, 0000000001, 0000000053, 0000000001, 1, '2016-09-08 16:02:57', NULL, NULL, NULL, NULL, 0, NULL),
+(0000000073, 0000000001, 0000000054, 0000000001, 1, '2016-09-08 16:17:32', NULL, NULL, NULL, NULL, 1, NULL),
+(0000000074, 0000000001, 0000000026, 0000000001, 1, '2016-09-08 16:24:02', NULL, NULL, NULL, NULL, 1, NULL),
+(0000000076, 0000000001, 0000000040, 0000000001, 1, '2016-09-08 16:49:30', NULL, NULL, NULL, NULL, 1, NULL),
+(0000000077, 0000000001, 0000000034, 0000000001, 1, '2016-09-08 17:04:31', NULL, NULL, NULL, NULL, 1, NULL),
+(0000000078, 0000000001, 0000000014, 0000000001, 1, '2016-09-08 17:12:34', NULL, NULL, NULL, NULL, 1, NULL),
+(0000000079, 0000000001, 0000000032, 0000000001, 1, '2016-09-08 17:16:46', NULL, NULL, NULL, NULL, 1, NULL),
+(0000000080, 0000000001, 0000000028, 0000000001, 1, '2016-09-08 17:19:09', NULL, NULL, NULL, NULL, 1, NULL),
+(0000000081, 0000000001, 0000000029, 0000000001, 1, '2016-09-08 17:22:20', NULL, NULL, NULL, NULL, 1, NULL),
+(0000000082, 0000000001, 0000000055, 0000000001, 1, '2016-09-08 17:25:09', NULL, NULL, NULL, NULL, 1, NULL),
+(0000000083, 0000000001, 0000000019, 0000000001, 1, '2016-09-08 17:28:13', NULL, NULL, NULL, NULL, 1, NULL),
+(0000000084, 0000000001, 0000000042, 0000000001, 1, '2016-09-08 17:30:41', NULL, NULL, NULL, NULL, 0, NULL),
+(0000000085, 0000000001, 0000000017, 0000000001, 1, '2016-09-08 17:32:09', NULL, NULL, NULL, NULL, 1, NULL),
+(0000000086, 0000000001, 0000000011, 0000000001, 1, '2016-09-08 17:34:33', NULL, NULL, NULL, NULL, 1, NULL),
+(0000000087, 0000000001, 0000000056, 0000000001, 1, '2016-09-08 17:38:30', NULL, NULL, NULL, NULL, 1, NULL),
+(0000000088, 0000000001, 0000000044, 0000000001, 1, '2016-09-08 17:40:07', NULL, NULL, NULL, NULL, 0, NULL),
+(0000000089, 0000000001, 0000000043, 0000000001, 1, '2016-09-08 17:44:01', NULL, NULL, NULL, NULL, 0, NULL),
+(0000000090, 0000000001, 0000000031, 0000000001, 1, '2016-09-08 17:47:20', NULL, NULL, NULL, NULL, 1, NULL),
+(0000000091, 0000000001, 0000000012, 0000000001, 1, '2016-09-08 17:50:18', NULL, NULL, NULL, NULL, 1, NULL),
+(0000000092, 0000000001, 0000000008, 0000000001, 1, '2016-09-08 17:52:12', NULL, NULL, NULL, NULL, 1, NULL),
+(0000000093, 0000000001, 0000000036, 0000000001, 1, '2016-09-08 17:56:44', NULL, NULL, NULL, NULL, 1, NULL),
+(0000000094, 0000000001, 0000000020, 0000000001, 1, '2016-09-09 16:50:40', NULL, NULL, NULL, NULL, 1, NULL),
+(0000000095, 0000000001, 0000000007, 0000000001, 1, '2016-09-09 18:12:09', NULL, NULL, NULL, NULL, 1, NULL),
+(0000000096, 0000000001, 0000000016, 0000000001, 1, '2016-09-12 17:42:01', NULL, NULL, NULL, NULL, 1, NULL),
+(0000000097, 0000000001, 0000000016, 0000000001, 1, '2016-09-12 17:42:03', NULL, NULL, NULL, NULL, 0, NULL),
+(0000000098, 0000000003, 0000000057, 0000000001, 1, '2016-09-15 12:05:17', NULL, NULL, NULL, NULL, 0, NULL),
+(0000000099, 0000000001, 0000000007, 0000000001, 1, '2016-09-16 12:35:41', NULL, NULL, NULL, NULL, 0, NULL),
+(0000000100, 0000000004, 0000000027, 0000000001, 1, '2016-09-22 12:17:14', NULL, NULL, NULL, NULL, 1, NULL),
+(0000000101, 0000000004, 0000000058, 0000000001, 1, '2016-09-22 12:38:57', NULL, NULL, NULL, NULL, 1, NULL),
+(0000000102, 0000000001, 0000000059, 0000000001, 1, '2016-09-23 17:15:11', NULL, NULL, NULL, NULL, 1, NULL),
+(0000000103, 0000000003, 0000000060, 0000000001, 1, '2016-10-04 16:23:32', NULL, NULL, NULL, NULL, 1, 'BAÑO QUÍMICO QUE FUE ARRENDADO CON FECHA 30-09-2016\r\nLA MANTENCIÓN SERA CADA 15 DÍAS '),
+(0000000104, 0000000003, 0000000061, 0000000001, 1, '2016-10-11 10:57:38', NULL, NULL, NULL, NULL, 1, NULL),
+(0000000105, 0000000004, 0000000062, 0000000001, 1, '2016-10-12 09:05:43', NULL, NULL, NULL, NULL, 1, NULL),
+(0000000106, 0000000004, 0000000021, 0000000001, 1, '2016-10-17 00:00:00', NULL, NULL, NULL, NULL, 1, NULL);
 
 --
 -- Restricciones para tablas volcadas
