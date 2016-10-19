@@ -25,6 +25,7 @@ $(function(){
       });
       
     });
+
     $("#filas_contactos").on('click', '.button_eliminarfilacontacto', function(){
       var button = $(this);
       var id = button.data('id');
@@ -35,18 +36,18 @@ $(function(){
 
     // funciones
     var cargarSelectTipoContacto = function(newr, options)
-          {
-            var fila =  '<tr id="'+newr+'"><td>'+
-                        '<select name="datocontacto['+newr+'][1]" id="datocontacto['+newr+'][1]" class="form-control">'+
-                        '<option value="default">Seleccionar</option>'+ options +
-                        '</select></td><td>'+
-                        '<input type="text" name="datocontacto['+newr+'][2]" class="form-control" value="">'+
-                        '</td><td>'+
-                        '<input type="text" name="datocontacto['+newr+'][3]" class="form-control" value="">'+
-                        '</td><td class="text-right"><div class="btn-group">'+
-                        '<button type="button" data-id="'+newr+'" class="btn btn-danger button_eliminarfilacontacto">'+
-                        '<i class="fa fa-trash"></i></button></div></td></tr>';
+      {
+        var fila =  '<tr id="'+newr+'"><td>'+
+                    '<select name="datocontacto['+newr+'][1]" id="datocontacto['+newr+'][1]" class="form-control">'+
+                    '<option value="default">Seleccionar</option>'+ options +
+                    '</select></td><td>'+
+                    '<input type="text" name="datocontacto['+newr+'][2]" class="form-control" value="">'+
+                    '</td><td>'+
+                    '<input type="text" name="datocontacto['+newr+'][3]" class="form-control" value="">'+
+                    '</td><td class="text-right"><div class="btn-group">'+
+                    '<button type="button" data-id="'+newr+'" class="btn btn-danger button_eliminarfilacontacto">'+
+                    '<i class="fa fa-trash"></i></button></div></td></tr>';
 
-            $("#filas_contactos").append(fila);
-          }
+        $("#filas_contactos").append(fila);
+      }
 });

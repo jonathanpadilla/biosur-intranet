@@ -2,6 +2,7 @@ $(function(){
   var form      = $("#form_wizard_venta");
   var crear     = form.data('crear');
 
+
     $('#myModal').on('shown.bs.modal', function (event) {
         $("#plat").html("");
         $("#plon").html("");
@@ -125,7 +126,7 @@ $(function(){
 
       if(form.valid() && Fn.validaRut($("#input_rut").val()))
       {
-        $("#table_listadetalle").html('<tr><td colspan="4" class="text-center"><i class="fa fa-cog fa-spin fa-3x fa-fw"></i></td></tr>');
+        $("#table_listadetalle").html('<tr><td colspan="5" class="text-center"><i class="fa fa-cog fa-spin fa-3x fa-fw"></i></td></tr>');
         // console.log(form.serialize());
         var url = Routing.generate('venta_ajax_crearventa');
         $.ajax({
@@ -147,7 +148,23 @@ $(function(){
             $("#dd_direccioncliente").html(json.info_venta.direccion_cliente);
             $("#dd_comentariocliente").html(json.info_venta.comentario);
 
-            $("#info_comentarioarriendo").html((json.info_venta.comentario_detalle)?'<strong>Comentario:</strong><br>'+json.info_venta.comentario_detalle:'');
+            $("#info_fecha").html((json.info_venta.fecha_detalle)?json.info_venta.fecha_detalle:'');
+            $("#info_comentario").html((json.info_venta.comentario_detalle)?json.info_venta.comentario_detalle:'');
+
+            console.log(json.info_venta.select_tipo_pago);
+            // switch
+            switch(json.info_venta.select_tipo_pago)
+            {
+              case '1': $("#info_tipo_pago").html('Order de compra');
+                break;
+              case '2': $("#info_tipo_pago").html('Efectivo');
+                break;
+              case '3': $("#info_tipo_pago").html('Documento');
+                break;
+              case '4': $("#info_tipo_pago").html('Transferencia');
+                break;
+            }
+            // $("#info_tipo_pago").html((json.info_venta.select_tipo_pago)?json.info_venta.select_tipo_pago:'');
 
             // contacto cliente
             var comntacto_cliente ='';
@@ -192,11 +209,13 @@ $(function(){
                 var cant_lavamanos  = ((value['cantidadlavamano'] != '')? '<li>Lavamanos: '+ value['cantidadlavamano']+'</li>':'');
 
                 var text_cant   = cant_bano+cant_caseta+cant_ducha+cant_externos+cant_lavamanos;
+                var total       = parseInt((value['netobano'] || 0)) + parseInt((value['netocaseta'] || 0)) + parseInt((value['netoducha'] || 0)) + parseInt((value['netoexterno'] || 0));
 
                 fila_detalle = fila_detalle + '<tr><td>Arriendo baño químico</td>';
                 fila_detalle = fila_detalle + '<td><ul>'+text_cant+'</ul></td>';
                 fila_detalle = fila_detalle + '<td>'+value['dias']+'</td>';
-                fila_detalle = fila_detalle + '<td>'+value['direccion']+', '+value['nombre_comuna']+', '+value['nombre_provincia']+', '+value['nombre_region']+'</td></tr>';
+                fila_detalle = fila_detalle + '<td>'+value['direccion']+', '+value['nombre_comuna']+', '+value['nombre_provincia']+', '+value['nombre_region']+'</td>';
+                fila_detalle = fila_detalle + '<td>'+total+'</td></tr>';
               }
             });
 
@@ -204,11 +223,11 @@ $(function(){
             {
               $("#table_listadetalle").html(fila_detalle);
             }else{
-              $("#table_listadetalle").html('<tr><td colspan="4">Sin información</td></tr>');
+              $("#table_listadetalle").html('<tr><td colspan="5">Sin información</td></tr>');
             }
 
           }else{
-            $("#table_listadetalle").html('<tr><td colspan="4">Sin información</td></tr>');
+            $("#table_listadetalle").html('<tr><td colspan="5">Sin información</td></tr>');
           }
         });
         return form.valid();
@@ -368,6 +387,58 @@ $(function(){
     $("#tlat"+id).val(0);
     $("#tlon"+id).val(0);
   });
+
+  // agregar fila
+    $("#button_agregarfilacontacto").on('click', function(){
+      var last = $( "tbody#filas_contactos tr:last" ).attr('id');
+
+      if(last)
+      {
+        var newr = parseInt(last) + 1;
+      }else{
+        var newr = 1;
+      }
+      
+
+      // cargar select
+      var url = Routing.generate('plugin_selects_tipocontacto');
+
+      $.ajax({
+        url: url,
+        dataType: 'json',
+      }).success(function(json){
+        if(json.result)
+        {
+          cargarSelectTipoContacto(newr, json.options);
+        }
+      });
+      
+    });
+
+    $("#filas_contactos").on('click', '.button_eliminarfilacontacto', function(){
+      var button = $(this);
+      var id = button.data('id');
+
+      $("#"+id).remove();
+    });
+
+
+    // funciones
+    var cargarSelectTipoContacto = function(newr, options)
+    {
+      var fila =  '<tr id="'+newr+'"><td>'+
+                  '<select name="datocontacto['+newr+'][1]" id="datocontacto['+newr+'][1]" class="form-control">'+
+                  '<option value="default">Seleccionar</option>'+ options +
+                  '</select></td><td>'+
+                  '<input type="text" name="datocontacto['+newr+'][2]" class="form-control" value="">'+
+                  '</td><td>'+
+                  '<input type="text" name="datocontacto['+newr+'][3]" class="form-control" value="">'+
+                  '</td><td class="text-right"><div class="btn-group">'+
+                  '<button type="button" data-id="'+newr+'" class="btn btn-danger button_eliminarfilacontacto">'+
+                  '<i class="fa fa-trash"></i></button></div></td></tr>';
+
+      $("#filas_contactos").append(fila);
+    }
 });
 
   function cargarFormularioCliente()
@@ -407,10 +478,8 @@ $(function(){
           $("#select_comuna option[value='"+json.datosCliente.comuna+"']").prop('selected', 'selected').change();
           $("#filas_contactos").html(json.datosContacto);
         }
-        console.log(json);
+        // console.log(json);
       });
-      // $("#input_rut").val('17913418-7');
-      // $("#input_nombre").val($("#select_cliente").val());
+
     }
-    
   }

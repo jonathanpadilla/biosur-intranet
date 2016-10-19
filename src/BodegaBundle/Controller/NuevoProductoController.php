@@ -57,7 +57,7 @@ FUNCIONES AJAX
         $userData   = $this->get('service.user.data');
         $select     = '';
 
-        if( $productos = $em->getRepository('BaseBundle:Producto')->findBy(array('proSucursal' => $userData->getUserData()->sucursalActiva )) )
+        if( $productos = $em->getRepository('BaseBundle:Producto')->findBy(array('proSucursal' => $userData->getUserData()->sucursalActiva, 'proActivo' => 1 )) )
         {
             foreach($productos as $value)
             {
@@ -94,6 +94,7 @@ FUNCIONES AJAX
             $producto->setProNombre($nombre);
             $producto->setProCantidad(0);
             $producto->setProSucursal($fkSucursal);
+            $producto->setProActivo(1);
             $em->persist($producto);
             $em->flush();
 
@@ -156,4 +157,54 @@ FUNCIONES AJAX
         exit;
     }
 
+    public function salidaProductoAction(Request $request)
+    {
+        // validar session
+        if(!$this->get('service.user.data')->ValidarSession('Bodega')){return $this->redirectToRoute('base_vista_ingreso');}
+
+        // variables
+        $result     = false;
+        $id   = ($request->get('id', false))? $request->get('id', false): false;
+        $cantidad   = ($request->get('cantidad', false))? $request->get('cantidad', false): false;
+        $comentario = ($request->get('comentario', false))? $request->get('comentario', false): false;
+        $em         = $this->getDoctrine()->getManager();
+
+        // servicios
+        $userData = $this->get('service.user.data');
+
+        if($cantidad)
+        {
+            // foraneas
+            $fkSucursal = $em->getRepository('BaseBundle:Sucursal')->findOneBy(array('sucIdPk' => $userData->getUserData()->sucursalActiva ));
+            $fkUsuario  = $em->getRepository('BaseBundle:Usuario')->findOneBy(array('usuIdPk' => $userData->getUserData()->id ));
+            $fkProducto = $em->getRepository('BaseBundle:Producto')->findOneBy(array('proIdPk' => $id ));
+
+            $movimiento_producto = new ProductoMovimiento();
+
+            $movimiento_producto->setPmoTipo(2);
+            $movimiento_producto->setPmoCantidad($cantidad);
+            $movimiento_producto->setPmoDetalle($comentario);
+            $movimiento_producto->setPmoFecha(new \DateTime(date("Y-m-d H:i:s")));
+            $movimiento_producto->setPmoSucursalFk($fkSucursal);
+            $movimiento_producto->setPmoUsuarioFk($fkUsuario);
+            $movimiento_producto->setPmoProductoFk($fkProducto);
+            $em->persist($movimiento_producto);
+
+            if($movimiento_producto)
+            {
+                $cant = $fkProducto->getProCantidad();
+
+                $fkProducto->setProCantidad($cant - $cantidad);
+                $em->persist($fkProducto);
+
+                $result = true;
+            }
+
+            $em->flush();
+
+        }
+
+        echo json_encode(array('result' => $result));
+        exit;
+    }
 }

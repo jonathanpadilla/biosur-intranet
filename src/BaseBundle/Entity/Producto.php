@@ -36,6 +36,13 @@ class Producto
     private $proCantidad;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="pro_activo", type="integer", nullable=true)
+     */
+    private $proActivo;
+
+    /**
      * @var \Sucursal
      *
      * @ORM\ManyToOne(targetEntity="Sucursal")
@@ -103,6 +110,30 @@ class Producto
     public function getProCantidad()
     {
         return $this->proCantidad;
+    }
+
+    /**
+     * Set proActivo
+     *
+     * @param integer $proActivo
+     *
+     * @return Producto
+     */
+    public function setProActivo($proActivo)
+    {
+        $this->proActivo = $proActivo;
+
+        return $this;
+    }
+
+    /**
+     * Get proActivo
+     *
+     * @return integer
+     */
+    public function getProActivo()
+    {
+        return $this->proActivo;
     }
 
     /**

@@ -24,7 +24,7 @@ class ListaProductoController extends Controller
     	$em = $this->getDoctrine()->getManager();
         $listaProductos = array();
 
-        if($productos = $em->getRepository('BaseBundle:Producto')->findBy(array('proSucursal' => $userData->getUserData()->sucursalActiva )))
+        if($productos = $em->getRepository('BaseBundle:Producto')->findBy(array('proSucursal' => $userData->getUserData()->sucursalActiva, 'proActivo' => 1 )))
         {
             foreach($productos as $value)
             {
@@ -102,6 +102,25 @@ FUNCIONES AJAX
         }
 
         echo json_encode(array('result' => $result, 'lista' => $listaMovimiento));
+        exit;
+    }
+
+    public function eliminarProductoAction(Request $request)
+    {
+        $result = false;
+        $em     = $this->getDoctrine()->getManager();
+        $id     = $request->get('id');
+
+        if($producto = $em->getRepository('BaseBundle:Producto')->findOneBy(array('proIdPk' => $id )))
+        {
+            $producto->setProActivo(0);
+            $em->persist($producto);
+            $em->flush();
+
+            $result = true;
+        }
+
+        echo json_encode(array('result' => $result));
         exit;
     }
 }

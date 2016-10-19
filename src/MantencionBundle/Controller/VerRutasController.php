@@ -93,8 +93,8 @@ class VerRutasController extends Controller
                 $datos = new stdClass();
 
                 $datos->id_camion       = $value->getCamIdPk();
-                $datos->nombre_chofer   = $value->getCamUsuarioFk()->getUsuNombre();
-                $datos->apellido_chofer = $value->getCamUsuarioFk()->getUsuApellido();
+                $datos->nombre_chofer   = ($value->getCamUsuarioFk())?$value->getCamUsuarioFk()->getUsuNombre():null;
+                $datos->apellido_chofer = ($value->getCamUsuarioFk())?$value->getCamUsuarioFk()->getUsuApellido():null;
 
                 $listaChofer[]  = $datos;
             }

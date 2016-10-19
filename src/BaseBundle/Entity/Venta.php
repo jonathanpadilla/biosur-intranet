@@ -59,6 +59,13 @@ class Venta
     /**
      * @var integer
      *
+     * @ORM\Column(name="ven_tipopago", type="integer", nullable=true)
+     */
+    private $venTipopago;
+
+    /**
+     * @var integer
+     *
      * @ORM\Column(name="ven_finalizado", type="integer", nullable=true)
      */
     private $venFinalizado;
@@ -230,6 +237,30 @@ class Venta
     public function getVenDiapago()
     {
         return $this->venDiapago;
+    }
+
+    /**
+     * Set venTipopago
+     *
+     * @param integer $venTipopago
+     *
+     * @return Venta
+     */
+    public function setVenTipopago($venTipopago)
+    {
+        $this->venTipopago = $venTipopago;
+
+        return $this;
+    }
+
+    /**
+     * Get venTipopago
+     *
+     * @return integer
+     */
+    public function getVenTipopago()
+    {
+        return $this->venTipopago;
     }
 
     /**

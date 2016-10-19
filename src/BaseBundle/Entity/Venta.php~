@@ -59,6 +59,13 @@ class Venta
     /**
      * @var integer
      *
+     * @ORM\Column(name="ven_tipopago", type="integer", nullable=true)
+     */
+    private $venTipopago;
+
+    /**
+     * @var integer
+     *
      * @ORM\Column(name="ven_finalizado", type="integer", nullable=true)
      */
     private $venFinalizado;

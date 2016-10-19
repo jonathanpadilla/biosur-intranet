@@ -87,7 +87,7 @@ class AgregarRutaController extends Controller
             		{
             			$listaCamiones[$key]['id_camion'] 		= $value2->getCamIdPk();
             			$listaCamiones[$key]['patente_camion'] 	= $value2->getCamPatente();
-            			$listaCamiones[$key]['nombre_chofer'] 	= $value2->getCamUsuarioFk()->getUsuNombre();
+            			$listaCamiones[$key]['nombre_chofer'] 	= ($value2->getCamUsuarioFk())?$value2->getCamUsuarioFk()->getUsuNombre():null;
             		}
             	}
 

@@ -77,12 +77,15 @@ AJAX
 
                 $datos = new stdClass();
 
+                $propios = ($value->getRutDetallecontratoFk())?$value->getRutDetallecontratoFk()->getDcoCbano(): 0;
+                $externos = ($value->getRutDetallecontratoFk())?$value->getRutDetallecontratoFk()->getDcoCexterno(): 0;
+
                 $datos->id                  = $value->getRutIdPk();
                 $datos->empresaNombre       = $value->getRutDetallecontratoFk()->getDcoVentaFk()->getVenClienteFk()->getCliNombre();
                 $datos->servicio1           = '';
                 $datos->servicio2           = '';
                 $datos->servicio3           = '';
-                $datos->servicio4           = $value->getRutDetallecontratoFk()->getDcoCbano();
+                $datos->servicio4           = $propios + $externos;
                 $datos->servicio5           = '';
                 $datos->servicio6           = '';
                 $datos->servicio7           = '';
@@ -274,33 +277,38 @@ AJAX
 
     private function agregarStockInsumo($producto, $cantidad, $comentario)
     {
-        $em = $this->getDoctrine()->getManager();
-        $userData = $this->get('service.user.data');
-        // foraneas
-        $fkSucursal = $em->getRepository('BaseBundle:Sucursal')->findOneBy(array('sucIdPk' => $userData->getUserData()->sucursalActiva ));
-        $fkUsuario  = $em->getRepository('BaseBundle:Usuario')->findOneBy(array('usuIdPk' => $userData->getUserData()->id ));
-        $fkProducto = $em->getRepository('BaseBundle:Producto')->findOneBy(array('proIdPk' => $producto ));
-
-        $movimiento_producto = new ProductoMovimiento();
-
-        $movimiento_producto->setPmoTipo(2);
-        $movimiento_producto->setPmoCantidad($cantidad);;
-        $movimiento_producto->setPmoDetalle($comentario);
-        $movimiento_producto->setPmoFecha(new \DateTime(date("Y-m-d H:i:s")));
-        $movimiento_producto->setPmoSucursalFk($fkSucursal);
-        $movimiento_producto->setPmoUsuarioFk($fkUsuario);
-        $movimiento_producto->setPmoProductoFk($fkProducto);
-        $em->persist($movimiento_producto);
-
-        if($movimiento_producto)
+        if($cantidad)
         {
-            $cant = $fkProducto->getProCantidad();
+            $em = $this->getDoctrine()->getManager();
+            $userData = $this->get('service.user.data');
+            // foraneas
+            $fkSucursal = $em->getRepository('BaseBundle:Sucursal')->findOneBy(array('sucIdPk' => $userData->getUserData()->sucursalActiva ));
+            $fkUsuario  = $em->getRepository('BaseBundle:Usuario')->findOneBy(array('usuIdPk' => $userData->getUserData()->id ));
+            $fkProducto = $em->getRepository('BaseBundle:Producto')->findOneBy(array('proIdPk' => $producto ));
 
-            $fkProducto->setProCantidad($cant - $cantidad);
-            $em->persist($fkProducto);
+            $movimiento_producto = new ProductoMovimiento();
 
-            $result = true;
+            $movimiento_producto->setPmoTipo(2);
+            $movimiento_producto->setPmoCantidad($cantidad);;
+            $movimiento_producto->setPmoDetalle($comentario);
+            $movimiento_producto->setPmoFecha(new \DateTime(date("Y-m-d H:i:s")));
+            $movimiento_producto->setPmoSucursalFk($fkSucursal);
+            $movimiento_producto->setPmoUsuarioFk($fkUsuario);
+            $movimiento_producto->setPmoProductoFk($fkProducto);
+            $em->persist($movimiento_producto);
+
+            if($movimiento_producto)
+            {
+                $cant = $fkProducto->getProCantidad();
+
+                $fkProducto->setProCantidad($cant - $cantidad);
+                $em->persist($fkProducto);
+
+                $result = true;
+            }
+            
+            $em->flush();
         }
-        $em->flush();
+
     }
 }

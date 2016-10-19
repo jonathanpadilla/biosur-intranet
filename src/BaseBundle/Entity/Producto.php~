@@ -36,6 +36,13 @@ class Producto
     private $proCantidad;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="pro_activo", type="integer", nullable=true)
+     */
+    private $proActivo;
+
+    /**
      * @var \Sucursal
      *
      * @ORM\ManyToOne(targetEntity="Sucursal")

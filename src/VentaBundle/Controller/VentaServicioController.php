@@ -110,22 +110,26 @@ FUNCIONES AJAX
         	$select_comuna 			= ($request->get('select_comuna', false))?			$request->get('select_comuna'):					null;
         	$input_direccion 		= ($request->get('input_direccion', false))?		ucfirst($request->get('input_direccion')):		null;
             $textarea_comentario    = ($request->get('textarea_comentario', false))?    ucfirst($request->get('textarea_comentario')):  null;
-        	$comentario_detalle 	= ($request->get('comentario_detalle', false))?	    ucfirst($request->get('comentario_detalle')):	null;
+            $comentario_detalle     = ($request->get('comentario_detalle', false))?     ucfirst($request->get('comentario_detalle')):   null;
+            $fecha_detalle          = ($request->get('input_fecha_detalle', false))?    $request->get('input_fecha_detalle'):           null;
+        	$select_tipo_pago 	    = ($request->get('select_tipo_pago', false))?	        $request->get('select_tipo_pago'):	                null;
             // arrays
             $datocontacto           = ($request->get('datocontacto', false))?           $request->get('datocontacto'):                  null;
         	$detalle 			    = ($request->get('detalle', false))?			    $request->get('detalle'):					    null;
             
             $datosVenta = array(
-                'id_cliente'        => $select_cliente,
-                'nombre_cliente'    => $input_nombre,
-                'rut_cliente'       => $input_rut,
-                'giro_cliente'      => $input_giro,
-                'id_comuna'         => $select_comuna,
-                'direccion_cliente' => $input_direccion,
-                'comentario'        => $textarea_comentario,
-                'comentario_detalle'=> $comentario_detalle,
-                'contacto'          => $datocontacto,
-                'detalle'           => $detalle
+                'id_cliente'            => $select_cliente,
+                'nombre_cliente'        => $input_nombre,
+                'rut_cliente'           => $input_rut,
+                'giro_cliente'          => $input_giro,
+                'id_comuna'             => $select_comuna,
+                'direccion_cliente'     => $input_direccion,
+                'comentario'            => $textarea_comentario,
+                'comentario_detalle'    => $comentario_detalle,
+                'fecha_detalle'         => $fecha_detalle,
+                'select_tipo_pago'      => $select_tipo_pago,
+                'contacto'              => $datocontacto,
+                'detalle'               => $detalle
                 );
 
             // echo '<pre>';print_r($datosVenta);exit;
@@ -177,6 +181,7 @@ FUNCIONES AJAX
                     }
                         
                     $datosVenta['detalle'][$key]['dias'] = $dias;
+                    // $datosVenta['detalle'][$key]['netobano'] = $value['netobano'];
 
                 }
             }
@@ -216,6 +221,9 @@ FUNCIONES AJAX
             $input_direccion        = ($request->get('input_direccion', false))?        ucfirst($request->get('input_direccion')):      null;
             $textarea_comentario    = ($request->get('textarea_comentario', false))?    ucfirst($request->get('textarea_comentario')):  null;
             $comentario_detalle     = ($request->get('comentario_detalle', false))?     ucfirst($request->get('comentario_detalle')):   null;
+            $select_tipo_pago       = ($request->get('select_tipo_pago', false))?       ucfirst($request->get('select_tipo_pago')):     null;
+            $input_fecha_detalle    = ($request->get('input_fecha_detalle', false))?    ucfirst($request->get('input_fecha_detalle')):  null;
+            $txt_tipo_pago          = ($request->get('txt_tipo_pago', false))?          ucfirst($request->get('txt_tipo_pago')):        null;
             // arrays
             $datocontacto           = ($request->get('datocontacto', false))?           $request->get('datocontacto'):                  null;
             $detalle                = ($request->get('detalle', false))?                $request->get('detalle'):                       null;
@@ -241,20 +249,27 @@ FUNCIONES AJAX
                 echo json_encode(array('result' => false));exit;
             }
 
+            // fecha de arriendo
+            list($dia_ar, $mes_arr, $anno_arr) = explode('/', $input_fecha_detalle);
+
             $datosVenta = array(
-                'id_cliente'        => $select_cliente,
-                'nombre_cliente'    => $input_nombre,
-                'rut_cliente'       => $input_rut,
-                'giro_cliente'      => $input_giro,
-                'id_comuna'         => $select_comuna,
-                'direccion_cliente' => $input_direccion,
-                'comentario'        => $textarea_comentario,
-                'comentario_detalle'=> $comentario_detalle,
-                'contacto'          => $datocontacto,
-                'detalle'           => $detalle
+                'id_cliente'            => $select_cliente,
+                'nombre_cliente'        => $input_nombre,
+                'rut_cliente'           => $input_rut,
+                'giro_cliente'          => $input_giro,
+                'id_comuna'             => $select_comuna,
+                'direccion_cliente'     => $input_direccion,
+                'comentario'            => $textarea_comentario,
+                'comentario_detalle'    => $comentario_detalle,
+                'select_tipo_pago'      => $select_tipo_pago,
+                'input_fecha_detalle'   => $anno_arr.'/'.$mes_arr.'/'.$dia_ar.' 00:00:00',
+                'txt_tipo_pago'         => $txt_tipo_pago,
+                'contacto'              => $datocontacto,
+                'detalle'               => $detalle
                 );
 
-            // ld($datosVenta);exit;
+            // $fechaxd = new \DateTime($datosVenta['nombre_cliente']);
+            // ld($fechaxd->format('Y-m-d'));exit;
 
             // claves foraneas
             $fkSucursal = $em->getRepository('BaseBundle:Sucursal')->findOneBy(array('sucIdPk' => $userData->getUserData()->sucursalActiva ));
@@ -319,8 +334,9 @@ FUNCIONES AJAX
                 $venta->setVenUsuarioFk($fkUsuario);
                 $venta->setVenSucursalFk($fkSucursal);
                 $venta->setVenTipo(1);
-                $venta->setVenFechainicio(new \DateTime(date("Y-m-d H:i:s")));
+                $venta->setVenFechainicio(new \DateTime($datosVenta['input_fecha_detalle']));
                 $venta->setVenComentario($datosVenta['comentario_detalle']);
+                $venta->setVenTipopago($datosVenta['select_tipo_pago']);
                 $venta->setVenFinalizado(1);
                 $em->persist($venta);
                 $em->flush();
@@ -353,10 +369,13 @@ FUNCIONES AJAX
                             $detalle->setDcoNetoducha($value['netoducha']);
                             $detalle->setDcoNetoexterno($value['netoexterno']);
 
+                            $b = ($value['cantidadbano'])?$value['cantidadbano']:0;
+                            $e = ($value['cantidadexterno'])?$value['cantidadexterno']:0;
+
                             $detalle->setDcoLat($value['lat']);
                             $detalle->setDcoLon($value['lon']);
-                            $detalle->setDcoPapel($value['cantidadbano']);
-                            $detalle->setDcoSachet($value['cantidadbano']);
+                            $detalle->setDcoPapel($b + $e);
+                            $detalle->setDcoSachet($b + $e);
                             $detalle->setDcoActivo(1);
                             $em->persist($detalle);
                             $em->flush();

@@ -55,6 +55,8 @@ VISTAS
 	        		$datosCliente['id_venta'] 			= $value->getVenIdPk();
 	        		$datosCliente['fecha_registro'] 	= $value->getVenFechainicio()->format('d/m/Y');
 	        		$datosCliente['fecha_termino'] 		= ($value->getVenFechatermino())?$value->getVenFechatermino()->format('d/m/Y'):null;
+	        		$datosCliente['comentario_venta']	= $value->getVenComentario();
+	        		$tipo_pago_venta					= $value->getVenTipopago();
 	        		$datosCliente['id_cliente'] 		= $value->getVenClienteFk()->getCliIdPk();
 	        		$datosCliente['nombre_cliente'] 	= $value->getVenClienteFk()->getCliNombre();
 	        		$datosCliente['cantidadTotal'] 		= 0;
@@ -69,6 +71,19 @@ VISTAS
 	        		$datosCliente['asignacion'] 		= 0;
 	        		$datosCliente['lavamanos'] 		    = 0;
 	        	}
+
+	        	switch ($tipo_pago_venta) {
+	    			case 1: $datosCliente['tipo_pago_venta'] = 'Order de compra';
+	    				break;
+	    			case 2: $datosCliente['tipo_pago_venta'] = 'Efectivo';
+	    				break;
+	    			case 3: $datosCliente['tipo_pago_venta'] = 'Documento';
+	    				break;
+	    			case 4: $datosCliente['tipo_pago_venta'] = 'Transferencia';
+	    				break;
+	    			default: $datosCliente['tipo_pago_venta'] = 'Sin especificar';
+	    				break;
+	    		}
 
 	        	// bitacora
 	        	$q2  = $qb->select(array('b'))
@@ -348,7 +363,7 @@ FUNCIONES AJAX
         		$listaMantencion .= '<td class="text-right">'.$lavamano.$candado.'</td>';
         		$listaMantencion .= '<td>'.$value->getManComentario().'</td>';
         		$listaMantencion .= '<td class="text-right"><div class="btn-group">';
-        		$listaMantencion .= '<button class="btn btn-default btn-sm"><i class="fa fa-picture-o"></i></button>';
+        		//$listaMantencion .= '<button class="btn btn-default btn-sm"><i class="fa fa-picture-o"></i></button>';
         		$listaMantencion .= '<button class="btn btn-default btn-sm btn-ubicacion" data-lat="'.$value->getManLat().'" data-lng="'.$value->getManLng().'"><i class="fa fa-map-marker"></i></button>';
         		$listaMantencion .= '</div></td>';
         		$listaMantencion .= '</tr>';
@@ -417,7 +432,10 @@ FUNCIONES AJAX
 	    			case 12: $mes = 'Diciembre';break;
 	    		}
 
+	    		$datos_arriendo['id_venta'] 			= $value->getVenIdPk();
 	    		$datos_arriendo['id_usuario'] 			= $value->getVenUsuarioFk()->getUsuIdPk();
+	    		$datos_arriendo['nombre_usuario'] 		= $value->getVenUsuarioFk()->getUsuNombre();
+	    		$datos_arriendo['apellido_usuario'] 	= $value->getVenUsuarioFk()->getUsuApellido();
 	    		$datos_arriendo['dia_venta']	 		= $value->getVenFechainicio()->format('d');
 	    		$datos_arriendo['mes_venta']	 		= $mes;
 	    		$datos_arriendo['anno_venta']	 		= $value->getVenFechainicio()->format('Y');
@@ -426,43 +444,49 @@ FUNCIONES AJAX
 	    		$datos_arriendo['direccion_cliente']	= $value->getVenClienteFk()->getCliDireccion();
 	    		$datos_arriendo['comuna_cliente']		= $value->getVenClienteFk()->getCliComunaFk()->getComNombre();
 
+	    		// tipo pago
+	    		switch ($value->getVenTipopago()) {
+	    			case 1: $datos_arriendo['tipo_pago'] = 'Order de compra';
+	    				break;
+	    			case 2: $datos_arriendo['tipo_pago'] = 'Efectivo';
+	    				break;
+	    			case 3: $datos_arriendo['tipo_pago'] = 'Documento';
+	    				break;
+	    			case 4: $datos_arriendo['tipo_pago'] = 'Transferencia';
+	    				break;
+	    			default: $datos_arriendo['tipo_pago'] = 'Sin especificar';
+	    				break;
+	    		}
+
 	    		$nombreCliente = $value->getVenClienteFk()->getCliNombre();
 	    		$fecha = $value->getVenFechainicio()->format('d').' de '.$mes.' '.$value->getVenFechainicio()->format('Y');
 	    	}
 	    }
 	    $dias = array(1 => 0, 2 => 0, 3 => 0, 4 => 0, 5 => 0, 6 => 0, 7 => 0);
 
-	    if($detalleVenta = $em->getRepository('BaseBundle:DetalleContrato')->findBy(array('dcoVentaFk' => $id )))
+	    $detalle_contrato = array();
+	    if($detalleVenta = $em->getRepository('BaseBundle:DetalleContrato')->findBy(array('dcoVentaFk' => $id, 'dcoActivo' => 1 )))
 	    {
-	    	$detalle_contrato = array(
-	    		'baños' 	=> array(
-	    			'cantidad' 	=> 0,
-	    			'valor'		=> 0
-	    			),
-	    		'casetas' 	=> array(
-	    			'cantidad' 	=> 0,
-	    			'valor'		=> 0
-	    			),
-	    		'duchas' 	=> array(
-	    			'cantidad' 	=> 0,
-	    			'valor'		=> 0
-	    			),
-	    		'externos' 	=> array(
-	    			'cantidad' 	=> 0,
-	    			'valor'		=> 0
-	    			),
-	    		);
+
 	    	foreach($detalleVenta as $value)
 	    	{
-	    		$detalle_contrato['baños']['cantidad'] 		+= $value->getDcoCbano();
-	    		$detalle_contrato['casetas']['cantidad'] 	+= $value->getDcoCcaseta();
-	    		$detalle_contrato['duchas']['cantidad'] 	+= $value->getDcoCducha();
-	    		$detalle_contrato['externos']['cantidad'] 	+= $value->getDcoCexterno();
+	    		$datos = new stdClass();
 
-	    		$detalle_contrato['baños']['valor'] 	+= $value->getDcoNetobanno();
-	    		$detalle_contrato['casetas']['valor'] 	+= $value->getDcoNetocaseta();
-	    		$detalle_contrato['duchas']['valor'] 	+= $value->getDcoNetoducha();
-	    		$detalle_contrato['externos']['valor'] 	+= $value->getDcoNetoexterno();
+	    		$nbano 		= ($value->getDcoCbano())? 'Baños: '.$value->getDcoCbano().' ':'';
+	    		$ncaseta 	= ($value->getDcoCcaseta())? 'Casetas: '.$value->getDcoCcaseta().' ':'';
+	    		$nducha 	= ($value->getDcoCducha())? 'Duchas: '.$value->getDcoCducha().' ':'';
+	    		$nexterno 	= ($value->getDcoCexterno())? 'Externos: '.$value->getDcoCexterno():'';
+
+	    		$vbano = ($value->getDcoNetobanno())?$value->getDcoNetobanno():0;
+	    		$vcaseta = ($value->getDcoNetocaseta())?$value->getDcoNetocaseta():0;
+	    		$vducha = ($value->getDcoNetoducha())?$value->getDcoNetoducha():0;
+	    		$vexterno = ($value->getDcoNetoexterno())?$value->getDcoNetoexterno():0;
+
+	    		$datos->cantidad = $nbano.$ncaseta.$nducha.$nexterno;
+	    		$datos->valor = $vbano + $vcaseta + $vducha + $vexterno;
+	    		$datos->ubicacion = $value->getDcoDireccion();
+
+	    		$detalle_contrato[] = $datos;
 
 	    		if($ruta = $em->getRepository('BaseBundle:Ruta')->findBy(array('rutDetallecontratoFk' => $value->getDcoIdPk() )))
 	    		{
@@ -475,6 +499,8 @@ FUNCIONES AJAX
 	    }
 
 	    $suma_dias = array_sum($dias);
+
+	    // print_r($detalle_contrato);exit;
 
 		// return $this->render('VentaBundle:Plantillas:contrato.html.twig',array(
 		// 	'datos_arriendo' => $datos_arriendo,
@@ -682,12 +708,23 @@ FUNCIONES AJAX
 				$detalle->setDcoActivo(0);
 				$em->persist($detalle);
 
+				// obtener ruta para finalizarla
                 if($ruta = $em->getRepository('BaseBundle:Ruta')->findBy(array('rutDetallecontratoFk' => $detalle )))
                 {
                     foreach($ruta as $value)
                     {
                         $value->setRutActivo(0);
                         $em->persist($value);
+                    }
+                }
+
+                // obtener contrato nn baño para finalizarlo
+                if($dnnb = $em->getRepository('BaseBundle:DetcontratoNnBanno')->findBy(array('dnnbDetcontratoFk' => $detalle )))
+                {
+                    foreach($dnnb as $value2)
+                    {
+                        $value2->setDnnbActivo(0);
+                        $em->persist($value2);
                     }
                 }
                 

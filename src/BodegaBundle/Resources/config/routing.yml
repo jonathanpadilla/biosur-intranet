@@ -66,7 +66,13 @@ bodega_ajax_guardarproductos:
 
 bodega_ajax_eliminarproductos:
     path:     /nuevo-producto/eliminar-producto/
-    defaults: { _controller: BodegaBundle:NuevoProducto:eliminarProducto }
+    defaults: { _controller: BodegaBundle:ListaProducto:eliminarProducto }
+    options:
+        expose: true
+
+bodega_ajax_salidaproductos:
+    path:     /nuevo-producto/salida-producto/
+    defaults: { _controller: BodegaBundle:NuevoProducto:salidaProducto }
     options:
         expose: true
 

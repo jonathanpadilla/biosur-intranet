@@ -31,6 +31,10 @@ venta_vista_guardarventa:
     defaults: { _controller: VentaBundle:VentaServicio:guardarVenta }
     methods:   [POST]
 
+venta_vista_exportarlistaclientes:
+    path:     /lista-venta/exportar-lista-excel/
+    defaults: { _controller: VentaBundle:ListaVenta:exportarListaClienteExcel }
+
 ## FUNCIONES AJAX ##
 venta_ajax_crearventa:
     path:     /nueva-venta-servicio/crear-venta/

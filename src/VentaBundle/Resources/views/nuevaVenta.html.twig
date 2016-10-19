@@ -1,7 +1,7 @@
 {% extends "VentaBundle:Layouts:body.html.twig" %}
 {% block content %}
-	<div class="content-header">
-      	<h2>Arriendo de servicio</h2>
+  <div class="content-header">
+        <h2>Arriendo de servicio</h2>
     </div>
       <div id="alerts">
         <div id="alert_error" class="alert alert-danger fade in hidden">
@@ -24,7 +24,7 @@
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group">
-                    <label class="control-label">Cliente</label>
+                    <label class="control-label">Buscar cliente</label>
                       <select id="select_cliente" name="select_cliente" class="form-control select2-single">
                         <option value="nuevo">Nuevo</option>
                         {% for cliente in clientes %}
@@ -149,8 +149,19 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label for="input_fecha_detalle" class="control-label">Fecha*</label>
+                    <label for="input_fecha_detalle" class="control-label">Fecha de arriendo*</label>
                     <input type="text" name="input_fecha_detalle" id="input_fecha_detalle" class="form-control" placeholder="" value="{{ fecha }}">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="select_comuna" class="control-label">Tipo pago*</label>
+                    <select name="select_tipo_pago" class="form-control select2-single">
+                        <option value="1">Order de compra</option>
+                        <option value="2">Efectivo</option>
+                        <option value="3">Documento</option>
+                        <option value="4">Transferencia</option>
+                    </select>
                   </div>
                 </div>
               </div>
@@ -1731,6 +1742,22 @@
                     </dl>
                   </div>
                   <div class="col-md-12">
+
+                    <h3>Información de contrato</h3>
+
+                    <div class="col-md-6">
+                      <dl class="dl-horizontal">
+                        <div id="direccion_cliente">
+                        </div>
+                        <dt>Fecha</dt>
+                        <dd id="info_fecha"></dd>
+                        <dt>Tipo de pago</dt>
+                        <dd id="info_tipo_pago"></dd>
+                        <dt>Comentario</dt>
+                        <dd id="info_comentario"></dd>
+                      </dl>
+                    </div>
+
                     <table class="table table-bordered mbn">
                       <thead>
                         <tr>
@@ -1744,16 +1771,15 @@
                       <tbody id="table_listadetalle">
                       </tbody>
                       <tfoot>
+
                         <tr>
                           <td colspan="4"></td>
                           <td id="into_totaldetalle"></td>
                         </tr>
-                        <tr>
-                          <td colspan="5" id="info_comentarioarriendo"></td>
-                        </tr>
+
                       </tfoot>
                     </table>
-                    
+
                   </div>
                 </div>
               <!-- end section -->
@@ -1794,14 +1820,14 @@
 {% endblock %}
 
 {% block footerScripts %}
-	<script src="{{ absolute_url(asset('vendor/plugins/duallistbox/jquery.bootstrap-duallistbox.min.js')) }}"></script>
-	<script src="{{ absolute_url(asset('assets/admin-tools/admin-forms/js/jquery.validate.min.js')) }}"></script>
+  <script src="{{ absolute_url(asset('vendor/plugins/duallistbox/jquery.bootstrap-duallistbox.min.js')) }}"></script>
+  <script src="{{ absolute_url(asset('assets/admin-tools/admin-forms/js/jquery.validate.min.js')) }}"></script>
+  <script src="{{ absolute_url(asset('assets/bundles/plugin/jquery.contacto.js')) }}"></script>
   <script src="{{ absolute_url(asset('vendor/plugins/moment/moment.min.js')) }}"></script>
   <script src="{{ absolute_url(asset('vendor/plugins/datepicker/js/bootstrap-datetimepicker.js')) }}"></script>
-	<script src="{{ absolute_url(asset('assets/admin-tools/admin-forms/js/jquery.steps.min.js')) }}"></script>
+  <script src="{{ absolute_url(asset('assets/admin-tools/admin-forms/js/jquery.steps.min.js')) }}"></script>
   <script src="{{ absolute_url(asset('vendor/plugins/select2/select2.min.js')) }}"></script>
   <script src="{{ absolute_url(asset('vendor/plugins/gmap/gmaps.js')) }}"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAk4HzcdPciUZejfLnYpXqVPXH9wfBEAj8"></script>
-  <script src="{{ absolute_url(asset('assets/bundles/plugin/jquery.contacto.js')) }}"></script>
   <script src="{{ absolute_url(asset('assets/bundles/venta/nuevaVenta.js')) }}"></script>
 {% endblock %}
