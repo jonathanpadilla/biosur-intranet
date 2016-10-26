@@ -70,7 +70,7 @@ AJAX
                     }
                 }
 
-                $conductor = ($value->getRutCamionFk())? $value->getRutCamionFk()->getCamUsuarioFk()->getUsuNombre().' '.$value->getRutCamionFk()->getCamUsuarioFk()->getUsuApellido():'';
+                $conductor = ($value->getRutCamionFk())? (($value->getRutCamionFk()->getCamUsuarioFk())?$value->getRutCamionFk()->getCamUsuarioFk()->getUsuNombre().' '.$value->getRutCamionFk()->getCamUsuarioFk()->getUsuApellido():''):'';
 
                 // fecha
                 // $fecha = date('d/m/Y');

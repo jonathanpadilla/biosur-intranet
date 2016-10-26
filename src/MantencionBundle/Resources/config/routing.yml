@@ -35,6 +35,10 @@ mantencion_app_agregarmantencion:
     path:     /app/agregar-mantencion/
     defaults: { _controller: MantencionBundle:AgregarMantencion:agregarRuta }
 
+mantencion_app_actualizarmantencion:
+    path:     /app/actualizar-mantencion/
+    defaults: { _controller: MantencionBundle:AgregarMantencion:actualizar }
+
 mantencion_app_guardarfotomantencion:
     path:     /app/foto-mantencion/
     defaults: { _controller: MantencionBundle:AgregarMantencion:subirFoto }

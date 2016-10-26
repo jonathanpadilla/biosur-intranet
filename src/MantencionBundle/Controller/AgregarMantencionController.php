@@ -10,7 +10,7 @@ use \stdClass;
 class AgregarMantencionController extends Controller
 {
     public function agregarRutaAction(Request $request)
-    {	
+    {
     	$result = false;
 
     	if( $request->getMethod() == 'POST' )
@@ -65,7 +65,6 @@ class AgregarMantencionController extends Controller
                     }
                     
                     $em->flush();
-
                     $result = true;
 
                 }
@@ -78,6 +77,64 @@ class AgregarMantencionController extends Controller
 
         exit;
 	}
+
+    public function actualizarAction(Request $request)
+    {
+        $result = false;
+
+        if( $request->getMethod() == 'POST' )
+        {
+            if($postdata = file_get_contents("php://input"))
+            {
+                $em     = $this->getDoctrine()->getManager();
+                $post   = json_decode($postdata);
+                $datos  = json_decode($post->datos);
+                $lat    = $post->lat;
+                $lng    = $post->lng;
+
+                foreach($datos as $value)
+                {
+                    $f_cod      = eregi_replace("[a-zA-Z]","",$value->codigo);
+                    $ndia       = date('N', strtotime($value->fecha));
+
+                    if($dnnb = $em->getRepository('BaseBundle:DetcontratoNnBanno')->findOneBy(array('dnnbBannoFk' => $f_cod,'dnnbActivo' => 1 )))
+                    {
+                        $idDetalle = $dnnb->getDnnbDetcontratoFk()->getDcoIdPk();
+                        // foraneas
+                        $fkUsuario = $em->getRepository('BaseBundle:Usuario')->findOneBy(array('usuIdPk' => $value->usuario ));
+                        $fkRuta    = $em->getRepository('BaseBundle:Ruta')->findOneBy(array('rutDetallecontratoFk' => $idDetalle, 'rutDia' => $ndia, 'rutActivo' => 1 ));
+                        $fkDetalleContrato  = $em->getRepository('BaseBundle:DetalleContrato')->findOneBy(array('dcoIdPk' => $dnnb->getDnnbDetcontratoFk() ));
+
+                        $f_fecha    = $value->fecha;
+                        $flat       = ($value->lat != 0)?$value->lat:$lat;
+                        $flng       = ($value->lng != 0)?$value->lng:$lng;
+                        $coment     = $value->comentario;
+                        
+                        $mantencion = new Mantencion();
+
+                        $mantencion->setManRutaFk($fkRuta);
+                        $mantencion->setManUsuarioFk($fkUsuario);
+                        $mantencion->setManNnbannoFk($dnnb);
+                        $mantencion->setManDetallecontratoFk($fkDetalleContrato);
+                        $mantencion->setManLat($flat);
+                        $mantencion->setManLng($flng);
+                        $mantencion->setManRealizado(1);
+                        $mantencion->setManComentario($coment);
+                        $mantencion->setManFecharegistro(new \DateTime($f_fecha));
+
+                        $em->persist($mantencion);
+                        
+                    }
+                }
+
+                $em->flush();
+                $result = true;
+            }
+        }
+
+        echo json_encode(array('result' => $result));
+        exit;
+    }
 
 	public function subirFotoAction()
 	{
