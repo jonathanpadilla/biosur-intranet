@@ -30,6 +30,44 @@ function cargarLista()
 		
 		$(".content_lista").append(html);
 
+	}).done(function(){
+
+		$(".btn-habilitar").on('click', function(e){
+			e.preventDefault();
+			var btn = $(this);
+			btn.html('<i class="fa fa-cog fa-spin fa-2x fa-fw">');
+			var id 	= btn.data('id');
+			var estado = btn.data('estado');
+
+			cambiarEstado(id, estado, function(n){
+				if(n == 1)
+				{
+					btn.html('<i class="fa fa-check-circle-o fa-2x" style="color:#70ca63;"></i>');
+				}else{
+					btn.html('<i class="fa fa-circle-o fa-2x" style="color:#e9573f;"></i>');
+				}
+				btn.data('estado', n);
+			});
+		});
+
+	});
+	
+}
+
+function cambiarEstado(id, estado, fn)
+{
+	$.ajax({
+		url: Routing.generate('bodega_vista_cambiarestadobannos'),
+		data: {id:id, estado:estado},
+		dataType: 'json',
+		method: 'post',
+	}).success(function(json){
+		if(json.result)
+		{
+			fn(json.estado);
+		}else{
+			fn(false);
+		}
 	});
 	
 }

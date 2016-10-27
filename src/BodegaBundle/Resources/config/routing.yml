@@ -15,6 +15,12 @@ bodega_vista_listabannos:
     path:     /lista-banos/
     defaults: { _controller: BodegaBundle:ListaBannos:listaBannos }
 
+bodega_vista_cambiarestadobannos:
+    path:     /lista-banos/cambiar-estado/
+    defaults: { _controller: BodegaBundle:ListaBannos:cambiarEstado }
+    options:
+        expose: true
+
 bodega_vista_listaproducto:
     path:     /lista-producto/
     defaults: { _controller: BodegaBundle:ListaProductos:listaProductos }

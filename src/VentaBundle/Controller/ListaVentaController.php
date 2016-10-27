@@ -324,14 +324,36 @@ FUNCIONES AJAX
             $fin = $row - 1;
             // borde tabla
             $phpExcelObject->getActiveSheet()->getStyle('A3:E'.$fin)->getBorders()->getAllBorders()->setBorderStyle(PHPExcel_Style_Border::BORDER_THIN);
+
+            // baños totales
+            $total_banos_real = 0;
+            if($banos = $em->getRepository('BaseBundle:Bannos')->findBy(array('banSucursalFk' => $userData->getUserData()->sucursalActiva,'banTipo' => 1, 'banAsignado' => 1)))
+                foreach($banos as $b){$total_banos_real++;}
+
+            // casetas totales
+            $total_casetas_real = 0;
+            if($banos = $em->getRepository('BaseBundle:Bannos')->findBy(array('banSucursalFk' => $userData->getUserData()->sucursalActiva,'banTipo' => 2, 'banAsignado' => 1)))
+                foreach($banos as $b){$total_casetas_real++;}
+
+            // duchas totales
+            $total_duchas_real = 0;
+            if($banos = $em->getRepository('BaseBundle:Bannos')->findBy(array('banSucursalFk' => $userData->getUserData()->sucursalActiva,'banTipo' => 3, 'banAsignado' => 1)))
+                foreach($banos as $b){$total_duchas_real++;}
+
+            // duchas totales
+            $total_externos_real = 0;
+            if($banos = $em->getRepository('BaseBundle:Bannos')->findBy(array('banSucursalFk' => $userData->getUserData()->sucursalActiva,'banTipo' => 4, 'banAsignado' => 1)))
+                foreach($banos as $b){$total_externos_real++;}
+
+            // print_r($total_externos_real);exit;
             
             // informacion final
             $phpExcelObject->setActiveSheetIndex(0)
                 ->setCellValue('G3', 'TOTAL ARRIENDOS')->setCellValue('H3', $total_clientes)
-                ->setCellValue('G5', 'TOTAL BAÑOS')->setCellValue('H5', $total_banos)
-                ->setCellValue('G6', 'TOTAL CASETAS')->setCellValue('H6', $total_casetas)
-                ->setCellValue('G7', 'TOTAL DUCHAS')->setCellValue('H7', $total_duchas)
-                ->setCellValue('G8', 'TOTAL EXTERNOS')->setCellValue('H8', $total_externos);
+                ->setCellValue('G5', 'BAÑOS')->setCellValue('H5', $total_banos.'/'.$total_banos_real)->setCellValue('I5', ($total_banos_real)?number_format(($total_banos * 100)/$total_banos_real,0).'%':'N/A')
+                ->setCellValue('G6', 'CASETAS')->setCellValue('H6', $total_casetas.'/'.$total_casetas_real)->setCellValue('I6', ($total_casetas_real)?number_format(($total_casetas * 100)/$total_casetas_real,0).'%':'N/A')
+                ->setCellValue('G7', 'DUCHAS')->setCellValue('H7', $total_duchas.'/'.$total_duchas_real)->setCellValue('I7', ($total_duchas_real)?number_format(($total_duchas * 100)/$total_duchas_real,0).'%':'N/A')
+                ->setCellValue('G8', 'EXTERNOS')->setCellValue('H8', $total_externos.'/'.$total_externos_real)->setCellValue('I8', ($total_externos_real)?number_format(($total_externos * 100)/$total_externos_real,0).'%':'N/A');
 
             // ESTILOS INFORMACION FINAL
             $phpExcelObject->getActiveSheet()->getStyle("G3")->getFont()->setBold(true);

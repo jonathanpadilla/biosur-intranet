@@ -19,7 +19,7 @@
 				    </div>
 				    <a download="barcode_{{ bano.id }}" href="{{ qrcode_data_uri(bano.id , { size: 200, padding: 10, label: bano.id }) }}" class="btn btn-biosur btn-sm"><i class="fa fa-cloud-download"></i> Exportar</a>
 
-				    <!-- <a class="text-system" href="#"> Max </a> -->
+				    <a class="btn btn-disabled btn-sm btn-habilitar" data-id="{{ bano.realid }}" data-estado="{{ bano.habilitado }}" href="#"> <i class="fa {{ bano.habilitado ? 'fa-check-circle-o':'fa-circle-o' }} fa-2x" style="color:{{ bano.habilitado ? '#70ca63;': '#e9573f;' }}"></i> </a>
 				  </div>
 				</div>
 			</div>

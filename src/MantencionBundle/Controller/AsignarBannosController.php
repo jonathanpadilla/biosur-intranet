@@ -34,7 +34,7 @@ class AsignarBannosController extends Controller
         }
 
         // cargar select
-    	if($bannos = $em->getRepository('BaseBundle:Bannos')->findBy(array('banSucursalFk' => $userData->getUserData()->sucursalActiva)))
+    	if($bannos = $em->getRepository('BaseBundle:Bannos')->findBy(array('banSucursalFk' => $userData->getUserData()->sucursalActiva, 'banAsignado' => 1)))
     	{
     		foreach($bannos as $value)
     		{

@@ -75,8 +75,9 @@ class ListaBannosController extends Controller
                     $datos->cliente_comuna      = '';
                 }
 
-
-                $datos->id = str_pad($value->getBanIdPk(), 7, '0', STR_PAD_LEFT);
+                $datos->id          = str_pad($value->getBanIdPk(), 7, '0', STR_PAD_LEFT);
+                $datos->realid      = $value->getBanIdPk();
+                $datos->habilitado  = $value->getBanAsignado();
 
                 $letra  = '';
                 $tipo   = '';
@@ -263,5 +264,33 @@ class ListaBannosController extends Controller
 
         return $response;
 
+    }
+
+    public function cambiarEstadoAction(Request $request)
+    {
+        $result     = false;
+        $id         = $request->get('id', false);
+        $estado     = $request->get('estado', false);
+        $n_estado   = false;
+        $em         = $this->getDoctrine()->getManager();
+
+        if($id)
+        {
+            switch($estado)
+            {
+                case 0: $n_estado = 1;break;
+                case 1: $n_estado = 0;break;
+            }
+
+            $banno = $em->getRepository('BaseBundle:Bannos')->findOneBy(array('banIdPk' => $id));
+            $banno->setBanAsignado($n_estado);
+            $em->persist($banno);
+            $em->flush();
+
+            $result = true;
+        }
+
+        echo json_encode(array('result' => $result, 'estado' => $n_estado));
+        exit;
     }
 }
